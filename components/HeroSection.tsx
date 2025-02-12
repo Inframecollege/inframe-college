@@ -46,7 +46,7 @@ const HeroSection = () => {
       {/* Background Image with Carousel */}
       <div className="absolute inset-0">
         <ImageCarousel />
-        <div className="absolute inset-0 bg-black bg-opacity-70" />
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
       </div>
 
       {/* Content Section */}
