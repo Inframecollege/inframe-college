@@ -10,13 +10,14 @@ const Footer = () => {
         <div>
           <h3 className="font-bold text-2xl mb-6">Quick Links</h3>
           <ul className="space-y-3">
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">About Us</a></li>
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">Admission Process</a></li>
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">Campus</a></li>
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">Faculty</a></li>
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">Advisors</a></li>
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">News & Events</a></li>
-            <li><a href="#" className="hover:text-blue-500 transition duration-300">Careers</a></li>
+            <li><Link href="/about" className="hover:text-blue-500 transition duration-300">About Us</Link></li>
+            <li><Link href="#" className="hover:text-blue-500 transition duration-300">Admission Process</Link></li>
+            <li><Link href="/lifeatinframe" className="hover:text-blue-500 transition duration-300">Campus</Link></li>
+            <li><Link href="#" className="hover:text-blue-500 transition duration-300">Faculty</Link></li>
+            <li><Link href="/advisors" className="hover:text-blue-500 transition duration-300">Advisors</Link></li>
+            <li><Link href="#" className="hover:text-blue-500 transition duration-300">News & Events</Link></li>
+            <li><Link href="/careers" className="hover:text-blue-500 transition duration-300">Careers</Link></li>
+            <li><Link href="/download" className="hover:text-blue-500 transition duration-300">Downloads</Link></li>
           </ul>
         </div>
 
@@ -89,11 +90,11 @@ const Footer = () => {
             </a>
           </p>
           <div className="flex space-x-6 mt-8">
-            <a href="#" className="text-blue-500 hover:text-blue-600 transition duration-300"><Facebook size={30} /></a>
-            <a href="#" className="text-red-500 hover:text-red-600 transition duration-300"><Youtube size={30} /></a>
-            <a href="#" className="text-pink-500 hover:text-pink-600 transition duration-300"><Instagram size={30} /></a>
-            <a href="#" className="text-blue-700 hover:text-blue-800 transition duration-300"><Linkedin size={30} /></a>
-            <a href="#" className="text-sky-500 hover:text-sky-600 transition duration-300"><Twitter size={30} /></a>
+            <Link href="#" className="text-blue-500 hover:text-blue-600 transition duration-300"><Facebook size={30} /></Link>
+            <Link href="#" className="text-red-500 hover:text-red-600 transition duration-300"><Youtube size={30} /></Link>
+            <Link href="#" className="text-pink-500 hover:text-pink-600 transition duration-300"><Instagram size={30} /></Link>
+            <Link href="#" className="text-blue-700 hover:text-blue-800 transition duration-300"><Linkedin size={30} /></Link>
+            <Link href="#" className="text-sky-500 hover:text-sky-600 transition duration-300"><Twitter size={30} /></Link>
           </div>
         </div>
       </div>
@@ -119,8 +120,8 @@ const Footer = () => {
           <p>
             © 2025 Inframe. Ltd. All rights reserved ·{" "}
             <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link> ·{" "}
-            <a href="#" className="hover:underline">Refund Policy</a> ·{" "}
-            <a href="#" className="hover:underline">Terms & Conditions</a>
+            <Link href="#" className="hover:underline">Refund Policy</Link> ·{" "}
+            <Link href="#" className="hover:underline">Terms & Conditions</Link>
           </p>
         </div>
       </div>
