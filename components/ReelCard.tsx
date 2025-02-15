@@ -31,8 +31,7 @@ const ReelCard = () => {
 
   const videos = [
     "/videos/Sports day__--___quotes _love _likesforlike _travel _foryou _followforfollowback _trendingreels _ootdfashion(MP4).mp4",
-    "/videos/1724245081924874.mp4",
-    "/videos/C7243.MP4",
+   
   ];
 
   const handleVideoEnd = () => {
@@ -140,12 +139,12 @@ const ReelCard = () => {
               </div>
 
               <div className="flex flex-col items-center space-y-6">
-                <button
+                <Button
                   onClick={() => setIsredHeart((prev) => !prev)}
                   className="text-white hover:text-red-500 transition-transform duration-300 transform hover:scale-125"
                 >
                   {isredHeart ? <Heart fill="red" /> : <Heart />}
-                </button>
+                </Button>
 
                 <Button className="text-white transform scale-x-[-1] hover:text-blue-500 transition-transform duration-300 transform hover:scale-125">
                   <MessageCircle />

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { INFRAME_LOGO } from "../../utils/constant";
+import { INFRAME_LOGO, LOGO, LOGOS } from "../../utils/constant";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import StudyDropDown from "./StudyDropDown";
 import { Poppins } from "next/font/google";
@@ -97,13 +97,13 @@ const Navbar = () => {
 
                 <SheetContent
                   side="right"
-                  className="bg-black/95 text-white border-l border-gray-800 backdrop-blur-sm"
+                  className="bg-white text-black  backdrop-blur-sm"
                 >
                   <nav className="flex flex-col h-full">
                     <div className="mb-8 pt-4">
                       <Link href="/" onClick={handleLinkClick}>
                         <Image
-                          src={INFRAME_LOGO}
+                          src={LOGO}
                           alt="Inframe College Logo"
                           width={150}
                           height={10}

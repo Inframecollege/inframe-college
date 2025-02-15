@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -22,6 +22,7 @@ import {
 import { Input } from "../components/ui/input";
 import { states, cities as citiesData, programLevels, allLevels, BFAPrograms } from '../utils/constant';
 import { Poppins } from 'next/font/google';
+import { useRouter } from 'next/navigation'; // Changed from 'next/router' to 'next/navigation'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,9 +31,7 @@ const poppins = Poppins({
 
 const cities: { [key: string]: string[] } = citiesData;
 
-
-
-// Form validation schema
+// Form validation schema remains the same
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
@@ -50,10 +49,11 @@ interface ApplyNowFormProps {
 }
 
 const ApplyNowForm = ({ isFormOpen, setIsFormOpen, isScrolled }: ApplyNowFormProps) => {
+  const router = useRouter();
   const [selectedState, setSelectedState] = useState<string>("");
   const [selectedLevel, setSelectedLevel] = useState<string>("");
-  // const [selectedProgram, setSelectedProgram] = useState<string>("");
   const [submissionMessage, setSubmissionMessage] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -75,7 +75,11 @@ const ApplyNowForm = ({ isFormOpen, setIsFormOpen, isScrolled }: ApplyNowFormPro
       Object.keys(programLevels[program]).includes(level)
     );
   };
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
     try {
       const response = await fetch("https://formspree.io/f/mvgzrnyl", {
         method: "POST",
@@ -86,16 +90,18 @@ const ApplyNowForm = ({ isFormOpen, setIsFormOpen, isScrolled }: ApplyNowFormPro
       });
 
       if (response.ok) {
-        setSubmissionMessage("Thanks for applying! We will contact you soon.");
-        form.reset();
+        router.push('/thank-you');
       } else {
         setSubmissionMessage("Failed to submit the form. Please try again later.");
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
       setSubmissionMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
 
   const renderFormFields = () => (
     <Form {...form}>
@@ -303,33 +309,33 @@ const ApplyNowForm = ({ isFormOpen, setIsFormOpen, isScrolled }: ApplyNowFormPro
 
   return (
     <Sheet open={isFormOpen} onOpenChange={setIsFormOpen}>
-      {isScrolled && (
-        <SheetTrigger asChild>
-          <Button 
-            className="fixed right-0 top-1/2 -translate-y-1/2 rotate-[-90deg] origin-right z-50 
-                       bg-yellow-400 hover:bg-yellow-500 text-black h-12 px-8 font-semibold"
-            style={{ transformOrigin: "right bottom" }}
-          >
-            Apply Now
-          </Button>
-        </SheetTrigger>
-      )}
-      
-      <SheetContent side="right" className="w-[350px] sm:w-[400px] h-[580px] font-sans  rounded-l-lg my-16 p-0">
-        <SheetHeader>
-          <SheetTitle className={`p-6 pb-0 ${poppins.className}`}>Apply Now</SheetTitle>
-        </SheetHeader>
-        <div className="p-6 bg-white h-full overflow-y-auto">
-          {submissionMessage ? (
-            <div className="text-center p-5 bg-green-100 text-green-700 rounded-md">
-              {submissionMessage}
-            </div>
-          ) : (
-            renderFormFields()
-          )}
-        </div>
-      </SheetContent>
-    </Sheet>
+    {isScrolled && (
+      <SheetTrigger asChild>
+        <Button 
+          className="fixed right-0 top-1/2 -translate-y-1/2 rotate-[-90deg] origin-right z-50 
+                     bg-yellow-400 hover:bg-yellow-500 text-black h-12 px-8 font-semibold"
+          style={{ transformOrigin: "right bottom" }}
+        >
+          Apply Now
+        </Button>
+      </SheetTrigger>
+    )}
+    
+    <SheetContent side="right" className="w-[350px] sm:w-[400px] h-[580px] font-sans rounded-l-lg my-16 p-0">
+      <SheetHeader>
+        <SheetTitle className={`p-6 pb-0 ${poppins.className}`}>Apply Now</SheetTitle>
+      </SheetHeader>
+      <div className="p-6 bg-white h-full overflow-y-auto">
+        {submissionMessage ? (
+          <div className="text-center p-5 bg-green-100 text-green-700 rounded-md">
+            {submissionMessage}
+          </div>
+        ) : (
+          renderFormFields()
+        )}
+      </div>
+    </SheetContent>
+  </Sheet>
   );
 };
 

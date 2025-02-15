@@ -49,6 +49,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'live-production.wcms.abc-cdn.net.au'
       },
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co'
+      },
+      {
+        protocol: 'https',
+        hostname: 's.yimg.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.livemint.com'
+      },
     ],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
