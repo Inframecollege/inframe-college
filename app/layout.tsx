@@ -7,7 +7,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Your Website Title",
+  title: "Inframe School",
   icons: {
     icon: "/500x500.jpg",
   },
