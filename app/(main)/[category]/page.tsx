@@ -1,52 +1,41 @@
+// app/[category]/page.tsx
+
+
+
 import CoursePage from "../../../components/Courses/CoursePage";
 import { courseTypes } from "../../../utils/courseTypes";
-import { metadata } from "../../../utils/metadata";
 
-type CategoryPageProps = { params: { category: string } };
-type CategoryKey = keyof typeof metadata;
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const categoryLower = params.category.toLowerCase();
-  console.log(categoryLower);
+type ParamsType = Promise<{ category: string }>;
 
-  const categoryCourses = courseTypes[categoryLower] || null;
+export default async function CategoryPage({
+  params,
+}: {
+  params: ParamsType;
+}) {
+  const { category } = await params;
+  const categoryLower = category.toLowerCase();
+  console.log(category);
+  
+  
+  const categoryCourses = courseTypes[categoryLower];
   console.log(categoryCourses);
-
+  
+  
+  
+  
   return <CoursePage courseType={categoryCourses} category={categoryLower} />;
 }
 
-// ✅ Fix: Ensure generateMetadata has the correct type
-export async function generateMetadata({ params }: CategoryPageProps) {
-  const categoryLower = params.category.toLowerCase() as CategoryKey;
-  const courseInfo = metadata[categoryLower] || null;
-
-  if (!courseInfo) {
-    return {
-      title: "Inframe School | Explore Our Courses",
-      description: "Discover various courses at Inframe School and start your journey today.",
-    };
-  }
-
+// Generate metadata
+export async function generateMetadata({ params }: { params: ParamsType }) {
+  const { category } = await params;
   return {
-    title: courseInfo.metaTitle || `${categoryLower} Courses | Inframe School`,
-    description: courseInfo.metaDescription || `Enroll in our ${categoryLower} courses at Inframe School.`,
-    openGraph: {
-      title: courseInfo.metaTitle || `${categoryLower} Courses | Inframe School`,
-      description: courseInfo.metaDescription || `Enroll in our ${categoryLower} courses at Inframe School.`,
-      url: `https://yourwebsite.com/${categoryLower}`,
-      images: [
-        {
-          url: courseInfo.image || "/default-course-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: `${categoryLower} Course`,
-        },
-      ],
-    },
+    title: `${category} Courses`,
+    description: `Browse our ${category} courses`,
   };
 }
 
-// ✅ Fix: Ensure generateStaticParams returns an array of objects
 export async function generateStaticParams() {
   return Object.keys(courseTypes).map((category) => ({
     category,
