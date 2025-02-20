@@ -1,74 +1,78 @@
 import React from "react";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
 import { cards } from "../utils/constant";
-import { Poppins } from "next/font/google"; // Importing Google Fonts via next/font
+import { Poppins } from "next/font/google";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../components/ui/carousel";
 
-// Using the Poppins font
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // Including various font weights
+  weight: ["400", "500", "700"],
 });
 
 const LifeAtInframe = () => {
   return (
-    <section className="py-16 font-sans">
-      <div className="container px-4 md:px-6  relative xl:left-[28rem] xl:mx-0 z-10">
-        {/* Section Title */}
-        <h2
-      className={`text-2xl md:text-3xl font-bold text-left mb-4 ${poppins.className}`}
-    >
-      Life @ Inframe
-    </h2>
+    <section className="py-16 font-sans relative overflow-hidden">
+      <div className="pl-4 md:pl-6 lg:pl-[calc(((100vw-1200px)/2)+1rem)] pr-0">
+        {/* Section header */}
+        <div className="mb-12 max-w-3xl">
+          <h3 className="text-sm font-medium uppercase tracking-wider text-gray-600 mb-2">
+            OUR CULTURE
+          </h3>
+          <h2 className={`text-2xl md:text-3xl font-bold text-left ${poppins.className}`}>
+            Life @ Inframe
+          </h2>
+          <p className={`text-left text-lg text-gray-600 mt-3 ${poppins.className}`}>
+            Experience a vibrant, collaborative environment at Inframe where creativity and innovation thrive.
+          </p>
+        </div>
 
-    {/* Short Description Paragraph */}
-    <p className={`text-left text-lg text-gray-600 mb-8 ${poppins.className}`}>
-      Experience a vibrant, collaborative environment at Inframe where creativity and innovation thrive, shaping the future of design and business.
-    </p>
-        {/* Carousel */}
+        {/* Carousel implementation */}
         <Carousel
           opts={{
-            align: "center",
+            align: "start",
+            loop: true,
           }}
           className="w-full"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-6">
             {cards.map((card, index) => (
-              <CarouselItem
-                key={index}
-                className="basis-full sm:basis-3/4 md:basis-1/2 xl:basis-[27.99%] flex justify-center"
-              >
-                <div className="my-8 w-full sm:w-3/4 md:w-[398px]">
-                  <Card className="w-full h-[450px] md:h-[598px] overflow-hidden border border-gray-200 shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-xl group">
-                    {/* Card Image */}
-                    <div className="relative w-full h-[450px] md:h-[598px] group-hover:filter-none filter grayscale transition-all duration-500">
-                      <Image
-                        src={card.image}
-                        alt={card.title}
-                        layout="fill"
-                        objectFit="cover"
-                        className="absolute inset-0 w-full h-full rounded-t-lg"
-                      />
-                    </div>
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
-
-                    {/* Card Content */}
-                    <CardContent className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end text-white">
-                      <CardTitle className="text-lg md:text-xl font-sans font-bold leading-tight">
-                        {card.title}
-                      </CardTitle>
-                      <CardDescription className="text-sm md:text-base text-gray-300 mt-2">
-                        {card.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </div>
+              <CarouselItem key={index} className="pl-6 basis-full md:basis-[398px]">
+                <Card 
+                  className="h-[598px] ml-3 overflow-hidden border-0 shadow-lg rounded-lg bg-transparent z-10 text-white group relative"
+                >
+                  {/* Image with gradient overlay */}
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="group-hover:filter-none filter grayscale transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+                  </div>
+                  
+                  {/* Card Content */}
+                  <CardContent className="absolute bottom-0 left-0 right-0 p-6">
+                    <CardTitle className="text-xl font-bold leading-tight mb-3">
+                      {card.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm text-gray-300">
+                      {card.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>
+         
         </Carousel>
       </div>
     </section>

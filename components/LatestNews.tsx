@@ -62,6 +62,8 @@ const LatestNews = () => {
 
     fetchNews();
   }, []);
+  console.log("ENV API KEY:", process.env.NEXT_PUBLIC_NEWS_API_KEY);
+
 
   if (loading) {
     return <div className="text-center py-8">Loading...</div>;

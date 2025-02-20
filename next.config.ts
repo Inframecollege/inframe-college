@@ -73,6 +73,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'statetimes.in'
       },
+      {
+        protocol: 'https',
+        hostname: 'example.com'
+      },
     ],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,

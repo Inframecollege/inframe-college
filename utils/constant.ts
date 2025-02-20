@@ -66,181 +66,183 @@ export const LOGO = "https://inframecollege.org/wp-content/uploads/2021/05/infra
     { src: "/company logo/Urban Foundry_Logo.jpg", name: "Urban Foundry" },
   ];
 
-export  const cards = [
+  export const cards = [
     {
       title: "Industry-Relevant Skills",
-      description:
-        "Stay ahead in your field by mastering high-demand skills through our online sessions.",
-      image: "/IMG_8698.jpg", // Replace with actual image URL
+      description: "Stay ahead in your field by mastering high-demand skills through our online sessions.",
+      image: "/IMG_8698.jpg"
     },
     {
       title: "Learn by Doing",
-      description:
-        "Dive into real challenges from today’s businesses, gaining hands-on experience.",
-      image: "/IMG_8829.jpg", // Replace with actual image URL
+      description: "Dive into real challenges from today's businesses, gaining hands-on experience.",
+      image: "/IMG_8829.jpg"
     },
     {
       title: "Career Opportunities",
-      description:
-        "Tap into a wealth of career opportunities through our established network.",
-      image: "/1717492615506 - Copy (2) (1).jpg", // Replace with actual image URL
+      description: "Tap into a wealth of career opportunities through our established network.",
+      image: "/1717492615506 - Copy (2) (1).jpg"
     },
     {
       title: "Community at the Center",
-      description:
-        "Engage with your vibrant community guided by seasoned industry mentors.",
-      image: "/1721737896096.jpg", // Replace with actual image URL
+      description: "Engage with your vibrant community guided by seasoned industry mentors.",
+      image: "/1721737896096.jpg"
     },
     {
-      title: "Community at the Center",
-      description:
-        "Engage with your vibrant community guided by seasoned industry mentors.",
-      image: "/1721737896096.jpg", // Replace with actual image URL
+      title: "Expert-Led Workshops",
+      description: "Learn directly from industry leaders through interactive workshops and masterclasses.",
+      image: "/images/gallery/1717668347893 - Copy.jpg" // Replace with new image
     },
+    {
+      title: "Personalized Learning Path",
+      description: "Follow a customized curriculum designed to match your career goals and aspirations.",
+      image: "/images/gallery/1719304885452_1.jpg" // Add image
+    },
+    {
+      title: "Networking Events",
+      description: "Connect with professionals and peers through regular meetups and industry conferences.",
+      image: "/images/gallery/1721738128651.jpg" // Add image
+    },
+    {
+      title: "Project Portfolio Building",
+      description: "Create impressive portfolios through hands-on projects and real-world applications.",
+      image: "/images/gallery/DSC04267.JPG" // Add image
+    },
+    {
+      title: "Global Perspective",
+      description: "Gain insights from international case studies and cross-cultural collaboration opportunities.",
+      image: "/images/gallery/IMG_20240605_124215.webp" // Add image
+    },
+    {
+      title: "Innovation Hub",
+      description: "Access cutting-edge tools and technologies to bring your creative ideas to life.",
+      image: "/images/gallery/SKF02755.JPG" // Add image
+    },
+    {
+      title: "Career Mentorship",
+      description: "Receive guidance from experienced professionals who help shape your career trajectory.",
+      image: "/images/gallery/1717492692489 - Copy (2).jpg" // Add image
+    },
+    {
+      title: "Industry Certifications",
+      description: "Earn recognized certifications that validate your expertise and boost your credentials.",
+      image: "/images/gallery/1721366034581.jpg" // Add image
+    }
   ];
 
  
 
   
- export const testimonials = [
+  export const testimonials = [
     {
       id: 1,
       name: "Sufiyan",
-      feedback:
-        "Mera naam Sufiyan hai, aur main Inframe College mein Graphic Design ka Diploma kar raha hoon. Yahan ka education system aur creative environment mere career ko grow karne mein madad kar raha hai. ",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.12 AM.jpeg",
+      feedback: "Mera naam Sufiyan hai, aur main Inframe College mein Graphic Design ka Diploma kar raha hoon. Yahan ka education system aur creative environment mere career ko grow karne mein madad kar raha hai.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.12 AM.jpeg"
     },
     {
       id: 2,
       name: "Yashika",
-      feedback:
-        "Hello, my name is Yashika Sankhla, and I am pursuing a Diploma in Interior Design at Inframe College. My experience has been very positive. The environment is great, and the teachers are supportive and helpful. ",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.12 AM (1).jpeg",
+      feedback: "Hello, my name is Yashika Sankhla, and I am pursuing a Diploma in Interior Design at Inframe College. My experience has been very positive. The environment is great, and the teachers are supportive and helpful.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.12 AM (1).jpeg"
     },
     {
       id: 3,
       name: "Harshita",
-      feedback:
-        "As a student in the Graphic Design batch, my experience has been both rewarding and challenging. The faculty is supportive and knowledgeable, providing valuable insights and guidance. ",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.13 AM.jpeg",
+      feedback: "As a student in the Graphic Design batch, my experience has been both rewarding and challenging. The faculty is supportive and knowledgeable, providing valuable insights and guidance.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.13 AM.jpeg"
     },
     {
       id: 4,
-      name: "Manish soni",
-      feedback:
-        "I love the community at Inframe! It’s a fantastic place to learn, grow, and connect with other artists.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.13 AM (1).jpeg",
+      name: "Manish Soni",
+      feedback: "I love the community at Inframe! It's a fantastic place to learn, grow, and connect with other artists.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.13 AM (1).jpeg"
     },
     {
       id: 5,
       name: "Hashim",
-      feedback:
-        "The inspiration and tools I’ve gained here have helped me take my art to the next level.",
-      imageUrl: "/testimonials images/IMG_20250206_204402 (2).JPG",
+      feedback: "The inspiration and tools I've gained here have helped me take my art to the next level.",
+      imageUrl: "/testimonials images/IMG_20250206_204402 (2).JPG"
     },
     {
       id: 6,
       name: "Kamlesh",
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.18 AM.jpeg",
+      feedback: "Inframe is a game-changer! The resources and insights provided here are invaluable.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.18 AM.jpeg"
     },
     {
       id: 7,
       name: "Nargis",
       role: "Motion Designer",
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.19 AM.jpeg",
+      feedback: "Inframe is a game-changer! The resources and insights provided here are invaluable.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.19 AM.jpeg"
     },
     {
       id: 8,
       name: "Shahida",
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.Hello, my name is Shaheeda Ahmed, and I am pursuing a Diploma in Interior Design at Inframe College of Art, Design, and Business. ",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.19 AM (1).jpeg",
+      feedback: "Hello, my name is Shaheeda Ahmed, and I am pursuing a Diploma in Interior Design at Inframe College of Art, Design, and Business.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.19 AM (1).jpeg"
     },
     {
       id: 9,
       name: "Ravinda",
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.19 AM (2).jpeg",
+      feedback: "Inframe is a game-changer! The resources and insights provided here are invaluable.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.19 AM (2).jpeg"
     },
     {
       id: 10,
       name: "Aafaque",
-  
-      feedback:
-        "Hello, I’m Mohammed Aafaque, pursuing a 1-year Digital Marketing Diploma at Inframe College. My experience has been great, thanks to the skilled and supportive teachers. Highly recommended!",
-      imageUrl: "/testimonials images/IMG_20240111_172630_236 (1).jpg",
+      feedback: "Hello, I'm Mohammed Aafaque, pursuing a 1-year Digital Marketing Diploma at Inframe College. My experience has been great, thanks to the skilled and supportive teachers. Highly recommended!",
+      imageUrl: "/testimonials images/IMG_20240111_172630_236 (1).jpg"
     },
     {
       id: 11,
       name: "Arjun",
-  
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.20 AM.jpeg",
+      feedback: "Inframe is a game-changer! The resources and insights provided here are invaluable.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.20 AM.jpeg"
     },
     {
       id: 12,
       name: "Ayyan",
-   
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.20 AM (1).jpeg",
+      feedback: "Inframe is a game-changer! The resources and insights provided here are invaluable.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.50.20 AM (1).jpeg"
     },
     {
       id: 13,
       name: "Rawal",
-  
-      feedback:
-        "I’m Rawal Suthar, and I recently completed my Interior Designing course at Inframe College. It was an exceptional experience! The faculty were knowledgeable, supportive, and industry-experienced, offering valuable insights and hands-on training. ",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.37 AM.jpeg",
+      feedback: "I'm Rawal Suthar, and I recently completed my Interior Designing course at Inframe College. It was an exceptional experience! The faculty were knowledgeable, supportive, and industry-experienced, offering valuable insights and hands-on training.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.37 AM.jpeg"
     },
     {
       id: 14,
       name: "Ashok",
-  
-      feedback:
-        "I am Ashok from the Interior Design department. My diploma is about to finish, and my overall experience has been amazing, from studies to the creative environment. ",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.38 AM.jpeg",
+      feedback: "I am Ashok from the Interior Design department. My diploma is about to finish, and my overall experience has been amazing, from studies to the creative environment.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.38 AM.jpeg"
     },
     {
       id: 15,
       name: "Govindaram",
-     
-      feedback:
-        "Inframe is a game-changer! The resources and insights provided here are invaluable.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.38 AM (1).jpeg",
+      feedback: "Inframe is a game-changer! The resources and insights provided here are invaluable.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.38 AM (1).jpeg"
     },
     {
       id: 16,
       name: "Bharat",
-  
-      feedback:
-        "I’m Bharat from the Interior Design department, and my diploma is about to finish. My experience at Inframe College has been excellent, with site visits, seminars, and workshops. An amazing college with great opportunities—highly recommended!",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.38 AM (2).jpeg",
+      feedback: "I'm Bharat from the Interior Design department, and my diploma is about to finish. My experience at Inframe College has been excellent, with site visits, seminars, and workshops. An amazing college with great opportunities—highly recommended!",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 11.54.38 AM (2).jpeg"
     },
     {
       id: 17,
-      name: "Vanshika chandak",
-  
-      feedback:
-        "Hello, my name is Vaushika Chandak, and I am pursuing a Bachelor's in Design at Inframe College. My experience so far has been very positive. The environment is great, and the teachers are supportive and helpful. Since joining, I’ve been learning something new every day, which has greatly enhanced my skills. I’m grateful to be a part of this college.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 12.13.23 PM.JPG",
+      name: "Vanshika Chandak",
+      feedback: "Hello, my name is Vaushika Chandak, and I am pursuing a Bachelor's in Design at Inframe College. My experience so far has been very positive. The environment is great, and the teachers are supportive and helpful. Since joining, I've been learning something new every day, which has greatly enhanced my skills. I'm grateful to be a part of this college.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 12.13.23 PM.JPG"
     },
     {
       id: 18,
-      name: "Vanshika mutha",
-  
-      feedback:
-        "Hello, my name is Vanshika Muth, and I am pursuing a Diploma in Graphic Design at Inframe College of Art, Design, and Business. My experience here has been great. The teachers and faculty are positive and kind, and I enjoy the fun activities every week. I’m constantly learning something new and innovative. I found this to be the best college in Jodhpur, and I’m grateful to be a part of it.",
-      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 12.16.14 PM.JPG",
-    },
+      name: "Vanshika Mutha",
+      feedback: "Hello, my name is Vanshika Muth, and I am pursuing a Diploma in Graphic Design at Inframe College of Art, Design, and Business. My experience here has been great. The teachers and faculty are positive and kind, and I enjoy the fun activities every week. I'm constantly learning something new and innovative. I found this to be the best college in Jodhpur, and I'm grateful to be a part of it.",
+      imageUrl: "/testimonials images/WhatsApp Image 2025-01-21 at 12.16.14 PM.JPG"
+    }
   ];
-
 
  export const categories = [
     {

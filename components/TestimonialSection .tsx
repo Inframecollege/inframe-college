@@ -51,7 +51,7 @@ export default function TestimonialCarousel() {
                   {/* Content */}
                   <div className="absolute bottom-6 left-6 right-6 z-10 text-white">
                     <h3 className="text-2xl font-semibold mb-1">{testimonial.name}</h3>
-                    <p className="text-base  italic font-semibold">{testimonial.feedback}</p>
+                    <p className="text-base  italic font-semibold text-justify" >{testimonial.feedback}</p>
                   </div>
                 </div>
               </Card>
