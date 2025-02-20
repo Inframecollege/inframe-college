@@ -50,7 +50,7 @@ const Navbar = () => {
                 </span>
               </div>
               <StudyDropDown />
-              <nav className="hidden md:flex items-center gap-8">
+              <nav className={`hidden md:flex items-center gap-8 ${poppins.className}`}>
                 <Link
                   href={"/about"}
                   className="text-muted-foreground text-white font-bold"

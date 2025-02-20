@@ -69,6 +69,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'graphicdesignjunction.com'
       },
+      {
+        protocol: 'https',
+        hostname: 'statetimes.in'
+      },
     ],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
