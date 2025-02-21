@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
-import { cards } from "../utils/constant";
+
 import { Poppins } from "next/font/google";
 import {
   Carousel,
@@ -15,7 +15,32 @@ const poppins = Poppins({
   weight: ["400", "500", "700"],
 });
 
-const LifeAtInframe = () => {
+
+const fetchCards = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/card/getcard`, {
+      cache: "no-store", // Ensure fresh data every time
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch card data");
+
+    }
+
+    const data = await res.json();
+    return data.data;
+   // Extract the data array from response
+  } catch (error) {
+    console.error("Error fetching cards:", error);
+    return [];
+  }
+};
+
+console.log(fetchCards)
+
+
+const LifeAtInframe = async() => {
+  const cards = await fetchCards(); 
   return (
     <section className="py-16 font-sans relative overflow-hidden">
       <div className="pl-4 md:pl-6 lg:pl-[calc(((95vw-1200px)/2)+1rem)] pr-0">
