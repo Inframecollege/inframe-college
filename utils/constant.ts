@@ -380,8 +380,8 @@ export const LOGO = "https://inframecollege.org/wp-content/uploads/2021/05/infra
       ]
     }
   ]
-  
-  
+
+
   export const highlights = [
     {
       title: "Research Excellence",

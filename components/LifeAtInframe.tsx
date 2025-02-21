@@ -33,7 +33,7 @@ const fetchCards = async () => {
   } catch (error) {
     console.error("Error fetching cards:", error);
     return [];
-  }
+  }  
 };
 
 console.log(fetchCards)
@@ -66,7 +66,8 @@ const LifeAtInframe = async() => {
           className="w-full"
         >
           <CarouselContent className="-ml-6">
-            {cards.map((card, index) => (
+            
+            {cards.map((card :any, index: string ) => (
               <CarouselItem key={index} className="pl-6 basis-full md:basis-[398px]">
                 <Card 
                   className="h-[598px] ml-3 overflow-hidden border-0 shadow-lg rounded-lg bg-transparent z-10 text-white group relative"
