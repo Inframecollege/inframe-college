@@ -124,16 +124,7 @@ export function ContactUsForm({
                 Shyam Nagar, Jodhpur, Rajasthan 342008
               </p>
               <div className="mt-4 space-y-3">
-                <p className="text-lg text-center md:text-left text-gray-700">
-                  <Phone className="inline mr-2 text-blue-600" />
-                  Phone:{" "}
-                  <a
-                    href="tel:+917123456789"
-                    className="text-blue-600 hover:underline"
-                  >
-                    +91 7123456789
-                  </a>
-                </p>
+               
                 <p className="text-lg text-center md:text-left text-gray-700">
                   <Phone className="inline mr-2 text-blue-600" />
                   Admissions:{" "}

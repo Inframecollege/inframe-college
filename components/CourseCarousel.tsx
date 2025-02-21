@@ -29,7 +29,7 @@ const courses = {
         "3 Year Diploma in Interior Design",
       ],
       image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "/images/gallery/1717668148989.jpg",
     },
     {
       title: "Fashion Design",
@@ -52,7 +52,7 @@ const courses = {
         "3 Year Diploma in Graphic Design",
       ],
       image:
-        "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "/images/gallery/DSC04267.JPG",
     },
     {
       title: "UIUX-Design",
@@ -102,7 +102,7 @@ const courses = {
         "3 Year Diploma in Fine Arts",
       ],
       image:
-        "https://plus.unsplash.com/premium_photo-1673514503009-912ffc6ff956?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "/images/gallery/1717485328677 - Copy (4).jpg",
     },
   ],
   business: [
@@ -113,7 +113,7 @@ const courses = {
         "1 Year Diploma in Digital Marketing",
         "6 Month Certificate Course in Digital Marketing",
       ],
-      image: "/fetchpik.com-HAfwcPu9n1.jpg",
+      image: "/images/gallery/1717660987952.jpg",
     },
     {
       title: "Entrepreneurship Skill",
@@ -134,7 +134,7 @@ const courses = {
         "https://plus.unsplash.com/premium_photo-1710961232986-36cead00da3c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1lZGlhJTIwYW5kJTIwZW50ZXJ0YWlubWVudHxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
-      title: "Animation-VFX",
+      title: "Advertising-Marketing",
       programs: ["BBA in Advertising and Marketing"],
       image:
         "https://plus.unsplash.com/premium_photo-1684341008757-3b456034e943?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
