@@ -152,7 +152,7 @@ export function ContactUsForm({
                     href="mailto:info@inframecollege.org"
                     className="text-blue-600 hover:underline"
                   >
-                    info@inframecollege.org
+                   info@inframeschool.com
                   </a>
                 </p>
                 <p className="text-lg text-center md:text-left text-gray-700">
@@ -162,7 +162,7 @@ export function ContactUsForm({
                     href="mailto:hr@inframecollege.org"
                     className="text-blue-600 hover:underline"
                   >
-                    hr@inframecollege.org
+                    hr@inframeschool.com
                   </a>
                 </p>
               </div>
