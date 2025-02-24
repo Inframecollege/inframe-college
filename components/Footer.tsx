@@ -81,12 +81,12 @@ const Footer = () => {
             <br />
             <strong>Email:</strong>{" "}
             <a href="mailto:info@inframecollege.org" className="underline text-blue-400">
-              info@inframecollege.org
+            info@inframeschool.com
             </a>
             <br />
             <strong>Careers:</strong>{" "}
             <a href="mailto:hr@inframecollege.org" className="underline text-blue-400">
-              hr@inframecollege.org
+            hr@inframeschool.com
             </a>
           </p>
           <div className="flex space-x-6 mt-8">
