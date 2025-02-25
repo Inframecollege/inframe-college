@@ -1,20 +1,16 @@
-'use client'
-import { useState, useRef } from 'react';
-import * as z from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+"use client"
+import { useState, useRef, useEffect } from "react"
+import { useForm } from "react-hook-form"
+import Image from "next/image"
+import { Poppins } from "next/font/google"
+import { toast } from "sonner"
+import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select"
 import {
   AlertDialog,
   AlertDialogContent,
@@ -22,343 +18,336 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Poppins } from 'next/font/google';
-import { toast } from "sonner";
+} from "@/components/ui/alert-dialog"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+
+import { LOGO } from "../../utils/constant"
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-});
-
-// Schema definitions for each step
-// const personalDetailsSchema = z.object({
-//   firstName: z.string().min(1, "First name is required"),
-//   lastName: z.string().min(1, "Last name is required"),
-//   email: z.string().email("Invalid email address"),
-//   mobile: z.string().regex(/^\+?[1-9]\d{9,11}$/, "Invalid mobile number"),
-//   gender: z.enum(["male", "female", "other"], {
-//     required_error: "Please select a gender",
-//   }),
-// //   profilePhoto: z.any().refine((file) => file?.length > 0, "Profile photo is required"),
-//   fatherName: z.string().min(1, "Father's name is required"),
-//   motherName: z.string().min(1, "Mother's name is required"),
-//   dateOfBirth: z.string().min(1, "Date of birth is required"),
-//   category: z.enum(["Gen", "OBC", "SC", "ST", "DC", "PD"], {
-//     required_error: "Please select a category",
-//   }),
-//   religion: z.enum(["Hinduism", "Islam", "Sikhism", "Jainism", "Parsism", "Buddhism"], {
-//     required_error: "Please select a religion",
-//   }),
-//   adharCard: z.string().min(12, "Invalid Aadhar number").max(12),
-//   permanentAddress: z.string().min(1, "Permanent address is required"),
-//   temporaryAddress: z.string().optional(),
-// });
-
-// const educationalDetailsSchema = z.object({
-//   nameAs10th: z.string().min(1, "Name as per 10th marksheet is required"),
-//   education: z.array(z.object({
-//     institution: z.string().min(1, "Institution name is required"),
-//     stream: z.string().min(1, "Stream is required"),
-//     yearOfPassing: z.string().min(4, "Valid year required"),
-//     grade: z.string().min(1, "Grade is required"),
-//     duration: z.string().min(1, "Duration is required"),
-//     marksheet: z.any().refine((file) => file?.length > 0, "Marksheet is required"),
-//   })).length(4),
-// });
-
-// const programSelectionSchema = z.object({
-//   courseType: z.string().min(1, "Course type is required"),
-//   campus: z.string().min(1, "Campus selection is required"),
-//   programType: z.string().min(1, "Program type is required"),
-// });
+})
 
 const RegistrationForm = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [termsAccepted, setTermsAccepted] = useState(false);
-  const [termsDialogOpen, setTermsDialogOpen] = useState(false);
-  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [formData, setFormData] = useState({});
-  const termsContentRef = useRef(null);
+  const [currentStep, setCurrentStep] = useState(1)
+  const [termsAccepted, setTermsAccepted] = useState(false)
+  const [termsDialogOpen, setTermsDialogOpen] = useState(false)
+  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false)
+  const [imagePreview, setImagePreview] = useState(null)
+  const [formData, setFormData] = useState({})
+  const termsContentRef = useRef(null)
+  const [formFilingDate, setFormFilingDate] = useState("")
+  const [applicantSignaturePreview, setApplicantSignaturePreview] = useState(null)
+  const [guardianSignaturePreview, setGuardianSignaturePreview] = useState(null)
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
     watch,
-    trigger,
     setValue,
+    trigger,
   } = useForm({
-    // resolver: zodResolver(
-    //   currentStep === 1 
-    //     ? personalDetailsSchema 
-    //     : currentStep === 2 
-    //     ? educationalDetailsSchema 
-    //     : programSelectionSchema
-    // ),
-    mode: "onChange"
-  });
+    mode: "onChange",
+  })
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  useEffect(() => {
+    const today = new Date()
+    const formattedDate = today.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+    setFormFilingDate(formattedDate)
+  }, [])
+
+  const handleFileUpload = (e, fieldName, setPreview) => {
+    const file = e.target.files?.[0]
     if (file) {
-      const reader = new FileReader();
+      setValue(fieldName, file)
+      const reader = new FileReader()
       reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+        setPreview(reader.result)
+      }
+      reader.readAsDataURL(file)
     }
-  };
+  }
 
-  const steps = [
-    "Personal Details",
-    "Educational Details",
-    "Program Selection",
-    "Payment",
-    "Complete"
-  ];
+  const steps = ["Personal Details", "Educational Details", "Program Selection", "Payment", "Complete"]
 
   const handleTermsScroll = (e) => {
-    const element = e.target;
+    const element = e.target
     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-      setHasScrolledToBottom(true);
+      setHasScrolledToBottom(true)
     }
-  };
+  }
 
-interface FormData {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    mobile?: string;
-    gender?: string;
-    fatherName?: string;
-    motherName?: string;
-    dateOfBirth?: string;
-    category?: string;
-    religion?: string;
-    adharCard?: string;
-    permanentAddress?: string;
-    temporaryAddress?: string;
-    profilePhoto?: FileList;
-    nameAs10th?: string;
-    education?: {
-        institution?: string;
-        stream?: string;
-        yearOfPassing?: string;
-        grade?: string;
-        marksheet?: FileList;
-    }[];
-    courseType?: string;
-    campus?: string;
-    programType?: string;
-}
+  const onSubmit = async (data) => {
+    const isStepValid = await trigger()
+    if (isStepValid) {
+      const newFormData = { ...formData, ...data }
+      setFormData(newFormData)
 
-const onSubmit = async (data: FormData) => {
-    const newFormData = { ...formData, ...data };
-    setFormData(newFormData);
-    
-    if (currentStep < steps.length - 1) {
-        const isStepValid = await trigger();
-        if (isStepValid) {
-            if (currentStep === 3) {
-                setTermsDialogOpen(true);
-            } else {
-                setCurrentStep(currentStep + 1);
-            }
-            console.log("Current step data:", data);
+      if (currentStep < steps.length - 1) {
+        if (currentStep === 3) {
+          setTermsDialogOpen(true)
         } else {
-            toast.error("Please fill all required fields correctly");
+          setCurrentStep(currentStep + 1)
         }
+        console.log("Current step data:", data)
+      } else {
+        console.log("Complete form data:", newFormData)
+        toast.success("Form submitted successfully!")
+      }
     } else {
-        console.log("Complete form data:", newFormData);
-        toast.success("Form submitted successfully!");
+      toast.error("Please fill all required fields correctly")
     }
-};
+  }
 
   const renderPersonalDetails = () => (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Basic Information */}
-        <div className="space-y-2">
-          <Label htmlFor="firstName">First Name *</Label>
-          <Input 
-            {...register('firstName')}
-            id="firstName" 
-            placeholder="Enter first name"
-            className="h-12" 
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center border-b pb-6 gap-52">
+        {/* Logo and Address Section */}
+        <div className="flex flex-col  items-start  space-x-4">
+          {/* Logo */}
+          <Image
+            src={LOGO || "/placeholder.svg"}
+            alt="Inframe College Logo"
+            width={150}
+            height={50}
+            className="object-contain mx-7"
           />
-          {errors.firstName && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.firstName.message}</AlertDescription>
+          {/* Address */}
+          <div className="text-gray-700 text-sm mt-2">
+            <address className="not-italic flex flex-col leading-relaxed">
+              <span className="flex items-center space-x-2 ">
+                <MapPinIcon className="w-4 h-4 text-gray-500" />
+                <span>09, Pal Link Road</span>
+              </span>
+              <span className="ml-6">Marudhar Nagar, Kamla Nehru Nagar</span>
+              <span className="ml-6">Shyam Nagar, Jodhpur</span>
+              <span className="ml-6">Rajasthan 342008</span>
+            </address>
+
+            <div className="mt-2 text-gray-600">
+              <p className="flex items-center space-x-2">
+                <PhoneIcon className="w-4 h-4 text-gray-500" />
+                <span>
+                  Admissions:{" "}
+                  <a href="tel:+919649964937" className="text-blue-600 hover:underline">
+                    +91 9649 9649 37
+                  </a>
+                </span>
+              </p>
+
+              <p className="flex items-center space-x-2">
+                <MailIcon className="w-4 h-4 text-gray-500" />
+                <span>
+                  Email:{" "}
+                  <a href="mailto:info@inframecollege.org" className="text-blue-600 hover:underline">
+                    info@inframeschool.com
+                  </a>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className=" p-4 rounded-lg">
+            <Label>Form Filing Date</Label>
+            <p className="text-sm text-gray-500">{formFilingDate}</p>
+          </div>
+        </div>
+
+        {/* Profile Photo Upload Section */}
+        <div className="flex flex-col items-center space-y-3 w-full max-w-xs">
+          <Label className="text-gray-700 font-medium">Profile Photo *</Label>
+          <div className="border-2 border-dashed w-52 rounded-xl p-10 text-center h-64 hover:ring-2 hover:ring-blue-500 transition">
+            <Input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              id="profilePhoto"
+              onChange={(e) => handleFileUpload(e, "profilePhoto", setImagePreview)}
+            />
+            <Label htmlFor="profilePhoto" className="cursor-pointer text-blue-600 hover:text-blue-700 transition">
+              Click to upload or drag & drop
+            </Label>
+            {imagePreview ? (
+              <div className="mt-3">
+                <img
+                  src={imagePreview || "/placeholder.svg"}
+                  alt="Profile Preview"
+                  className="w-32 h-32 object-cover rounded-lg shadow-md border"
+                />
+              </div>
+            ) : (
+              <p className="text-xs text-gray-500 mt-2">PNG, JPG up to 5MB</p>
+            )}
+          </div>
+          {errors.profilePhoto && (
+            <Alert variant="destructive" className="w-full text-center">
+              <AlertDescription>{errors.profilePhoto.message}</AlertDescription>
             </Alert>
           )}
         </div>
+      </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="lastName">Last Name *</Label>
-          <Input 
-            {...register('lastName')}
-            id="lastName" 
-            placeholder="Enter last name"
-            className="h-12" 
-          />
-          {errors.lastName && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.lastName.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+      {/* Basic Information Section */}
+      <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="firstName">First Name *</Label>
+            <Input
+              {...register("firstName", {
+                required: "First name is required",
+                minLength: { value: 2, message: "First name must be at least 2 characters long" },
+              })}
+              id="firstName"
+              placeholder="Enter first name"
+              className="h-12"
+            />
+            {errors.firstName && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.firstName.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="firstName">Middle Name</Label>
+            <Input {...register("middleName")} id="middleName" placeholder="Enter middle name" className="h-12" />
+            {errors.middleName && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.middleName.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="fatherName">Father's Name *</Label>
-          <Input 
-            {...register('fatherName')}
-            id="fatherName" 
-            placeholder="Enter father's name"
-            className="h-12" 
-          />
-          {errors.fatherName && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.fatherName.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+          <div className="space-y-2">
+            <Label htmlFor="lastName">Last Name *</Label>
+            <Input
+              {...register("lastName", { required: "Last name is required" })}
+              id="lastName"
+              placeholder="Enter last name"
+              className="h-12"
+            />
+            {errors.lastName && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.lastName.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="motherName">Mother's Name *</Label>
-          <Input 
-            {...register('motherName')}
-            id="motherName" 
-            placeholder="Enter mother's name"
-            className="h-12" 
-          />
-          {errors.motherName && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.motherName.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email *</Label>
+            <Input
+              {...register("email", { required: "Email is required" })}
+              type="email"
+              id="email"
+              placeholder="Enter email"
+              className="h-12"
+            />
+            {errors.email && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.email.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        {/* Contact Information */}
-        <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
-          <Input 
-            {...register('email')}
-            type="email"
-            id="email" 
-            placeholder="Enter email"
-            className="h-12" 
-          />
-          {errors.email && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.email.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+          <div className="space-y-2">
+            <Label htmlFor="mobile">Mobile Number *</Label>
+            <Input
+              {...register("mobile", { required: "Mobile number is required" })}
+              id="mobile"
+              placeholder="+91 xxxxxxxxxx"
+              className="h-12"
+            />
+            {errors.mobile && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.mobile.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="mobile">Mobile Number *</Label>
-          <Input 
-            {...register('mobile')}
-            id="mobile" 
-            placeholder="+91 xxxxxxxxxx"
-            className="h-12" 
-          />
-          {errors.mobile && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.mobile.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+          <div className="space-y-2">
+            <Label htmlFor="dateOfBirth">Date of Birth *</Label>
+            <Input
+              {...register("dateOfBirth", { required: "Date of birth is required" })}
+              type="date"
+              id="dateOfBirth"
+              className="h-12"
+            />
+            {errors.dateOfBirth && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.dateOfBirth.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        {/* Personal Information */}
-        <div className="space-y-2">
-          <Label htmlFor="dateOfBirth">Date of Birth *</Label>
-          <Input 
-            {...register('dateOfBirth')}
-            type="date"
-            id="dateOfBirth" 
-            className="h-12" 
-          />
-          {errors.dateOfBirth && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.dateOfBirth.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+          <div className="space-y-2">
+            <Label htmlFor="adharCard">Aadhar Card Number *</Label>
+            <Input
+              {...register("adharCard", { required: "Aadhar card number is required" })}
+              id="adharCard"
+              placeholder="Enter 12-digit Aadhar number"
+              className="h-12"
+            />
+            {errors.adharCard && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.adharCard.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="adharCard">Aadhar Card Number *</Label>
-          <Input 
-            {...register('adharCard')}
-            id="adharCard" 
-            placeholder="Enter 12-digit Aadhar number"
-            className="h-12" 
-          />
-          {errors.adharCard && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.adharCard.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
+          <div className="space-y-2">
+            <Label>Category *</Label>
+            <Select onValueChange={(value) => setValue("category", value)}>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Gen">General</SelectItem>
+                <SelectItem value="OBC">OBC</SelectItem>
+                <SelectItem value="SC">SC</SelectItem>
+                <SelectItem value="ST">ST</SelectItem>
+                <SelectItem value="DC">DC</SelectItem>
+                <SelectItem value="PD">PD</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.category && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.category.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
 
-        {/* Category and Religion */}
-        <div className="space-y-2">
-          <Label>Category *</Label>
-          <Select onValueChange={(value) => setValue('category', value)}>
-            <SelectTrigger className="h-12">
-              <SelectValue placeholder="Select category" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Gen">General</SelectItem>
-              <SelectItem value="OBC">OBC</SelectItem>
-              <SelectItem value="SC">SC</SelectItem>
-              <SelectItem value="ST">ST</SelectItem>
-              <SelectItem value="DC">DC</SelectItem>
-              <SelectItem value="PD">PD</SelectItem>
-            </SelectContent>
-          </Select>
-          {errors.category && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.category.message}</AlertDescription>
-            </Alert>
-          )}
-        </div>
-
-        <div className="space-y-2">
-          <Label>Religion *</Label>
-          <Select onValueChange={(value) => setValue('religion', value)}>
-            <SelectTrigger className="h-12">
-              <SelectValue placeholder="Select religion" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Hinduism">Hinduism</SelectItem>
-              <SelectItem value="Islam">Islam</SelectItem>
-              <SelectItem value="Sikhism">Sikhism</SelectItem>
-              <SelectItem value="Jainism">Jainism</SelectItem>
-              <SelectItem value="Parsism">Parsism</SelectItem>
-              <SelectItem value="Buddhism">Buddhism</SelectItem>
-            </SelectContent>
-          </Select>
-          {errors.religion && (
-            <Alert variant="destructive">
-              <AlertDescription>{errors.religion.message}</AlertDescription>
-            </Alert>
-          )}
+          <div className="space-y-2">
+            <Label>Religion *</Label>
+            <Select onValueChange={(value) => setValue("religion", value)}>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Select religion" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Hinduism">Hinduism</SelectItem>
+                <SelectItem value="Islam">Islam</SelectItem>
+                <SelectItem value="Sikhism">Sikhism</SelectItem>
+                <SelectItem value="Jainism">Jainism</SelectItem>
+                <SelectItem value="Parsism">Parsism</SelectItem>
+                <SelectItem value="Buddhism">Buddhism</SelectItem>
+              </SelectContent>
+            </Select>
+            {errors.religion && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.religion.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Gender Selection */}
       <div className="space-y-2">
         <Label>Gender *</Label>
-        <RadioGroup 
-          defaultValue="male" 
-          className="flex space-x-4"
-          onValueChange={(value) => setValue('gender', value)}
-        >
+        <RadioGroup defaultValue="male" className="flex space-x-4" onValueChange={(value) => setValue("gender", value)}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="male" />
             <Label htmlFor="male">Male</Label>
@@ -379,50 +368,14 @@ const onSubmit = async (data: FormData) => {
         )}
       </div>
 
-      {/* Profile Photo Upload */}
-      <div className="space-y-2">
-        <Label>Profile Photo *</Label>
-        <div className="border-2 border-dashed rounded-lg p-6 text-center">
-          <Input 
-            type="file" 
-            accept="image/*"
-            className="hidden" 
-            id="profilePhoto"
-            {...register('profilePhoto')}
-            onChange={handleImageChange}
-          />
-          <Label 
-            htmlFor="profilePhoto" 
-            className="cursor-pointer text-blue-500 hover:text-blue-600"
-          >
-            Click to upload or drag and drop
-          </Label>
-          {imagePreview && (
-            <div className="mt-4">
-              <img 
-                src={imagePreview} 
-                alt="Preview" 
-                className="mx-auto max-h-40 rounded-lg shadow-md" 
-              />
-            </div>
-          )}
-          <p className="text-sm text-gray-500 mt-2">PNG, JPG up to 5MB</p>
-        </div>
-        {errors.profilePhoto && (
-          <Alert variant="destructive">
-            <AlertDescription className='text-red-600'>{errors.profilePhoto.message}</AlertDescription>
-          </Alert>
-        )}
-      </div>
-
       {/* Address Information */}
       <div className="space-y-2">
         <Label htmlFor="permanentAddress">Permanent Address *</Label>
-        <Input 
-          {...register('permanentAddress')}
-          id="permanentAddress" 
+        <Input
+          {...register("permanentAddress", { required: "Permanent address is required" })}
+          id="permanentAddress"
           placeholder="Enter permanent address"
-          className="h-12" 
+          className="h-12"
         />
         {errors.permanentAddress && (
           <Alert variant="destructive">
@@ -433,11 +386,11 @@ const onSubmit = async (data: FormData) => {
 
       <div className="space-y-2">
         <Label htmlFor="temporaryAddress">Temporary Address (Optional)</Label>
-        <Input 
-          {...register('temporaryAddress')}
-          id="temporaryAddress" 
+        <Input
+          {...register("temporaryAddress")}
+          id="temporaryAddress"
           placeholder="Enter temporary address if different from permanent address"
-          className="h-12" 
+          className="h-12"
         />
         {errors.temporaryAddress && (
           <Alert variant="destructive">
@@ -445,15 +398,344 @@ const onSubmit = async (data: FormData) => {
           </Alert>
         )}
       </div>
+
+      {/* Guardian Details Section - Father */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Father's Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="fatherName">Father's Name *</Label>
+            <Input
+              {...register("fatherName", { required: "Father's name is required" })}
+              id="fatherName"
+              placeholder="Enter father's name"
+              className="h-12"
+            />
+            {errors.fatherName && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.fatherName.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="fatherMobile">Father's Mobile *</Label>
+            <Input
+              {...register("fatherMobile", { required: "Father's mobile is required" })}
+              id="fatherMobile"
+              placeholder="Enter father's mobile"
+              className="h-12"
+            />
+            {errors.fatherMobile && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.fatherMobile.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="fatherEmail">Father's Email *</Label>
+            <Input
+              {...register("fatherEmail", { required: "Father's email is required" })}
+              id="fatherEmail"
+              type="email"
+              placeholder="Enter father's email"
+              className="h-12"
+            />
+            {errors.fatherEmail && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.fatherEmail.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="fatherEducation">Father's Education *</Label>
+            <Input
+              {...register("fatherEducation", { required: "Father's education is required" })}
+              id="fatherEducation"
+              placeholder="Enter father's education"
+              className="h-12"
+            />
+            {errors.fatherEducation && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.fatherEducation.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="fatherProfession">Father's Profession *</Label>
+            <Input
+              {...register("fatherProfession", { required: "Father's profession is required" })}
+              id="fatherProfession"
+              placeholder="Enter father's profession"
+              className="h-12"
+            />
+            {errors.fatherProfession && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.fatherProfession.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="fatherIncome">Father's Annual Income (in Rs.) *</Label>
+            <Input
+              {...register("fatherIncome", { required: "Father's annual income is required" })}
+              id="fatherIncome"
+              placeholder="Enter father's annual income"
+              className="h-12"
+            />
+            {errors.fatherIncome && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.fatherIncome.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Guardian Details Section - Mother */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Mother's Details</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="motherName">Mother's Name *</Label>
+            <Input
+              {...register("motherName", { required: "Mother's name is required" })}
+              id="motherName"
+              placeholder="Enter mother's name"
+              className="h-12"
+            />
+            {errors.motherName && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.motherName.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="motherMobile">Mother's Mobile *</Label>
+            <Input
+              {...register("motherMobile", { required: "Mother's mobile is required" })}
+              id="motherMobile"
+              placeholder="Enter mother's mobile"
+              className="h-12"
+            />
+            {errors.motherMobile && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.motherMobile.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="motherEmail">Mother's Email *</Label>
+            <Input
+              {...register("motherEmail", { required: "Mother's email is required" })}
+              id="motherEmail"
+              type="email"
+              placeholder="Enter mother's email"
+              className="h-12"
+            />
+            {errors.motherEmail && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.motherEmail.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="motherEducation">Mother's Education *</Label>
+            <Input
+              {...register("motherEducation", { required: "Mother's education is required" })}
+              id="motherEducation"
+              placeholder="Enter mother's education"
+              className="h-12"
+            />
+            {errors.motherEducation && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.motherEducation.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="motherProfession">Mother's Profession *</Label>
+            <Input
+              {...register("motherProfession", { required: "Mother's profession is required" })}
+              id="motherProfession"
+              placeholder="Enter mother's profession"
+              className="h-12"
+            />
+            {errors.motherProfession && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.motherProfession.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="motherIncome">Mother's Annual Income (in Rs.) *</Label>
+            <Input
+              {...register("motherIncome", { required: "Mother's annual income is required" })}
+              id="motherIncome"
+              placeholder="Enter mother's annual income"
+              className="h-12"
+            />
+            {errors.motherIncome && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.motherIncome.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Emergency Contact Section */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Emergency Contact (Other than Parents)</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="emergencyContactName">Contact Name *</Label>
+            <Input
+              {...register("emergencyContactName", { required: "Emergency contact name is required" })}
+              id="emergencyContactName"
+              placeholder="Enter emergency contact name"
+              className="h-12"
+            />
+            {errors.emergencyContactName && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.emergencyContactName.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="emergencyContactRelation">Relationship *</Label>
+            <Input
+              {...register("emergencyContactRelation", { required: "Emergency contact relation is required" })}
+              id="emergencyContactRelation"
+              placeholder="Enter relationship"
+              className="h-12"
+            />
+            {errors.emergencyContactRelation && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.emergencyContactRelation.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="emergencyContactMobile">Mobile Number *</Label>
+            <Input
+              {...register("emergencyContactMobile", { required: "Emergency contact mobile is required" })}
+              id="emergencyContactMobile"
+              placeholder="Enter emergency contact mobile"
+              className="h-12"
+            />
+            {errors.emergencyContactMobile && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.emergencyContactMobile.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="emergencyContactEmail">Email *</Label>
+            <Input
+              {...register("emergencyContactEmail", { required: "Emergency contact email is required" })}
+              id="emergencyContactEmail"
+              type="email"
+              placeholder="Enter emergency contact email"
+              className="h-12"
+            />
+            {errors.emergencyContactEmail && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.emergencyContactEmail.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Signatures Section */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Signatures</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label>Applicant's Signature *</Label>
+            <div className="border-2 border-dashed rounded-lg p-6 text-center">
+              <Input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                id="applicantSignature"
+                onChange={(e) => handleFileUpload(e, "applicantSignature", setApplicantSignaturePreview)}
+              />
+              <Label htmlFor="applicantSignature" className="cursor-pointer text-blue-500 hover:text-blue-600">
+                Click to upload or drag and drop
+              </Label>
+              {applicantSignaturePreview && (
+                <div className="mt-4">
+                  <img
+                    src={applicantSignaturePreview || "/placeholder.svg"}
+                    alt="Applicant Signature Preview"
+                    className="mx-auto max-h-20"
+                  />
+                </div>
+              )}
+              <p className="text-sm text-gray-500 mt-2">PNG, JPG up to 1MB</p>
+            </div>
+            {errors.applicantSignature && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.applicantSignature.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="space-y-2">
+            <Label>Parent/Guardian's Signature *</Label>
+            <div className="border-2 border-dashed rounded-lg p-6 text-center">
+              <Input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                id="guardianSignature"
+                onChange={(e) => handleFileUpload(e, "guardianSignature", setGuardianSignaturePreview)}
+              />
+              <Label htmlFor="guardianSignature" className="cursor-pointer text-blue-500 hover:text-blue-600">
+                Click to upload or drag and drop
+              </Label>
+              {guardianSignaturePreview && (
+                <div className="mt-4">
+                  <img
+                    src={guardianSignaturePreview || "/placeholder.svg"}
+                    alt="Guardian Signature Preview"
+                    className="mx-auto max-h-20"
+                  />
+                </div>
+              )}
+              <p className="text-sm text-gray-500 mt-2">PNG, JPG up to 1MB</p>
+            </div>
+            {errors.guardianSignature && (
+              <Alert variant="destructive">
+                <AlertDescription>{errors.guardianSignature.message}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 
   const renderEducationalDetails = () => (
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="nameAs10th">Name as per 10th Marksheet *</Label>
-        <Input 
-          {...register('nameAs10th')}
+        <Input
+          {...register("nameAs10th", { required: "Name as per 10th marksheet is required" })}
           id="nameAs10th"
           placeholder="Enter name as per documents"
           className="h-12"
@@ -466,7 +748,7 @@ const onSubmit = async (data: FormData) => {
       </div>
 
       <div className="space-y-4">
-        {["X", "XI", "XII", "UG/Diploma"].map((level, index) => (
+        {["X", "XI", "XII"].map((level, index) => (
           <Card key={level} className="p-4">
             <CardHeader>
               <CardTitle className="text-lg">{level} Details</CardTitle>
@@ -475,40 +757,36 @@ const onSubmit = async (data: FormData) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Institution Name *</Label>
-                  <Input 
-                    {...register(`education.${index}.institution`)}
+                  <Input
+                    {...register(`education.${index}.institution`, { required: "Institution name is required" })}
                     placeholder="Enter institution name"
                     className="h-12"
                   />
                   {errors.education?.[index]?.institution && (
                     <Alert variant="destructive">
-                      <AlertDescription>
-                        {errors.education[index].institution.message}
-                      </AlertDescription>
+                      <AlertDescription>{errors.education[index].institution.message}</AlertDescription>
                     </Alert>
                   )}
                 </div>
 
                 <div className="space-y-2">
                   <Label>Stream/Subjects *</Label>
-                  <Input 
-                    {...register(`education.${index}.stream`)}
+                  <Input
+                    {...register(`education.${index}.stream`, { required: "Stream/Subjects is required" })}
                     placeholder="Enter stream"
                     className="h-12"
                   />
                   {errors.education?.[index]?.stream && (
                     <Alert variant="destructive">
-                      <AlertDescription>
-                        {errors.education[index].stream.message}
-                      </AlertDescription>
+                      <AlertDescription>{errors.education[index].stream.message}</AlertDescription>
                     </Alert>
                   )}
                 </div>
 
                 <div className="space-y-2">
                   <Label>Year of Passing *</Label>
-                  <Input 
-                    {...register(`education.${index}.yearOfPassing`)}
+                  <Input
+                    {...register(`education.${index}.yearOfPassing`, { required: "Year of passing is required" })}
                     placeholder="YYYY"
                     className="h-12"
                     type="number"
@@ -517,25 +795,21 @@ const onSubmit = async (data: FormData) => {
                   />
                   {errors.education?.[index]?.yearOfPassing && (
                     <Alert variant="destructive">
-                      <AlertDescription>
-                        {errors.education[index].yearOfPassing.message}
-                      </AlertDescription>
+                      <AlertDescription>{errors.education[index].yearOfPassing.message}</AlertDescription>
                     </Alert>
                   )}
                 </div>
 
                 <div className="space-y-2">
                   <Label>Grade/Percentage *</Label>
-                  <Input 
-                    {...register(`education.${index}.grade`)}
+                  <Input
+                    {...register(`education.${index}.grade`, { required: "Grade/Percentage is required" })}
                     placeholder="Enter grade"
                     className="h-12"
                   />
                   {errors.education?.[index]?.grade && (
                     <Alert variant="destructive">
-                      <AlertDescription>
-                        {errors.education[index].grade.message}
-                      </AlertDescription>
+                      <AlertDescription>{errors.education[index].grade.message}</AlertDescription>
                     </Alert>
                   )}
                 </div>
@@ -543,32 +817,76 @@ const onSubmit = async (data: FormData) => {
 
               <div className="space-y-2">
                 <Label>Upload Marksheet *</Label>
-                <Input 
+                <Input
                   type="file"
                   accept=".pdf,.jpg,.jpeg,.png"
-                  {...register(`education.${index}.marksheet`)}
+                  {...register(`education.${index}.marksheet`, { required: "Marksheet is required" })}
                   className="h-12"
                 />
                 {errors.education?.[index]?.marksheet && (
                   <Alert variant="destructive">
-                    <AlertDescription>
-                      {errors.education[index].marksheet.message}
-                    </AlertDescription>
+                    <AlertDescription>{errors.education[index].marksheet.message}</AlertDescription>
                   </Alert>
                 )}
               </div>
             </CardContent>
           </Card>
         ))}
+        {/* Graduation/Diploma (optional) */}
+        <Card className="p-4">
+          <CardHeader>
+            <CardTitle className="text-lg">UG/Diploma Details (Optional)</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>Institution Name</Label>
+                <Input {...register(`education.3.institution`)} placeholder="Enter institution name" className="h-12" />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Stream/Subjects</Label>
+                <Input {...register(`education.3.stream`)} placeholder="Enter stream" className="h-12" />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Year of Passing</Label>
+                <Input
+                  {...register(`education.3.yearOfPassing`)}
+                  placeholder="YYYY"
+                  className="h-12"
+                  type="number"
+                  min="1900"
+                  max="2024"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Grade/Percentage</Label>
+                <Input {...register(`education.3.grade`)} placeholder="Enter grade" className="h-12" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label>Upload Marksheet</Label>
+              <Input
+                type="file"
+                accept=".pdf,.jpg,.jpeg,.png"
+                {...register(`education.3.marksheet`)}
+                className="h-12"
+              />
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
-  );
+  )
 
   const renderProgramSelection = () => (
     <div className="space-y-6">
       <div className="space-y-2">
         <Label>Course Type *</Label>
-        <Select onValueChange={(value) => setValue('courseType', value)}>
+        <Select onValueChange={(value) => setValue("courseType", value)}>
           <SelectTrigger className="h-12">
             <SelectValue placeholder="Choose course type" />
           </SelectTrigger>
@@ -587,7 +905,7 @@ const onSubmit = async (data: FormData) => {
 
       <div className="space-y-2">
         <Label>Study Mode*</Label>
-        <Select onValueChange={(value) => setValue('campus', value)}>
+        <Select onValueChange={(value) => setValue("campus", value)}>
           <SelectTrigger className="h-12">
             <SelectValue placeholder="Choose campus" />
           </SelectTrigger>
@@ -604,7 +922,7 @@ const onSubmit = async (data: FormData) => {
       </div>
       <div className="space-y-2">
         <Label>Study Mode*</Label>
-        <Select onValueChange={(value) => setValue('campus', value)}>
+        <Select onValueChange={(value) => setValue("campus", value)}>
           <SelectTrigger className="h-12">
             <SelectValue placeholder="Choose campus" />
           </SelectTrigger>
@@ -622,7 +940,7 @@ const onSubmit = async (data: FormData) => {
 
       <div className="space-y-2">
         <Label>Program Type *</Label>
-        <Select onValueChange={(value) => setValue('programType', value)}>
+        <Select onValueChange={(value) => setValue("programType", value)}>
           <SelectTrigger className="h-12">
             <SelectValue placeholder="Choose program type" />
           </SelectTrigger>
@@ -638,7 +956,7 @@ const onSubmit = async (data: FormData) => {
         )}
       </div>
     </div>
-  );
+  )
 
   const renderPayment = () => (
     <div className="space-y-6">
@@ -663,55 +981,46 @@ const onSubmit = async (data: FormData) => {
           </div>
         </CardContent>
       </Card>
-      
-      <Button 
-        className="w-full h-12 text-lg"
-        onClick={() => setCurrentStep(currentStep + 1)}
-      >
+
+      <Button className="w-full h-12 text-lg" onClick={() => setCurrentStep(currentStep + 1)}>
         Proceed to Payment
       </Button>
-      
-      <p className="text-sm text-gray-500 text-center">
-        You will be redirected to the payment gateway
-      </p>
+
+      <p className="text-sm text-gray-500 text-center">You will be redirected to the payment gateway</p>
     </div>
-  );
+  )
 
   const renderComplete = () => (
     <div className="text-center space-y-6 py-8">
       <div className="text-green-500 text-6xl">✓</div>
       <div>
         <h3 className="text-2xl font-bold">Registration Complete!</h3>
-        <p className="text-gray-600 mt-2">
-          Your application has been submitted successfully
-        </p>
+        <p className="text-gray-600 mt-2">Your application has been submitted successfully</p>
       </div>
       <div className="bg-gray-50 p-4 rounded-lg inline-block">
         <p className="text-sm text-gray-600">Application ID</p>
         <p className="text-xl font-bold">REG2024001</p>
       </div>
-      <Button className="w-full md:w-auto">
-        Download Application Form
-      </Button>
+      <Button className="w-full md:w-auto">Download Application Form</Button>
     </div>
-  );
+  )
 
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
-        return renderPersonalDetails();
+        return renderPersonalDetails()
       case 2:
-        return renderEducationalDetails();
+        return renderEducationalDetails()
       case 3:
-        return renderProgramSelection();
+        return renderProgramSelection()
       case 4:
-        return renderPayment();
+        return renderPayment()
       case 5:
-        return renderComplete();
+        return renderComplete()
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   const termsAndConditions = [
     "The applicant must fulfill the eligibility criteria as specified in the admission guidelines for the program.",
@@ -736,37 +1045,38 @@ const onSubmit = async (data: FormData) => {
     "Course in non transferable and fees is not refundable in any case.",
     "Students wishing to withdraw from the course must notify the institution in writing.",
     "Exams would be held in different centre if approved by University & main centre.",
-    "School reserves the right to change or cancel any test center/city at its discretion, if required."
-  ];
+    "School reserves the right to change or cancel any test center/city at its discretion, if required.",
+  ]
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br  from-purple-50 to-blue-50 p-8 ${poppins.className}`}>
-      <div className="max-w-7xl mx-auto">
+    <div className={`min-h-screen bg-gradient-to-br my-28 from-purple-50 to-blue-50 p-8 ${poppins.className}`}>
+      <div className="max-w-7xl mx-auto bg-zinc-100">
         <Card className="shadow-xl">
-          {/* <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
-            <CardTitle className="text-3xl text-center">Student Registration Form</CardTitle>
-          </CardHeader> */}
-          
           <div className="flex flex-col md:flex-row border rounded-md">
             {/* Steps sidebar */}
-            <div className="w-full md:w-1/4 bg-black  text-white p-8 rounded-bl-lg">
+            <div className="w-full md:w-1/4 bg-black text-white p-8 rounded-bl-lg">
               <h2 className="text-2xl font-bold mb-6">Application Steps</h2>
               {steps.map((step, index) => (
-                <div 
-                  key={step} 
+                <div
+                  key={step}
                   className={`flex items-center space-x-3 mb-4 p-3 rounded-lg transition-all ${
-                    currentStep === index + 1 
-                      ? 'bg-yellow-400 text-black font-semibold' 
+                    currentStep === index + 1
+                      ? "bg-yellow-400 text-black font-semibold"
                       : currentStep > index + 1
-                      ? 'text-green-400'
-                      : 'text-gray-400'
+                        ? "text-green-400"
+                        : "text-gray-400"
                   }`}
                 >
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                    currentStep > index + 1 ? 'bg-green-500' :
-                    currentStep === index + 1 ? 'bg-white text-black' : 'bg-gray-700'
-                  }`}>
-                    {currentStep > index + 1 ? '✓' : index + 1}
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                      currentStep > index + 1
+                        ? "bg-green-500"
+                        : currentStep === index + 1
+                          ? "bg-white text-black"
+                          : "bg-gray-700"
+                    }`}
+                  >
+                    {currentStep > index + 1 ? "✓" : index + 1}
                   </div>
                   <span>{step}</span>
                 </div>
@@ -789,12 +1099,8 @@ const onSubmit = async (data: FormData) => {
                       Previous
                     </Button>
                   )}
-                  <Button
-                    type="submit"
-                    className={`px-6 ${currentStep === 1 ? 'ml-auto' : ''}`}
-                   
-                  >
-                    {currentStep === steps.length - 1 ? 'Submit' : 'Next'}
+                  <Button type="submit" className={`px-6 ${currentStep === 1 ? "ml-auto" : ""}`}>
+                    {currentStep === steps.length - 1 ? "Submit" : "Next"}
                   </Button>
                 </div>
               </form>
@@ -808,7 +1114,7 @@ const onSubmit = async (data: FormData) => {
           <AlertDialogHeader>
             <AlertDialogTitle>Terms and Conditions</AlertDialogTitle>
           </AlertDialogHeader>
-          <AlertDialogDescription 
+          <AlertDialogDescription
             className="h-96 overflow-y-auto pr-4"
             onScroll={handleTermsScroll}
             ref={termsContentRef}
@@ -822,22 +1128,23 @@ const onSubmit = async (data: FormData) => {
             </div>
           </AlertDialogDescription>
           <AlertDialogFooter>
-            <Button 
+            <Button
               disabled={!hasScrolledToBottom}
               onClick={() => {
-                setTermsAccepted(true);
-                setTermsDialogOpen(false);
-                setCurrentStep(4);
+                setTermsAccepted(true)
+                setTermsDialogOpen(false)
+                setCurrentStep(4)
               }}
-              className={!hasScrolledToBottom ? 'opacity-50' : ''}
+              className={!hasScrolledToBottom ? "opacity-50" : ""}
             >
-              {hasScrolledToBottom ? 'Accept Terms' : 'Please read all terms'}
+              {hasScrolledToBottom ? "Accept Terms" : "Please read all terms"}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
     </div>
-  );
-};
+  )
+}
 
-export default RegistrationForm;
+export default RegistrationForm
+
