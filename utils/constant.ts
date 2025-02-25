@@ -825,3 +825,105 @@ export const LOGO = "https://inframecollege.org/wp-content/uploads/2021/05/infra
       ]
     }
   ];
+
+  export const coursesData = [
+    {
+      id: 1,
+      name: "Bachelor of design (B.Des)",
+      branches: [
+        { name: "Interior Design", fee: 2500, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Fashion Design", fee: 2500, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Graphic Design/Visual Communication", fee: 2500, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "UI/UX design", fee: 2500, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Animation & VFX", fee: 2500, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+      ]
+    },
+    {
+      id: 6,
+      name: "Bachelor of Fine Arts(BFA)",
+      branches: [
+        { name: "Painting", fee: 2000, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Applied Arts", fee: 2000, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Sculpture", fee: 2000, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Visual Communication", fee: 2000, duration: "4 year", degree: "UG", eligibility: "10+2 any stream" },
+      ]
+    },
+    {
+      id: 10, 
+      name: "Bachelor of Vocational studies",
+      branches: [
+        { name: "Interior Design", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Fashion Design", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Graphic Design", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Fine Arts", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Animation & VFX", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Digital Marketing", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Jewellery design", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Entrepreneurship Skill", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+        { name: "Media and Entertainment", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+      ]
+    },
+    {
+      id: 19, 
+      name: "Bachelor of Business Administration",
+      branches: [
+        { name: "Advertising and Marketing", fee: 1500, duration: "3 year", degree: "UG", eligibility: "10+2 any stream" },
+      ]
+    },
+    {
+      id: 20, 
+      name: "Diploma (3 year)",
+      branches: [
+        { name: "Interior Design", fee: 1000, duration: "3 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Fashion Design", fee: 1000, duration: "3 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Graphic Design", fee: 1000, duration: "3 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Fine Arts", fee: 1000, duration: "3 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Animation & VFX", fee: 1000, duration: "3 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Jewellery design", fee: 1000, duration: "3 year", degree: "Diploma", eligibility: "10+2 any stream" },
+      ]
+    },
+    {
+      id: 26, 
+      name: "Diploma (2 year)",
+      branches: [
+        { name: "Interior Design", fee: 1000, duration: "2 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Fashion Design", fee: 1000, duration: "2 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Graphic Design", fee: 1000, duration: "2 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Fine Arts", fee: 1000, duration: "2 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Animation & VFX", fee: 1000, duration: "2 year", degree: "Diploma", eligibility: "10+2 any stream" },
+        { name: "Jewellery design", fee: 1000, duration: "2 year", degree: "Diploma", eligibility: "10+2 any stream" },
+      ]
+    },
+    {
+      id: 32, 
+      name: "Diploma (1 year)",
+      branches: [
+        { name: "Interior Design", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "Fashion Technology", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "Graphic Design/multimedia", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "UI/UX design", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "VFX", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "Animation", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "Jewellery design", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "Entrepreneurship Skill", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+        { name: "Media and Entertainment", fee: 1000, duration: "1 year", degree: "Diploma", eligibility: "10th class" },
+      ]
+    },
+    {
+      id: 41, 
+      name: "Diploma (11 month)",
+      branches: [
+        { name: "Cad Jewellery", fee: 1000, duration: "11 month", degree: "Diploma", eligibility: "10th class" },
+        { name: "Digital Marketing", fee: 1000, duration: "11 month", degree: "Diploma", eligibility: "10th class" },
+        { name: "Painting", fee: 1000, duration: "11 month", degree: "Diploma", eligibility: "10th class" },
+      ]
+    },
+    {
+      id: 44, 
+      name: "Diploma (6month)",
+      branches: [
+        { name: "Interior Design", fee: 500, duration: "6 month", degree: "Diploma", eligibility: "10th class" },
+      ]
+    }
+  ];
+  

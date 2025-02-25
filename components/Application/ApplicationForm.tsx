@@ -1,16 +1,27 @@
-"use client"
-import { useState, useRef, useEffect } from "react"
-import { useForm } from "react-hook-form"
-import Image from "next/image"
-import { Poppins } from "next/font/google"
-import { toast } from "sonner"
-import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
+"use client";
+import { useState, useRef, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import Image from "next/image";
+import { Poppins } from "next/font/google";
+import { toast } from "sonner";
+import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
-import { Input } from "../../components/ui/input"
-import { Label } from "../../components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -18,29 +29,34 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+} from "@/components/ui/alert-dialog";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
-import { LOGO } from "../../utils/constant"
-import { downloadApplicationForm } from "./DownloadPDF"
+import { coursesData, LOGO } from "../../utils/constant";
+import { downloadApplicationForm } from "./DownloadPDF";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-})
+});
 
 const RegistrationForm = () => {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [termsAccepted, setTermsAccepted] = useState(false)
-  const [termsDialogOpen, setTermsDialogOpen] = useState(false)
-  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false)
-  const [imagePreview, setImagePreview] = useState(null)
-  const [formData, setFormData] = useState({})
-  const termsContentRef = useRef(null)
-  const [formFilingDate, setFormFilingDate] = useState("")
-  const [applicantSignaturePreview, setApplicantSignaturePreview] = useState(null)
-  const [guardianSignaturePreview, setGuardianSignaturePreview] = useState(null)
+  const [currentStep, setCurrentStep] = useState(1);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [termsDialogOpen, setTermsDialogOpen] = useState(false);
+  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [formData, setFormData] = useState({});
+  const termsContentRef = useRef(null);
+  const [formFilingDate, setFormFilingDate] = useState("");
+  const [applicantSignaturePreview, setApplicantSignaturePreview] =
+    useState(null);
+  const [guardianSignaturePreview, setGuardianSignaturePreview] =
+    useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedBranchFee, setSelectedBranchFee] = useState(null);
 
   const {
     register,
@@ -51,60 +67,66 @@ const RegistrationForm = () => {
     trigger,
   } = useForm({
     mode: "onChange",
-  })
+  });
 
   useEffect(() => {
-    const today = new Date()
+    const today = new Date();
     const formattedDate = today.toLocaleDateString("en-GB", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
-    })
-    setFormFilingDate(formattedDate)
-  }, [])
+    });
+    setFormFilingDate(formattedDate);
+  }, []);
 
   const handleFileUpload = (e, fieldName, setPreview) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      setValue(fieldName, file)
-      const reader = new FileReader()
+      setValue(fieldName, file);
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result)
-      }
-      reader.readAsDataURL(file)
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
-  const steps = ["Personal Details", "Educational Details", "Program Selection", "Payment", "Complete"]
+  const steps = [
+    "Personal Details",
+    "Educational Details",
+    "Program Selection",
+    "Payment",
+    "Complete",
+  ];
 
   const handleTermsScroll = (e) => {
-    const element = e.target
+    const element = e.target;
     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-      setHasScrolledToBottom(true)
+      setHasScrolledToBottom(true);
     }
-  }
+  };
 
   const onSubmit = async (data) => {
-    const isStepValid = await trigger()
+    const isStepValid = await trigger();
     if (isStepValid) {
-      const newFormData = { ...formData, ...data }
-      setFormData(newFormData)
+      const newFormData = { ...formData, ...data };
+      setFormData(newFormData);
 
       if (currentStep < steps.length - 1) {
         if (currentStep === 3) {
-          setTermsDialogOpen(true)
+          setTermsDialogOpen(true);
         } else {
-          setCurrentStep(currentStep + 1)
+          setCurrentStep(currentStep + 1);
         }
-        console.log("Current step data:", data)
+        console.log("Current step data:", data);
       } else {
-        console.log("Complete form data:", newFormData)
-        toast.success("Form submitted successfully!")
+        console.log("Complete form data:", newFormData);
+        toast.success("Form submitted successfully!");
       }
     } else {
-      toast.error("Please fill all required fields correctly")
+      toast.error("Please fill all required fields correctly");
     }
-  }
+  };
 
   const renderPersonalDetails = () => (
     <div className="space-y-6">
@@ -136,7 +158,10 @@ const RegistrationForm = () => {
                 <PhoneIcon className="w-4 h-4 text-gray-500" />
                 <span>
                   Admissions:{" "}
-                  <a href="tel:+919649964937" className="text-blue-600 hover:underline">
+                  <a
+                    href="tel:+919649964937"
+                    className="text-blue-600 hover:underline"
+                  >
                     +91 9649 9649 37
                   </a>
                 </span>
@@ -146,7 +171,10 @@ const RegistrationForm = () => {
                 <MailIcon className="w-4 h-4 text-gray-500" />
                 <span>
                   Email:{" "}
-                  <a href="mailto:info@inframecollege.org" className="text-blue-600 hover:underline">
+                  <a
+                    href="mailto:info@inframecollege.org"
+                    className="text-blue-600 hover:underline"
+                  >
                     info@inframeschool.com
                   </a>
                 </span>
@@ -168,9 +196,14 @@ const RegistrationForm = () => {
               accept="image/*"
               className="hidden"
               id="profilePhoto"
-              onChange={(e) => handleFileUpload(e, "profilePhoto", setImagePreview)}
+              onChange={(e) =>
+                handleFileUpload(e, "profilePhoto", setImagePreview)
+              }
             />
-            <Label htmlFor="profilePhoto" className="cursor-pointer text-blue-600 hover:text-blue-700 transition">
+            <Label
+              htmlFor="profilePhoto"
+              className="cursor-pointer text-blue-600 hover:text-blue-700 transition"
+            >
               Click to upload or drag & drop
             </Label>
             {imagePreview ? (
@@ -187,7 +220,9 @@ const RegistrationForm = () => {
           </div>
           {errors.profilePhoto && (
             <Alert variant="destructive" className="w-full text-center">
-              <AlertDescription>{errors.profilePhoto.message}</AlertDescription>
+              <AlertDescription className="text-red-600">
+                {errors.profilePhoto.message}
+              </AlertDescription>
             </Alert>
           )}
         </div>
@@ -201,7 +236,10 @@ const RegistrationForm = () => {
             <Input
               {...register("firstName", {
                 required: "First name is required",
-                minLength: { value: 2, message: "First name must be at least 2 characters long" },
+                minLength: {
+                  value: 2,
+                  message: "First name must be at least 2 characters long",
+                },
               })}
               id="firstName"
               placeholder="Enter first name"
@@ -209,16 +247,25 @@ const RegistrationForm = () => {
             />
             {errors.firstName && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.firstName.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.firstName.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
           <div className="space-y-2">
             <Label htmlFor="firstName">Middle Name</Label>
-            <Input {...register("middleName")} id="middleName" placeholder="Enter middle name" className="h-12" />
+            <Input
+              {...register("middleName")}
+              id="middleName"
+              placeholder="Enter middle name"
+              className="h-12"
+            />
             {errors.middleName && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.middleName.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.middleName.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -233,7 +280,9 @@ const RegistrationForm = () => {
             />
             {errors.lastName && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.lastName.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.lastName.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -249,7 +298,9 @@ const RegistrationForm = () => {
             />
             {errors.email && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.email.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.email.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -264,7 +315,9 @@ const RegistrationForm = () => {
             />
             {errors.mobile && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.mobile.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.mobile.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -272,14 +325,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="dateOfBirth">Date of Birth *</Label>
             <Input
-              {...register("dateOfBirth", { required: "Date of birth is required" })}
+              {...register("dateOfBirth", {
+                required: "Date of birth is required",
+              })}
               type="date"
               id="dateOfBirth"
               className="h-12"
             />
             {errors.dateOfBirth && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.dateOfBirth.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.dateOfBirth.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -287,14 +344,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="adharCard">Aadhar Card Number *</Label>
             <Input
-              {...register("adharCard", { required: "Aadhar card number is required" })}
+              {...register("adharCard", {
+                required: "Aadhar card number is required",
+              })}
               id="adharCard"
               placeholder="Enter 12-digit Aadhar number"
               className="h-12"
             />
             {errors.adharCard && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.adharCard.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.adharCard.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -316,7 +377,9 @@ const RegistrationForm = () => {
             </Select>
             {errors.category && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.category.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.category.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -338,7 +401,9 @@ const RegistrationForm = () => {
             </Select>
             {errors.religion && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.religion.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.religion.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -348,7 +413,11 @@ const RegistrationForm = () => {
       {/* Gender Selection */}
       <div className="space-y-2">
         <Label>Gender *</Label>
-        <RadioGroup defaultValue="male" className="flex space-x-4" onValueChange={(value) => setValue("gender", value)}>
+        <RadioGroup
+          defaultValue="male"
+          className="flex space-x-4"
+          onValueChange={(value) => setValue("gender", value)}
+        >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="male" />
             <Label htmlFor="male">Male</Label>
@@ -364,7 +433,9 @@ const RegistrationForm = () => {
         </RadioGroup>
         {errors.gender && (
           <Alert variant="destructive">
-            <AlertDescription>{errors.gender.message}</AlertDescription>
+            <AlertDescription className="text-red-600">
+              {errors.gender.message}
+            </AlertDescription>
           </Alert>
         )}
       </div>
@@ -373,14 +444,18 @@ const RegistrationForm = () => {
       <div className="space-y-2">
         <Label htmlFor="permanentAddress">Permanent Address *</Label>
         <Input
-          {...register("permanentAddress", { required: "Permanent address is required" })}
+          {...register("permanentAddress", {
+            required: "Permanent address is required",
+          })}
           id="permanentAddress"
           placeholder="Enter permanent address"
           className="h-12"
         />
         {errors.permanentAddress && (
           <Alert variant="destructive">
-            <AlertDescription>{errors.permanentAddress.message}</AlertDescription>
+            <AlertDescription className="text-red-600">
+              {errors.permanentAddress.message}
+            </AlertDescription>
           </Alert>
         )}
       </div>
@@ -395,7 +470,9 @@ const RegistrationForm = () => {
         />
         {errors.temporaryAddress && (
           <Alert variant="destructive">
-            <AlertDescription>{errors.temporaryAddress.message}</AlertDescription>
+            <AlertDescription className="text-red-600">
+              {errors.temporaryAddress.message}
+            </AlertDescription>
           </Alert>
         )}
       </div>
@@ -407,14 +484,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="fatherName">Father's Name *</Label>
             <Input
-              {...register("fatherName", { required: "Father's name is required" })}
+              {...register("fatherName", {
+                required: "Father's name is required",
+              })}
               id="fatherName"
               placeholder="Enter father's name"
               className="h-12"
             />
             {errors.fatherName && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.fatherName.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.fatherName.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -422,14 +503,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="fatherMobile">Father's Mobile *</Label>
             <Input
-              {...register("fatherMobile", { required: "Father's mobile is required" })}
+              {...register("fatherMobile", {
+                required: "Father's mobile is required",
+              })}
               id="fatherMobile"
               placeholder="Enter father's mobile"
               className="h-12"
             />
             {errors.fatherMobile && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.fatherMobile.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.fatherMobile.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -437,7 +522,9 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="fatherEmail">Father's Email *</Label>
             <Input
-              {...register("fatherEmail", { required: "Father's email is required" })}
+              {...register("fatherEmail", {
+                required: "Father's email is required",
+              })}
               id="fatherEmail"
               type="email"
               placeholder="Enter father's email"
@@ -445,7 +532,9 @@ const RegistrationForm = () => {
             />
             {errors.fatherEmail && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.fatherEmail.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.fatherEmail.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -453,14 +542,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="fatherEducation">Father's Education *</Label>
             <Input
-              {...register("fatherEducation", { required: "Father's education is required" })}
+              {...register("fatherEducation", {
+                required: "Father's education is required",
+              })}
               id="fatherEducation"
               placeholder="Enter father's education"
               className="h-12"
             />
             {errors.fatherEducation && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.fatherEducation.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.fatherEducation.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -468,29 +561,39 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="fatherProfession">Father's Profession *</Label>
             <Input
-              {...register("fatherProfession", { required: "Father's profession is required" })}
+              {...register("fatherProfession", {
+                required: "Father's profession is required",
+              })}
               id="fatherProfession"
               placeholder="Enter father's profession"
               className="h-12"
             />
             {errors.fatherProfession && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.fatherProfession.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.fatherProfession.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="fatherIncome">Father's Annual Income (in Rs.) *</Label>
+            <Label htmlFor="fatherIncome">
+              Father's Annual Income (in Rs.) *
+            </Label>
             <Input
-              {...register("fatherIncome", { required: "Father's annual income is required" })}
+              {...register("fatherIncome", {
+                required: "Father's annual income is required",
+              })}
               id="fatherIncome"
               placeholder="Enter father's annual income"
               className="h-12"
             />
             {errors.fatherIncome && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.fatherIncome.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.fatherIncome.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -504,14 +607,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="motherName">Mother's Name *</Label>
             <Input
-              {...register("motherName", { required: "Mother's name is required" })}
+              {...register("motherName", {
+                required: "Mother's name is required",
+              })}
               id="motherName"
               placeholder="Enter mother's name"
               className="h-12"
             />
             {errors.motherName && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.motherName.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.motherName.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -519,14 +626,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="motherMobile">Mother's Mobile *</Label>
             <Input
-              {...register("motherMobile", { required: "Mother's mobile is required" })}
+              {...register("motherMobile", {
+                required: "Mother's mobile is required",
+              })}
               id="motherMobile"
               placeholder="Enter mother's mobile"
               className="h-12"
             />
             {errors.motherMobile && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.motherMobile.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.motherMobile.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -534,7 +645,9 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="motherEmail">Mother's Email *</Label>
             <Input
-              {...register("motherEmail", { required: "Mother's email is required" })}
+              {...register("motherEmail", {
+                required: "Mother's email is required",
+              })}
               id="motherEmail"
               type="email"
               placeholder="Enter mother's email"
@@ -542,7 +655,9 @@ const RegistrationForm = () => {
             />
             {errors.motherEmail && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.motherEmail.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.motherEmail.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -550,14 +665,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="motherEducation">Mother's Education *</Label>
             <Input
-              {...register("motherEducation", { required: "Mother's education is required" })}
+              {...register("motherEducation", {
+                required: "Mother's education is required",
+              })}
               id="motherEducation"
               placeholder="Enter mother's education"
               className="h-12"
             />
             {errors.motherEducation && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.motherEducation.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.motherEducation.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -565,29 +684,39 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="motherProfession">Mother's Profession *</Label>
             <Input
-              {...register("motherProfession", { required: "Mother's profession is required" })}
+              {...register("motherProfession", {
+                required: "Mother's profession is required",
+              })}
               id="motherProfession"
               placeholder="Enter mother's profession"
               className="h-12"
             />
             {errors.motherProfession && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.motherProfession.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.motherProfession.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="motherIncome">Mother's Annual Income (in Rs.) *</Label>
+            <Label htmlFor="motherIncome">
+              Mother's Annual Income (in Rs.) *
+            </Label>
             <Input
-              {...register("motherIncome", { required: "Mother's annual income is required" })}
+              {...register("motherIncome", {
+                required: "Mother's annual income is required",
+              })}
               id="motherIncome"
               placeholder="Enter mother's annual income"
               className="h-12"
             />
             {errors.motherIncome && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.motherIncome.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.motherIncome.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -596,19 +725,25 @@ const RegistrationForm = () => {
 
       {/* Emergency Contact Section */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Emergency Contact (Other than Parents)</h3>
+        <h3 className="text-lg font-semibold">
+          Emergency Contact (Other than Parents)
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="emergencyContactName">Contact Name *</Label>
             <Input
-              {...register("emergencyContactName", { required: "Emergency contact name is required" })}
+              {...register("emergencyContactName", {
+                required: "Emergency contact name is required",
+              })}
               id="emergencyContactName"
               placeholder="Enter emergency contact name"
               className="h-12"
             />
             {errors.emergencyContactName && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.emergencyContactName.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.emergencyContactName.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -616,14 +751,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="emergencyContactRelation">Relationship *</Label>
             <Input
-              {...register("emergencyContactRelation", { required: "Emergency contact relation is required" })}
+              {...register("emergencyContactRelation", {
+                required: "Emergency contact relation is required",
+              })}
               id="emergencyContactRelation"
               placeholder="Enter relationship"
               className="h-12"
             />
             {errors.emergencyContactRelation && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.emergencyContactRelation.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.emergencyContactRelation.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -631,14 +770,18 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="emergencyContactMobile">Mobile Number *</Label>
             <Input
-              {...register("emergencyContactMobile", { required: "Emergency contact mobile is required" })}
+              {...register("emergencyContactMobile", {
+                required: "Emergency contact mobile is required",
+              })}
               id="emergencyContactMobile"
               placeholder="Enter emergency contact mobile"
               className="h-12"
             />
             {errors.emergencyContactMobile && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.emergencyContactMobile.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.emergencyContactMobile.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -646,7 +789,9 @@ const RegistrationForm = () => {
           <div className="space-y-2">
             <Label htmlFor="emergencyContactEmail">Email *</Label>
             <Input
-              {...register("emergencyContactEmail", { required: "Emergency contact email is required" })}
+              {...register("emergencyContactEmail", {
+                required: "Emergency contact email is required",
+              })}
               id="emergencyContactEmail"
               type="email"
               placeholder="Enter emergency contact email"
@@ -654,7 +799,9 @@ const RegistrationForm = () => {
             />
             {errors.emergencyContactEmail && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.emergencyContactEmail.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.emergencyContactEmail.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -673,9 +820,18 @@ const RegistrationForm = () => {
                 accept="image/*"
                 className="hidden"
                 id="applicantSignature"
-                onChange={(e) => handleFileUpload(e, "applicantSignature", setApplicantSignaturePreview)}
+                onChange={(e) =>
+                  handleFileUpload(
+                    e,
+                    "applicantSignature",
+                    setApplicantSignaturePreview
+                  )
+                }
               />
-              <Label htmlFor="applicantSignature" className="cursor-pointer text-blue-500 hover:text-blue-600">
+              <Label
+                htmlFor="applicantSignature"
+                className="cursor-pointer text-blue-500 hover:text-blue-600"
+              >
                 Click to upload or drag and drop
               </Label>
               {applicantSignaturePreview && (
@@ -691,7 +847,9 @@ const RegistrationForm = () => {
             </div>
             {errors.applicantSignature && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.applicantSignature.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.applicantSignature.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
@@ -704,9 +862,18 @@ const RegistrationForm = () => {
                 accept="image/*"
                 className="hidden"
                 id="guardianSignature"
-                onChange={(e) => handleFileUpload(e, "guardianSignature", setGuardianSignaturePreview)}
+                onChange={(e) =>
+                  handleFileUpload(
+                    e,
+                    "guardianSignature",
+                    setGuardianSignaturePreview
+                  )
+                }
               />
-              <Label htmlFor="guardianSignature" className="cursor-pointer text-blue-500 hover:text-blue-600">
+              <Label
+                htmlFor="guardianSignature"
+                className="cursor-pointer text-blue-500 hover:text-blue-600"
+              >
                 Click to upload or drag and drop
               </Label>
               {guardianSignaturePreview && (
@@ -722,28 +889,34 @@ const RegistrationForm = () => {
             </div>
             {errors.guardianSignature && (
               <Alert variant="destructive">
-                <AlertDescription>{errors.guardianSignature.message}</AlertDescription>
+                <AlertDescription className="text-red-600">
+                  {errors.guardianSignature.message}
+                </AlertDescription>
               </Alert>
             )}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 
   const renderEducationalDetails = () => (
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="nameAs10th">Name as per 10th Marksheet *</Label>
         <Input
-          {...register("nameAs10th", { required: "Name as per 10th marksheet is required" })}
+          {...register("nameAs10th", {
+            required: "Name as per 10th marksheet is required",
+          })}
           id="nameAs10th"
           placeholder="Enter name as per documents"
           className="h-12"
         />
         {errors.nameAs10th && (
           <Alert variant="destructive">
-            <AlertDescription>{errors.nameAs10th.message}</AlertDescription>
+            <AlertDescription className="text-red-600">
+              {errors.nameAs10th.message}
+            </AlertDescription>
           </Alert>
         )}
       </div>
@@ -759,13 +932,17 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <Label>Institution Name *</Label>
                   <Input
-                    {...register(`education.${index}.institution`, { required: "Institution name is required" })}
+                    {...register(`education.${index}.institution`, {
+                      required: "Institution name is required",
+                    })}
                     placeholder="Enter institution name"
                     className="h-12"
                   />
                   {errors.education?.[index]?.institution && (
                     <Alert variant="destructive">
-                      <AlertDescription>{errors.education[index].institution.message}</AlertDescription>
+                      <AlertDescription className="text-red-600">
+                        {errors.education[index].institution.message}
+                      </AlertDescription>
                     </Alert>
                   )}
                 </div>
@@ -773,13 +950,17 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <Label>Stream/Subjects *</Label>
                   <Input
-                    {...register(`education.${index}.stream`, { required: "Stream/Subjects is required" })}
+                    {...register(`education.${index}.stream`, {
+                      required: "Stream/Subjects is required",
+                    })}
                     placeholder="Enter stream"
                     className="h-12"
                   />
                   {errors.education?.[index]?.stream && (
                     <Alert variant="destructive">
-                      <AlertDescription>{errors.education[index].stream.message}</AlertDescription>
+                      <AlertDescription className="text-red-600">
+                        {errors.education[index].stream.message}
+                      </AlertDescription>
                     </Alert>
                   )}
                 </div>
@@ -787,7 +968,9 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <Label>Year of Passing *</Label>
                   <Input
-                    {...register(`education.${index}.yearOfPassing`, { required: "Year of passing is required" })}
+                    {...register(`education.${index}.yearOfPassing`, {
+                      required: "Year of passing is required",
+                    })}
                     placeholder="YYYY"
                     className="h-12"
                     type="number"
@@ -796,7 +979,9 @@ const RegistrationForm = () => {
                   />
                   {errors.education?.[index]?.yearOfPassing && (
                     <Alert variant="destructive">
-                      <AlertDescription>{errors.education[index].yearOfPassing.message}</AlertDescription>
+                      <AlertDescription className="text-red-600">
+                        {errors.education[index].yearOfPassing.message}
+                      </AlertDescription>
                     </Alert>
                   )}
                 </div>
@@ -804,13 +989,17 @@ const RegistrationForm = () => {
                 <div className="space-y-2">
                   <Label>Grade/Percentage *</Label>
                   <Input
-                    {...register(`education.${index}.grade`, { required: "Grade/Percentage is required" })}
+                    {...register(`education.${index}.grade`, {
+                      required: "Grade/Percentage is required",
+                    })}
                     placeholder="Enter grade"
                     className="h-12"
                   />
                   {errors.education?.[index]?.grade && (
                     <Alert variant="destructive">
-                      <AlertDescription>{errors.education[index].grade.message}</AlertDescription>
+                      <AlertDescription className="text-red-600">
+                        {errors.education[index].grade.message}
+                      </AlertDescription>
                     </Alert>
                   )}
                 </div>
@@ -821,12 +1010,16 @@ const RegistrationForm = () => {
                 <Input
                   type="file"
                   accept=".pdf,.jpg,.jpeg,.png"
-                  {...register(`education.${index}.marksheet`, { required: "Marksheet is required" })}
+                  {...register(`education.${index}.marksheet`, {
+                    required: "Marksheet is required",
+                  })}
                   className="h-12"
                 />
                 {errors.education?.[index]?.marksheet && (
                   <Alert variant="destructive">
-                    <AlertDescription>{errors.education[index].marksheet.message}</AlertDescription>
+                    <AlertDescription className="text-red-600">
+                      {errors.education[index].marksheet.message}
+                    </AlertDescription>
                   </Alert>
                 )}
               </div>
@@ -836,18 +1029,28 @@ const RegistrationForm = () => {
         {/* Graduation/Diploma (optional) */}
         <Card className="p-4">
           <CardHeader>
-            <CardTitle className="text-lg">UG/Diploma Details (Optional)</CardTitle>
+            <CardTitle className="text-lg">
+              UG/Diploma Details (Optional)
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Institution Name</Label>
-                <Input {...register(`education.3.institution`)} placeholder="Enter institution name" className="h-12" />
+                <Input
+                  {...register(`education.3.institution`)}
+                  placeholder="Enter institution name"
+                  className="h-12"
+                />
               </div>
 
               <div className="space-y-2">
                 <Label>Stream/Subjects</Label>
-                <Input {...register(`education.3.stream`)} placeholder="Enter stream" className="h-12" />
+                <Input
+                  {...register(`education.3.stream`)}
+                  placeholder="Enter stream"
+                  className="h-12"
+                />
               </div>
 
               <div className="space-y-2">
@@ -864,7 +1067,11 @@ const RegistrationForm = () => {
 
               <div className="space-y-2">
                 <Label>Grade/Percentage</Label>
-                <Input {...register(`education.3.grade`)} placeholder="Enter grade" className="h-12" />
+                <Input
+                  {...register(`education.3.grade`)}
+                  placeholder="Enter grade"
+                  className="h-12"
+                />
               </div>
             </div>
 
@@ -881,83 +1088,145 @@ const RegistrationForm = () => {
         </Card>
       </div>
     </div>
-  )
+  );
 
-  const renderProgramSelection = () => (
-    <div className="space-y-6">
-      <div className="space-y-2">
-        <Label>Course Type *</Label>
-        <Select onValueChange={(value) => setValue("courseType", value)}>
-          <SelectTrigger className="h-12">
-            <SelectValue placeholder="Choose course type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="design">Design Course (₹1000)</SelectItem>
-            <SelectItem value="art">Art Course (₹1200)</SelectItem>
-            <SelectItem value="business">Business Course (₹1500)</SelectItem>
-          </SelectContent>
-        </Select>
-        {errors.courseType && (
-          <Alert variant="destructive">
-            <AlertDescription>{errors.courseType.message}</AlertDescription>
-          </Alert>
-        )}
-      </div>
+  const renderProgramSelection = () => {
+    // Handle course change
+    const handleCourseChange = (value) => {
+      setValue("course", value);
+      setFormData((prev) => ({ ...prev, course: value, branch: "" }));
+      setSelectedCourse(coursesData.find((course) => course.name === value));
+      setValue("branch", ""); // Reset branch when course changes
+    };
 
-      <div className="space-y-2">
-        <Label>Study Mode*</Label>
-        <Select onValueChange={(value) => setValue("campus", value)}>
-          <SelectTrigger className="h-12">
-            <SelectValue placeholder="Choose campus" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="main">Online</SelectItem>
-            <SelectItem value="city">Offline</SelectItem>
-          </SelectContent>
-        </Select>
-        {errors.campus && (
-          <Alert variant="destructive">
-            <AlertDescription>{errors.campus.message}</AlertDescription>
-          </Alert>
-        )}
-      </div>
-      <div className="space-y-2">
-        <Label>Study Mode*</Label>
-        <Select onValueChange={(value) => setValue("campus", value)}>
-          <SelectTrigger className="h-12">
-            <SelectValue placeholder="Choose campus" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="main">Online</SelectItem>
-            <SelectItem value="city">Offline</SelectItem>
-          </SelectContent>
-        </Select>
-        {errors.campus && (
-          <Alert variant="destructive">
-            <AlertDescription>{errors.campus.message}</AlertDescription>
-          </Alert>
-        )}
-      </div>
+    // Handle branch change
+    const handleBranchChange = (value) => {
+      setValue("branch", value);
+      setFormData((prev) => ({ ...prev, branch: value }));
 
-      <div className="space-y-2">
-        <Label>Program Type *</Label>
-        <Select onValueChange={(value) => setValue("programType", value)}>
-          <SelectTrigger className="h-12">
-            <SelectValue placeholder="Choose program type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="full">Full Time</SelectItem>
-            <SelectItem value="part">Part Time</SelectItem>
-          </SelectContent>
-        </Select>
-        {errors.programType && (
-          <Alert variant="destructive">
-            <AlertDescription>{errors.programType.message}</AlertDescription>
-          </Alert>
+      // Find the fee for the selected branch
+      if (selectedCourse) {
+        const branch = selectedCourse.branches.find((b) => b.name === value);
+        if (branch) {
+          setSelectedBranchFee(branch.fee);
+          setValue("formFee", branch.fee);
+        }
+      }
+    };
+
+    return (
+      <div className="space-y-6">
+        {/* Course Selection */}
+        <div className="space-y-2">
+          <Label>Course *</Label>
+          <Select onValueChange={handleCourseChange}>
+            <SelectTrigger className="h-12">
+              <SelectValue placeholder="Choose course" />
+            </SelectTrigger>
+            <SelectContent>
+              {coursesData.map((course) => (
+                <SelectItem key={course.id} value={course.name}>
+                  {course.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {errors.course && (
+            <Alert variant="destructive">
+              <AlertDescription className="text-red-600">
+                {errors.course.message}
+              </AlertDescription>
+            </Alert>
+          )}
+        </div>
+
+        {/* Branch Selection (only shows if course is selected) */}
+        {selectedCourse && (
+          <div className="space-y-2">
+            <Label>Branch *</Label>
+            <Select onValueChange={handleBranchChange}>
+              <SelectTrigger className="h-12">
+                <SelectValue placeholder="Choose branch" />
+              </SelectTrigger>
+              <SelectContent>
+                {selectedCourse.branches.map((branch, index) => (
+                  <SelectItem key={index} value={branch.name}>
+                    {branch.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {errors.branch && (
+              <Alert variant="destructive">
+                <AlertDescription className="text-red-600">
+                  {errors.branch.message}
+                </AlertDescription>
+              </Alert>
+            )}
+          </div>
         )}
+
+        {/* Display Form Fee */}
+        {selectedBranchFee !== null && (
+          <div className="p-4 bg-blue-50 rounded-md">
+            <p className="font-medium">Form Fee: ₹{selectedBranchFee}</p>
+            <p className="text-sm text-gray-600">
+              Duration:{" "}
+              {selectedCourse.branches.find((b) => b.name === formData.branch)
+                ?.duration || ""}
+            </p>
+            <p className="text-sm text-gray-600">
+              Eligibility:{" "}
+              {selectedCourse.branches.find((b) => b.name === formData.branch)
+                ?.eligibility || ""}
+            </p>
+          </div>
+        )}
+
+        {/* Study Mode */}
+        <div className="space-y-2">
+          <Label>Study Mode *</Label>
+          <Select onValueChange={(value) => setValue("studyMode", value)}>
+            <SelectTrigger className="h-12">
+              <SelectValue placeholder="Choose study mode" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="online">Online</SelectItem>
+              <SelectItem value="offline">Offline</SelectItem>
+            </SelectContent>
+          </Select>
+          {errors.studyMode && (
+            <Alert variant="destructive">
+              <AlertDescription className="text-red-600">
+                {errors.studyMode.message}
+              </AlertDescription>
+            </Alert>
+          )}
+        </div>
+
+        {/* Program Type */}
+        <div className="space-y-2">
+          <Label>Program Type *</Label>
+          <Select onValueChange={(value) => setValue("programType", value)}>
+            <SelectTrigger className="h-12">
+              <SelectValue placeholder="Choose program type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="full">Full Time</SelectItem>
+              <SelectItem value="part">Part Time</SelectItem>
+            </SelectContent>
+          </Select>
+          {errors.programType && (
+            <Alert variant="destructive">
+              <AlertDescription className="text-red-600">
+                {errors.programType.message}
+              </AlertDescription>
+            </Alert>
+          )}
+        </div>
       </div>
-    </div>
-  )
+    );
+  };
 
   const renderPayment = () => (
     <div className="space-y-6">
@@ -969,64 +1238,68 @@ const RegistrationForm = () => {
           <div className="space-y-4">
             <div className="flex justify-between py-2">
               <span>Registration Fee</span>
-              <span className="font-semibold">₹1000.00</span>
+              <span className="font-semibold">₹{selectedBranchFee}</span>
             </div>
-            <div className="flex justify-between py-2">
-              <span>Processing Fee</span>
-              <span className="font-semibold">₹50.00</span>
-            </div>
+
             <div className="flex justify-between py-2 border-t">
               <span className="font-bold">Total Amount</span>
-              <span className="font-bold">₹1050.00</span>
+              <span className="font-bold">₹{selectedBranchFee}</span>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <Button className="w-full h-12 text-lg" onClick={() => setCurrentStep(currentStep + 1)}>
+      <Button
+        className="w-full h-12 text-lg"
+        onClick={() => setCurrentStep(currentStep + 1)}
+      >
         Proceed to Payment
       </Button>
 
-      <p className="text-sm text-gray-500 text-center">You will be redirected to the payment gateway</p>
+      <p className="text-sm text-gray-500 text-center">
+        You will be redirected to the payment gateway
+      </p>
     </div>
-  )
+  );
 
   const renderComplete = () => (
     <div className="text-center space-y-6 py-8">
       <div className="text-green-500 text-6xl">✓</div>
       <div>
         <h3 className="text-2xl font-bold">Registration Complete!</h3>
-        <p className="text-gray-600 mt-2">Your application has been submitted successfully</p>
+        <p className="text-gray-600 mt-2">
+          Your application has been submitted successfully
+        </p>
       </div>
       <div className="bg-gray-50 p-4 rounded-lg inline-block">
         <p className="text-sm text-gray-600">Application ID</p>
         <p className="text-xl font-bold">REG2024001</p>
       </div>
-      <Button 
-  className="w-full md:w-auto" 
-  onClick={() => downloadApplicationForm(formData)}
->
-  Download Application Form
-</Button>
+      <Button
+        className="w-full md:w-auto"
+        onClick={() => downloadApplicationForm(formData)}
+      >
+        Download Application Form
+      </Button>
     </div>
-  )
+  );
 
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
-        return renderPersonalDetails()
+        return renderPersonalDetails();
       case 2:
-        return renderEducationalDetails()
+        return renderEducationalDetails();
       case 3:
-        return renderProgramSelection()
+        return renderProgramSelection();
       case 4:
-        return renderPayment()
+        return renderPayment();
       case 5:
-        return renderComplete()
+        return renderComplete();
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   const termsAndConditions = [
     "The applicant must fulfill the eligibility criteria as specified in the admission guidelines for the program.",
@@ -1052,65 +1325,138 @@ const RegistrationForm = () => {
     "Students wishing to withdraw from the course must notify the institution in writing.",
     "Exams would be held in different centre if approved by University & main centre.",
     "School reserves the right to change or cancel any test center/city at its discretion, if required.",
-  ]
+  ];
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br my-28 from-purple-50 to-blue-50 p-8 ${poppins.className}`}>
-      <div className="max-w-7xl mx-auto bg-zinc-100">
+    <div
+      className={`min-h-screen bg-gradient-to-br my-28 from-purple-50 to-blue-50 p-8 ${poppins.className}`}
+    >
+      <div className="max-w-7xl mx-auto border">
         <Card className="shadow-xl">
-          <div className="flex flex-col md:flex-row border rounded-md">
-            {/* Steps sidebar */}
-            <div className="w-full md:w-1/4 bg-black text-white p-8 rounded-bl-lg">
-              <h2 className="text-2xl font-bold mb-6">Application Steps</h2>
-              {steps.map((step, index) => (
-                <div
-                  key={step}
-                  className={`flex items-center space-x-3 mb-4 p-3 rounded-lg transition-all ${
-                    currentStep === index + 1
-                      ? "bg-yellow-400 text-black font-semibold"
-                      : currentStep > index + 1
-                        ? "text-green-400"
-                        : "text-gray-400"
-                  }`}
+          <div className="p-6">
+            <Tabs defaultValue="new" className="w-full">
+              <TabsList className="grid w-full gap-4 grid-cols-2 mb-8">
+                <TabsTrigger
+                  className={`py-3 ${poppins.className} rounded-none text-md font-semibold border border-black`}
+                  value="new"
                 >
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      currentStep > index + 1
-                        ? "bg-green-500"
-                        : currentStep === index + 1
-                          ? "bg-white text-black"
-                          : "bg-gray-700"
-                    }`}
-                  >
-                    {currentStep > index + 1 ? "✓" : index + 1}
+                  New Applicant
+                </TabsTrigger>
+                <TabsTrigger
+                  className={`py-3 ${poppins.className} rounded-none text-md font-semibold border border-black`}
+                  value="existing"
+                >
+                  Already Applied
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="new">
+                <div className="flex flex-col md:flex-row border rounded-md">
+                  {/* Steps sidebar */}
+                  <div className="w-full md:w-1/4 bg-black text-white p-8 rounded-bl-lg">
+                    <h2 className="text-2xl font-bold mb-6">
+                      Application Steps
+                    </h2>
+                    {steps.map((step, index) => (
+                      <div
+                        key={step}
+                        className={`flex items-center space-x-3 mb-4 p-3 rounded-lg transition-all ${
+                          currentStep === index + 1
+                            ? "bg-yellow-400 text-black font-semibold"
+                            : currentStep > index + 1
+                            ? "text-green-400"
+                            : "text-gray-400"
+                        }`}
+                      >
+                        <div
+                          className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                            currentStep > index + 1
+                              ? "bg-green-500"
+                              : currentStep === index + 1
+                              ? "bg-white text-black"
+                              : "bg-gray-700"
+                          }`}
+                        >
+                          {currentStep > index + 1 ? "✓" : index + 1}
+                        </div>
+                        <span>{step}</span>
+                      </div>
+                    ))}
                   </div>
-                  <span>{step}</span>
-                </div>
-              ))}
-            </div>
 
-            {/* Form content */}
-            <div className="w-full md:w-3/4 p-6">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                {renderStepContent()}
+                  {/* Form content */}
+                  <div className="w-full md:w-3/4 p-6">
+                    {/* <h1
+                    className={`text-3xl font-bold pb-10 px-3 ${poppins.className}`}
+                  >
+                    Application Form
+                  </h1> */}
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                      {renderStepContent()}
 
-                <div className="flex justify-between mt-6">
-                  {currentStep > 1 && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setCurrentStep(currentStep - 1)}
-                      className="px-6"
-                    >
-                      Previous
-                    </Button>
-                  )}
-                  <Button type="submit" className={`px-6 ${currentStep === 1 ? "ml-auto" : ""}`}>
-                    {currentStep === steps.length - 1 ? "Submit" : "Next"}
-                  </Button>
+                      <div className="flex justify-between mt-6">
+                        {currentStep > 1 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => setCurrentStep(currentStep - 1)}
+                            className="px-6"
+                          >
+                            Previous
+                          </Button>
+                        )}
+                        <Button
+                          type="submit"
+                          className={`px-6 ${
+                            currentStep === 1 ? "ml-auto" : ""
+                          }`}
+                        >
+                          {currentStep === steps.length - 1 ? "Submit" : "Next"}
+                        </Button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </form>
-            </div>
+              </TabsContent>
+
+              <TabsContent value="existing">
+                <div className="max-w-md mx-auto p-6">
+                  <div className="space-y-6">
+                    <div className="text-center mb-8">
+                      <h2 className="text-2xl font-bold mb-2">
+                        Track Your Application
+                      </h2>
+                      <p className="text-gray-600">
+                        Enter your mobile number or application ID to check your
+                        status
+                      </p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="tracking-id">
+                          Mobile Number / Application ID
+                        </Label>
+                        <Input
+                          id="tracking-id"
+                          placeholder="Enter mobile number or application ID"
+                          className="h-12"
+                        />
+                      </div>
+
+                      <Button
+                        className="w-full h-12"
+                        onClick={() =>
+                          toast.success("OTP sent to your mobile number")
+                        }
+                      >
+                        Send OTP
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </Card>
       </div>
@@ -1137,9 +1483,9 @@ const RegistrationForm = () => {
             <Button
               disabled={!hasScrolledToBottom}
               onClick={() => {
-                setTermsAccepted(true)
-                setTermsDialogOpen(false)
-                setCurrentStep(4)
+                setTermsAccepted(true);
+                setTermsDialogOpen(false);
+                setCurrentStep(4);
               }}
               className={!hasScrolledToBottom ? "opacity-50" : ""}
             >
@@ -1149,8 +1495,7 @@ const RegistrationForm = () => {
         </AlertDialogContent>
       </AlertDialog>
     </div>
-  )
-}
+  );
+};
 
-export default RegistrationForm
-
+export default RegistrationForm;

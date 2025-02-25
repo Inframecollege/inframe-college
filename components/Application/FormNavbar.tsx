@@ -25,7 +25,7 @@ const FormNavbar = () => {
 
  
   return (
-    <header className="fixed w-full bg-yellow-500 shadow-md z-50 py-4 font-sans">
+    <header className="fixed w-full bg-yellow-400 shadow-md z-50 py-4 font-sans">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
