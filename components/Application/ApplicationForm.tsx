@@ -23,6 +23,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 
 import { LOGO } from "../../utils/constant"
+import { downloadApplicationForm } from "./DownloadPDF"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -1001,7 +1002,12 @@ const RegistrationForm = () => {
         <p className="text-sm text-gray-600">Application ID</p>
         <p className="text-xl font-bold">REG2024001</p>
       </div>
-      <Button className="w-full md:w-auto">Download Application Form</Button>
+      <Button 
+  className="w-full md:w-auto" 
+  onClick={() => downloadApplicationForm(formData)}
+>
+  Download Application Form
+</Button>
     </div>
   )
 
