@@ -27,7 +27,7 @@ export default function Home() {
  
       <MembershipPartnership/>
       <CTABanner />
-      <LatestNews />
+      {/* <LatestNews /> */}
       <FeaturesSection />
       <TestimonialCarousel />
     </div>

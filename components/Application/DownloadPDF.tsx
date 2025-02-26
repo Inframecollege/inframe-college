@@ -1,282 +1,638 @@
-import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Image, pdf } from '@react-pdf/renderer';
-import { format } from 'date-fns';
-import { LOGO } from '../../utils/constant';
-import { toast } from 'sonner';
+import type React from "react";
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  pdf,
+  Font,
+} from "@react-pdf/renderer";
+import { toast } from "sonner";
+import { LOGO } from "../../utils/constant";
+import { Earth, LocateIcon } from "lucide-react";
 
-// Enhanced styles with a more professional look
+// Register Poppins font
+Font.register({
+  family: "Poppins",
+  fonts: [
+    {
+      src: "https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrFJA.ttf",
+      fontWeight: 400,
+    },
+    {
+      src: "https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9V1s.ttf",
+      fontWeight: 500,
+    },
+    {
+      src: "https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7V1s.ttf",
+      fontWeight: 700,
+    },
+    // Add the italic variant
+    {
+      src: "https://fonts.gstatic.com/s/poppins/v20/pxiDyp8kv8JHgFVrJJLm21llEA.ttf",
+      fontWeight: 400,
+      fontStyle: "italic",
+    },
+  ],
+});
+
+// Black and white styles only - enhanced for better layout
 const styles = StyleSheet.create({
   page: {
-    padding: 40,
-    fontFamily: 'Helvetica',
-    backgroundColor: '#ffffff',
+    padding: 50, // Reduced padding
+    fontSize: 10, // Smaller base font size
+    fontFamily: "Poppins",
+    color: "#000000",
+    border: "12px solid black",
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 30,
-    borderBottom: '2pt solid #1a4e8a',
-    paddingBottom: 15,
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 15, // Reduced margin
+    borderBottom: "1pt solid black",
+    paddingBottom: 8,
+  },
+  headerLeft: {
+    width: "70%",
   },
   logo: {
-    width: 140,
-    height: 45,
+    width: 150,
+    height: 50,
+    marginBottom: 5,
   },
-  title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 25,
-    textAlign: 'center',
-    color: '#1a4e8a',
-    textTransform: 'uppercase',
-  },
-  section: {
-    marginBottom: 25,
-    borderRadius: 4,
-    border: '1pt solid #e0e0e0',
-    padding: 10,
-  },
-  sectionTitle: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: '#1a4e8a',
-    color: 'white',
-    padding: 8,
-    marginBottom: 12,
-    borderRadius: 3,
-  },
-  row: {
-    flexDirection: 'row',
-    marginBottom: 8,
-    paddingBottom: 3,
-    borderBottom: '0.5pt solid #f0f0f0',
-  },
-  label: {
-    width: '30%',
-    fontSize: 11,
-    fontWeight: 'bold',
-    color: '#444444',
-  },
-  value: {
-    width: '70%',
-    fontSize: 11,
-    color: '#333333',
-  },
-  photoContainer: {
-    border: '1pt solid #cccccc',
-    padding: 3,
-    backgroundColor: '#f9f9f9',
-  },
-  photo: {
-    width: 100,
-    height: 120,
-    marginLeft: 'auto',
-  },
-  addressBlock: {
-    marginTop: 5,
+  tagline: {
+    fontSize: 8,
+    marginBottom: 10,
+    fontWeight: 500,
   },
   address: {
+    fontSize: 9,
+    marginTop: 5,
+  },
+  addressLine: {
+    marginBottom: 2,
+  },
+  contact: {
+    fontSize: 9,
+    marginTop: 5,
+  },
+  photoSpace: {
+    width: 100,
+    height: 120,
+    border: "1pt solid black",
+    padding: 2,
+  },
+  photoText: {
+    fontSize: 8,
+    textAlign: "center",
+  },
+  formTitle: {
     fontSize: 10,
+    fontWeight: "bold",
     marginBottom: 3,
-    color: '#555555',
   },
-  footer: {
-    position: 'absolute',
-    bottom: 30,
-    left: 40,
-    right: 40,
-    textAlign: 'center',
+  formInstruction: {
+    fontSize: 8,
+    marginBottom: 10,
+    fontStyle: "italic",
+  },
+  formRow: {
+    flexDirection: "row",
+    marginBottom: 3, // Reduced margin
+    borderBottom: "0.5pt dotted black",
+    paddingBottom: 1,
+  },
+  label: {
+    width: "30%",
     fontSize: 9,
-    color: '#666666',
-    borderTop: '1pt solid #e0e0e0',
-    paddingTop: 10,
+    fontWeight: 500,
   },
-  applicationId: {
-    position: 'absolute',
-    top: 40,
-    right: 40,
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#1a4e8a',
-    border: '1pt solid #1a4e8a',
-    padding: 5,
-    borderRadius: 3,
-  },
-  watermark: {
-    position: 'absolute',
-    bottom: 250,
-    left: 150,
-    right: 150,
-    fontSize: 60,
-    color: 'rgba(200, 200, 200, 0.2)',
-    transform: 'rotate(-45deg)',
-    textAlign: 'center',
-  },
-  infoRow: {
+  value: {
+    flex: 1,
     fontSize: 9,
-    color: '#777777',
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 4,
+  },
+  checkbox: {
+    width: 12,
+    height: 12,
+    border: "1pt solid black",
+    marginRight: 5,
+  },
+  checkboxChecked: {
+    width: 12,
+    height: 12,
+    border: "1pt solid black",
+    marginRight: 5,
+    backgroundColor: "black",
+  },
+  checkboxLabel: {
+    fontSize: 10,
+    marginRight: 15,
+  },
+  table: {
     marginTop: 10,
-    textAlign: 'center',
+    border: "1pt solid black",
+  },
+  tableRow: {
+    flexDirection: "row",
+    borderBottom: "1pt solid black",
+    fontSize: 7,
+  },
+  tableHeader: {
+    backgroundColor: "#f0f0f0",
+    flexDirection: "row",
+    borderBottom: "1pt solid black",
+    fontSize: 7,
+  },
+  tableCell: {
+    flex: 1,
+    padding: 5,
+   
+    borderRight: "1pt solid black",
+    textAlign: "center",
+  },
+  guardianSection: {
+    marginTop: 6, // Reduced margin
+    borderTop: "1pt solid black",
+    paddingTop: 4,
+  },
+  guardianColumns: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  guardianColumn: {
+    width: "48%",
+  },
+  signatureSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 20,
+    paddingTop: 10,
+    borderTop: "1pt solid black",
+  },
+  signatureBox: {
+    width: "45%",
+  },
+  signatureImage: {
+    width: 150,
+    height: 50,
+    marginTop: 5,
+  },
+  dottedUnderline: {
+    borderBottom: "1pt dotted black",
+    paddingBottom: 2,
+    marginTop: 5,
+  },
+  // Enhanced footer style to match the provided image
+  footer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    borderTop: "1pt solid black",
+    paddingVertical: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontSize: 8,
+    backgroundColor: "#ffffff",
+  },
+  footerItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 10,
+  },
+  footerIcon: {
+    marginRight: 2,
+    height: 12,
+    width: 12,
+  },
+  footerText: {
+    fontSize: 8,
+  },
+  termsSection: {
+    marginTop: 10,
+    fontSize: 8, // Smaller font for terms
+  },
+  termItem: {
+    marginBottom: 1.5, // Tighter spacing
+  },
+  // Emergency contact section
+  emergencySection: {
+    marginTop: 8,
+    borderTop: "1pt solid black",
+    paddingTop: 4,
+  },
+  emergencyRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 3,
+    borderBottom: "0.5pt dotted black",
+    paddingBottom: 1,
+  },
+  emergencyField: {
+    flex: 1,
+  },
+  emergencyLabel: {
+    fontSize: 9,
+    fontWeight: 500,
+    marginRight: 5,
+  },
+  emergencyValue: {
+    fontSize: 9,
   },
 });
 
-// Enhanced Document Component
-const ApplicationFormPDF = ({ formData, profilePhoto }) => {
-  const formattedDate = formData.formFilingDate 
-    ? format(new Date(formData.formFilingDate), 'dd MMM yyyy')
-    : format(new Date(), 'dd MMM yyyy');
-  
-  const applicationId = formData.applicationId || 'REG2024001';
-  
+const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
+  const termsAndConditions = [
+    "The applicant must fulfill the eligibility criteria as specified in the admission guidelines for the program.",
+    "Admission is subject to verification of all original documents during the admission process.",
+    "If 12th results awaited and student doesn't qualified that school will not be liable for it.",
+    "The applicant must provide accurate, current, and complete information in the admission form.",
+    "Any misinformation or false documents will result in immediate disqualification and cancellation of admission.",
+    "The submission of the admission form does not guarantee admission.",
+    "Failure to provide the required documents within the stipulated time frame may result in rejection of the application.",
+    "Admission is confirmed only after the payment of the full admission fee, as mentioned in the fee structure.",
+    "The fee is non-refundable in any circumstances.",
+    "Failure to make timely payments may result in suspension or termination of enrollment. 50rs per day penalty would be taken for late fees payment.",
+    "The admission will be confirmed after verification of all documents and payment of fees.",
+    "The institution reserves the right to revoke admission at any stage if any discrepancies are found.",
+    "Upon admission, the student agrees to abide by the rules and regulations of the institution.",
+    "Any violation of the code of conduct or disciplinary guidelines may lead to expulsion.",
+    "The information provided in the admission form will be used solely for the admission process and will remain confidential.",
+    "The institution may use the data for internal purposes like communication, announcements, or records maintenance.",
+    "The institution reserves the right to deny admission to any applicant without providing specific reasons.",
+    "The institution reserves the right to modify the terms and conditions of admission at any time without prior notice.",
+    "Regular attendance and participation are mandatory for successful course completion.",
+    "Course in non transferable and fees is not refundable in any case.",
+    "Students wishing to withdraw from the course must notify the institution in writing.",
+    "Exams would be held in different centre if approved by University & main centre.",
+    "School reserves the right to change or cancel any test center/city at its discretion, if required.",
+  ];
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        {/* Watermark */}
-        <Text style={styles.watermark}>APPLICATION</Text>
-        
-        {/* Application ID */}
-        <Text style={styles.applicationId}>ID: {applicationId}</Text>
-        
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Image src={LOGO} style={styles.logo} />
-            <View style={styles.addressBlock}>
-              <Text style={styles.address}>09, Pal Link Road</Text>
-              <Text style={styles.address}>Marudhar Nagar, Kamla Nehru Nagar</Text>
-              <Text style={styles.address}>Shyam Nagar, Jodhpur</Text>
-              <Text style={styles.address}>Rajasthan 342008</Text>
+        {/* Header with Logo and Address */}
+        <View style={styles.headerContainer}>
+          <View style={styles.headerLeft}>
+            <Image src={'/pixelcut-export4.png'} style={styles.logo} />
+           
+            <View style={styles.contact}>
+              <Text>Admissions: +91 9649 9649 37</Text>
+              <Text>Email: info@inframeschool.com</Text>
             </View>
           </View>
-          <View style={styles.photoContainer}>
-            <Image src={profilePhoto} style={styles.photo} />
+          <View style={styles.photoSpace}>
+            {formData.profilePhoto ? (
+              <Image
+                src={formData.profilePhoto || "/placeholder.svg"}
+                style={{ width: "100%", height: "100%" }}
+              />
+            ) : (
+              <Text style={styles.photoText}>
+                Paste your recently taken{"\n"}passport size color{"\n"}
+                photograph here.{"\n"}Do not staple{"\n"}the photo.
+              </Text>
+            )}
           </View>
         </View>
 
-        <Text style={styles.title}>Application Form</Text>
+        {/* Basic Information */}
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Application Form No:</Text>
+          <Text style={styles.value}>REG2024001</Text>
+          <Text style={styles.label}>Session:</Text>
+          <Text style={styles.value}>{formData.session}</Text>
+        </View>
 
-        {/* Personal Details */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Personal Details</Text>
-          <View style={styles.row}>
-            <Text style={styles.label}>Full Name:</Text>
-            <Text style={styles.value}>
-              {`${formData.firstName} ${formData.middleName || ''} ${formData.lastName}`}
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Course:</Text>
+          <Text style={styles.value}>{formData.course}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Name of the Applicant:</Text>
+          <Text style={styles.value}>{`${formData.firstName} ${
+            formData.middleName || ""
+          } ${formData.lastName}`}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Father's Name:</Text>
+          <Text style={styles.value}>{formData.fatherName}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Mother's Name:</Text>
+          <Text style={styles.value}>{formData.motherName}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Date of Birth:</Text>
+          <Text style={styles.value}>{formData.dateOfBirth}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>State of Domicile:</Text>
+          <Text style={styles.value}>{formData.stateOfDomicile}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Gender:</Text>
+          <Text style={styles.value}>{formData.gender}</Text>
+        </View>
+
+        {/* Category and Religion Selection */}
+        <View style={styles.checkboxContainer}>
+          <Text style={styles.label}>Category:</Text>
+          {["Gen", "OBC", "SC", "ST", "DC", "PD"].map((cat) => (
+            <View
+              key={cat}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
+              <View
+                style={
+                  formData.category === cat
+                    ? styles.checkboxChecked
+                    : styles.checkbox
+                }
+              />
+              <Text style={styles.checkboxLabel}>{cat}</Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.checkboxContainer}>
+          <Text style={styles.label}>Religion:</Text>
+          {[
+            "Hinduism",
+            "Islam",
+            "Sikhism",
+            "Jainism",
+            "Parsism",
+            "Buddhism",
+          ].map((rel) => (
+            <View
+              key={rel}
+              style={{ flexDirection: "row", alignItems: "center" }}
+            >
+              <View
+                style={
+                  formData.religion === rel
+                    ? styles.checkboxChecked
+                    : styles.checkbox
+                }
+              />
+              <Text style={styles.checkboxLabel}>{rel}</Text>
+            </View>
+          ))}
+        </View>
+
+        {/* Contact Information */}
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Student Mobile No:</Text>
+          <Text style={styles.value}>{formData.mobile}</Text>
+          <Text style={styles.label}>Email Id:</Text>
+          <Text style={styles.value}>{formData.email}</Text>
+        </View>
+
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Student Aadhar Card No:</Text>
+          <Text style={styles.value}>{formData.adharCard}</Text>
+        </View>
+
+        {/* Address */}
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Student Address:</Text>
+          <Text style={styles.value}>{formData.permanentAddress}</Text>
+        </View>
+
+        {formData.temporaryAddress && (
+          <View style={styles.formRow}>
+            <Text style={styles.label}>
+              Student PG/Hostel/Temporary Address:
             </Text>
+            <Text style={styles.value}>{formData.temporaryAddress}</Text>
           </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Date of Birth:</Text>
-            <Text style={styles.value}>{formData.dateOfBirth}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Gender:</Text>
-            <Text style={styles.value}>{formData.gender}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Category:</Text>
-            <Text style={styles.value}>{formData.category}</Text>
+        )}
+
+        {/* Guardian Details */}
+        <View style={{ ...styles.guardianSection, marginTop: 15 }}>
+          <Text style={styles.formTitle}>GUARDIAN DETAILS:</Text>
+          <View style={styles.guardianColumns}>
+            {/* Father's Details */}
+            <View style={styles.guardianColumn}>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Father's Name:</Text>
+                <Text style={styles.value}>{formData.fatherName}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Mobile No:</Text>
+                <Text style={styles.value}>{formData.fatherMobile}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Email-Id:</Text>
+                <Text style={styles.value}>{formData.fatherEmail}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Educational Qualification:</Text>
+                <Text style={styles.value}>{formData.fatherEducation}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Profession:</Text>
+                <Text style={styles.value}>{formData.fatherProfession}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Annual Income (in Rs.):</Text>
+                <Text style={styles.value}>{formData.fatherIncome}</Text>
+              </View>
+            </View>
+
+            {/* Mother's Details */}
+            <View style={styles.guardianColumn}>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Mother's Name:</Text>
+                <Text style={styles.value}>{formData.motherName}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Mobile No:</Text>
+                <Text style={styles.value}>{formData.motherMobile}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Email-Id:</Text>
+                <Text style={styles.value}>{formData.motherEmail}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Educational Qualification:</Text>
+                <Text style={styles.value}>{formData.motherEducation}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Profession:</Text>
+                <Text style={styles.value}>{formData.motherProfession}</Text>
+              </View>
+              <View style={styles.formRow}>
+                <Text style={styles.label}>Annual Income (in Rs.):</Text>
+                <Text style={styles.value}>{formData.motherIncome}</Text>
+              </View>
+            </View>
           </View>
         </View>
 
-        {/* Contact Details */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Contact Details</Text>
-          <View style={styles.row}>
-            <Text style={styles.label}>Email:</Text>
-            <Text style={styles.value}>{formData.email}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Mobile:</Text>
-            <Text style={styles.value}>{formData.mobile}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Address:</Text>
-            <Text style={styles.value}>{formData.permanentAddress}</Text>
+        <View style={[styles.formRow, { marginTop: 15 }]}>
+          <Text style={styles.label}>
+            Parent's Permanent Residence Address:
+          </Text>
+          <Text style={styles.value}>{formData.parentsPermanentAddress}</Text>
+        </View>
+
+        {/* Emergency Contact */}
+        <View style={[styles.emergencySection, { marginTop: 15 }]}>
+          <Text style={styles.formTitle}>
+            EMERGENCY MOBILE NO./EMAIL (Other than parents):
+          </Text>
+          <View style={styles.emergencyRow}>
+            <View style={styles.emergencyField}>
+              <Text style={styles.emergencyLabel}>Relationship:</Text>
+              <Text style={styles.emergencyValue}>
+                {formData.emergencyContactRelation}
+              </Text>
+            </View>
+            <View style={styles.emergencyField}>
+              <Text style={styles.emergencyLabel}>Mobile No:</Text>
+              <Text style={styles.emergencyValue}>
+                {formData.emergencyContactMobile}
+              </Text>
+            </View>
+            <View style={styles.emergencyField}>
+              <Text style={styles.emergencyLabel}>Email-Id:</Text>
+              <Text style={styles.emergencyValue}>
+                {formData.emergencyContactEmail}
+              </Text>
+            </View>
           </View>
         </View>
 
-        {/* Parent Details */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Parent Details</Text>
-          <View style={styles.row}>
-            <Text style={styles.label}>Father's Name:</Text>
-            <Text style={styles.value}>{formData.fatherName}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Mother's Name:</Text>
-            <Text style={styles.value}>{formData.motherName}</Text>
-          </View>
-        </View>
+       
+      </Page>
 
-        {/* Course Details */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Course Details</Text>
-          <View style={styles.row}>
-            <Text style={styles.label}>Course Type:</Text>
-            <Text style={styles.value}>{formData.courseType}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Campus:</Text>
-            <Text style={styles.value}>{formData.campus}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.label}>Program Type:</Text>
-            <Text style={styles.value}>{formData.programType}</Text>
-          </View>
-        </View>
-
-        {/* Info Row */}
-        <Text style={styles.infoRow}>
-          Please verify all information carefully before submission. For any queries, contact the admissions office.
+      {/* Page 2 - Educational Details and Terms */}
+      <Page size="A4" style={[styles.page, { paddingTop: 20 }]}>
+        <Text style={styles.formTitle}>EDUCATIONAL DETAILS:</Text>
+        <Text style={{ fontSize: 8, marginBottom: 8 }}>
+          (Start from the recent course to Std. X)
         </Text>
 
-        {/* Footer */}
-        <View style={styles.footer}>
-          <Text>Form Filing Date: {formattedDate}</Text>
-          <Text>This is a computer-generated document. No signature is required.</Text>
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Name as per 10th Marksheet:</Text>
+          <Text style={styles.value}>{formData.nameAs10th}</Text>
+        </View>
+
+        {/* Education Table */}
+        <View style={styles.table}>
+          <View style={styles.tableHeader}>
+            <Text style={styles.tableCell}>Exam Board/University</Text>
+            <Text style={styles.tableCell}>School/College/Institution</Text>
+            <Text style={styles.tableCell}>Subjects/Stream/Programme Name</Text>
+            <Text style={styles.tableCell}>Year of Passing</Text>
+            <Text style={styles.tableCell}>Grade/CGPA/Percentage</Text>
+            <Text style={styles.tableCell}>Duration of Programme</Text>
+          </View>
+          {formData.education?.map((edu, index) => (
+            <View key={index} style={styles.tableRow}>
+              <Text style={styles.tableCell}>
+                {["X", "XI", "XII", "UG/Diploma", "Other"][index]}
+              </Text>
+              <Text style={styles.tableCell}>{edu.institution}</Text>
+              <Text style={styles.tableCell}>{edu.stream}</Text>
+              <Text style={styles.tableCell}>{edu.yearOfPassing}</Text>
+              <Text style={styles.tableCell}>{edu.grade}</Text>
+              <Text style={styles.tableCell}>{edu.duration || "-"}</Text>
+            </View>
+          ))}
+        </View>
+
+        {/* Terms and Conditions */}
+        <View style={[styles.termsSection, { marginTop: 6 }]}>
+          <Text style={[styles.formTitle, { marginBottom: 4 }]}>
+            TERMS & CONDITION:
+          </Text>
+          {termsAndConditions.map((term, index) => (
+            <Text key={index} style={styles.termItem}>
+              • {term}
+            </Text>
+          ))}
+        </View>
+
+        {/* Signature Section */}
+        <View style={[styles.signatureSection, { marginTop: 15 }]}>
+          <View style={styles.signatureBox}>
+            <Text>Signature of Applicant:</Text>
+            {formData.applicantSignature && (
+              <Image
+                src={formData.applicantSignature || "/placeholder.svg"}
+                style={styles.signatureImage}
+              />
+            )}
+          </View>
+          <View style={styles.signatureBox}>
+            <Text>Date of form filling:</Text>
+            <View style={styles.dottedUnderline}>
+              <Text>{formData.formFilingDate}</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Enhanced Footer to match the image */}
+        <View fixed style={styles.footer}>
+          <View style={styles.footerItem}>
+            <Text><Earth/> www.inframeschool.com</Text>
+          </View>
+          <View style={styles.footerItem}>
+            <Text>
+            <LocateIcon/> D-98 Pal Link Road (Behind Kamla Nehru Hospital) Jodhpur
+            </Text>
+            Near Sathee Electrical Showroom Rajasthan<Text></Text>
+          </View>
+          <View style={styles.footerItem}>
+            <Text>✉️ info@inframeschool.com</Text>
+          </View>
         </View>
       </Page>
     </Document>
   );
 };
 
-// Enhanced PDF Download Function with better error handling
-export const downloadApplicationForm = async (formData) => {
-  // Validate required fields
-  if (!formData.firstName || !formData.lastName) {
-    toast.error('Required information missing. Please complete the form.');
-    return;
-  }
-  
-  // Show loading toast
-  const loadingToast = toast.loading('Generating application form...');
-  
+export const downloadApplicationForm = async (formData: any) => {
   try {
-    // Dynamically import react-pdf
-    const { pdf } = await import('@react-pdf/renderer');
-    
-    const blob = await pdf(
-      <ApplicationFormPDF 
-        formData={formData} 
-        profilePhoto={formData.profilePhoto || LOGO} // Fallback to logo if no photo
-      />
-    ).toBlob();
-    
+    const loadingToast = toast.loading("Generating application form...");
+
+    // Create PDF
+    const blob = await pdf(<ApplicationFormPDF formData={formData} />).toBlob();
+
+    // Create download link
     const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
-    link.download = `application_form_${formData.firstName}_${formData.lastName}_${new Date().getTime()}.pdf`;
+    link.download = `application_form_${formData.firstName}_${formData.lastName}.pdf`;
+
+    // Trigger download
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    // Cleanup
     URL.revokeObjectURL(url);
-    
-    // Dismiss loading toast and show success
+
     toast.dismiss(loadingToast);
-    toast.success('Application form downloaded successfully!');
+    toast.success("Application form downloaded successfully!");
   } catch (error) {
-    console.error('Error generating PDF:', error);
-    toast.dismiss(loadingToast);
-    toast.error('Error downloading application form. Please try again.');
+    console.error("Error generating PDF:", error);
+    toast.error("Failed to generate application form. Please try again.");
   }
 };

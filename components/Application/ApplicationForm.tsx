@@ -36,6 +36,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { coursesData, LOGO } from "../../utils/constant";
 import { downloadApplicationForm } from "./DownloadPDF";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { Textarea } from "../ui/textarea";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -109,7 +110,7 @@ const RegistrationForm = () => {
   const onSubmit = async (data) => {
     const isStepValid = await trigger();
     if (isStepValid) {
-      const newFormData = { ...formData, ...data };
+      const newFormData = { ...formData, ...data,formFilingDate };
       setFormData(newFormData);
 
       if (currentStep < steps.length - 1) {
@@ -602,126 +603,144 @@ const RegistrationForm = () => {
 
       {/* Guardian Details Section - Mother */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Mother's Details</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="motherName">Mother's Name *</Label>
-            <Input
-              {...register("motherName", {
-                required: "Mother's name is required",
-              })}
-              id="motherName"
-              placeholder="Enter mother's name"
-              className="h-12"
-            />
-            {errors.motherName && (
-              <Alert variant="destructive">
-                <AlertDescription className="text-red-600">
-                  {errors.motherName.message}
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
+  <h3 className="text-lg font-semibold">Mother's Details</h3>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-2">
+      <Label htmlFor="motherName">Mother's Name *</Label>
+      <Input
+        {...register("motherName", {
+          required: "Mother's name is required",
+        })}
+        id="motherName"
+        placeholder="Enter mother's name"
+        className="h-12"
+      />
+      {errors.motherName && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.motherName.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="motherMobile">Mother's Mobile *</Label>
-            <Input
-              {...register("motherMobile", {
-                required: "Mother's mobile is required",
-              })}
-              id="motherMobile"
-              placeholder="Enter mother's mobile"
-              className="h-12"
-            />
-            {errors.motherMobile && (
-              <Alert variant="destructive">
-                <AlertDescription className="text-red-600">
-                  {errors.motherMobile.message}
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
+    <div className="space-y-2">
+      <Label htmlFor="motherMobile">Mother's Mobile *</Label>
+      <Input
+        {...register("motherMobile", {
+          required: "Mother's mobile is required",
+        })}
+        id="motherMobile"
+        placeholder="Enter mother's mobile"
+        className="h-12"
+      />
+      {errors.motherMobile && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.motherMobile.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="motherEmail">Mother's Email *</Label>
-            <Input
-              {...register("motherEmail", {
-                required: "Mother's email is required",
-              })}
-              id="motherEmail"
-              type="email"
-              placeholder="Enter mother's email"
-              className="h-12"
-            />
-            {errors.motherEmail && (
-              <Alert variant="destructive">
-                <AlertDescription className="text-red-600">
-                  {errors.motherEmail.message}
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
+    <div className="space-y-2">
+      <Label htmlFor="motherEmail">Mother's Email *</Label>
+      <Input
+        {...register("motherEmail", {
+          required: "Mother's email is required",
+        })}
+        id="motherEmail"
+        type="email"
+        placeholder="Enter mother's email"
+        className="h-12"
+      />
+      {errors.motherEmail && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.motherEmail.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="motherEducation">Mother's Education *</Label>
-            <Input
-              {...register("motherEducation", {
-                required: "Mother's education is required",
-              })}
-              id="motherEducation"
-              placeholder="Enter mother's education"
-              className="h-12"
-            />
-            {errors.motherEducation && (
-              <Alert variant="destructive">
-                <AlertDescription className="text-red-600">
-                  {errors.motherEducation.message}
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
+    <div className="space-y-2">
+      <Label htmlFor="motherEducation">Mother's Education *</Label>
+      <Input
+        {...register("motherEducation", {
+          required: "Mother's education is required",
+        })}
+        id="motherEducation"
+        placeholder="Enter mother's education"
+        className="h-12"
+      />
+      {errors.motherEducation && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.motherEducation.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="motherProfession">Mother's Profession *</Label>
-            <Input
-              {...register("motherProfession", {
-                required: "Mother's profession is required",
-              })}
-              id="motherProfession"
-              placeholder="Enter mother's profession"
-              className="h-12"
-            />
-            {errors.motherProfession && (
-              <Alert variant="destructive">
-                <AlertDescription className="text-red-600">
-                  {errors.motherProfession.message}
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
+    <div className="space-y-2">
+      <Label htmlFor="motherProfession">Mother's Profession *</Label>
+      <Input
+        {...register("motherProfession", {
+          required: "Mother's profession is required",
+        })}
+        id="motherProfession"
+        placeholder="Enter mother's profession"
+        className="h-12"
+      />
+      {errors.motherProfession && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.motherProfession.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="motherIncome">
-              Mother's Annual Income (in Rs.) *
-            </Label>
-            <Input
-              {...register("motherIncome", {
-                required: "Mother's annual income is required",
-              })}
-              id="motherIncome"
-              placeholder="Enter mother's annual income"
-              className="h-12"
-            />
-            {errors.motherIncome && (
-              <Alert variant="destructive">
-                <AlertDescription className="text-red-600">
-                  {errors.motherIncome.message}
-                </AlertDescription>
-              </Alert>
-            )}
-          </div>
-        </div>
-      </div>
+    <div className="space-y-2">
+      <Label htmlFor="motherIncome">Mother's Annual Income (in Rs.) *</Label>
+      <Input
+        {...register("motherIncome", {
+          required: "Mother's annual income is required",
+        })}
+        id="motherIncome"
+        placeholder="Enter mother's annual income"
+        className="h-12"
+      />
+      {errors.motherIncome && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.motherIncome.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
+
+    {/* New Field: Parents' Permanent Address */}
+    <div className="space-y-2 md:col-span-2">
+      <Label htmlFor="parentsPermanentAddress">Parents' Permanent Address *</Label>
+      <Textarea
+        {...register("parentsPermanentAddress", {
+          required: "Parents' permanent address is required",
+        })}
+        id="parentsPermanentAddress"
+        placeholder="Enter parents' permanent address"
+        className="h-24"
+      />
+      {errors.parentsPermanentAddress && (
+        <Alert variant="destructive">
+          <AlertDescription className="text-red-600">
+            {errors.parentsPermanentAddress.message}
+          </AlertDescription>
+        </Alert>
+      )}
+    </div>
+  </div>
+</div>
 
       {/* Emergency Contact Section */}
       <div className="space-y-4">
@@ -1331,7 +1350,7 @@ const RegistrationForm = () => {
     <div
       className={`min-h-screen bg-gradient-to-br my-28 from-purple-50 to-blue-50 p-8 ${poppins.className}`}
     >
-      <div className="max-w-7xl mx-auto border">
+      <div className="max-w-7xl mx-auto border bg-zinc-100">
         <Card className="shadow-xl">
           <div className="p-6">
             <Tabs defaultValue="new" className="w-full">
