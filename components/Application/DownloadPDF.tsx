@@ -8,10 +8,12 @@ import {
   Image,
   pdf,
   Font,
+  Path,
+  Svg,
 } from "@react-pdf/renderer";
 import { toast } from "sonner";
-import { LOGO } from "../../utils/constant";
-import { Earth, LocateIcon } from "lucide-react";
+
+import { Earth, LocateIcon, MailIcon, PhoneIcon } from "lucide-react";
 
 // Register Poppins font
 Font.register({
@@ -41,7 +43,7 @@ Font.register({
 // Black and white styles only - enhanced for better layout
 const styles = StyleSheet.create({
   page: {
-    padding: 50, // Reduced padding
+    padding: 30, // Reduced padding
     fontSize: 10, // Smaller base font size
     fontFamily: "Poppins",
     color: "#000000",
@@ -113,9 +115,28 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 9,
   },
-  checkboxContainer: {
+  CategorycheckboxContainer: {
     flexDirection: "row",
-    marginBottom: 4,
+
+    marginBottom: 6,
+  },
+  ReligioncheckboxContainer: {
+    width: "100%",
+    flexDirection: "row",
+    marginBottom: 6,
+  },
+  religionsWrapper: {
+    flex: 1,
+    flexDirection: "column", // Stack the rows vertically
+  },
+  religionRow: {
+    flexDirection: "row", // Items in each row are horizontal
+    marginBottom: 3, // Space between rows
+  },
+  checkboxWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "33%", // Each checkbox takes roughly a third of the available space
   },
   checkbox: {
     width: 12,
@@ -152,7 +173,7 @@ const styles = StyleSheet.create({
   tableCell: {
     flex: 1,
     padding: 5,
-   
+
     borderRight: "1pt solid black",
     textAlign: "center",
   },
@@ -171,12 +192,14 @@ const styles = StyleSheet.create({
   signatureSection: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
+    gap: 70,
     marginTop: 20,
     paddingTop: 10,
     borderTop: "1pt solid black",
   },
   signatureBox: {
-    width: "45%",
+    width: "50%",
   },
   signatureImage: {
     width: 150,
@@ -189,32 +212,53 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   // Enhanced footer style to match the provided image
-  footer: {
+  footerContainer: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    borderTop: "1pt solid black",
-    paddingVertical: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    fontSize: 8,
+    height: 30,
     backgroundColor: "#ffffff",
+    borderTop: "1pt solid black",
+  },
+  footerContent: {
+    flexDirection: "row",
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    alignItems: "center",
+    height: "100%",
   },
   footerItem: {
     flexDirection: "row",
     alignItems: "center",
-    marginHorizontal: 10,
-  },
-  footerIcon: {
-    marginRight: 2,
-    height: 12,
-    width: 12,
+    marginRight: 15, // Space between items
   },
   footerText: {
-    fontSize: 8,
+    fontSize: 7,
+    marginLeft: 3,
   },
+  addressText: {
+    fontSize: 7,
+    marginLeft: 3,
+    maxWidth: 230, // Limit width to prevent overlap
+  },
+  websiteText: {
+    fontSize: 7,
+    marginLeft: 3,
+    maxWidth: 120,
+  },
+  emailText: {
+    fontSize: 7,
+    marginLeft: 3,
+    maxWidth: 120,
+  },
+  footerIconContainer: {
+    width: 15,
+    height: 15,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   termsSection: {
     marginTop: 10,
     fontSize: 8, // Smaller font for terms
@@ -281,8 +325,8 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
         {/* Header with Logo and Address */}
         <View style={styles.headerContainer}>
           <View style={styles.headerLeft}>
-            <Image src={'/pixelcut-export4.png'} style={styles.logo} />
-           
+            <Image src={"/pixelcut-export4.png"} style={styles.logo} />
+
             <View style={styles.contact}>
               <Text>Admissions: +91 9649 9649 37</Text>
               <Text>Email: info@inframeschool.com</Text>
@@ -315,6 +359,10 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
           <Text style={styles.label}>Course:</Text>
           <Text style={styles.value}>{formData.course}</Text>
         </View>
+        <View style={styles.formRow}>
+          <Text style={styles.label}>Program:</Text>
+          <Text style={styles.value}>{formData.branch}</Text>
+        </View>
 
         <View style={styles.formRow}>
           <Text style={styles.label}>Name of the Applicant:</Text>
@@ -340,7 +388,11 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
 
         <View style={styles.formRow}>
           <Text style={styles.label}>State of Domicile:</Text>
-          <Text style={styles.value}>{formData.stateOfDomicile}</Text>
+          <Text style={styles.value}>{formData.state}</Text>
+        </View>
+        <View style={styles.formRow}>
+          <Text style={styles.label}>City:</Text>
+          <Text style={styles.value}>{formData.city}</Text>
         </View>
 
         <View style={styles.formRow}>
@@ -349,9 +401,9 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
         </View>
 
         {/* Category and Religion Selection */}
-        <View style={styles.checkboxContainer}>
+        <View style={styles.CategorycheckboxContainer}>
           <Text style={styles.label}>Category:</Text>
-          {["Gen", "OBC", "SC", "ST", "DC", "PD"].map((cat) => (
+          {["Gen", "OBC", "SC", "ST", "PwD"].map((cat) => (
             <View
               key={cat}
               style={{ flexDirection: "row", alignItems: "center" }}
@@ -368,30 +420,41 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
           ))}
         </View>
 
-        <View style={styles.checkboxContainer}>
+        <View style={styles.ReligioncheckboxContainer}>
           <Text style={styles.label}>Religion:</Text>
-          {[
-            "Hinduism",
-            "Islam",
-            "Sikhism",
-            "Jainism",
-            "Parsism",
-            "Buddhism",
-          ].map((rel) => (
-            <View
-              key={rel}
-              style={{ flexDirection: "row", alignItems: "center" }}
-            >
-              <View
-                style={
-                  formData.religion === rel
-                    ? styles.checkboxChecked
-                    : styles.checkbox
-                }
-              />
-              <Text style={styles.checkboxLabel}>{rel}</Text>
+          <View style={styles.religionsWrapper}>
+            {/* First row of religions */}
+            <View style={styles.religionRow}>
+              {["Hinduism", "Islam", "Sikhism"].map((rel) => (
+                <View key={rel} style={styles.checkboxWrapper}>
+                  <View
+                    style={
+                      formData.religion === rel
+                        ? styles.checkboxChecked
+                        : styles.checkbox
+                    }
+                  />
+                  <Text style={styles.checkboxLabel}>{rel}</Text>
+                </View>
+              ))}
             </View>
-          ))}
+
+            {/* Second row of religions */}
+            <View style={styles.religionRow}>
+              {["Parsism", "Buddhism", "Jainism"].map((rel) => (
+                <View key={rel} style={styles.checkboxWrapper}>
+                  <View
+                    style={
+                      formData.religion === rel
+                        ? styles.checkboxChecked
+                        : styles.checkbox
+                    }
+                  />
+                  <Text style={styles.checkboxLabel}>{rel}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
         </View>
 
         {/* Contact Information */}
@@ -517,8 +580,6 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
             </View>
           </View>
         </View>
-
-       
       </Page>
 
       {/* Page 2 - Educational Details and Terms */}
@@ -572,35 +633,101 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
         {/* Signature Section */}
         <View style={[styles.signatureSection, { marginTop: 15 }]}>
           <View style={styles.signatureBox}>
-            <Text>Signature of Applicant:</Text>
             {formData.applicantSignature && (
               <Image
                 src={formData.applicantSignature || "/placeholder.svg"}
                 style={styles.signatureImage}
               />
             )}
+            <Text style={{ textAlign: "center" }}>Signature of Applicant:</Text>
           </View>
           <View style={styles.signatureBox}>
-            <Text>Date of form filling:</Text>
-            <View style={styles.dottedUnderline}>
-              <Text>{formData.formFilingDate}</Text>
-            </View>
+            {formData.applicantSignature && (
+              <Image
+                src={formData.guardianSignature || "/placeholder.svg"}
+                style={styles.signatureImage}
+              />
+            )}
+            <Text style={{ textAlign: "center" }}>Signature of Parent:</Text>
           </View>
         </View>
 
         {/* Enhanced Footer to match the image */}
-        <View fixed style={styles.footer}>
-          <View style={styles.footerItem}>
-            <Text><Earth/> www.inframeschool.com</Text>
-          </View>
-          <View style={styles.footerItem}>
-            <Text>
-            <LocateIcon/> D-98 Pal Link Road (Behind Kamla Nehru Hospital) Jodhpur
+        <View style={styles.footerContainer} fixed>
+          <View
+            style={{
+              position: "absolute",
+              top: -20,
+              right: 8,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 7, marginRight: 3 }}>
+              Date of form filling:
             </Text>
-            Near Sathee Electrical Showroom Rajasthan<Text></Text>
+            <View >
+              <Text style={{ fontSize: 7 }}>{formData.formFilingDate}</Text>
+            </View>
           </View>
-          <View style={styles.footerItem}>
-            <Text>✉️ info@inframeschool.com</Text>
+          <View style={styles.footerContent}>
+            <View style={styles.footerItem}>
+              <Svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                style={styles.footerIcon}
+              >
+                <Path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+                  fill="black"
+                />
+              </Svg>
+              <Text style={styles.websiteText}>www.Inframeschool.com</Text>
+            </View>
+
+            <View style={styles.footerItem}>
+              <Svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                style={styles.footerIcon}
+              >
+                <Path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  fill="black"
+                />
+              </Svg>
+              <Text style={styles.addressText}>
+                B-09 Pal Link Road Behind Kamla Nagar Hospital Marudhar Nagar
+                Jodhpur (342008) Rajasthan
+              </Text>
+            </View>
+
+            <View style={styles.footerItem}>
+              <Svg width="10" height="10" viewBox="0 0 24 24">
+                <Path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+                  fill="black"
+                />
+              </Svg>
+              <Text style={styles.footerText}>9649-9649-37</Text>
+            </View>
+
+            <View style={styles.footerItem}>
+              <Svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                style={styles.footerIcon}
+              >
+                <Path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                  fill="black"
+                />
+              </Svg>
+              <Text style={styles.emailText}>info@inframeschool.com</Text>
+            </View>
           </View>
         </View>
       </Page>
