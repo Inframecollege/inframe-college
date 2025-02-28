@@ -144,7 +144,7 @@ export default function CareersPage() {
       }
 
       // Replace with your Formspree endpoint
-      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID_HERE", {
+      const response = await fetch("https://formspree.io/f/mqaerebq", {
         method: "POST",
         body: formData,
       });
@@ -164,7 +164,7 @@ export default function CareersPage() {
     } catch (error) {
       setFormStatus({
         success: false,
-        message: "There was an error submitting your application. Please try again.",
+        message: "There was an error submitting your application. Please try again."+error,
       });
     } finally {
       setIsSubmitting(false);

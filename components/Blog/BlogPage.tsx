@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Separator } from '../../src/components/ui/separator';
-import { CalendarIcon, ChevronRight, User, Search } from 'lucide-react';
+import { CalendarIcon, ChevronRight, User} from 'lucide-react';
 import { Poppins } from 'next/font/google';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, Clock, User, Bookmark } from 'lucide-react'
+import { Calendar, Clock, Bookmark } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
 import { Card,  CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card"
