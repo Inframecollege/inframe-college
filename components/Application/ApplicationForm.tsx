@@ -38,6 +38,7 @@ import { cities, coursesData, LOGO, states } from "../../utils/constant";
 import { downloadApplicationForm } from "./DownloadPDF";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Textarea } from "../ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -59,6 +60,7 @@ const RegistrationForm = () => {
     useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedBranchFee, setSelectedBranchFee] = useState(null);
+  const [hasGuardian, setHasGuardian] = useState(false)
 
   const {
     register,
@@ -132,7 +134,7 @@ const RegistrationForm = () => {
 
   const renderPersonalDetails = () => (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center border-b pb-6 gap-52">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center border-b pb-6 gap-10 md:gap-52">
         {/* Logo and Address Section */}
         <div className="flex flex-col  items-start  space-x-4">
           {/* Logo */}
@@ -192,7 +194,7 @@ const RegistrationForm = () => {
         {/* Profile Photo Upload Section */}
         <div className="flex flex-col items-center space-y-3 w-full max-w-xs">
           <Label className="text-gray-700 font-medium">Profile Photo *</Label>
-          <div className="border-2 border-dashed w-52 rounded-xl p-10 text-center h-64 hover:ring-2 hover:ring-blue-500 transition">
+          <div className="border-2 border-gray-300 border-dashed w-44  p-10 text-center h-52 hover:ring-2 hover:ring-blue-500 transition relative">
             <Input
               type="file"
               accept="image/*"
@@ -202,24 +204,26 @@ const RegistrationForm = () => {
                 handleFileUpload(e, "profilePhoto", setImagePreview)
               }
             />
-            <Label
-              htmlFor="profilePhoto"
-              className="cursor-pointer text-blue-600 hover:text-blue-700 transition"
-            >
-              Click to upload or drag & drop
-            </Label>
+
             {imagePreview ? (
-              <div className="mt-3">
+              <div className="absolute inset-0 flex justify-center items-center">
                 <img
                   src={imagePreview || "/placeholder.svg"}
                   alt="Profile Preview"
-                  className="w-32 h-32 object-cover rounded-lg shadow-md border"
+                  className="w-full h-full object-cover"
                 />
               </div>
             ) : (
-              <p className="text-xs text-gray-500 mt-2">PNG, JPG up to 5MB</p>
+              <Label
+                htmlFor="profilePhoto"
+                className="cursor-pointer text-blue-600 hover:text-blue-700 transition"
+              >
+                Click to upload or drag & drop
+              </Label>
             )}
+            <p className="text-xs text-gray-500 mt-2">PNG, JPG up to 5MB</p>
           </div>
+
           {errors.profilePhoto && (
             <Alert variant="destructive" className="w-full text-center">
               <AlertDescription className="text-red-600">
@@ -530,9 +534,9 @@ const RegistrationForm = () => {
         )}
       </div>
 
-      {/* Guardian Details Section - Father */}
+      {/* Parents Details Section */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Father's Details</h3>
+        <h3 className="text-lg font-semibold">Parents Details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="fatherName">Father's Name *</Label>
@@ -653,7 +657,7 @@ const RegistrationForm = () => {
         </div>
       </div>
 
-      {/* Guardian Details Section - Mother */}
+      {/* Mother's Details */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Mother's Details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -774,7 +778,7 @@ const RegistrationForm = () => {
             )}
           </div>
 
-          {/* New Field: Parents' Permanent Address */}
+          {/* Parents' Permanent Address */}
           <div className="space-y-2 md:col-span-2">
             <Label htmlFor="parentsPermanentAddress">
               Parents' Permanent Address *
@@ -796,6 +800,160 @@ const RegistrationForm = () => {
             )}
           </div>
         </div>
+      </div>
+
+      {/* Guardian Details Section (Optional) */}
+      <div className="space-y-4 border-t pt-4">
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="hasGuardian"
+            checked={hasGuardian}
+            onCheckedChange={(checked) => {
+              setHasGuardian(checked);
+              if (!checked) {
+                // Clear guardian fields if unchecked
+                setValue("guardianName", "");
+                setValue("guardianRelation", "");
+                setValue("guardianMobile", "");
+                setValue("guardianEmail", "");
+                setValue("guardianProfession", "");
+                setValue("guardianAddress", '  "');
+                setValue("guardianProfession", "");
+                setValue("guardianAddress", "");
+              }
+            }}
+          />
+          <Label htmlFor="hasGuardian" className="font-medium">
+            Guardian details (if different from parents)
+          </Label>
+        </div>
+
+        {hasGuardian && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pl-6 border-l-2 border-gray-200">
+            <div className="space-y-2">
+              <Label htmlFor="guardianName">Guardian's Name</Label>
+              <Input
+                {...register("guardianName", {
+                  required: hasGuardian ? "Guardian's name is required" : false,
+                })}
+                id="guardianName"
+                placeholder="Enter guardian's name"
+                className="h-12"
+              />
+              {errors.guardianName && (
+                <Alert variant="destructive">
+                  <AlertDescription className="text-red-600">
+                    {errors.guardianName.message}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="guardianRelation">Relationship</Label>
+              <Input
+                {...register("guardianRelation", {
+                  required: hasGuardian ? "Relationship is required" : false,
+                })}
+                id="guardianRelation"
+                placeholder="Enter relationship with guardian"
+                className="h-12"
+              />
+              {errors.guardianRelation && (
+                <Alert variant="destructive">
+                  <AlertDescription className="text-red-600">
+                    {errors.guardianRelation.message}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="guardianMobile">Guardian's Mobile</Label>
+              <Input
+                {...register("guardianMobile", {
+                  required: hasGuardian
+                    ? "Guardian's mobile is required"
+                    : false,
+                })}
+                id="guardianMobile"
+                placeholder="Enter guardian's mobile"
+                className="h-12"
+              />
+              {errors.guardianMobile && (
+                <Alert variant="destructive">
+                  <AlertDescription className="text-red-600">
+                    {errors.guardianMobile.message}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="guardianEmail">Guardian's Email</Label>
+              <Input
+                {...register("guardianEmail", {
+                  required: hasGuardian
+                    ? "Guardian's email is required"
+                    : false,
+                })}
+                id="guardianEmail"
+                type="email"
+                placeholder="Enter guardian's email"
+                className="h-12"
+              />
+              {errors.guardianEmail && (
+                <Alert variant="destructive">
+                  <AlertDescription className="text-red-600">
+                    {errors.guardianEmail.message}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="guardianProfession">Guardian's Profession</Label>
+              <Input
+                {...register("guardianProfession", {
+                  required: hasGuardian
+                    ? "Guardian's profession is required"
+                    : false,
+                })}
+                id="guardianProfession"
+                placeholder="Enter guardian's profession"
+                className="h-12"
+              />
+              {errors.guardianProfession && (
+                <Alert variant="destructive">
+                  <AlertDescription className="text-red-600">
+                    {errors.guardianProfession.message}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="guardianAddress">Guardian's Address</Label>
+              <Input
+                {...register("guardianAddress", {
+                  required: hasGuardian
+                    ? "Guardian's address is required"
+                    : false,
+                })}
+                id="guardianAddress"
+                placeholder="Enter guardian's address"
+                className="h-12"
+              />
+              {errors.guardianAddress && (
+                <Alert variant="destructive">
+                  <AlertDescription className="text-red-600">
+                    {errors.guardianAddress.message}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Emergency Contact Section */}
@@ -995,7 +1153,7 @@ const RegistrationForm = () => {
           </Alert>
         )}
       </div>
-  
+
       <div className="space-y-4">
         {["X", "XI", "XII"].map((level, index) => (
           <Card key={level} className="p-4">
@@ -1021,7 +1179,7 @@ const RegistrationForm = () => {
                     </Alert>
                   )}
                 </div>
-  
+
                 <div className="space-y-2">
                   <Label>Stream/Subjects *</Label>
                   <Input
@@ -1039,7 +1197,7 @@ const RegistrationForm = () => {
                     </Alert>
                   )}
                 </div>
-  
+
                 <div className="space-y-2">
                   <Label>Year of Passing *</Label>
                   <Input
@@ -1060,7 +1218,7 @@ const RegistrationForm = () => {
                     </Alert>
                   )}
                 </div>
-  
+
                 <div className="space-y-2">
                   <Label>Grade/Percentage *</Label>
                   <Input
@@ -1079,7 +1237,7 @@ const RegistrationForm = () => {
                   )}
                 </div>
               </div>
-  
+
               <div className="space-y-2">
                 <Label>Upload Marksheet *</Label>
                 <Input
@@ -1118,7 +1276,7 @@ const RegistrationForm = () => {
                   className="h-12"
                 />
               </div>
-  
+
               <div className="space-y-2">
                 <Label>Stream/Subjects</Label>
                 <Input
@@ -1127,7 +1285,7 @@ const RegistrationForm = () => {
                   className="h-12"
                 />
               </div>
-  
+
               <div className="space-y-2">
                 <Label>Year of Passing</Label>
                 <Input
@@ -1139,7 +1297,7 @@ const RegistrationForm = () => {
                   max="2024"
                 />
               </div>
-  
+
               <div className="space-y-2">
                 <Label>Grade/Percentage</Label>
                 <Input
@@ -1149,7 +1307,7 @@ const RegistrationForm = () => {
                 />
               </div>
             </div>
-  
+
             <div className="space-y-2">
               <Label>Upload Marksheet</Label>
               <Input
@@ -1161,38 +1319,42 @@ const RegistrationForm = () => {
             </div>
           </CardContent>
         </Card>
-  
-        {/* Academic Certifications Section (Optional) */}
+
+        {/* Other Certificates/Attachments Section (Optional) */}
         <Card className="p-4">
           <CardHeader>
             <CardTitle className="text-lg">
-              Academic Certifications (Optional)
+              Other Certificates/Attachments (Optional)
             </CardTitle>
+            <CardDescription>
+              Upload any additional certificates, achievements, or relevant
+              documents
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Certificate Name</Label>
+                <Label>Certificate/Document Name</Label>
                 <Input
-                  {...register(`academicCertification.name`)}
-                  placeholder="Enter academic certificate name"
+                  {...register(`education.4.certificateName`)}
+                  placeholder="Enter certificate or document name"
                   className="h-12"
                 />
               </div>
-  
+
               <div className="space-y-2">
-                <Label>Issuing Institution</Label>
+                <Label>Issuing Organization</Label>
                 <Input
-                  {...register(`academicCertification.institution`)}
-                  placeholder="Enter issuing institution"
+                  {...register(`education.4.issuingOrg`)}
+                  placeholder="Enter issuing organization"
                   className="h-12"
                 />
               </div>
-  
+
               <div className="space-y-2">
-                <Label>Year of Completion</Label>
+                <Label>Year Received</Label>
                 <Input
-                  {...register(`academicCertification.yearOfCompletion`)}
+                  {...register(`education.4.yearReceived`)}
                   placeholder="YYYY"
                   className="h-12"
                   type="number"
@@ -1200,103 +1362,23 @@ const RegistrationForm = () => {
                   max="2024"
                 />
               </div>
-  
+
               <div className="space-y-2">
-                <Label>Grade/Score (if applicable)</Label>
+                <Label>Description</Label>
                 <Input
-                  {...register(`academicCertification.grade`)}
-                  placeholder="Enter grade or score"
+                  {...register(`education.4.description`)}
+                  placeholder="Brief description of the certificate/document"
                   className="h-12"
                 />
               </div>
             </div>
-  
+
             <div className="space-y-2">
-              <Label>Upload Certificate</Label>
+              <Label>Upload Certificate/Document</Label>
               <Input
                 type="file"
                 accept=".pdf,.jpg,.jpeg,.png"
-                {...register(`academicCertification.certificate`)}
-                className="h-12"
-              />
-            </div>
-          </CardContent>
-        </Card>
-  
-        {/* Professional Courses Certification Section (Optional) */}
-        <Card className="p-4">
-          <CardHeader>
-            <CardTitle className="text-lg">
-              Professional Course Certifications (Optional)
-            </CardTitle>
-            <CardDescription>
-              Add details of any professional courses completed before
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>Course Name</Label>
-                <Input
-                  {...register(`professionalCertification.courseName`)}
-                  placeholder="Enter professional course name"
-                  className="h-12"
-                />
-              </div>
-  
-              <div className="space-y-2">
-                <Label>Training Provider/Institute</Label>
-                <Input
-                  {...register(`professionalCertification.provider`)}
-                  placeholder="Enter training provider"
-                  className="h-12"
-                />
-              </div>
-  
-              <div className="space-y-2">
-                <Label>Completion Date</Label>
-                <Input
-                  {...register(`professionalCertification.completionDate`)}
-                  placeholder="MM/YYYY"
-                  className="h-12"
-                  type="month"
-                />
-              </div>
-  
-              <div className="space-y-2">
-                <Label>Duration (in hours/days/months)</Label>
-                <Input
-                  {...register(`professionalCertification.duration`)}
-                  placeholder="Enter course duration"
-                  className="h-12"
-                />
-              </div>
-            </div>
-  
-            <div className="space-y-2">
-              <Label>Skills Acquired</Label>
-              <Input
-                {...register(`professionalCertification.skills`)}
-                placeholder="Enter skills acquired (comma separated)"
-                className="h-12"
-              />
-            </div>
-  
-            <div className="space-y-2">
-              <Label>Upload Certificate</Label>
-              <Input
-                type="file"
-                accept=".pdf,.jpg,.jpeg,.png"
-                {...register(`professionalCertification.certificate`)}
-                className="h-12"
-              />
-            </div>
-  
-            <div className="space-y-2">
-              <Label>Certificate ID/Credential URL (if available)</Label>
-              <Input
-                {...register(`professionalCertification.credentialId`)}
-                placeholder="Enter certificate ID or credential URL"
+                {...register(`education.4.certificate`)}
                 className="h-12"
               />
             </div>
@@ -1545,21 +1627,21 @@ const RegistrationForm = () => {
 
   return (
     <div
-      className={`min-h-screen bg-gradient-to-br my-28 from-purple-50 to-blue-50 p-8 ${poppins.className}`}
+      className={`min-h-screen bg-gradient-to-br my-28 from-purple-50 to-blue-50 md:p-8 ${poppins.className}`}
     >
-      <div className="max-w-7xl mx-auto border bg-zinc-100">
+      <div className="  md:max-w-7xl md:mx-auto border bg-zinc-100">
         <Card className="shadow-xl">
           <div className="p-6">
             <Tabs defaultValue="new" className="w-full">
               <TabsList className="grid w-full gap-4 grid-cols-2 mb-8">
                 <TabsTrigger
-                  className={`py-3 ${poppins.className} rounded-none text-md font-semibold border border-black`}
+                  className={`py-3 ${poppins.className} rounded-none text-sm md:text-base font-semibold border border-black`}
                   value="new"
                 >
                   New Applicant
                 </TabsTrigger>
                 <TabsTrigger
-                  className={`py-3 ${poppins.className} rounded-none text-md font-semibold border border-black`}
+                  className={`py-3 ${poppins.className} rounded-none text-sm md:text-base font-semibold border border-black`}
                   value="existing"
                 >
                   Already Applied
@@ -1570,13 +1652,13 @@ const RegistrationForm = () => {
                 <div className="flex flex-col md:flex-row border rounded-md">
                   {/* Steps sidebar */}
                   <div className="w-full md:w-1/4 bg-black text-white p-8 rounded-bl-lg">
-                    <h2 className="text-2xl font-bold mb-6">
+                    <h2 className="text-lg text-center md:text-left md:text-2xl font-bold mb-6">
                       Application Steps
                     </h2>
                     {steps.map((step, index) => (
                       <div
                         key={step}
-                        className={`flex items-center space-x-3 mb-4 p-3 rounded-lg transition-all ${
+                        className={`flex items-center space-x-3 text-sm md:text-base mb-4 p-3 rounded-lg transition-all ${
                           currentStep === index + 1
                             ? "bg-yellow-400 text-black font-semibold"
                             : currentStep > index + 1
@@ -1601,7 +1683,7 @@ const RegistrationForm = () => {
                   </div>
 
                   {/* Form content */}
-                  <div className="w-full md:w-3/4 p-6">
+                  <div className="w-full md:w-3/4 p-3 md:p-6">
                     {/* <h1
                     className={`text-3xl font-bold pb-10 px-3 ${poppins.className}`}
                   >

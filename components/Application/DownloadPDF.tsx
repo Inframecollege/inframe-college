@@ -1,19 +1,6 @@
-import type React from "react";
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  pdf,
-  Font,
-  Path,
-  Svg,
-} from "@react-pdf/renderer";
-import { toast } from "sonner";
-
-import { Earth, LocateIcon, MailIcon, PhoneIcon } from "lucide-react";
+import type React from "react"
+import { Document, Page, Text, View, StyleSheet, Image, pdf, Font, Path, Svg } from "@react-pdf/renderer"
+import { toast } from "sonner"
 
 // Register Poppins font
 Font.register({
@@ -38,7 +25,7 @@ Font.register({
       fontStyle: "italic",
     },
   ],
-});
+})
 
 // Black and white styles only - enhanced for better layout
 const styles = StyleSheet.create({
@@ -290,7 +277,7 @@ const styles = StyleSheet.create({
   emergencyValue: {
     fontSize: 9,
   },
-});
+})
 
 const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
   const termsAndConditions = [
@@ -317,7 +304,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
     "Students wishing to withdraw from the course must notify the institution in writing.",
     "Exams would be held in different centre if approved by University & main centre.",
     "School reserves the right to change or cancel any test center/city at its discretion, if required.",
-  ];
+  ]
 
   return (
     <Document>
@@ -334,10 +321,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
           </View>
           <View style={styles.photoSpace}>
             {formData.profilePhoto ? (
-              <Image
-                src={formData.profilePhoto || "/placeholder.svg"}
-                style={{ width: "100%", height: "100%" }}
-              />
+              <Image src={formData.profilePhoto || "/placeholder.svg"} style={{ width: "100%", height: "100%" }} />
             ) : (
               <Text style={styles.photoText}>
                 Paste your recently taken{"\n"}passport size color{"\n"}
@@ -366,9 +350,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
 
         <View style={styles.formRow}>
           <Text style={styles.label}>Name of the Applicant:</Text>
-          <Text style={styles.value}>{`${formData.firstName} ${
-            formData.middleName || ""
-          } ${formData.lastName}`}</Text>
+          <Text style={styles.value}>{`${formData.firstName} ${formData.middleName || ""} ${formData.lastName}`}</Text>
         </View>
 
         <View style={styles.formRow}>
@@ -404,17 +386,8 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
         <View style={styles.CategorycheckboxContainer}>
           <Text style={styles.label}>Category:</Text>
           {["Gen", "OBC", "SC", "ST", "PwD"].map((cat) => (
-            <View
-              key={cat}
-              style={{ flexDirection: "row", alignItems: "center" }}
-            >
-              <View
-                style={
-                  formData.category === cat
-                    ? styles.checkboxChecked
-                    : styles.checkbox
-                }
-              />
+            <View key={cat} style={{ flexDirection: "row", alignItems: "center" }}>
+              <View style={formData.category === cat ? styles.checkboxChecked : styles.checkbox} />
               <Text style={styles.checkboxLabel}>{cat}</Text>
             </View>
           ))}
@@ -427,13 +400,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
             <View style={styles.religionRow}>
               {["Hinduism", "Islam", "Sikhism"].map((rel) => (
                 <View key={rel} style={styles.checkboxWrapper}>
-                  <View
-                    style={
-                      formData.religion === rel
-                        ? styles.checkboxChecked
-                        : styles.checkbox
-                    }
-                  />
+                  <View style={formData.religion === rel ? styles.checkboxChecked : styles.checkbox} />
                   <Text style={styles.checkboxLabel}>{rel}</Text>
                 </View>
               ))}
@@ -443,13 +410,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
             <View style={styles.religionRow}>
               {["Parsism", "Buddhism", "Jainism"].map((rel) => (
                 <View key={rel} style={styles.checkboxWrapper}>
-                  <View
-                    style={
-                      formData.religion === rel
-                        ? styles.checkboxChecked
-                        : styles.checkbox
-                    }
-                  />
+                  <View style={formData.religion === rel ? styles.checkboxChecked : styles.checkbox} />
                   <Text style={styles.checkboxLabel}>{rel}</Text>
                 </View>
               ))}
@@ -478,9 +439,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
 
         {formData.temporaryAddress && (
           <View style={styles.formRow}>
-            <Text style={styles.label}>
-              Student PG/Hostel/Temporary Address:
-            </Text>
+            <Text style={styles.label}>Student PG/Hostel/Temporary Address:</Text>
             <Text style={styles.value}>{formData.temporaryAddress}</Text>
           </View>
         )}
@@ -545,38 +504,64 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
               </View>
             </View>
           </View>
+          {/* Guardian Details (if different from parents) */}
+          {formData.hasGuardian && (
+            <View style={{ marginTop: 10 }}>
+              <Text style={[styles.formTitle, { fontSize: 9 }]}>GUARDIAN DETAILS (If different from parents):</Text>
+              <View style={styles.guardianColumns}>
+                <View style={styles.guardianColumn}>
+                  <View style={styles.formRow}>
+                    <Text style={styles.label}>Guardian's Name:</Text>
+                    <Text style={styles.value}>{formData.guardianName}</Text>
+                  </View>
+                  <View style={styles.formRow}>
+                    <Text style={styles.label}>Mobile No:</Text>
+                    <Text style={styles.value}>{formData.guardianMobile}</Text>
+                  </View>
+                  <View style={styles.formRow}>
+                    <Text style={styles.label}>Email-Id:</Text>
+                    <Text style={styles.value}>{formData.guardianEmail}</Text>
+                  </View>
+                </View>
+                <View style={styles.guardianColumn}>
+                  <View style={styles.formRow}>
+                    <Text style={styles.label}>Relationship:</Text>
+                    <Text style={styles.value}>{formData.guardianRelation}</Text>
+                  </View>
+                  <View style={styles.formRow}>
+                    <Text style={styles.label}>Profession:</Text>
+                    <Text style={styles.value}>{formData.guardianProfession}</Text>
+                  </View>
+                  <View style={styles.formRow}>
+                    <Text style={styles.label}>Address:</Text>
+                    <Text style={styles.value}>{formData.guardianAddress}</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          )}
         </View>
 
         <View style={[styles.formRow, { marginTop: 15 }]}>
-          <Text style={styles.label}>
-            Parent's Permanent Residence Address:
-          </Text>
+          <Text style={styles.label}>Parent's Permanent Residence Address:</Text>
           <Text style={styles.value}>{formData.parentsPermanentAddress}</Text>
         </View>
 
         {/* Emergency Contact */}
         <View style={[styles.emergencySection, { marginTop: 15 }]}>
-          <Text style={styles.formTitle}>
-            EMERGENCY MOBILE NO./EMAIL (Other than parents):
-          </Text>
+          <Text style={styles.formTitle}>EMERGENCY MOBILE NO./EMAIL (Other than parents):</Text>
           <View style={styles.emergencyRow}>
             <View style={styles.emergencyField}>
               <Text style={styles.emergencyLabel}>Relationship:</Text>
-              <Text style={styles.emergencyValue}>
-                {formData.emergencyContactRelation}
-              </Text>
+              <Text style={styles.emergencyValue}>{formData.emergencyContactRelation}</Text>
             </View>
             <View style={styles.emergencyField}>
               <Text style={styles.emergencyLabel}>Mobile No:</Text>
-              <Text style={styles.emergencyValue}>
-                {formData.emergencyContactMobile}
-              </Text>
+              <Text style={styles.emergencyValue}>{formData.emergencyContactMobile}</Text>
             </View>
             <View style={styles.emergencyField}>
               <Text style={styles.emergencyLabel}>Email-Id:</Text>
-              <Text style={styles.emergencyValue}>
-                {formData.emergencyContactEmail}
-              </Text>
+              <Text style={styles.emergencyValue}>{formData.emergencyContactEmail}</Text>
             </View>
           </View>
         </View>
@@ -585,9 +570,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
       {/* Page 2 - Educational Details and Terms */}
       <Page size="A4" style={[styles.page, { paddingTop: 20 }]}>
         <Text style={styles.formTitle}>EDUCATIONAL DETAILS:</Text>
-        <Text style={{ fontSize: 8, marginBottom: 8 }}>
-          (Start from the recent course to Std. X)
-        </Text>
+        <Text style={{ fontSize: 8, marginBottom: 8 }}>(Start from the recent course to Std. X)</Text>
 
         <View style={styles.formRow}>
           <Text style={styles.label}>Name as per 10th Marksheet:</Text>
@@ -606,9 +589,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
           </View>
           {formData.education?.map((edu, index) => (
             <View key={index} style={styles.tableRow}>
-              <Text style={styles.tableCell}>
-                {["X", "XI", "XII", "UG/Diploma", "Other"][index]}
-              </Text>
+              <Text style={styles.tableCell}>{["X", "XI", "XII", "UG/Diploma", "Other"][index]}</Text>
               <Text style={styles.tableCell}>{edu.institution}</Text>
               <Text style={styles.tableCell}>{edu.stream}</Text>
               <Text style={styles.tableCell}>{edu.yearOfPassing}</Text>
@@ -620,9 +601,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
 
         {/* Terms and Conditions */}
         <View style={[styles.termsSection, { marginTop: 6 }]}>
-          <Text style={[styles.formTitle, { marginBottom: 4 }]}>
-            TERMS & CONDITION:
-          </Text>
+          <Text style={[styles.formTitle, { marginBottom: 4 }]}>TERMS & CONDITION:</Text>
           {termsAndConditions.map((term, index) => (
             <Text key={index} style={styles.termItem}>
               • {term}
@@ -634,19 +613,13 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
         <View style={[styles.signatureSection, { marginTop: 15 }]}>
           <View style={styles.signatureBox}>
             {formData.applicantSignature && (
-              <Image
-                src={formData.applicantSignature || "/placeholder.svg"}
-                style={styles.signatureImage}
-              />
+              <Image src={formData.applicantSignature || "/placeholder.svg"} style={styles.signatureImage} />
             )}
             <Text style={{ textAlign: "center" }}>Signature of Applicant:</Text>
           </View>
           <View style={styles.signatureBox}>
             {formData.applicantSignature && (
-              <Image
-                src={formData.guardianSignature || "/placeholder.svg"}
-                style={styles.signatureImage}
-              />
+              <Image src={formData.guardianSignature || "/placeholder.svg"} style={styles.signatureImage} />
             )}
             <Text style={{ textAlign: "center" }}>Signature of Parent:</Text>
           </View>
@@ -663,21 +636,14 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
               alignItems: "center",
             }}
           >
-            <Text style={{ fontSize: 7, marginRight: 3 }}>
-              Date of form filling:
-            </Text>
-            <View >
+            <Text style={{ fontSize: 7, marginRight: 3 }}>Date of form filling:</Text>
+            <View>
               <Text style={{ fontSize: 7 }}>{formData.formFilingDate}</Text>
             </View>
           </View>
           <View style={styles.footerContent}>
             <View style={styles.footerItem}>
-              <Svg
-                width="10"
-                height="10"
-                viewBox="0 0 24 24"
-                style={styles.footerIcon}
-              >
+              <Svg width="10" height="10" viewBox="0 0 24 24" style={styles.footerIcon}>
                 <Path
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
                   fill="black"
@@ -687,20 +653,14 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
             </View>
 
             <View style={styles.footerItem}>
-              <Svg
-                width="10"
-                height="10"
-                viewBox="0 0 24 24"
-                style={styles.footerIcon}
-              >
+              <Svg width="10" height="10" viewBox="0 0 24 24" style={styles.footerIcon}>
                 <Path
                   d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
                   fill="black"
                 />
               </Svg>
               <Text style={styles.addressText}>
-                B-09 Pal Link Road Behind Kamla Nagar Hospital Marudhar Nagar
-                Jodhpur (342008) Rajasthan
+                B-09 Pal Link Road Behind Kamla Nagar Hospital Marudhar Nagar Jodhpur (342008) Rajasthan
               </Text>
             </View>
 
@@ -715,12 +675,7 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
             </View>
 
             <View style={styles.footerItem}>
-              <Svg
-                width="10"
-                height="10"
-                viewBox="0 0 24 24"
-                style={styles.footerIcon}
-              >
+              <Svg width="10" height="10" viewBox="0 0 24 24" style={styles.footerIcon}>
                 <Path
                   d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
                   fill="black"
@@ -732,34 +687,35 @@ const ApplicationFormPDF: React.FC<{ formData: any }> = ({ formData }) => {
         </View>
       </Page>
     </Document>
-  );
-};
+  )
+}
 
 export const downloadApplicationForm = async (formData: any) => {
   try {
-    const loadingToast = toast.loading("Generating application form...");
+    const loadingToast = toast.loading("Generating application form...")
 
     // Create PDF
-    const blob = await pdf(<ApplicationFormPDF formData={formData} />).toBlob();
+    const blob = await pdf(<ApplicationFormPDF formData={formData} />).toBlob()
 
     // Create download link
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `application_form_${formData.firstName}_${formData.lastName}.pdf`;
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = `application_form_${formData.firstName}_${formData.lastName}.pdf`
 
     // Trigger download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
 
     // Cleanup
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url)
 
-    toast.dismiss(loadingToast);
-    toast.success("Application form downloaded successfully!");
+    toast.dismiss(loadingToast)
+    toast.success("Application form downloaded successfully!")
   } catch (error) {
-    console.error("Error generating PDF:", error);
-    toast.error("Failed to generate application form. Please try again.");
+    console.error("Error generating PDF:", error)
+    toast.error("Failed to generate application form. Please try again.")
   }
-};
+}
+
