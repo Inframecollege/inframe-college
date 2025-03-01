@@ -247,8 +247,8 @@ export default function AlumniSuccessStories() {
                   industry.
                 </p>
                 <p>
-                  From leading design teams at prestigious companies to starting their own creative ventures, our alumni 
-                  demonstrate the versatility and value of an Inframe education in today's competitive landscape.
+                  {`From leading design teams at prestigious companies to starting their own creative ventures, our alumni 
+                  demonstrate the versatility and value of an Inframe education in today's competitive landscape.`}
                 </p>
               </section>
 
@@ -289,7 +289,7 @@ export default function AlumniSuccessStories() {
                           
                           <h3 className="text-lg font-semibold text-gray-700 mb-3">Advice for Current Students</h3>
                           <blockquote className="border-l-4 border-purple-400 pl-4 italic my-4">
-                            "{alumnus.advice}"
+                            {`"${alumnus.advice}"`}
                           </blockquote>
                         </div>
                       </div>
@@ -303,9 +303,9 @@ export default function AlumniSuccessStories() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">Join Our Alumni Network</h2>
                     <p>
-                      These success stories illustrate the possibilities that await Inframe School graduates. Our 
+                      {`These success stories illustrate the possibilities that await Inframe School graduates. Our 
                       alumni network continues to grow, creating a powerful community of creative professionals who 
-                      support each other and contribute to the school's legacy of excellence.
+                      support each other and contribute to the school's legacy of excellence.`}
                     </p>
                     <p>
                       Current students can connect with our alumni through mentorship programs, guest lectures, and 

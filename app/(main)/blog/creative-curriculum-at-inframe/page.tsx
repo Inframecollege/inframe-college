@@ -356,9 +356,9 @@ const handleTabChange: TabChangeHandler = (tab) => {
                   <div className="md:w-1/2 bg-gray-100 p-6 rounded-lg">
                     <h4 className="font-bold mb-2">Spotlight Project</h4>
                     <p>
-                      "Brand Evolution" – Third-year students work with local businesses to refresh their visual identity. 
+                      {`"Brand Evolution" – Third-year students work with local businesses to refresh their visual identity. 
                       Students research, strategize, design, and present to real clients, often seeing their work implemented 
-                      in the market.
+                      in the market.`}
                     </p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ const handleTabChange: TabChangeHandler = (tab) => {
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <h4 className="font-bold mb-2">Peer Reviews</h4>
                     <p>
-                      Structured feedback sessions where students evaluate each other's work, developing critical analysis skills and learning to articulate design decisions.
+                      {`Structured feedback sessions where students evaluate each other's work, developing critical analysis skills and learning to articulate design decisions.`}
                     </p>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-lg">
@@ -431,7 +431,7 @@ const handleTabChange: TabChangeHandler = (tab) => {
             <div>
               <h2 className="text-3xl font-bold mb-6">Industry-Recognized Results</h2>
               <p>
-                The effectiveness of our curriculum is evident in our graduates' success. With a 92% job placement rate within six months of graduation and alumni working at leading design firms worldwide, the Inframe approach proves that thoughtful curriculum design creates exceptional designers ready to thrive in the creative industries.
+                {`The effectiveness of our curriculum is evident in our graduates' success. With a 92% job placement rate within six months of graduation and alumni working at leading design firms worldwide, the Inframe approach proves that thoughtful curriculum design creates exceptional designers ready to thrive in the creative industries.`}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
@@ -500,7 +500,7 @@ const handleTabChange: TabChangeHandler = (tab) => {
               <div className="bg-gray-50 p-6 rounded-lg my-8">
                 <h3 className="text-xl font-bold mb-4">Alumni Testimonial</h3>
                 <blockquote className="border-l-4 border-red-400 pl-4 italic">
-                  "What sets Inframe apart is how the curriculum seamlessly bridges theory and practice. I graduated not just with technical skills, but with the strategic thinking and professional mindset that helped me advance quickly in my career. Four years at Inframe prepared me better than colleagues who spent years in the industry."
+                  {`"What sets Inframe apart is how the curriculum seamlessly bridges theory and practice. I graduated not just with technical skills, but with the strategic thinking and professional mindset that helped me advance quickly in my career. Four years at Inframe prepared me better than colleagues who spent years in the industry."`}
                 </blockquote>
                 <div className="mt-4 text-right">
                   <p className="font-medium">— Rahul Sharma, UI/UX Design Lead at TechSolutions Inc.</p>

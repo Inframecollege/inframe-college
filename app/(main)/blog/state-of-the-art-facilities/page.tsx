@@ -166,9 +166,9 @@ export default function FacilitiesBlogPost() {
                       challenge, and support their creative journey after 12th grade.
                     </p>
                     <p>
-                      The physical surroundings play a significant role in how students learn and develop their creative 
+                      {`The physical surroundings play a significant role in how students learn and develop their creative 
                       abilities. That's why we've invested in creating spaces that not only meet industry standards but 
-                      also foster a sense of community and collaboration among our students.
+                      also foster a sense of community and collaboration among our students.`}
                     </p>
                   </CardContent>
                 </Card>
@@ -184,8 +184,8 @@ export default function FacilitiesBlogPost() {
                       students have access to everything they need to bring their creative visions to life.
                     </p>
                     <blockquote className="border-l-4 border-green-500 pl-4 italic my-4">
-                      "The moment I stepped into Inframe's design studio, I knew this was where I wanted to study. 
-                      The facilities are exactly what you'd find in top design firms." - Ananya Sharma, Graphic Design Student
+                      {`"The moment I stepped into Inframe's design studio, I knew this was where I wanted to study. 
+                      The facilities are exactly what you'd find in top design firms." - Ananya Sharma, Graphic Design Student`}
                     </blockquote>
                   </CardContent>
                 </Card>
@@ -196,9 +196,9 @@ export default function FacilitiesBlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">Digital Media Labs for the Digital Age</h2>
                     <p>
-                      In today's digital world, mastering digital tools is essential for any creative professional. 
+                      {`In today's digital world, mastering digital tools is essential for any creative professional. 
                       Our digital media labs feature high-performance computers, industry-standard software, and 
-                      specialized equipment for photography, videography, and digital art creation.
+                      specialized equipment for photography, videography, and digital art creation.`}
                     </p>
                     <div className="bg-green-100 p-4 rounded-md my-4">
                       <h4 className="font-bold text-lg">State-of-the-Art Digital Facilities</h4>
@@ -223,9 +223,9 @@ export default function FacilitiesBlogPost() {
                       are equipped with smart boards, comfortable seating, and all the tools needed for effective teamwork.
                     </p>
                     <p>
-                      We understand that some of the best ideas emerge from casual conversations and impromptu 
+                      {`We understand that some of the best ideas emerge from casual conversations and impromptu 
                       collaborations. That's why our facilities include both formal meeting rooms and informal 
-                      gathering spaces where students can exchange ideas and insights.
+                      gathering spaces where students can exchange ideas and insights.`}
                     </p>
                   </CardContent>
                 </Card>
@@ -242,9 +242,9 @@ export default function FacilitiesBlogPost() {
                       where students can prototype their designs using various materials.
                     </p>
                     <blockquote className="border-l-4 border-green-500pl-4 italic my-4">
-                      "The hands-on experience I gained in the materials workshop completely transformed my 
+                      {`"The hands-on experience I gained in the materials workshop completely transformed my 
                       approach to design. Working with actual materials gives you insights you can't get from 
-                      digital work alone." - Rohan Kapoor, Product Design Student
+                      digital work alone." - Rohan Kapoor, Product Design Student`}
                     </blockquote>
                   </CardContent>
                 </Card>
@@ -296,10 +296,10 @@ export default function FacilitiesBlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">Outdoor Creative Spaces</h2>
                     <p>
-                      Creativity isn't confined to indoor spaces. Our campus includes thoughtfully designed outdoor 
+                      {`Creativity isn't confined to indoor spaces. Our campus includes thoughtfully designed outdoor 
                       areas where students can sketch, conceptualize, or simply find inspiration in nature. These 
                       spaces provide a refreshing change of environment and encourage students to think outside 
-                      conventional boundaries.
+                      conventional boundaries.`}
                     </p>
                     <div className="bg-green-100 p-4 rounded-md my-4">
                       <h4 className="font-bold text-lg">Inspiration in Nature</h4>
@@ -324,10 +324,10 @@ export default function FacilitiesBlogPost() {
                       can happen anywhere on campus.
                     </p>
                     <p>
-                      We regularly update our technology infrastructure to keep pace with industry developments, 
+                      {`We regularly update our technology infrastructure to keep pace with industry developments, 
                       ensuring that our students are familiar with the tools and systems they'll encounter in 
                       their professional careers. From wireless presentation capabilities to specialized software 
-                      licenses, we provide the technological foundation for creative excellence.
+                      licenses, we provide the technological foundation for creative excellence.`}
                     </p>
                   </CardContent>
                 </Card>
@@ -338,20 +338,20 @@ export default function FacilitiesBlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">Sustainability in Design</h2>
                     <p>
-                      Our facilities aren't just state-of-the-art—they're also designed with sustainability in mind. 
+                      {`Our facilities aren't just state-of-the-art—they're also designed with sustainability in mind. 
                       From energy-efficient lighting and climate control to recycling programs and sustainable materials, 
-                      we teach environmental responsibility by example.
+                      we teach environmental responsibility by example.`}
                     </p>
                     <blockquote className="border-l-4 border-green-500pl-4 italic my-4">
-                      "Sustainable design isn't just a course at Inframe—it's embedded in how the entire campus 
+                      {`"Sustainable design isn't just a course at Inframe—it's embedded in how the entire campus 
                       functions. It's inspiring to learn in an environment that practices what it teaches." 
-                      - Meera Joshi, Interior Design Student
+                      - Meera Joshi, Interior Design Student`}
                     </blockquote>
                     <div className="bg-green-100 p-4 rounded-md my-4">
                       <h4 className="font-bold text-lg">Schedule a Campus Tour</h4>
                       <p className="mt-2">
-                        Ready to explore Inframe School's facilities in person? Schedule a campus tour today and 
-                        see why we're recognized as having the best design school infrastructure in Rajasthan.
+                       {`Ready to explore Inframe School's facilities in person? Schedule a campus tour today and 
+                        see why we're recognized as having the best design school infrastructure in Rajasthan.`}
                       </p>
                       <Button className="mt-4 bg-green-500 hover:bg-green-600 text-white">
                         Book a Tour Now
