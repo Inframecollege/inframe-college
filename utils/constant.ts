@@ -1786,3 +1786,92 @@ export const blogPostsData = {
     ],
   },
 }
+
+
+export const blogPosts = [
+  {
+    id: "top-5-reasons-to-choose-inframe-school",
+    title: "Top 5 Reasons to Choose Inframe School for Your Child's Education",
+    excerpt:
+      "Discover why Inframe School stands out as one of the best design schools in India and the top arts & design school in Rajasthan.",
+    image:
+      "/images/gallery/1717492615506 - Copy (2).jpg",
+    category: "Education",
+    date: "Feb 28, 2025",
+    readTime: "5 min read",
+  },
+  {
+    id: "why-inframe-school-is-the-best-choice",
+    title: "Why Inframe School is the Best Choice for Your Child's Future",
+    excerpt:
+      "Explore the perfect blend of education, expertise, and exposure at Inframe School for students after 12th grade.",
+    image:
+      "/images/gallery/1721737773149.jpg",
+    category: "Career",
+    date: "Feb 25, 2025",
+    readTime: "6 min read",
+  },
+  {
+    id: "state-of-the-art-facilities",
+    title: "Explore the State-of-the-Art Facilities at Inframe School",
+    excerpt: "Take a virtual tour of our modern design labs, creative spaces, and innovative learning environments.",
+    image:
+      "/images/gallery/SKF02844.JPG",
+    category: "Facilities",
+    date: "Feb 20, 2025",
+    readTime: "4 min read",
+  },
+  {
+    id: "success-stories-from-inframe-alumni",
+    title: "Success Stories from Inframe School Alumni",
+    excerpt: "Read inspiring stories of our graduates who are making waves in the design and creative industries.",
+    image:
+      "/images/gallery/1721366034581.jpg",
+    category: "Alumni",
+    date: "Feb 15, 2025",
+    readTime: "7 min read",
+  },
+  {
+    id: "creative-curriculum-at-inframe",
+    title: "The Creative Curriculum at Inframe School",
+    excerpt:
+      "Discover our innovative approach to design education that combines theory, practice, and industry exposure.",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    category: "Curriculum",
+    date: "Feb 10, 2025",
+    readTime: "5 min read",
+  },
+  {
+    id: "industry-partnerships-and-placements",
+    title: "Industry Partnerships and Placement Opportunities at Inframe",
+    excerpt:
+      "Learn about our extensive network of industry partners and how they help our students launch successful careers.",
+    image:
+      "/images/gallery/1717475821142 - Copy (8).jpg",
+    category: "Placements",
+    date: "Feb 5, 2025",
+    readTime: "6 min read",
+  },
+  {
+    id: "faculty-spotlight-meet-our-experts",
+    title: "Faculty Spotlight: Meet Our Industry Experts",
+    excerpt: "Get to know the accomplished professionals who make up our teaching faculty at Inframe School.",
+    image:
+      "/images/gallery/DSC04264.JPG",
+    category: "Faculty",
+    date: "Jan 30, 2025",
+    readTime: "8 min read",
+  },
+  {
+    id: "student-life-at-inframe-school",
+    title: "Student Life at Inframe School: Beyond the Classroom",
+    excerpt:
+      "Explore the vibrant student community, extracurricular activities, and creative events at Inframe School.",
+    image:
+      "/images/gallery/1721738128651.jpg",
+    category: "Student Life",
+    date: "Jan 25, 2025",
+    readTime: "5 min read",
+  },
+]
