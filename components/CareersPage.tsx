@@ -138,15 +138,21 @@ export default function CareersPage() {
       formData.append("email", data.email);
       formData.append("phone", data.phone);
       formData.append("position", data.position);
-      formData.append("resume", data.resume[0]);
+      
+      // Add the file with the correct field name expected by Formspree
+      if (data.resume && data.resume[0]) {
+        formData.append("resume", data.resume[0], data.resume[0].name);
+      }
+      
       if (data.coverLetter) {
         formData.append("coverLetter", data.coverLetter);
       }
 
-      // Replace with your Formspree endpoint
+      // Make sure we're not including any headers that would conflict with FormData's multipart/form-data
       const response = await fetch("https://formspree.io/f/mqaerebq", {
         method: "POST",
         body: formData,
+        // Do not set Content-Type header, it will be set automatically with the boundary
       });
 
       if (response.ok) {
@@ -156,15 +162,20 @@ export default function CareersPage() {
         });
         form.reset();
       } else {
+        const errorText = await response.text();
+        console.error("Form submission error:", errorText);
+        
         setFormStatus({
           success: false,
           message: "There was an error submitting your application. Please try again.",
         });
       }
     } catch (error) {
+      console.error("Form submission error:", error);
+      
       setFormStatus({
         success: false,
-        message: "There was an error submitting your application. Please try again."+error,
+        message: "There was an error submitting your application. Please try again.",
       });
     } finally {
       setIsSubmitting(false);

@@ -62,7 +62,7 @@ const ThankYouPage = () => {
           <div className="mt-8 text-sm text-gray-500">
             <p>Have questions? Contact our admissions team:</p>
             <p className="font-medium">
-              info@inframecollege.org | +91 9649 9649 37
+              info@inframeschool.com | +91 9649 9649 37
             </p>
           </div>
         </div>
