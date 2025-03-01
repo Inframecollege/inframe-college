@@ -74,7 +74,7 @@ export default function BlogPost() {
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 max-w-4xl">
-            Top 5 Reasons to Choose Inframe School for Your Child's Education
+            {`Top 5 Reasons to Choose Inframe School for Your Child's Education`}
           </h1>
           <p className="text-xl text-white max-w-2xl">
             Discover why Inframe School stands out as one of the best design schools in India and the top arts & design
@@ -142,12 +142,12 @@ export default function BlogPost() {
             <article className="prose prose-lg max-w-none">
               <section id="intro" ref={(el) => { sectionRefs.current["intro"] = el }} className="mb-12">
                 <p>
-                  In today's rapidly changing world, selecting the right school for your child is a crucial decision. As
+                  {`In today's rapidly changing world, selecting the right school for your child is a crucial decision. As
                   parents, you want a place where your child can not only grow academically but also thrive in
                   creativity and innovation. Inframe School offers an outstanding educational experience for students
                   interested in design, arts, and creative fields. If you're considering the best design school in India
                   or the top arts & design school in Rajasthan, here are five compelling reasons why Inframe School
-                  stands out as the top choice for your child's education.
+                  stands out as the top choice for your child's education.`}
                 </p>
               </section>
 
@@ -156,18 +156,18 @@ export default function BlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">1. Focused Curriculum Tailored for Creative Excellence</h2>
                     <p>
-                      At Inframe School, the curriculum is designed to nurture the creative minds of tomorrow. Whether
+                      {`At Inframe School, the curriculum is designed to nurture the creative minds of tomorrow. Whether
                       your child is interested in arts, design, or technology, the school offers a specialized approach
                       that caters to individual talents. The school's unique combination of theoretical learning and
                       hands-on training in design and art ensures students gain not just academic knowledge but
-                      practical skills that set them apart in the real world.
+                      practical skills that set them apart in the real world.`}
                     </p>
                     <blockquote className="border-l-4 border-yellow-400 pl-4 italic my-4">
-                      "Creativity is intelligence having fun." – Albert Einstein
+                      {`"Creativity is intelligence having fun." – Albert Einstein`}
                     </blockquote>
                     <p>
-                      Inframe School is one of the best design schools in India, offering personalized learning paths
-                      that align with your child's passion for design, arts, and creativity.
+                      {`Inframe School is one of the best design schools in India, offering personalized learning paths
+                      that align with your child's passion for design, arts, and creativity.`}
                     </p>
                   </CardContent>
                 </Card>
@@ -180,18 +180,18 @@ export default function BlogPost() {
                       2. World-Class Infrastructure and State-of-the-Art Facilities
                     </h2>
                     <p>
-                      Inframe School prides itself on its modern infrastructure. The school is equipped with
+                     {`Inframe School prides itself on its modern infrastructure. The school is equipped with
                       cutting-edge facilities that provide students with the resources they need to thrive. From
                       spacious art studios to fully-equipped design labs, the school's infrastructure is built to foster
                       creativity and innovation. It's a place where students can experiment with new ideas and
-                      technologies to bring their visions to life.
+                      technologies to bring their visions to life.`}
                     </p>
                     <p>
-                      If you are looking for the best designing school in Rajasthan, Inframe School's state-of-the-art
-                      design labs and facilities are second to none.
+                      {`If you are looking for the best designing school in Rajasthan, Inframe School's state-of-the-art
+                      design labs and facilities are second to none.`}
                     </p>
                     <blockquote className="border-l-4 border-yellow-400 pl-4 italic my-4">
-                      "The best way to predict the future is to create it." – Peter Drucker
+                      {`"The best way to predict the future is to create it." – Peter Drucker`}
                     </blockquote>
                   </CardContent>
                 </Card>
@@ -202,18 +202,18 @@ export default function BlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">3. Expert Faculty with Industry Experience</h2>
                     <p>
-                      The Inframe School faculty comprises highly skilled professionals with extensive experience in the
+                      {`The Inframe School faculty comprises highly skilled professionals with extensive experience in the
                       design and art industries. This expertise ensures that students receive education and mentorship
                       from the very best in the field. The hands-on learning approach with industry professionals helps
-                      students stay ahead of the curve and prepares them for future success.
+                      students stay ahead of the curve and prepares them for future success.`}
                     </p>
                     <p>
-                      Whether your child is pursuing design, architecture, or other creative fields, Inframe School's
-                      expert faculty will guide them every step of the way.
+                      {`Whether your child is pursuing design, architecture, or other creative fields, Inframe School's
+                      expert faculty will guide them every step of the way.`}
                     </p>
                     <div className="bg-yellow-50 p-4 rounded-md my-4">
                       <h4 className="font-bold text-lg">
-                        Learning from the Best: Why Inframe School's Faculty is Key to Your Child's Success
+                        {`Learning from the Best: Why Inframe School's Faculty is Key to Your Child's Success`}
                       </h4>
                       <ul className="list-disc pl-5 mt-2">
                         <li>Industry professionals with real-world experience</li>
@@ -231,15 +231,15 @@ export default function BlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">4. Placement Opportunities and Industry Exposure</h2>
                     <p>
-                      Inframe School not only focuses on academics but also prioritizes real-world experience. The
+                      {`Inframe School not only focuses on academics but also prioritizes real-world experience. The
                       school has partnerships with leading companies and organizations in the design and arts sectors.
                       Through these partnerships, students gain valuable internship and placement opportunities that
-                      give them a competitive edge in the job market.
+                      give them a competitive edge in the job market.`}
                     </p>
                     <p>
-                      As one of the top arts & design schools in Rajasthan, Inframe School's network and exposure to
+                      {`As one of the top arts & design schools in Rajasthan, Inframe School's network and exposure to
                       industry leaders ensures your child is always in the loop about the latest trends and
-                      opportunities in design.
+                      opportunities in design.`}
                     </p>
                     <blockquote className="border-l-4 border-yellow-400 pl-4 italic my-4">
                       "Success is where preparation and opportunity meet." – Bobby Unser
@@ -253,20 +253,20 @@ export default function BlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">5. Holistic Development and Personality Building</h2>
                     <p>
-                      At Inframe School, education is about more than just academic learning. The school emphasizes the
+                      {`At Inframe School, education is about more than just academic learning. The school emphasizes the
                       holistic development of students by fostering skills such as communication, teamwork, and
                       leadership. Through various extracurricular activities, workshops, and exposure to real-world
                       scenarios, students at Inframe School develop the personality traits that employers highly value
-                      in creative professionals.
+                      in creative professionals.`}
                     </p>
                     <div className="bg-yellow-50 p-4 rounded-md my-4">
                       <h4 className="font-bold text-lg">
-                        Beyond Books: How Inframe School Shapes Your Child's Future as a Leader
+                        {`Beyond Books: How Inframe School Shapes Your Child's Future as a Leader`}
                       </h4>
                       <p className="mt-2">
-                        Students at Inframe School don't just learn design principles; they develop critical thinking,
+                        {`Students at Inframe School don't just learn design principles; they develop critical thinking,
                         problem-solving abilities, and the confidence to present their ideas effectively in professional
-                        settings.
+                        settings.`}
                       </p>
                     </div>
                   </CardContent>
@@ -278,12 +278,12 @@ export default function BlogPost() {
                   <CardContent className="p-6">
                     <h2 className="text-2xl font-bold mb-4">Final Thought</h2>
                     <p>
-                      Inframe School provides a comprehensive, innovative, and hands-on learning environment where
+                      {`Inframe School provides a comprehensive, innovative, and hands-on learning environment where
                       students can truly excel in their chosen creative field. With a focus on personalized education,
                       expert guidance, modern infrastructure, and industry exposure, Inframe School is the best choice
                       for your child's future in design and arts. Whether you're looking for the best design school in
                       India or the top arts & design school in Rajasthan, Inframe School's offerings make it a top
-                      contender in shaping the leaders of tomorrow.
+                      contender in shaping the leaders of tomorrow.`}
                     </p>
                   </CardContent>
                 </Card>

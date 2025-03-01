@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Poppins } from "next/font/google"
+
 
 
 

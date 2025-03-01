@@ -294,6 +294,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   }))
 
   useEffect(() => {
+    if (!sectionRefs.current || Object.keys(sectionRefs.current).length === 0) return; // Prevent errors
+  
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -305,18 +307,19 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       { rootMargin: "-100px 0px -80% 0px" }
     );
   
-    // Check if sectionRefs.current exists and has values
-    Object.values(sectionRefs.current).forEach((ref) => {
+    const refs = Object.values(sectionRefs.current);
+  
+    refs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
   
     return () => {
-      // Clean up the observer
-      Object.values(sectionRefs.current).forEach((ref) => {
+      refs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
   }, []);
+  
 
   const scrollToSection = (id: string) => {
     const element = sectionRefs.current[id]
