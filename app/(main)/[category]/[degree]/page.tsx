@@ -8,9 +8,9 @@ type ParamsType = {
   degree: string 
 }
 
-// Fix: Change the props type - params should not be a Promise
-export default async function DegreePage(props: { params: ParamsType }) {
-  const { category, degree } = props.params
+// Change back to match what your Next.js setup expects
+export default async function DegreePage(props: { params: Promise<ParamsType> }) {
+  const { category, degree } = await props.params
   const categoryLower = category.toLowerCase()
 
   if (!courseTypes[categoryLower]) {
