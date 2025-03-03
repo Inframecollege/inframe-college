@@ -2,10 +2,16 @@ import { courseTypes } from "../../../../utils/courseTypes"
 import Script from "next/script"
 import { notFound } from "next/navigation"
 import CoursePage from "../../../../components/Courses/CoursePage";
+import { Metadata } from "next";
 
 type ParamsType = { category: string; degree: string }
 
-export default async function DegreePage({ params }: { params: ParamsType }) {
+// Define props type for the page component
+type PageProps = {
+  params: ParamsType;
+}
+
+export default async function DegreePage({ params }: PageProps) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
   
@@ -71,7 +77,7 @@ export default async function DegreePage({ params }: { params: ParamsType }) {
 }
 
 // Generate Metadata for SEO
-export async function generateMetadata({ params }: { params: ParamsType }) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
   
