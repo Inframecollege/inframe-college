@@ -3,14 +3,9 @@ import Script from "next/script"
 import { notFound } from "next/navigation"
 import CoursePage from "../../../../components/Courses/CoursePage"
 
-interface PageProps {
-  params: {
-    category: string
-    degree: string
-  }
-}
+type ParamsType = { category: string; degree: string }
 
-export default async function DegreePage({ params }: PageProps) {
+export default async function DegreePage({ params }: { params: Awaited<Promise<ParamsType>> }) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
 
@@ -65,43 +60,4 @@ export default async function DegreePage({ params }: PageProps) {
       <CoursePage courseType={categoryCourses} category={categoryLower} initialTabIndex={initialTabIndex} />
     </>
   )
-}
-
-export async function generateMetadata({ params }: PageProps) {
-  const { category, degree } = params
-  const categoryLower = category.toLowerCase()
-
-  if (!courseTypes[categoryLower]) {
-    return {
-      title: "Course Not Found - Inframe School",
-      description: "The requested course could not be found.",
-    }
-  }
-
-  const categoryCourses = courseTypes[categoryLower]
-  const selectedCourse = categoryCourses.find((course) => course.value === degree)
-
-  if (!selectedCourse) {
-    return {
-      title: `${category.replace(/-/g, " ")} Courses - Inframe School`,
-      description: `Browse our ${category.replace(/-/g, " ")} courses and enhance your skills with Inframe School.`,
-    }
-  }
-
-  return {
-    title: `${selectedCourse.title} - Inframe School`,
-    description: selectedCourse.description,
-  }
-}
-
-export async function generateStaticParams() {
-  const paths: { category: string; degree: string }[] = []
-
-  Object.entries(courseTypes).forEach(([category, courses]) => {
-    courses.forEach((course) => {
-      paths.push({ category, degree: course.value })
-    })
-  })
-
-  return paths
 }
