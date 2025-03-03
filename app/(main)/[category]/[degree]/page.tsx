@@ -6,7 +6,7 @@ import CoursePage from "../../../../components/Courses/CoursePage"
 type ParamsType = Promise<{ category: string; degree: string }>
 
 export default async function DegreePage({ params }: { params: Awaited<Promise<ParamsType>> }) {
-  const { category, degree } = params
+  const { category, degree } = await params
   const categoryLower = category.toLowerCase()
 
   if (!courseTypes[categoryLower]) {
