@@ -1,17 +1,12 @@
+
 import { courseTypes } from "../../../../utils/courseTypes"
 import Script from "next/script"
 import { notFound } from "next/navigation"
-import CoursePage from "../../../../components/Courses/CoursePage"
-import type { Metadata} from "next"
+import CoursePage from "../../../../components/Courses/CoursePage";
 
 type ParamsType = { category: string; degree: string }
 
-// Using a regular props type for the page component
-export default async function DegreePage({
-  params,
-}: {
-  params: ParamsType
-}) {
+export default async function DegreePage({ params }: { params: ParamsType }) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
 
@@ -77,10 +72,7 @@ export default async function DegreePage({
 }
 
 // Generate Metadata for SEO
-export async function generateMetadata(
-  { params }: { params: ParamsType },
- 
-): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: ParamsType }) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
 
@@ -112,7 +104,7 @@ export async function generateMetadata(
 
 // Generate Static Paths for Dynamic Routing
 export async function generateStaticParams() {
-  const paths: { category: string; degree: string }[] = []
+const paths: { category: string; degree: string }[] = []
 
   Object.entries(courseTypes).forEach(([category, courses]) => {
     courses.forEach((course) => {
