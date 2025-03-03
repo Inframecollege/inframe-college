@@ -77,7 +77,17 @@ export default async function DegreePage({
 }
 
 // Generate Metadata for SEO
-export async function generateMetadata(props: any): Promise<Metadata> {
+interface MetadataProps {
+  params: ParamsType;
+}
+
+interface CourseType {
+  value: string;
+  title: string;
+  description: string;
+}
+
+export async function generateMetadata(props: MetadataProps): Promise<Metadata> {
   const { category, degree } = await props.params;
   const categoryLower = category.toLowerCase();
   
@@ -88,7 +98,7 @@ export async function generateMetadata(props: any): Promise<Metadata> {
     }
   }
   
-  const categoryCourses = courseTypes[categoryLower];
+  const categoryCourses: CourseType[] = courseTypes[categoryLower];
   const selectedCourse = categoryCourses.find((course) => course.value === degree);
   
   if (!selectedCourse) {
