@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/ta
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select"
 import type { CourseType } from "../../utils/courseTypes"
 import CourseContent from "./CourseContent"
+import { useRouter, usePathname } from "next/navigation"
 
 interface CoursePageProps {
   courseType: CourseType[]
@@ -15,6 +16,8 @@ interface CoursePageProps {
 const CoursePage: React.FC<CoursePageProps> = ({ courseType, category, initialTabIndex = 0 }) => {
   const [mounted, setMounted] = useState(false)
   const [selectedTab, setSelectedTab] = useState("")
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -24,6 +27,19 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category, initialTa
       setSelectedTab(initialTab.value)
     }
   }, [courseType, initialTabIndex])
+
+  const handleTabChange = (value: string) => {
+    setSelectedTab(value)
+    
+    // Update the URL to reflect the selected tab
+    // Construct URL by replacing the last part of the path
+    const baseUrl = `/${category}/${value}`
+    
+    // Only navigate if we're already mounted and the URL is different
+    if (mounted && pathname !== baseUrl) {
+      router.push(baseUrl)
+    }
+  }
 
   if (!mounted) {
     return null // or a loading skeleton
@@ -36,12 +52,18 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category, initialTa
       </div>
     )
   }
+  
   return (
     <div className="min-h-screen mt-24 sm:mt-0 font-sans bg-black text-white">
-      <Tabs defaultValue={selectedTab} value={selectedTab} onValueChange={setSelectedTab} className="w-full">
+      <Tabs 
+        defaultValue={selectedTab} 
+        value={selectedTab} 
+        onValueChange={handleTabChange} 
+        className="w-full"
+      >
         {/* Mobile View - Select Dropdown */}
         <div className="block md:hidden p-4">
-          <Select value={selectedTab} onValueChange={setSelectedTab}>
+          <Select value={selectedTab} onValueChange={handleTabChange}>
             <SelectTrigger className="w-full bg-zinc-900 text-white border border-zinc-800">
               <SelectValue placeholder="Select Course" />
             </SelectTrigger>
@@ -82,4 +104,3 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category, initialTa
 }
 
 export default CoursePage
-
