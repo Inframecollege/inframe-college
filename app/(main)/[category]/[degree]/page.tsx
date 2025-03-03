@@ -1,29 +1,23 @@
-
+import { courseTypes } from "../../../../utils/courseTypes"
 import Script from "next/script"
 import { notFound } from "next/navigation"
-
-import { Metadata } from "next"
-import { courseTypes } from "../../../../utils/courseTypes";
 import CoursePage from "../../../../components/Courses/CoursePage";
+import { Metadata } from "next";
 
-// Define the params type
-type Params = {
-  category: string;
-  degree: string;
-}
+type ParamsType = { category: string; degree: string }
 
-// Define the page component
-export default function DegreePage({ 
+// Using a regular props type for the page component
+export default async function DegreePage({ 
   params 
 }: { 
-  params: Params 
+  params: ParamsType 
 }) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
   
   // Ensure only the valid categories are included
   if (!courseTypes[categoryLower]) {
-    notFound()
+    return notFound()
   }
   
   const categoryCourses = courseTypes[categoryLower]
@@ -33,7 +27,7 @@ export default function DegreePage({
   
   // If degree not found, return 404
   if (selectedCourseIndex === -1) {
-    notFound()
+    return notFound()
   }
   
   const initialTabIndex = selectedCourseIndex
@@ -83,13 +77,10 @@ export default function DegreePage({
 }
 
 // Generate Metadata for SEO
-export async function generateMetadata(
-  { params }: { params: { category: string, degree: string } }
-): Promise<Metadata> {
-  const { category, degree } = params;
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { category, degree } = await props.params;
   const categoryLower = category.toLowerCase();
   
-  // Handle case where category doesn't exist
   if (!courseTypes[categoryLower]) {
     return {
       title: "Course Not Found - Inframe School",
@@ -100,7 +91,6 @@ export async function generateMetadata(
   const categoryCourses = courseTypes[categoryLower];
   const selectedCourse = categoryCourses.find((course) => course.value === degree);
   
-  // Handle case where degree doesn't exist
   if (!selectedCourse) {
     return {
       title: `${category
