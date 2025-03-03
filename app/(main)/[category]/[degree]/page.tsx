@@ -77,8 +77,11 @@ export default async function DegreePage({
 }
 
 // Generate Metadata for SEO
-export async function generateMetadata(props: any): Promise<Metadata> {
-  const { category, degree } = await props.params;
+// Generate Metadata for SEO
+export async function generateMetadata(
+  props: { params: ParamsType }
+): Promise<Metadata> {
+  const { category, degree } = props.params;
   const categoryLower = category.toLowerCase();
   
   if (!courseTypes[categoryLower]) {
@@ -106,7 +109,6 @@ export async function generateMetadata(props: any): Promise<Metadata> {
     description: selectedCourse.description,
   }
 }
-
 // Generate Static Paths for Dynamic Routing
 export async function generateStaticParams() {
   const paths: { category: string; degree: string }[] = []
