@@ -8,10 +8,10 @@ type ParamsType = { category: string; degree: string }
 
 // Define props type for the page component
 type PageProps = {
-  params: ParamsType;
+  params: Promise<ParamsType>;
 }
 
-export default async function DegreePage({ params }: PageProps) {
+export default async function DegreePage({ params }: { params: ParamsType }) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
   
@@ -78,8 +78,8 @@ export default async function DegreePage({ params }: PageProps) {
 
 // Generate Metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { category, degree } = params
-  const categoryLower = category.toLowerCase()
+  const { category, degree } = await params;
+  const categoryLower = category.toLowerCase();
   
   if (!courseTypes[categoryLower]) {
     return {
@@ -88,8 +88,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
   
-  const categoryCourses = courseTypes[categoryLower]
-  const selectedCourse = categoryCourses.find((course) => course.value === degree)
+  const categoryCourses = courseTypes[categoryLower];
+  const selectedCourse = categoryCourses.find((course) => course.value === degree);
   
   if (!selectedCourse) {
     return {
