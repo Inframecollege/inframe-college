@@ -1,33 +1,32 @@
-
 import { courseTypes } from "../../../../utils/courseTypes"
 import Script from "next/script"
 import { notFound } from "next/navigation"
-import CoursePage from "../../../../components/Courses/CoursePage";
+import CoursePage from "../../../../components/Courses/CoursePage"
 
-type ParamsType = { category: string; degree: string }
+interface PageProps {
+  params: {
+    category: string
+    degree: string
+  }
+}
 
-export default async function DegreePage({ params }: { params: ParamsType }) {
+export default async function DegreePage({ params }: PageProps) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
 
-  // Ensure only the valid categories are included
   if (!courseTypes[categoryLower]) {
     return notFound()
   }
 
   const categoryCourses = courseTypes[categoryLower]
-
-  // Find the course that matches the degree parameter
   const selectedCourseIndex = categoryCourses.findIndex((course) => course.value === degree)
 
-  // If degree not found, return 404
   if (selectedCourseIndex === -1) {
     return notFound()
   }
 
   const initialTabIndex = selectedCourseIndex
 
-  // Breadcrumb Schema for Degree Pages
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -58,21 +57,17 @@ export default async function DegreePage({ params }: { params: ParamsType }) {
 
   return (
     <>
-      {/* Breadcrumb Schema for SEO */}
       <Script
         id="breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-
-      {/* Render the CoursePage Component with initial tab selection */}
       <CoursePage courseType={categoryCourses} category={categoryLower} initialTabIndex={initialTabIndex} />
     </>
   )
 }
 
-// Generate Metadata for SEO
-export async function generateMetadata({ params }: { params: ParamsType }) {
+export async function generateMetadata({ params }: PageProps) {
   const { category, degree } = params
   const categoryLower = category.toLowerCase()
 
@@ -88,10 +83,7 @@ export async function generateMetadata({ params }: { params: ParamsType }) {
 
   if (!selectedCourse) {
     return {
-      title: `${category
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")} Courses - Inframe School`,
+      title: `${category.replace(/-/g, " ")} Courses - Inframe School`,
       description: `Browse our ${category.replace(/-/g, " ")} courses and enhance your skills with Inframe School.`,
     }
   }
@@ -102,19 +94,14 @@ export async function generateMetadata({ params }: { params: ParamsType }) {
   }
 }
 
-// Generate Static Paths for Dynamic Routing
 export async function generateStaticParams() {
-const paths: { category: string; degree: string }[] = []
+  const paths: { category: string; degree: string }[] = []
 
   Object.entries(courseTypes).forEach(([category, courses]) => {
     courses.forEach((course) => {
-      paths.push({
-        category,
-        degree: course.value,
-      })
+      paths.push({ category, degree: course.value })
     })
   })
 
   return paths
 }
-
