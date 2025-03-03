@@ -69,6 +69,12 @@ body {
   }
 }
 
+.navigation-menu-trigger:hover {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+
 @layer base {
   * {
     @apply border-border;

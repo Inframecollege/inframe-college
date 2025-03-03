@@ -12,12 +12,8 @@ import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"], // Including various font weights
-});
 
-const courses = {
+const category = {
   design: [
     {
       title: "Interior Design",
@@ -28,7 +24,8 @@ const courses = {
         "1 Year Diploma in Interior Design",
         "3 Year Diploma in Interior Design",
       ],
-      image: "/images/gallery/1717668148989.jpg",
+      image:
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "Fashion Design",
@@ -50,7 +47,8 @@ const courses = {
         "1 Year Diploma in Graphic Design",
         "3 Year Diploma in Graphic Design",
       ],
-      image: "/images/gallery/DSC04267.JPG",
+      image:
+        "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "UIUX-Design",
@@ -99,7 +97,8 @@ const courses = {
         "1 Year Diploma in Painting",
         "3 Year Diploma in Fine Arts",
       ],
-      image: "/images/gallery/1717485328677 - Copy (4).jpg",
+      image:
+        "https://plus.unsplash.com/premium_photo-1673514503009-912ffc6ff956?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ],
   business: [
@@ -110,7 +109,7 @@ const courses = {
         "1 Year Diploma in Digital Marketing",
         "6 Month Certificate Course in Digital Marketing",
       ],
-      image: "/images/gallery/1717660987952.jpg",
+      image: "/fetchpik.com-HAfwcPu9n1.jpg",
     },
     {
       title: "Entrepreneurship Skill",
@@ -131,12 +130,41 @@ const courses = {
         "https://plus.unsplash.com/premium_photo-1710961232986-36cead00da3c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fG1lZGlhJTIwYW5kJTIwZW50ZXJ0YWlubWVudHxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
-      title: "Advertising-Marketing",
+      title: "Animation-VFX",
       programs: ["BBA in Advertising and Marketing"],
       image:
         "https://plus.unsplash.com/premium_photo-1684341008757-3b456034e943?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ],
+};
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+interface DegreeMap {
+  [key: string]: string;
+}
+
+const getDegreeType = (text: string): string => {
+  const degreeMap: DegreeMap = {
+    "B. Des": "bdes",
+    "B.VOC": "bvoc",
+    "B.SC": "bsc",
+    "1 Year Diploma": "diploma1",
+    "3 Year Diploma": "diploma3",
+    "2 Year Diploma": "diploma2",
+    "6 Month Certificate": "certificate6",
+  };
+
+  // Find which degree type this course belongs to
+  for (const [key, value] of Object.entries(degreeMap)) {
+    if (text.includes(key)) {
+      return value;
+    }
+  }
+
+  return "bdes"; // Default fallback
 };
 
 interface Course {
@@ -178,10 +206,17 @@ const CourseSection: React.FC<CourseSectionProps> = ({ courses }) => (
                 key={idx}
                 className="text-sm text-gray-600 hover:text-yellow-600 transition-colors flex items-start"
               >
-                <span className="text-yellow-400 mr-2 text-lg leading-none">
-                  •
-                </span>
-                {program}
+                <Link
+                  className="hover:text-blue-500 hover:underline"
+                  href={`/${course.title
+                    .replace(/\s+/g, "-")
+                    .toLowerCase()}/${getDegreeType(program)}`}
+                >
+                  <span className="text-yellow-400 mr-2 text-lg leading-none">
+                    •
+                  </span>
+                  {program}
+                </Link>
               </li>
             ))}
           </ul>
@@ -191,9 +226,7 @@ const CourseSection: React.FC<CourseSectionProps> = ({ courses }) => (
             className="block mt-6"
             scroll={false}
           >
-            <Button
-              className={`w-full bg-yellow-400 hover:bg-yellow-500 text-black flex items-center justify-center space-x-2 px-5 py-3 rounded-md ${poppins.className}`}
-            >
+            <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black flex items-center justify-center space-x-2 px-5 py-3 rounded-md">
               <span>Explore Now</span>
               <FaArrowRight className="text-black" />
             </Button>
@@ -205,7 +238,11 @@ const CourseSection: React.FC<CourseSectionProps> = ({ courses }) => (
 );
 
 const CourseCatalog = () => {
-  const allCourses = [...courses.design, ...courses.art, ...courses.business];
+  const allCourses = [
+    ...category.design,
+    ...category.art,
+    ...category.business,
+  ];
 
   return (
     <div
@@ -216,35 +253,33 @@ const CourseCatalog = () => {
           <h1 className="text-4xl md:text-5xl my-10 font-bold mb-4 text-gray-800">
             Our Industry-Centered Programs
           </h1>
-          <div className="w-24 h-1 bg-yellow-400  rounded-full" />
+          <div className="w-24 h-1 bg-yellow-400 rounded-full" />
         </div>
-
-        <Tabs defaultValue="all" className="w-full ">
-          <div className=" p-2 mb-12">
-            <TabsList className="flex flex-wrap justify-center sm:justify-start my-3 rounded-lg   gap-2  font-bold text-black font-sans">
+        <Tabs defaultValue="all" className="w-full">
+          <div className="p-2 mb-12">
+            <TabsList className="flex flex-wrap justify-center sm:justify-start my-3 rounded-lg gap-2 font-bold text-black font-sans">
               {["all", "art", "business", "design"].map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="px-8 py-3 data-[state=active]:bg-yellow-400 border border-black  font-sans font-bold data-[state=active]:text-black transition-all duration-300"
+                  className="px-8 py-3 data-[state=active]:bg-yellow-400 border border-black font-sans font-bold data-[state=active]:text-black transition-all duration-300"
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </TabsTrigger>
               ))}
             </TabsList>
           </div>
-
           <TabsContent value="all">
             <CourseSection courses={allCourses} />
           </TabsContent>
           <TabsContent value="art">
-            <CourseSection courses={courses.art} />
+            <CourseSection courses={category.art} />
           </TabsContent>
           <TabsContent value="business">
-            <CourseSection courses={courses.business} />
+            <CourseSection courses={category.business} />
           </TabsContent>
           <TabsContent value="design">
-            <CourseSection courses={courses.design} />
+            <CourseSection courses={category.design} />
           </TabsContent>
         </Tabs>
       </div>

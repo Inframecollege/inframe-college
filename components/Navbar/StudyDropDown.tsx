@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   NavigationMenu,
@@ -7,53 +7,75 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../ui/navigation-menu";
-import { Search } from "lucide-react";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { categories } from "../../utils/constant";
-import { Poppins } from "next/font/google";
-import { FaArrowRight } from "react-icons/fa";
-import Image from "next/image";
-import { useState } from "react";
+} from "../ui/navigation-menu"
+import { Search } from "lucide-react"
+import { Input } from "../ui/input"
+import { Button } from "../ui/button"
+import Link from "next/link"
+import { categories } from "../../utils/constant"
+import { Poppins } from "next/font/google"
+import { FaArrowRight } from "react-icons/fa"
+import Image from "next/image"
+import { useState } from "react"
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-});
+})
 
 const StudyDropDown = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [searchQuery, setSearchQuery] = useState("")
 
-  const allCategories = ["All", "Art", "Design", "Business"]; // Added all categories list
+  const allCategories = ["All", "Art", "Design", "Business"] // Added all categories list
 
   const filteredCategories = categories
     .map((category) => ({
       ...category,
       items: category.items.filter((item) => {
-        const matchesCategory =
-          selectedCategory === "All" || item.category === selectedCategory;
-        const matchesSearch = item.title
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase());
+        const matchesCategory = selectedCategory === "All" || item.category === selectedCategory
+        const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase())
 
-        return matchesCategory && matchesSearch;
+        return matchesCategory && matchesSearch
       }),
     }))
-    .filter((category) => category.items.length > 0);
+    .filter((category) => category.items.length > 0)
+
+  // Helper function to extract degree type from course name
+  interface DegreeMap {
+    [key: string]: string;
+  }
+
+  const getDegreeType = (text: string): string => {
+    const degreeMap: DegreeMap = {
+      "B. Des": "bdes",
+      "B.VOC": "bvoc",
+      "B.SC": "bsc",
+      "1 Year Diploma": "diploma1",
+      "3 Year Diploma": "diploma3",
+      "2 Year Diploma": "diploma2",
+      "6 Month Certificate": "certificate6",
+    }
+
+    // Find which degree type this course belongs to
+    for (const [key, value] of Object.entries(degreeMap)) {
+      if (text.includes(key)) {
+        return value
+      }
+    }
+
+    return "bdes" // Default fallback
+  }
 
   return (
     <div>
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-yellow-300 hover:bg-yellow-400 ">
-              <span className="flex items-center gap-1 text-md font-bold font-sans">
-                Study
-              </span>
+            <NavigationMenuTrigger className="bg-yellow-300 text-black focus:bg-yellow-500 focus:text-black">
+              <span className="flex items-center gap-1 text-md font-bold font-sans">Study</span>
             </NavigationMenuTrigger>
+
             <NavigationMenuContent>
               <div className="p-7 w-[350px] sm:w-[650px] md:w-[830px] lg:w-[970px] xl:w-[1200px] h-[800px] overflow-y-auto bg-white">
                 <div className="flex flex-col lg:flex-row lg:gap-4 mb-6">
@@ -71,9 +93,7 @@ const StudyDropDown = () => {
                   {allCategories.map((category) => (
                     <Button
                       key={category}
-                      variant={
-                        selectedCategory === category ? "default" : "outline"
-                      }
+                      variant={selectedCategory === category ? "default" : "outline"}
                       size="sm"
                       onClick={() => setSelectedCategory(category)}
                     >
@@ -84,9 +104,7 @@ const StudyDropDown = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredCategories.map((category) => (
                     <div key={category.title} className="space-y-4">
-                      <h3 className="text-lg font-semibold">
-                        {category.title}
-                      </h3>
+                      <h3 className="text-lg font-semibold">{category.title}</h3>
                       <div className="space-y-4">
                         {category.items.map((item) => (
                           <div
@@ -96,41 +114,31 @@ const StudyDropDown = () => {
                             <NavigationMenuLink asChild>
                               <div className="flex flex-col sm:flex-row gap-4">
                                 <Image
-                                  src={item.image}
+                                  src={item.image || "/placeholder.svg"}
                                   alt={item.title}
                                   width={96} // Adjust width as needed (24 * 4 = 96px)
                                   height={96} // Adjust height as needed
                                   className="w-full sm:w-24 sm:h-24 object-cover rounded-lg"
                                 />
                                 <div className="flex-1">
-                                  <Link
-                                    href={`/${item.title
-                                      .replace(/\s+/g, "-")
-                                      .toLowerCase()}`}
-                                    className="block"
-                                  >
-                                    <h4 className="text-sm font-medium leading-none mb-2">
-                                      {item.title}
-                                    </h4>
+                                  <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
+                                    <h4 className="text-sm font-medium leading-none mb-2">{item.title}</h4>
                                   </Link>
                                   <div className="text-sm text-muted-foreground mb-2">
                                     {item.links.map((link, index) => (
                                       <p key={index} className="mb-1">
-                                        {/* <Link
-                                            // className="hover:text-blue-500 hover:underline"
-                                            href={link.href}
-                                          > */}
-                                        {link.text}
-                                        {/* </Link> */}
+                                        <Link
+                                          className="hover:text-blue-500 hover:underline"
+                                          href={`/${item.title
+                                            .replace(/\s+/g, "-")
+                                            .toLowerCase()}/${getDegreeType(link.text)}`}
+                                        >
+                                          {link.text}
+                                        </Link>
                                       </p>
                                     ))}
                                   </div>
-                                  <Link
-                                    href={`/${item.title
-                                      .replace(/\s+/g, "-")
-                                      .toLowerCase()}`}
-                                    className="block"
-                                  >
+                                  <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
                                     <Button
                                       className={`my-3 bg-yellow-400 hover:bg-yellow-500 text-black  flex items-center space-x-2 px-5 py-3 rounded-md ${poppins.className}`}
                                     >
@@ -153,7 +161,8 @@ const StudyDropDown = () => {
         </NavigationMenuList>
       </NavigationMenu>
     </div>
-  );
-};
+  )
+}
 
-export default StudyDropDown;
+export default StudyDropDown
+

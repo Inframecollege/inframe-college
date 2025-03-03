@@ -123,7 +123,7 @@ const ReelCard = () => {
                   <Link
                     href={"https://www.instagram.com/inframecollege/?hl=en"}
                   >
-                    <Button className="text-black bg-white font-sans font-bold hover:bg-gray-200 py-1 px-4 shadow-md">
+                    <Button className="text-black bg-white font-sans font-bold hover:bg-gray-200  px-3 shadow-md">
                       Follow
                     </Button>
                   </Link>
@@ -140,9 +140,9 @@ const ReelCard = () => {
               <div className="flex flex-col items-center space-y-6">
                 <Button
                   onClick={() => setIsredHeart((prev) => !prev)}
-                  className="text-white hover:text-red-500 transition-transform duration-300 transform hover:scale-125"
+                  className="text-white bg-transparent hover:text-red-500 "
                 >
-                  {isredHeart ? <Heart fill="red" /> : <Heart />}
+                  {isredHeart ? <Heart className="text-2xl" fill="red" /> : <Heart />}
                 </Button>
 
                 <Button className="text-white transform scale-x-[-1] hover:text-blue-500 transition-transform duration-300 transform hover:scale-125">
