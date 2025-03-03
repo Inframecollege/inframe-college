@@ -1,5 +1,5 @@
 import { courseTypes } from "../../../../utils/courseTypes"
-import Script from "next/script"
+
 import { notFound } from "next/navigation"
 import CoursePage from "../../../../components/Courses/CoursePage"
 import { use } from 'react'
