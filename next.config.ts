@@ -77,6 +77,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'example.com'
       },
+      {
+        protocol: 'https',
+        hostname: 'productside.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'd15shllkswkct0.cloudfront.net'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images-prod.dazeddigital.com'
+      },
     ],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,

@@ -36,6 +36,8 @@ export type CourseType = {
   duration: string;
   description: string;
   content: string;
+  metaTitle?: string;
+  metaDescription?: string;
   curriculum?: CurriculumType;
   software: SoftwareType[];
   whatYouWillLearn: WhatLearn[];
@@ -45,6 +47,8 @@ export type CourseType = {
 export const courseTypes: CourseCategory = {
  "interior-design": [
   {
+    "metaTitle": "Interior Design Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Join Inframe's Interior Design Course in Jodhpur and turn your passion into a career. 15+ years of expertise in top-notch Interior Design education.",
     "value": "bdes",
     "label": "B. Des in Interior Design",
     "title": "Bachelor of Design in Interior Design",
@@ -471,6 +475,8 @@ export const courseTypes: CourseCategory = {
 
   "fashion-design": [
     {
+      "metaTitle": "Fashion Design Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Join Inframe's Fashion Design Course in Jodhpur. With 15+ years of expertise, we offer top-notch education to launch your career in fashion design.",
       "value": "bdes",
       "label": "B. Des in Fashion Design",
       "title": "Bachelor of Design in Fashion Design",
@@ -855,6 +861,8 @@ export const courseTypes: CourseCategory = {
 
 "graphic-design": [
   {
+    "metaTitle": "Graphic Design Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Enroll in Inframe's Graphic Design Course in Jodhpur. With 15+ years of experience, we provide expert training to kickstart your career in graphic design.",
     "content": "The Bachelor of Design (B.Des) in Graphic Design is a comprehensive four-year program that develops creative problem-solving skills through visual communication. Students learn typography, layout design, branding, digital illustration, and motion graphics. The program emphasizes both traditional design principles and modern digital tools, preparing students for diverse creative industry roles.",
     "value": "bdes",
     "label": "B. Des in Graphic Design",
@@ -1197,6 +1205,8 @@ export const courseTypes: CourseCategory = {
 
 "uiux-design": [
   {
+    "metaTitle": "UI/UX Design Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Join Inframe's UI/UX Design Course in Jodhpur. With 15+ years of expertise, we offer industry-focused training to kickstart your career in UI/UX design.",
     "content": "The Bachelor of Design (B.Des) in UI & UX Design is a four-year program focusing on creating exceptional digital experiences. Students learn user research, information architecture, interaction design, and prototyping. The curriculum covers both theoretical principles and practical applications of user-centered design, preparing graduates for roles in digital product design.",
     "value": "bdes",
     "label": "B. Des in UI & UX Design",
@@ -1328,6 +1338,8 @@ export const courseTypes: CourseCategory = {
 
 "animation-vfx": [
   {
+    "metaTitle": "Animation & VFX Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Enroll in Inframe's Animation & VFX Course in Jodhpur. With 15+ years of experience, we provide expert training to launch your career in animation and visual effects.",
     "content": "The Bachelor of Design (B.Des) in Animation and VFX is a four-year program that focuses on creating captivating animations and visual effects for films, games, and digital media. Students will gain expertise in animation techniques, VFX production, 3D modeling, and compositing, with an emphasis on creativity and technical skills. This program prepares students for a career in the dynamic field of animation and visual effects.",
     "value": "bdes",
     "label": "B. Des in Animation and VFX",
@@ -1600,6 +1612,8 @@ export const courseTypes: CourseCategory = {
 
   "digital-marketing": [
   {
+    "metaTitle": "Best Digital Marketing Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Join Inframe's Digital Marketing Course in Jodhpur. Learn SEO, Social Media Marketing, and Online Advertising with 15+ years of expertise to boost your career.",
     "content": "The Bachelor of Vocation (B.VOC) in Digital Marketing is a comprehensive three-year program focused on modern marketing strategies. Students learn social media marketing, SEO, content marketing, and data analytics. The curriculum includes hands-on projects, industry certifications, and real-world campaign management experience.",
     "value": "bvoc",
     "label": "B.VOC in Digital Marketing",
@@ -1826,6 +1840,8 @@ export const courseTypes: CourseCategory = {
 
 "jewellery-design": [
   {
+    "metaTitle": "Jewellery Design Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Join Inframe's Jewellery Design Course in Jodhpur. With 15+ years of expertise, we offer a top-tier Jewellery Design Course in Jodhpur to help you build a successful career.",
     "content": "The Bachelor of Vocation (B.VOC) in Jewellery Design is a three-year full-time program that combines creative design skills with technical expertise in jewellery making. This comprehensive course focuses on developing both artistic vision and practical craftsmanship skills essential for the jewellery industry. Students learn various aspects of jewellery design, including traditional and contemporary techniques, gemology, metal work, and digital design tools. The curriculum covers topics such as design principles, material studies, stone setting, metal casting, and CAD/CAM technologies for jewellery production. \n\nThroughout the program, students gain hands-on experience in professional workshops, working with different materials and techniques. They learn about various aspects of jewellery making, from concept development to final production. The course also includes modules on business management, marketing, and entrepreneurship specific to the jewellery industry. Students study historical and contemporary jewellery trends, precious metals, gemstones, and sustainable practices in jewellery making. By the final year, students participate in industry internships and create professional portfolios. Graduates can pursue careers as jewellery designers, CAD specialists, production managers, or establish their own jewellery design studios.",
     "value": "bvoc",
     "label": "B.VOC in Jewellery Design",
@@ -2032,6 +2048,8 @@ export const courseTypes: CourseCategory = {
 
 "entrepreneurship-skill": [
   {
+    "metaTitle": "Entrepreneurship Skills Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Enroll in Inframe's Entrepreneurship Skills Course in Jodhpur. Gain essential skills to start and grow your business with expert guidance and 15+ years of experience.",
     "content": "The Bachelor of Vocation (B.VOC) in Entrepreneurship Skills is a three-year full-time program designed to develop future business leaders and innovators. This comprehensive course combines theoretical knowledge with practical business skills essential for successful entrepreneurship. Students learn various aspects of business development, including market analysis, business planning, financial management, marketing strategies, and leadership skills. The curriculum emphasizes real-world application through case studies, business simulations, and actual startup projects.\n\nThroughout the program, students gain hands-on experience in developing business models, conducting market research, and creating viable business plans. They learn about digital marketing, e-commerce, business law, and startup funding mechanisms. The course includes modules on innovation management, design thinking, and sustainable business practices. Students also develop essential soft skills like negotiation, team management, and business communication. Regular interactions with successful entrepreneurs, industry mentors, and business incubators provide valuable insights into the startup ecosystem. By the final year, students work on launching their own business ventures or detailed business projects. Graduates can start their own businesses, join family enterprises, work as business consultants, or pursue careers in startup accelerators and venture capital firms.",
     "value": "bvoc",
     "label": "B.VOC in Entrepreneurship Skill",
@@ -2146,6 +2164,8 @@ export const courseTypes: CourseCategory = {
 
 "media-entertainment": [
   {
+    "metaTitle": "Media and Entertainment Course in Jodhpur | Kickstart Your Career | Apply Now",
+    "metaDescription": "Enroll in a comprehensive Media and Entertainment Course in Jodhpur. Learn industry skills and techniques to build a successful career in media and entertainment.",
     "content": "The Bachelor of Vocation (B.VOC) in Media and Entertainment is a three-year full-time program designed to prepare students for the dynamic world of media production and entertainment. This comprehensive course combines theoretical knowledge with hands-on training in various aspects of media creation, production, and distribution. Students learn about film and television production, digital media, content creation, broadcasting, and entertainment management. The curriculum covers both traditional and new media platforms, ensuring students are well-versed in current industry practices.\n\nThroughout the program, students gain practical experience in video production, content writing, social media management, and digital broadcasting. They learn to use professional equipment and software for media production, including video editing tools, audio production software, and streaming technologies. The course includes modules on storytelling, script writing, media laws, digital marketing, and project management. Students also study audience engagement, analytics, and content monetization strategies. Regular industry projects, internships, and collaborations with media houses provide real-world experience. Final year students work on comprehensive media projects and build professional portfolios. Graduates can pursue careers as content creators, media producers, broadcast professionals, digital media managers, or entertainment entrepreneurs.",
     "value": "bvoc",
     "label": "B.VOC in Media and Entertainment",
@@ -2260,6 +2280,8 @@ export const courseTypes: CourseCategory = {
 
 "fine-arts": [
   {
+    "metaTitle": "Fine Arts Course in Jodhpur | Inframe School of Art & Design",
+    "metaDescription": "Enroll in Inframe's Fine Arts Course in Jodhpur and Unlock Your Creative Potential. With 15+ Years of Excellence, We Offer Comprehensive Fine Arts Education to Shape Your Artistic Career.",
     "content": "The Bachelor of Fine Arts (BFA) in Painting focuses on the artistic and technical aspects of painting. This comprehensive program develops creativity, technical skills, and theoretical knowledge in various painting styles and techniques. Students will learn traditional and contemporary painting methods, color theory, composition, and art history. The course includes practical workshops and individual studio practice to encourage students to develop their personal artistic voice. By the end of the program, students will have a well-rounded portfolio showcasing their work in diverse painting media.",
     "value": "bfa-painting",
     "label": "BFA in Painting",
@@ -2647,6 +2669,8 @@ export const courseTypes: CourseCategory = {
 
 "advertising-marketing": [
     {
+      "metaTitle": "Advertising and Marketing Course in Jodhpur | Inframe School of Art & Design",
+      "metaDescription": "Enroll in the Business Administration in Advertising and Marketing course in Jodhpur. Gain essential skills in marketing, advertising, and business management",
       "content": "The Bachelor of Business Administration (BBA) in Advertising and Marketing is a three-year full-time program that prepares students for the dynamic world of advertising, marketing, and brand management. This comprehensive course combines business fundamentals with specialized knowledge in modern marketing practices and advertising strategies. Students learn various aspects of marketing management, consumer behavior, brand strategy, digital marketing, and advertising campaign development. The curriculum emphasizes both traditional marketing principles and contemporary digital marketing techniques.\n\nThroughout the program, students gain hands-on experience in creating marketing strategies, developing advertising campaigns, and managing brand communications. They learn about market research, consumer psychology, media planning, content strategy, and analytics. The course includes specialized modules in social media marketing, search engine marketing, email marketing, and marketing automation. Students also study advertising design, copywriting, public relations, and event management. The program incorporates real-world projects where students work on actual marketing campaigns and brand strategies.\n\nThe curriculum also covers essential business aspects including marketing economics, business law, financial management, and entrepreneurship. Through industry internships and live projects, students gain practical experience in handling marketing challenges and advertising campaigns. Regular workshops and guest lectures from industry experts provide insights into current marketing trends and practices. Final year students work on comprehensive marketing projects and develop professional portfolios. Graduates can pursue careers as marketing managers, advertising executives, brand managers, digital marketing specialists, media planners, or marketing consultants. Many also go on to start their own advertising agencies or marketing consultancy firms.",
       "value": "bba-advertising-marketing",
       "label": "BBA in Advertising and Marketing",
