@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 
 
+
 // Blog card data
 const blogPosts = [
   {
