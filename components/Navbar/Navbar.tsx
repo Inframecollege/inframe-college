@@ -11,6 +11,8 @@ import { Menu } from "lucide-react";
 import ApplyNowForm from "../ApplyNowForm";
 import { useState } from "react";
 
+
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -49,11 +51,20 @@ const Navbar = () => {
                 </span>
               </div>
               <StudyDropDown />
+              {/* study */}
+              {/* <Link
+                  href={"/study"}
+                  className="text-muted-foreground text-white font-bold"
+                  onClick={handleLinkClick}
+                >
+                  Study
+                </Link> */}
+
               <nav
                 className={`hidden md:flex items-center gap-8 ${poppins.className}`}
               >
                 <Link
-                  href={"/about"}
+                  href={"/about-us"}
                   className="text-muted-foreground text-white font-bold"
                   onClick={handleLinkClick}
                 >
@@ -72,7 +83,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-7">
               <Link
                 className="text-white font-bold"
-                href="/contact"
+                href="/contact-us"
                 onClick={handleLinkClick}
               >
                 Contact Us

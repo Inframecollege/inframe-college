@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 const InfiniteSlider: React.FC = () => {
   return (
-    <div className="w-full relative xl:left-[20rem] lg:text-left text-center mx-auto">
+    <div className="w-full relative xl:left-[10rem] lg:text-left text-center mx-auto">
       {/* Heading */}
       <h2
         className={`text-center xl:text-left font-sans text-3xl font-bold text-gray-800 mb-4 ${poppins.className}`}
@@ -21,7 +21,7 @@ const InfiniteSlider: React.FC = () => {
 
       {/* Short Description Paragraph */}
       <p
-        className={`text-center xl:text-left text-lg text-gray-600 mb-8 ${poppins.className}`}
+        className={`text-center w-3/4 xl:text-left text-lg text-gray-600 mb-8 ${poppins.className}`}
       >
         Inframe’s strong industry partnerships provide students with
         unparalleled career opportunities and real-world experience to excel in

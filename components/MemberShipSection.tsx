@@ -13,7 +13,7 @@ const MembershipPartnership = () => {
             <Image
               src="/ugc.gif"
               alt="NSDC Logo"
-              width={150} // Adjust as needed
+              width={120} // Adjust as needed
               height={112} // Adjust as needed
               objectFit="contain"
               className="transition-transform transform hover:scale-110 shadow-lg rounded-lg bg-white p-4"
@@ -24,8 +24,8 @@ const MembershipPartnership = () => {
             <Image
               src="/The_Glocal_University-_Logo.png"
               alt="Glocal University Logo"
-              width={150}
-              height={112}
+              width={300}
+              height={300}
               objectFit="contain"
               className="transition-transform transform hover:scale-110 shadow-lg rounded-lg bg-white p-4"
             />
@@ -35,8 +35,8 @@ const MembershipPartnership = () => {
             <Image
               src="/skill india.jpeg"
               alt="Skill India Logo"
-              width={500}
-              height={500}
+              width={230}
+              height={220}
               objectFit="contain"
               className="transition-transform transform hover:scale-110 shadow-lg rounded-lg bg-white p-4"
             />
