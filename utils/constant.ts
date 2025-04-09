@@ -1271,6 +1271,7 @@ export const courses = [
   },
   {
     category: "Fashion Design",
+    name: "Fashion Design",
     programs: [
       {
         name: "B.Des in Fashion Design",

@@ -26,6 +26,7 @@ export type VideosType = {
 };
 
 export type CourseType = {
+  mainTitle?: string;
   value: string;
   label: string;
   title: string;
@@ -43,6 +44,7 @@ export type CourseType = {
 export const courseTypes: CourseCategory = {
  "interior-design": [
   {
+    "mainTitle": "interior-design",
     "metaTitle": "Interior Design Course in Jodhpur | Inframe School of Art & Design",
     "metaDescription": "Join Inframe's Interior Design Course in Jodhpur and turn your passion into a career. 15+ years of expertise in top-notch Interior Design education.",
     "value": "bdes-in-interior-design",
