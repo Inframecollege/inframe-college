@@ -1,6 +1,8 @@
+
+
 "use client"
 import type React from "react"
-import type { CourseType } from "../../utils/courseTypes"
+import {  type CourseType } from "../../utils/courseTypes"
 import CourseContent from "./CourseContent"
 import { usePathname } from "next/navigation"
 
@@ -28,18 +30,37 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
   
   return (
     <div className="min-h-screen mt-24 sm:mt-0 font-sans bg-black text-white">
-      {/* Course Content */}
-      {courseType.some(course => pathname.endsWith(course.value)) ? (
-        courseType.map((course, index) => (
-          pathname.endsWith(course.value) && (
-            <CourseContent key={course.value} {...course} category={category} index={index} />
-          )
+      {courseType
+        .filter((course) => pathname.endsWith(course.value))
+        .map((course, index) => (
+          <CourseContent key={course.value} {...course} category={category} index={index} />
         ))
-      ) : (
-        <></>
-      )}
+      }
+  
+  {courses.map((co) => {
+  const formattedCategory = co.category.toLowerCase().replace(/\s+/g, "-");
+  const currentPath = pathname.replace(/\/$/, "").toLowerCase();
+
+  if (currentPath.endsWith("/"+formattedCategory)) {
+    console.log(`✅ Rendering: ${"/"+formattedCategory}`, currentPath);
+    return (
+      <div key={co.category} className="min-h-screen mt-24 sm:mt-0 font-sans bg-black text-white flex items-center justify-center">
+      <div>
+        {formattedCategory}
+  </div>
+  </div>
+    )
+  }
+
+  
+})}
+     
+
+
+
     </div>
-  )
+  );
+  
 }
 
 export default CoursePage
