@@ -52,6 +52,7 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
     )
   }
   
+  
 })}
      
 
