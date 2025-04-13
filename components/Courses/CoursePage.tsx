@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { courses } from "../../utils/constant"
 import Link from "next/link"
 import FAQSection from "./FAQSection"
+import CategoryLandingPage from "./CategoryLandingPage"
 
 interface CoursePageProps {
   courseType: CourseType[]
@@ -25,6 +26,7 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
   }
 
   return (
+
     <div className="min-h-screen pt-20 font-sans text-white">
       {/* Show course content by specific course value in the path */}
       {courseType
@@ -32,9 +34,12 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
         .map((course, index) => (
           <CourseContent key={course.value} {...course} category={category} index={index} />
         ))}
+      </div>
+    
 
-      {/* Category-wise full course section */}
-      {courses.map((co) => {
+
+    //   Category-wise full course section
+    /* {courses.map((co) => {
         const formattedCategory = co.category.toLowerCase().replace(/\s+/g, "-");
         const currentPath = pathname.replace(/\/$/, "").toLowerCase();
 
@@ -80,7 +85,7 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
           );
         }
       })}
-    </div>
+    </div> */
   )
 }
 

@@ -1181,11 +1181,11 @@ export const courseTypes: CourseCategory = {
 
 
 "uiux-design": [
-  { redirectUrl:"/uiux-design/bdes-in-ui-&-ux-design",
+  { redirectUrl:"/uiux-design/bdes-in-ui-ux-design",
     "metaTitle": "UI/UX Design Course in Jodhpur | Inframe School of Art & Design",
     "metaDescription": "Join Inframe's UI/UX Design Course in Jodhpur. With 15+ years of expertise, we offer industry-focused training to kickstart your career in UI/UX design.",
     "content": "The Bachelor of Design (B.Des) in UI & UX Design is a four-year program focusing on creating exceptional digital experiences. Students learn user research, information architecture, interaction design, and prototyping. The curriculum covers both theoretical principles and practical applications of user-centered design, preparing graduates for roles in digital product design.",
-    "value": "bdes-in-ui-&-ux-design",
+    "value": "bdes-in-ui-ux-design",
     "label": "B. Des in UI & UX Design",
     "title": "Bachelor of Design in UI & UX Design",
     "duration": "4 Years Full-Time",
@@ -1273,9 +1273,9 @@ export const courseTypes: CourseCategory = {
       }
     }
   },
-  { redirectUrl:"/uiux-design/one-year-diploma-in-ui-&-ux-design",
+  { redirectUrl:"/uiux-design/one-year-diploma-in-ui-ux-design",
     "content": "The One Year Diploma in UI & UX Design is an intensive program covering essential skills in digital interface design. Students learn fundamental UX principles, UI design tools, prototyping software, and basic coding concepts. The program includes practical projects and portfolio development, perfect for quick entry into the digital design industry.",
-    "value": "one-year-diploma-in-ui-&-ux-design",
+    "value": "one-year-diploma-in-ui-ux-design",
     "label": "1 Year Diploma in UI & UX Design",
     "title": "1 Year Diploma in UI & UX Design",
     "duration": "1 Year Intensive",
@@ -2259,7 +2259,7 @@ export const courseTypes: CourseCategory = {
     "metaTitle": "Fine Arts Course in Jodhpur | Inframe School of Art & Design",
     "metaDescription": "Enroll in Inframe's Fine Arts Course in Jodhpur and Unlock Your Creative Potential. With 15+ Years of Excellence, We Offer Comprehensive Fine Arts Education to Shape Your Artistic Career.",
     "content": "The Bachelor of Fine Arts (BFA) in Painting focuses on the artistic and technical aspects of painting. This comprehensive program develops creativity, technical skills, and theoretical knowledge in various painting styles and techniques. Students will learn traditional and contemporary painting methods, color theory, composition, and art history. The course includes practical workshops and individual studio practice to encourage students to develop their personal artistic voice. By the end of the program, students will have a well-rounded portfolio showcasing their work in diverse painting media.",
-    "value": "bfa-painting",
+    "value": "b-des-in-fine-arts",
     "label": "BFA in Painting",
     "title": "Bachelor of Fine Arts in Painting",
     "duration": "3 Years Full-Time",
@@ -2748,10 +2748,140 @@ export const categoryHeroImages: { [key: string]: string[] } = {
     "https://images.unsplash.com/photo-1558655146-d09347e92766?w=1600&q=80", // Typography work
   ],
 
-  "ui-ux-design": [
-    "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1600&q=80", // UX workspace
-    "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1600&q=80", // Digital prototyping
+  "uiux-design": [
+    "https://images.unsplash.com/photo-1626785774625-0b1c2c4efd7c?w=1600&q=80", // Design workspace
+    "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600&q=80", // Creative process
+    "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=1600&q=80", // Digital art
+    "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1600&q=80", // Design tools
+    "https://images.unsplash.com/photo-1558655146-d09347e92766?w=1600&q=80", // Typography work
   ],
+
+  // "ui-ux-design": [
+  //   {
+  //     "redirectUrl": "/ui-ux-design/bdes-in-ui-ux-design",
+  //     "mainTitle": "ui-ux-design",
+  //     "metaTitle": "UI/UX Design Course in Jodhpur | Inframe School of Art & Design",
+  //     "metaDescription": "Join Inframe's UI/UX Design Course in Jodhpur. Learn to create intuitive digital experiences with industry-standard tools and methodologies.",
+  //     "value": "bdes-in-ui-ux-design",
+  //     "label": "B. Des in UI/UX Design",
+  //     "title": "Bachelor of Design in UI/UX Design",
+  //     "duration": "4 Years Full-Time",
+  //     "description": "Master the art of creating intuitive digital experiences through our comprehensive UI/UX design program. Learn from industry experts and build a successful career in digital product design.",
+  //     "content": "The Bachelor of Design (B.Des) in UI/UX Design is a four-year full-time program designed to develop professionals who can create intuitive and engaging digital experiences. This course combines visual design principles with user psychology and technical implementation. Students learn user research, wireframing, prototyping, and usability testing while mastering industry-standard design tools. The curriculum integrates theoretical knowledge with practical projects, preparing graduates for roles in UI design, UX design, product design, and interaction design.",
+  //     "software": [
+  //       { "name": "Figma", "src": "/software logos/figma-logo.png" },
+  //       { "name": "Adobe XD", "src": "/software logos/adobe-xd-logo.png" },
+  //       { "name": "Sketch", "src": "/software logos/sketch-logo.png" },
+  //       { "name": "Photoshop", "src": "/software logos/pngegg (24).png" },
+  //       { "name": "Illustrator", "src": "/software logos/illustrator-logo.png" }
+  //     ],
+  //     "videos": [
+  //       { "url": "https://youtube.com/embed/dQw4w9WgXcQ" },
+  //       { "url": "https://youtube.com/embed/dQw4w9WgXcQ" },
+  //       { "url": "https://youtube.com/embed/dQw4w9WgXcQ" }
+  //     ],
+  //     "whatYouWillLearn": [
+  //       {
+  //         "skill": "User Research",
+  //         "description": "Learn to conduct user interviews, surveys, and usability tests to inform design decisions"
+  //       },
+  //       {
+  //         "skill": "UI Design",
+  //         "description": "Master the principles of visual design, typography, color theory, and layout for digital interfaces"
+  //       },
+  //       {
+  //         "skill": "UX Design",
+  //         "description": "Understand user psychology, information architecture, and interaction design patterns"
+  //       },
+  //       {
+  //         "skill": "Prototyping",
+  //         "description": "Create interactive prototypes using industry-standard tools like Figma and Adobe XD"
+  //       }
+  //     ],
+  //     "curriculum": {
+  //       "1st Year": {
+  //         "image": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c",
+  //         "imageAlt": "UI/UX design fundamentals workspace",
+  //         "Semester 1": [
+  //           "Introduction to Design Thinking",
+  //           "Visual Design Fundamentals",
+  //           "Digital Tools and Technology",
+  //           "Typography and Layout",
+  //           "Color Theory and Psychology",
+  //           "Design History and Evolution"
+  //         ],
+  //         "Semester 2": [
+  //           "User Interface Design Basics",
+  //           "User Experience Principles",
+  //           "Digital Design Tools",
+  //           "Web Design Fundamentals",
+  //           "Design Systems",
+  //           "Interactive Design"
+  //         ]
+  //       },
+  //       "2nd Year": {
+  //         "image": "https://images.unsplash.com/photo-1559028012-481c04fa702d",
+  //         "imageAlt": "Digital prototyping and wireframing",
+  //         "Semester 3": [
+  //           "User Research Methods",
+  //           "Information Architecture",
+  //           "Wireframing and Prototyping",
+  //           "Interaction Design",
+  //           "Mobile App Design",
+  //           "Usability Testing"
+  //         ],
+  //         "Semester 4": [
+  //           "Advanced UI Design",
+  //           "UX Strategy",
+  //           "Design Systems",
+  //           "Responsive Design",
+  //           "Motion Design",
+  //           "Design Documentation"
+  //         ]
+  //       },
+  //       "3rd Year": {
+  //         "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
+  //         "imageAlt": "UI/UX team collaboration",
+  //         "Semester 5": [
+  //           "Advanced UX Research",
+  //           "Service Design",
+  //           "Design Leadership",
+  //           "Design Systems at Scale",
+  //           "Accessibility in Design",
+  //           "Design Ethics"
+  //         ],
+  //         "Semester 6": [
+  //           "Product Design",
+  //           "Design Strategy",
+  //           "Team Collaboration",
+  //           "Design Operations",
+  //           "Portfolio Development",
+  //           "Industry Projects"
+  //         ]
+  //       },
+  //       "4th Year": {
+  //         "image": "https://images.unsplash.com/photo-1542744094-24638eff58bb",
+  //         "imageAlt": "Professional UI/UX design workspace",
+  //         "Semester 7": [
+  //           "Advanced Product Design",
+  //           "Design Management",
+  //           "Emerging Technologies",
+  //           "Cross-platform Design",
+  //           "Design Research Project",
+  //           "Industry Internship"
+  //         ],
+  //         "Semester 8": [
+  //           "Capstone Project",
+  //           "Professional Practice",
+  //           "Portfolio Finalization",
+  //           "Design Entrepreneurship",
+  //           "Future of Design",
+  //           "Final Thesis"
+  //         ]
+  //       }
+  //     }
+  //   }
+  // ],
 
   "digital-marketing": [
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80", // Digital analytics

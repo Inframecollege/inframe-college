@@ -355,10 +355,10 @@ export const categories = [
           "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
       },
       {
-        title: "UIUX-Design",
+        title: "UIUX Design",
         links: [
-          { text: "B.Des In UI & UX Design", href: "#" },
-          { text: "One Year Diploma in UI & UX Design", href: "#" },
+          { text: "B.Des In UI UX Design", href: "#" },
+          { text: "One Year Diploma in UI UX Design", href: "#" },
         ],
         category: "Design",
         image:
