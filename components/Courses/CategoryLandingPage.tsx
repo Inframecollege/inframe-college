@@ -156,6 +156,9 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
             <p className="text-lg md:text-2xl max-w-3xl mx-auto text-gray-200 mb-8">{description}</p>
             <Button
               className={`bg-yellow-400 text-black font-semibold hover:bg-yellow-500 px-8 py-6 text-lg ${poppins.className}`}
+              onClick={() => {
+                document.getElementById('programs-section')?.scrollIntoView({ behavior: 'smooth' })
+              }}
             >
               Explore Programs <FaArrowRight className="ml-2" />
             </Button>
@@ -164,7 +167,7 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
       </div>
 
       {/* Degree Cards Section */}
-      <div className="max-w-7xl mx-auto py-20 px-4">
+      <div id="programs-section" className="max-w-7xl mx-auto py-20 px-4">
         <h2 className={`text-3xl md:text-4xl font-bold mb-12 text-center ${poppins.className}`}>
           Our {title} Programs
         </h2>

@@ -1,6 +1,7 @@
 import React from "react";
 import { courseTypes } from "../../../utils/courseTypes";
 import CoursePage from "../../../components/Courses/CoursePage";
+import CategoryLandingPage from "../../../components/Courses/CategoryLandingPage";
 
 
 // ✅ Generate Metadata
@@ -31,7 +32,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const categoryCourses = courseTypes[categoryLower] || [];
   
 
-  return <CoursePage courseType={categoryCourses} category={categoryLower} />;
+  return <CategoryLandingPage category={categoryLower} courses={categoryCourses} />;
 }
 
 // ✅ Static Params for SSG

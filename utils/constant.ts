@@ -355,10 +355,10 @@ export const categories = [
           "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
       },
       {
-        title: "UIUX-Design",
+        title: "UIUX Design",
         links: [
-          { text: "B.Des In UI & UX Design", href: "#" },
-          { text: "One Year Diploma in UI & UX Design", href: "#" },
+          { text: "B.Des In UI UX Design", href: "#" },
+          { text: "One Year Diploma in UI UX Design", href: "#" },
         ],
         category: "Design",
         image:
@@ -1235,6 +1235,7 @@ export const allLevels = [
 export const courses = [
   {
     category: "Interior Design",
+    description:"Explore the art and science of enhancing interior spaces. This course equips students with creative and technical skills to design aesthetically pleasing, functional, and sustainable living and commercial spaces",
     programs: [
       {
         name: "B.Des in Interior Design",
@@ -1271,6 +1272,7 @@ export const courses = [
   },
   {
     category: "Fashion Design",
+    description:"Unleash your creativity and sense of style. This program covers fashion illustration, garment construction, textiles, and trend forecasting, preparing students for dynamic careers in the fashion industry.",
     name: "Fashion Design",
     programs: [
       {
@@ -1307,6 +1309,7 @@ export const courses = [
   },
   {
     category: "Graphic Design",
+    description:"Learn to communicate visually using typography, color, and imagery. This course trains students in branding, digital illustration, and layout design using industry-standard tools and software.",
     programs: [
       {
         name: "B.Des in Graphic Design",
@@ -1342,6 +1345,7 @@ export const courses = [
   },
   {
     category: "UI & UX Design",
+    description :"",
     programs: [
       {
         name: "B.Des in UI & UX Design",
@@ -1359,6 +1363,7 @@ export const courses = [
   },
   {
     category: "Animation and VFX",
+    description :"Learn the art of storytelling through motion. Students gain hands-on experience in 2D/3D animation, visual effects, and post-production techniques used in films, games, and digital media.",
     programs: [
       {
         name: "B.Des in Animation and VFX",
@@ -1400,6 +1405,7 @@ export const courses = [
   },
   {
     category: "Jewellery Design",
+    description :"",
     programs: [
       {
         name: "B.Voc in Jewellery Design",
@@ -1435,6 +1441,7 @@ export const courses = [
   },
   {
     category: "Fine Arts",
+    description :"Dive into traditional and modern art techniques. This course fosters individual expression through painting, sculpture, and mixed media, nurturing both creativity and technical excellence.",
     programs: [
       {
         name: "BFA in Painting",
@@ -1482,6 +1489,7 @@ export const courses = [
   },
   {
     category: "Digital Marketing",
+    description :"Master the tools and strategies of online promotion. From SEO and content marketing to social media and analytics, this course prepares students to build strong digital brand presence and engagement.",
     programs: [
       {
         name: "B.Voc in Digital Marketing",
@@ -1505,6 +1513,7 @@ export const courses = [
   },
   {
     category: "Entrepreneurship Skills",
+    description :"Turn your ideas into impactful ventures. This course focuses on business planning, innovation, startup strategy, and leadership skills, preparing students to launch and manage successful businesses.",
     programs: [
       {
         name: "B.Voc in Entrepreneurship Skills",
@@ -1522,6 +1531,7 @@ export const courses = [
   },
   {
     category: "Media and Entertainment",
+    description :"Discover the world behind the screen. This course provides knowledge of media production, journalism, and content creation, equipping students for careers in film, TV, and online platforms.",
     programs: [
       {
         name: "B.Voc in Media and Entertainment",
@@ -1539,6 +1549,7 @@ export const courses = [
   },
   {
     category: "Advertising and Marketing",
+    description :"Create compelling campaigns that captivate audiences. This program blends creativity with strategic thinking, covering branding, consumer behavior, and marketing communication techniques.",
     programs: [
       {
         name: "BBA in Advertising and Marketing",
