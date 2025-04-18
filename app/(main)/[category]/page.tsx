@@ -1,6 +1,6 @@
 import React from "react";
 import { courseTypes } from "../../../utils/courseTypes";
-import CoursePage from "../../../components/Courses/CoursePage";
+// import CoursePage from "../../../components/Courses/CoursePage";
 import CategoryLandingPage from "../../../components/Courses/CategoryLandingPage";
 
 
