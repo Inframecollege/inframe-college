@@ -3,10 +3,10 @@ import type React from "react"
 import { type CourseType } from "../../utils/courseTypes"
 import CourseContent from "./CourseContent"
 import { usePathname } from "next/navigation"
-import { courses } from "../../utils/constant"
-import Link from "next/link"
-import FAQSection from "./FAQSection"
-import CategoryLandingPage from "./CategoryLandingPage"
+// import { courses } from "../../utils/constant"
+// import Link from "next/link"
+// import FAQSection from "./FAQSection"
+// import CategoryLandingPage from "./CategoryLandingPage"
 
 interface CoursePageProps {
   courseType: CourseType[]
