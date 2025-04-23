@@ -12,7 +12,6 @@ import ApplyNowForm from "../ApplyNowForm";
 import { useState } from "react";
 
 
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],

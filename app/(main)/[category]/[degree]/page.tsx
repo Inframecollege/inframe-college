@@ -15,9 +15,6 @@ export default async function  DegreePage({ params }: { params: Promise<ParamsTy
     return notFound();
   }
  
-  
-  
-
   const categoryCourses = courseTypes[categoryLower];
   const selectedCourseIndex = categoryCourses.findIndex((course) => course.value === degree);
 

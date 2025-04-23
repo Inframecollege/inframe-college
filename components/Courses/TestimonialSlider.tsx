@@ -95,11 +95,15 @@ const TestimonialShorts = ({ videos }: { videos: VideosType[] }) => {
           <div className="w-60 h-1 mb-7 bg-yellow-400"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {videos.map((videoUrl, index) => (
-              <div key={index} className="h-[80vh]">
-                <VideoCard videoUrl={videoUrl.url} index={index} />
-              </div>
-            ))}
+          {videos?.length > 0 ? (
+  videos.map((videoUrl, index) => (
+    <div key={index} className="h-[80vh]">
+      <VideoCard videoUrl={videoUrl.url} index={index} />
+    </div>
+  ))
+) : (
+  <p>No videos available</p>
+)}
           </div>
         </div>
       </div>

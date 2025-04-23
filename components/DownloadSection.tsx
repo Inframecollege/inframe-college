@@ -187,8 +187,14 @@ const DownloadsSection = () => {
           </h2>
           <Accordion type="single" collapsible className="w-full">
             {Object.entries(downloadData).map(([category, items], index) => (
-              <AccordionItem key={category} value={`item-${index}`}>
-                <AccordionTrigger className="px-4 hover:bg-yellow-50 rounded-xl transition-all duration-300">
+              <AccordionItem
+              key={category}
+              value={`item-${index}`}
+              id={category === "Brochure/Prospectus" ? "brochure-section" : undefined}
+            >
+                <AccordionTrigger className="px-4 hover:bg-yellow-50 rounded-xl transition-all duration-300"
+                 
+                 >
                   <div className="flex items-center gap-3">
                     {React.createElement(iconMap[category] || FileDown, {
                       className: "w-5 h-5 text-yellow-600",

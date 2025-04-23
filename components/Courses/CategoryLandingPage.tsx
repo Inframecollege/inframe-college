@@ -352,7 +352,7 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
           </div>
         </div>
       </div>
-      <div>
+      <div className="m-11">
         
       {finalVideos?.length > 0 && <TestimonialSlider videos={finalVideos} />}
 
