@@ -2,10 +2,14 @@
 import type React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import type { CourseType } from "../../utils/courseTypes"
+import { courseTypes, type CourseType, type VideosType } from "../../utils/courseTypes"
 import { Button } from "../ui/button"
 import { FaArrowRight } from "react-icons/fa"
 import { Poppins } from "next/font/google"
+import { useState } from "react"
+import ApplyNowForm from "../ApplyNowForm"
+import FAQSection from "./FAQSection"
+import TestimonialSlider from "./TestimonialSlider"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,12 +22,14 @@ interface CategoryLandingPageProps {
   heroImage?: string
   categoryTitle?: string
   description?: string
+  videos : VideosType[];
 }
 
 interface CategoryInfo {
   title: string
   description: string
   heroImage: string
+ 
 }
 
 const getCategoryInfo = (category: string): CategoryInfo => {
@@ -33,6 +39,7 @@ const getCategoryInfo = (category: string): CategoryInfo => {
       description:
         "Transform spaces and create beautiful environments with our comprehensive interior design programs. Learn from industry experts and build a successful career in interior design.",
       heroImage: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1920&auto=format&fit=crop",
+      
     },
     "fashion-design": {
       title: "Fashion Design",
@@ -87,6 +94,7 @@ const getCategoryInfo = (category: string): CategoryInfo => {
       description:
         "Express yourself through various artistic mediums. Our fine arts programs nurture creativity and technical skills for aspiring artists.",
       heroImage: "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=1920&auto=format&fit=crop",
+      
     },
     "advertising-marketing": {
       title: "Advertising & Marketing",
@@ -114,7 +122,13 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
   heroImage: customHeroImage,
   categoryTitle: customTitle,
   description: customDescription,
+  videos = []
 }) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    setIsFormOpen(true);
+  };
   const { title, description, heroImage } =
     customTitle || customDescription || customHeroImage
       ? {
@@ -123,6 +137,15 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
           heroImage: customHeroImage,
         }
       : getCategoryInfo(category)
+
+      const categoryCourses = courseTypes[category] || [];
+      const fallbackVideos = categoryCourses.find(course => course.videos)?.videos || [];
+    
+      const finalVideos = videos.length > 0 ? videos : fallbackVideos;
+
+
+      
+
 
   // Group courses by degree type for better organization
   const degreeGroups = {
@@ -156,6 +179,9 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
             <p className="text-lg md:text-2xl max-w-3xl mx-auto text-gray-200 mb-8">{description}</p>
             <Button
               className={`bg-yellow-400 text-black font-semibold hover:bg-yellow-500 px-8 py-6 text-lg ${poppins.className}`}
+              onClick={() => {
+                document.getElementById('programs-section')?.scrollIntoView({ behavior: 'smooth' })
+              }}
             >
               Explore Programs <FaArrowRight className="ml-2" />
             </Button>
@@ -164,7 +190,7 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
       </div>
 
       {/* Degree Cards Section */}
-      <div className="max-w-7xl mx-auto py-20 px-4">
+      <div id="programs-section" className="max-w-7xl mx-auto py-20 px-4">
         <h2 className={`text-3xl md:text-4xl font-bold mb-12 text-center ${poppins.className}`}>
           Our {title} Programs
         </h2>
@@ -294,17 +320,49 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
             Take the first step towards a successful career in {(title || "").toLowerCase()}. Apply now or contact us for more
             information.
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <Link
+            href=""
+            download="Academic-Brochure-2024.pdf"
+            style={{ textDecoration: 'none' }}
+          >
             <Button
               variant="outline"
               className="border-yellow-400 text-yellow-500 hover:bg-yellow-400 hover:text-black"
             >
               Download Brochure
             </Button>
-            <Button className="bg-yellow-400 text-black hover:bg-yellow-500">Apply Now</Button>
+          </Link>
+
+
+            
+            <Button onClick={handleApplyClick} className="bg-yellow-400 text-black hover:bg-yellow-500 px-4 py-2">
+              Apply Now
+            </Button>
+
+              <ApplyNowForm
+                  isFormOpen={isFormOpen}
+                  setIsFormOpen={setIsFormOpen}
+                  isScrolled={false}
+                />
+
+  
           </div>
         </div>
       </div>
+      <div>
+        
+      {finalVideos?.length > 0 && <TestimonialSlider videos={finalVideos} />}
+
+      </div>
+
+      <div className="m-11">
+      
+      < FAQSection />
+      </div>
+      
     </div>
   )
 }

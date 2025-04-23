@@ -20,6 +20,8 @@ import WhatYouWillLearn from "./WhatYouWillLearn";
 import DreamsSection from "../DreamSection";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import ApplyNowForm from "../ApplyNowForm";
+import { useState } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -55,6 +57,12 @@ const CourseContent = ({
   const heroImage = heroImagesForCategory[index] || heroImagesForCategory[0];
   const fallbackHeroImage =
     "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=1600&q=80";
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    setIsFormOpen(true);
+  };
 
   return (
     <div className="bg-white text-black">
@@ -98,12 +106,15 @@ const CourseContent = ({
               Step into the World of {title.split(" in ")[1] || "Design"}
             </h3>
             <div className="flex items-center gap-6">
-              <Button
-                id=""
-                className="bg-white hover:bg-black hover:text-white transition-all duration-200 text-black border font-bold"
-              >
-                Apply Now
-              </Button>
+            <Button onClick={handleApplyClick} className="bg-white text-black hover:bg-yellow-500 px-4 py-2">
+              Apply Now
+            </Button>
+
+              <ApplyNowForm
+                  isFormOpen={isFormOpen}
+                  setIsFormOpen={setIsFormOpen}
+                  isScrolled={false}
+                />
               <Button
                 onClick={() =>
                   document
