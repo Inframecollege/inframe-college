@@ -11,6 +11,7 @@ import TestimonialCarousel from "../../components/TestimonialSection ";
 import MembershipPartnership from "../../components/MemberShipSection";
 import CourseCatalog from "../../components/CourseCarousel";
 import { Metadata } from "next";
+import WhatsAppFloat from "../../components/WhatsappWidgets";
 
 export const metadata: Metadata = {
   title: 'Inframe School: Best Art, Design & Business School in Jodhpur | Top College for Creative Education',
@@ -26,11 +27,11 @@ export default function Home() {
       <InfiniteSlider />
       <CounselingForm />
       <LifeAtInframe />
-
       <MembershipPartnership />
       <CTABanner />
       <FeaturesSection />
       <TestimonialCarousel />
+      <WhatsAppFloat /> 
     </div>
   );
 }

@@ -1,13 +1,13 @@
 "use client"
 
 import { useState, useEffect, useRef, useMemo } from "react"
-import { Search } from "lucide-react"
+import { Search, ChevronDown } from "lucide-react"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import Link from "next/link"
 import { categories } from "../../utils/constant"
 import { Poppins } from "next/font/google"
-import { FaArrowRight } from "react-icons/fa"
+import {FaArrowRight } from "react-icons/fa"
 import Image from "next/image"
 
 const poppins = Poppins({
@@ -53,12 +53,15 @@ const StudyDropDown = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <Button
-        className="bg-yellow-300 text-black font-bold"
+        className="bg-yellow-300 hover:bg-yellow-500 text-black font-bold"
         onClick={toggleDropdown}
         aria-expanded={isDropdownOpen}
         aria-haspopup="true"
       >
         Study
+        <ChevronDown
+          className={`h-4 w-4 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+        />
       </Button>
 
       {isDropdownOpen && (
@@ -137,6 +140,7 @@ const StudyDropDown = () => {
                               >
                                 <span>Explore Now</span>
                                 <FaArrowRight className="text-black" />
+                                
                               </Button>
                             </Link>
                           </div>

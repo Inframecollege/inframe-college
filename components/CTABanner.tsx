@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"; // Lucide icons
 import { Poppins } from "next/font/google"; // Importing Google Fonts via next/font
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 // Using the Poppins font
 const poppins = Poppins({
@@ -25,10 +26,12 @@ const CoursesCTABanner = () => {
 
         {/* Button Section */}
         <div className="flex-shrink-0 w-full lg:w-auto text-center lg:text-right">
+          <Link href={"/courses"}>
           <Button className="w-full lg:w-auto flex items-center justify-center gap-2 bg-gray-900 text-yellow-300 font-semibold text-sm lg:text-base px-6 py-3 rounded-lg hover:bg-gray-800 transition duration-300">
             <span>Explore Courses</span>
             <ArrowRight size={20} />
           </Button>
+          </Link>
         </div>
       </div>
     </div>

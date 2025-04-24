@@ -10,6 +10,7 @@ import { useState } from "react"
 import ApplyNowForm from "../ApplyNowForm"
 import FAQSection from "./FAQSection"
 import TestimonialSlider from "./TestimonialSlider"
+import IndustryPartners from "./Partners"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -347,18 +348,35 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
                   setIsFormOpen={setIsFormOpen}
                   isScrolled={false}
                 />
-
-  
           </div>
         </div>
       </div>
+      
       <div className="m-11">
-        
+      <IndustryPartners />
       {finalVideos?.length > 0 && <TestimonialSlider videos={finalVideos} />}
 
       </div>
-
+{/* Enhanced Newsletter Section with SEO */}
+<section className="py-16 my-10 bg-black text-white">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">Stay Updated with Inframe School</h2>
+            <p className="mb-8">Subscribe to our newsletter to receive the latest articles, news, and updates about design education and career opportunities.</p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="px-4 py-3 rounded-md flex-grow text-black"
+                aria-label="Email for newsletter"
+              />
+              <Button className="bg-yellow-400 text-black hover:bg-yellow-500 px-6 py-6">Subscribe</Button>
+            </div>
+            <p className="mt-4 text-sm text-gray-400">By subscribing, you`ll receive exclusive content about design education, career opportunities, and admission updates.</p>
+          </div>
+        </section>
       <div className="m-11">
+        
+
       
       < FAQSection />
       </div>
