@@ -118,7 +118,7 @@ const Navbar = () => {
 
                     <div className="space-y-6">
                       <Link
-                        href="/about"
+                        href="/about-us"
                         className="block w-full text-left text-lg hover:text-yellow-300 transition-colors duration-200 transform hover:translate-x-2"
                         onClick={handleLinkClick}
                       >
@@ -132,7 +132,7 @@ const Navbar = () => {
                         LIFE@Inframe
                       </Link>
                       <Link
-                        href="/contact"
+                        href="/contact-us"
                         className="block w-full text-left text-lg hover:text-yellow-300 transition-colors duration-200 transform hover:translate-x-2"
                         onClick={handleLinkClick}
                       >

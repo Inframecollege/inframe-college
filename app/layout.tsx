@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+
 import "./globals.css";
 // import Script from "next/script";
 import Head from "next/head"; // Import Next.js Head component
@@ -102,6 +103,7 @@ export default async function RootLayout({
             gtag('config', 'G-1Q0ED5JDYB');
           `}
         </Script>
+        
 
         {/* Inject Breadcrumb Schema */}
         <Script
