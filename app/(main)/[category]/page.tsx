@@ -32,7 +32,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const categoryCourses = courseTypes[categoryLower] || [];
   
 
-  return <CategoryLandingPage category={categoryLower} courses={categoryCourses} />;
+  return <CategoryLandingPage category={categoryLower} courses={categoryCourses} videos={[]} />;
 }
 
 // ✅ Static Params for SSG
