@@ -262,7 +262,7 @@ const CourseCatalog = () => {
         <Tabs defaultValue="all" className="w-full">
           <div className="p-2 mb-12">
             <TabsList className="flex flex-wrap justify-center sm:justify-start my-3 rounded-lg gap-2 font-bold text-black font-sans">
-              {["all", "art", "business", "design"].map((tab) => (
+              {["all", "art","design" , "business" ].map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}

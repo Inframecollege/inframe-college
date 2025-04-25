@@ -1,9 +1,10 @@
 "use client";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import React from "react";
 import Image from "next/image";
+import { FaCalendarAlt } from "react-icons/fa";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
@@ -75,24 +76,22 @@ const MentorsPage = () => {
   ];
 
   return (
-    <div className={`w-full min-h-screen bg-slate-50 ${inter.className}`}>
-      {/* Header Section with Geometric Elements */}
-      <div className="relative text-white py-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 to-purple-700" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
+    <div className={`w-full min-h-screen bg-white ${poppins.className}`}>
+      {/* Header Section with Modern Geometric Elements */}
+      <div className="relative text-black py-24">
+        <div className="absolute inset-0 bg-yellow-400" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[length:20px_20px]" />
         
         {/* Decorative elements */}
-        <div className="absolute top-10 left-10 w-64 h-64 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+        <div className="absolute top-10 left-10 w-64 h-64 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-40" />
+        <div className="absolute bottom-10 right-10 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
         
         <div className="relative container mx-auto px-6">
           <div className="max-w-3xl">
-            <span className="inline-block py-1 px-3 bg-white/10 text-white text-sm font-medium rounded-full mb-4 backdrop-blur-sm">
-              GUIDANCE & EXPERTISE
-            </span>
-            <h1 className="text-6xl font-bold mb-6 leading-tight">Our Mentors</h1>
-            <div className="w-24 h-1 bg-indigo-400 mb-8"></div>
-            <p className="text-xl text-indigo-100 max-w-2xl">
+            
+            <h1 className="text-6xl font-bold mb-6 mt-10 leading-tight">Our Mentors</h1>
+            <div className="w-24 h-1 bg-black mb-8"></div>
+            <p className="text-xl text-black max-w-2xl">
               Learn directly from industry professionals who bring real-world experience
               and cutting-edge insights to guide your creative journey.
             </p>
@@ -102,7 +101,7 @@ const MentorsPage = () => {
 
       {/* Curved Divider */}
       <div className="relative h-16">
-        <svg className="absolute bottom-0 w-full h-16 fill-slate-50" preserveAspectRatio="none" viewBox="0 0 1440 54">
+        <svg className="absolute bottom-0 w-full h-16 fill-white" preserveAspectRatio="none" viewBox="0 0 1440 54">
           <path d="M0 0L1440 0C1440 0 1440 54 720 54C0 54 0 0 0 0Z"></path>
         </svg>
       </div>
@@ -113,10 +112,10 @@ const MentorsPage = () => {
           {mentors.map((mentor, index) => (
             <div
               key={index}
-              className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 relative flex flex-col h-full"
+              className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-yellow-400 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col h-full"
             >
               {/* Hover accent */}
-              <div className="absolute inset-0 border-2 border-indigo-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-95 group-hover:scale-100"></div>
+              <div className="absolute inset-0 border-2 border-yellow-400 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-95 group-hover:scale-100"></div>
               
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
@@ -127,10 +126,10 @@ const MentorsPage = () => {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h2 className="text-xl font-bold text-white">{mentor.name}</h2>
-                  <h3 className="text-sm font-medium text-indigo-200">{mentor.title}</h3>
+                  <h3 className="text-sm font-medium text-yellow-300">{mentor.title}</h3>
                 </div>
               </div>
               
@@ -141,23 +140,21 @@ const MentorsPage = () => {
                   {mentor.expertise.map((skill, i) => (
                     <span 
                       key={i}
-                      className="text-xs font-medium bg-indigo-50 text-indigo-700 py-1 px-2 rounded-full"
+                      className="text-xs font-medium bg-yellow-100 text-black py-1 px-2 rounded-full"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
                 
-                <p className="text-slate-600 text-sm leading-relaxed flex-grow">
+                <p className="text-gray-700 text-sm leading-relaxed flex-grow">
                   {mentor.description}
                 </p>
                 
                 {/* Connect button */}
-                <button className="mt-6 text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center transition-colors duration-200">
+                <button className="mt-6 text-sm font-medium text-black hover:text-yellow-600 flex items-center transition-colors duration-200">
                   Schedule a Session
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <FaCalendarAlt className="ml-2 h-4 w-4" />
                 </button>
               </div>
             </div>
@@ -166,16 +163,22 @@ const MentorsPage = () => {
       </div>
       
       {/* Call to Action Section */}
-      <div className="bg-gradient-to-br from-indigo-900 to-purple-700 text-white py-16 mt-12">
+      <div className="bg-black text-white py-16 mt-12">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to elevate your skills?</h2>
-          <p className="text-indigo-100 max-w-2xl mx-auto mb-8">
-            Our mentors are available for one-on-one sessions, workshops, and portfolio reviews.
-            Take the next step in your creative journey with personalized guidance.
-          </p>
-          <button className="bg-white text-indigo-700 hover:bg-indigo-50 font-medium py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-            Apply for Mentorship Program
-          </button>
+          <div className="relative">
+            {/* Yellow accent shapes */}
+            <div className="absolute top-0 left-1/4 w-20 h-20 bg-yellow-400 rounded-full mix-blend-screen opacity-20"></div>
+            <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-yellow-400 rounded-full mix-blend-screen opacity-20"></div>
+            
+            <h2 className="text-3xl font-bold mb-4 relative z-10">Ready to elevate your skills?</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-8 relative z-10">
+              Our mentors are available for one-on-one sessions, workshops, and portfolio reviews.
+              Take the next step in your creative journey with personalized guidance.
+            </p>
+            <button className="bg-yellow-400 text-black  hover:bg-yellow-500 font-medium py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl relative z-10">
+              Apply for Mentorship Program
+            </button>
+          </div>
         </div>
       </div>
     </div>

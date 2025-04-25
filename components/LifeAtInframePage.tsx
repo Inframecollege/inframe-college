@@ -1,11 +1,13 @@
+"use client"
 import Image from "next/image";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { ChevronRight, ArrowRight } from "lucide-react";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Poppins } from "next/font/google";
 import "../components/style.css";
 import { experienceCamputLife2 } from "../utils/constant";
+import ApplyNowForm from "./ApplyNowForm";
 
 // Lazy load components
 const CampusLife = lazy(() => import("../components/CampusLife"));
@@ -29,6 +31,11 @@ const LoadingSpinner = () => (
 );
 
 export const LifeAtCampus = () => {
+    const [isFormOpen, setIsFormOpen] = useState(false);
+      const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+        e.preventDefault();
+        setIsFormOpen(true);
+      };
   const services = [
     {
       title: "Academic Support",
@@ -297,9 +304,20 @@ export const LifeAtCampus = () => {
               first step towards your future today.
             </p>
             <div className="flex gap-6 justify-center">
-              <Button className="bg-yellow-400 text-black px-24 py-8 font-bold text-lg hover:bg-yellow-500">
+
+            <Button 
+                onClick={handleApplyClick}
+                className="bg-yellow-400 text-black px-24 py-8 font-bold text-lg hover:bg-yellow-500 relative z-50"
+              >
                 Apply Now
-              </Button>
+            </Button>
+
+
+              <ApplyNowForm
+                  isFormOpen={isFormOpen}
+                  setIsFormOpen={setIsFormOpen}
+                  isScrolled={false}
+              />
             </div>
           </div>
         </section>
