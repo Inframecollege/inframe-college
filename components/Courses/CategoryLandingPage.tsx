@@ -373,7 +373,7 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
             </div>
             <p className="mt-4 text-sm text-gray-400">By subscribing, you`ll receive exclusive content about design education, career opportunities, and admission updates.</p>
           </div>
-        </section>
+        </section>  
       <div className="m-11">
         
 
@@ -424,7 +424,11 @@ const getCardImage = (courseValue: string, category: string) => {
     if (category === "fashion-design") {
       if (courseValue.includes("bdes")) {
         return "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80"
-      } else if (courseValue.includes("diploma")) {
+      } 
+      else if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1516762689617-e1cffcef479d" 
+      }
+      else if (courseValue.includes("diploma")) {
         return "https://images.unsplash.com/photo-1537832816519-689ad163238b?w=800&q=80"
       } else {
         return "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80"
@@ -434,20 +438,30 @@ const getCardImage = (courseValue: string, category: string) => {
     if (category === "interior-design") {
       if (courseValue.includes("bdes")) {
         return "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80"
-      } else if (courseValue.includes("diploma")) {
+      } 
+      else if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6" 
+      }
+      else if (courseValue.includes("diploma")) {
         return "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" 
-      } else {
+      }
+      
+      else {
         return "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80"
       }
     }
   
     if (category === "graphic-design") {
       if (courseValue.includes("bdes") || courseValue.includes("bfa")) {
-        return "https://images.unsplash.com/photo-1626785774625-0b1c2c4efd7c?w=800&q=80"
-      } else if (courseValue.includes("diploma")) {
+        return "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9"
+      }
+      else if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6" 
+      }
+      else if (courseValue.includes("diploma")) {
         return "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80"
       } else {
-        return "https://images.unsplash.com/photo-1611532736597-8bc68d90e6b6?w=800&q=80"
+        return "https://images.unsplash.com/photo-1572044162444-ad60f128bdea"
       }
     }
   
@@ -458,6 +472,34 @@ const getCardImage = (courseValue: string, category: string) => {
         return "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80"
       }
     }
+
+    if (category === "entrepreneurship-skill") {
+      if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+      } else {
+        return "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+      }
+    }
+
+    if (category === "fine-arts") {
+      if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5"
+      }
+      else if (courseValue.includes("bfa")) {
+        return "https://images.unsplash.com/photo-1518998053901-5348d3961a04" 
+      }
+      else {
+        return "https://images.unsplash.com/photo-1547891654-e66ed7ebb968"
+      }
+    }
+
+    if (category === "media-entertainment") {
+      if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1485846234645-a62644f84728"
+      } else {
+        return "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800&q=80"
+      }
+    }
   
     if (category === "animation-vfx") {
       if (courseValue.includes("bdes") || courseValue.includes("bsc")) {
@@ -466,20 +508,32 @@ const getCardImage = (courseValue: string, category: string) => {
         return "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=800&q=80"
       }
     }
+    
   
     if (category === "digital-marketing") {
       if (courseValue.includes("diploma")) {
         return "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&q=80"
-      } else {
+      }
+      else if (courseValue.includes("bvoc")) {
+        return "https://images.unsplash.com/photo-1533750349088-cd871a92f312" 
+      }
+      else {
         return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
       }
     }
   
     if (category === "jewellery-design") {
-      if (courseValue.includes("bdes")) {
+      if (courseValue.includes("bvoc")) {
         return "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80"
-      } else {
-        return "https://images.unsplash.com/photo-1573408301606-9880f36e5fcf?w=800&q=80"
+      }
+      else if (courseValue.includes("diploma1")) {
+        return "https://images.unsplash.com/photo-1573408301185-9146fe634ad0" 
+      }
+      else if (courseValue.includes("certificate")) {
+        return "https://images.unsplash.com/photo-1602173574767-37ac01994b2a" 
+      }
+      else {
+        return "https://images.unsplash.com/photo-1573408301185-9146fe634ad0"
       }
     }
   
