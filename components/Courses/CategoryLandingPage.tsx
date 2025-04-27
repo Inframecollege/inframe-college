@@ -154,6 +154,7 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
       (course) =>
         course.value.includes("bdes") ||
         course.value.includes("bvoc") ||
+        course.value.includes("bba") ||
         course.value.includes("bsc") ||
         course.value.includes("bfa"),
     ),
@@ -468,6 +469,14 @@ const getCardImage = (courseValue: string, category: string) => {
     if (category === "uiux-design") {
       if (courseValue.includes("bdes")) {
         return "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80"
+      } else {
+        return "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80"
+      }
+    }
+
+    if (category === "advertising-marketing") {
+      if (courseValue.includes("bba")) {
+        return "https://images.unsplash.com/photo-1519074069444-1ba4fff66d16"
       } else {
         return "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80"
       }
