@@ -19,7 +19,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="admission-process"
+                href="/admission-process"
                 className="hover:text-blue-500 transition duration-300"
               >
                 Admission Process
