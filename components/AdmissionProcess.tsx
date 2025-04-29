@@ -89,20 +89,20 @@ const AdmissionProcess = () => {
             <h2 className="text-2xl font-bold mb-6">Family Details</h2>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium mb-1">Father's Name *</label>
-                <input type="text" className="w-full p-2 border rounded" placeholder="Enter father's name" />
+                <label className="block text-sm font-medium mb-1">Father&apos;s Name *</label>
+                <input type="text" className="w-full p-2 border rounded" placeholder="Enter father&apos;s name" />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Father's Occupation *</label>
-                <input type="text" className="w-full p-2 border rounded" placeholder="Enter father's occupation" />
+                <label className="block text-sm font-medium mb-1">Father&apos;s Occupation *</label>
+                <input type="text" className="w-full p-2 border rounded" placeholder="Enter father&apos;s occupation" />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Mother's Name *</label>
-                <input type="text" className="w-full p-2 border rounded" placeholder="Enter mother's name" />
+                <label className="block text-sm font-medium mb-1">Mother&apos;s Name *</label>
+                <input type="text" className="w-full p-2 border rounded" placeholder="Enter mother&apos;s name" />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Mother's Occupation *</label>
-                <input type="text" className="w-full p-2 border rounded" placeholder="Enter mother's occupation" />
+                <label className="block text-sm font-medium mb-1">Mother&apos;s Occupation *</label>
+                <input type="text" className="w-full p-2 border rounded" placeholder="Enter mother&apos;s occupation" />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">Annual Family Income *</label>
