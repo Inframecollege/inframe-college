@@ -1,146 +1,297 @@
 'use client';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import Script from 'next/script';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Input } from './ui/input';
 
 function Payment() {
- const [name, setName] = useState('');
- const [email, setEmail] = useState('');
- const [amount, setAmount] = useState('0');
-//  const [currency, setCurrency] = useState('INR');
-//  const [loading, setLoading] = useState(false);
- const createOrderId = async () => {
-  try {
-   const response = await fetch('/api/order', {
-    method: 'POST',
-    headers: {
-     'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-     amount: parseFloat(amount) * 100,
-    }),
-   });
+  const [name, setName] = useState('');
+  const [fathername, setFathername] = useState('');
+  const [coursename, setCoursename] = useState('');
+  const [amount, setAmount] = useState('0');
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-   if (!response.ok) {
-    throw new Error('Network response was not ok');
-   }
+  // Function to handle category change
+  const handleCategoryChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+    setSelectedCategory(e.target.value);
+    setCoursename(e.target.value);
+  };
 
-   const data = await response.json();
-   return data.orderId;
-  } catch (error) {
-   console.error('There was a problem with your fetch operation:', error);
-  }
- };
-const processPayment = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  try {
-   const orderId: string = await createOrderId();
-   if (!orderId) {
-    alert("Failed to create order. Please try again.");
-    return;
-  }
-   const options = {
-    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-    amount: parseFloat(amount) * 100,
-    currency: "INR",
-    name: name,
-    description: 'description',
-    order_id: orderId,
-    handler: async function (response: {
-        razorpay_payment_id: string;
-        razorpay_order_id: string;
-        razorpay_signature: string;
-      }) {
-     const data = {
-      orderCreationId: orderId,
-      razorpayPaymentId: response.razorpay_payment_id,
-      razorpayOrderId: response.razorpay_order_id,
-      razorpaySignature: response.razorpay_signature,
-     };
+  // Course categories from commented code
+  const courseCategories = [
+    { id: 1, name: "interior-design" },
+    { id: 2, name: "graphics-design" },
+    { id: 3, name: "uiux-design" },
+    { id: 4, name: "animation-vfx" },
+    { id: 5, name: "digital-marketing" },
+    { id: 6, name: "fashion-design" },
+    { id: 7, name: "jewellery-design" },
+    { id: 8, name: "entrepreneurship-skill" },
+    { id: 9, name: "media-entertainment" },
+    { id: 10, name: "fine-arts" },
+    { id: 11, name: "advertising-marketing" }
+  ];
 
-     const result = await fetch('/api/verify', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
-     });
-     const res = await result.json();
-     if (res.isOk) alert("payment succeed");
-     else {
-      alert(res.message);
-     }
-    },
-    prefill: {
-     name: name,
-     email: email,
-    },
-    theme: {
-     color: '#3399cc',
-    },
-   };
-   const paymentObject = new window.Razorpay(options);
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-   paymentObject.on('payment.failed', function (response: { error: { description: any; }; }) {
-    alert(response.error.description);
-   });
-   paymentObject.open();
-  } catch (error) {
-   console.log(error);
-  }
- };
+  const createOrderId = async () => {
+    try {
+      const response = await fetch('/api/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: parseFloat(amount) * 100,
+        }),
+      });
 
- 
- return (
-  <>
-   <Script
-    id="razorpay-checkout-js"
-    src="https://checkout.razorpay.com/v1/checkout.js"
-   />
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-   <section className="min-h-[94vh] flex flex-col gap-6 h-14 mx-5 sm:mx-10 2xl:mx-auto 2xl:w-[1400px] items-center pt-36 ">
-    <form
-     className="flex flex-col gap-6 w-full sm:w-80"
-     onSubmit={processPayment}
-    >
-     <div className="space-y-1">
-      <Label>Full name</Label>
-      <Input
-       type="text"
-       required
-       value={name}
-       onChange={(e) => setName(e.target.value)}
+      const data = await response.json();
+      return data.orderId;
+    } catch (error) {
+      console.error('There was a problem with your fetch operation:', error);
+    }
+  };
+
+  const processPayment = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    try {
+      const orderId = await createOrderId();
+      if (!orderId) {
+        alert("Failed to create order. Please try again.");
+        return;
+      }
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: parseFloat(amount) * 100,
+        currency: "INR",
+        name: name,
+        description: 'description',
+        order_id: orderId,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        handler: async function (response) {
+          const data = {
+            orderCreationId: orderId,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature,
+          };
+
+          const result = await fetch('/api/verify', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' },
+          });
+          const res = await result.json();
+          if (res.isOk) alert("payment succeed");
+          else {
+            alert(res.message);
+          }
+        },
+        prefill: {
+          name: name,
+          fathername: fathername,
+          coursename: coursename
+        },
+        theme: {
+          color: '#3399cc',
+        },
+      };
+      const paymentObject = new window.Razorpay(options);
+
+      paymentObject.on('payment.failed', function (response: { error: { description: string; }; }) {
+        alert(response.error.description);
+      });
+      paymentObject.open();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <Script
+        id="razorpay-checkout-js"
+        src="https://checkout.razorpay.com/v1/checkout.js"
       />
-     </div>
-     <div className="space-y-1">
-      <Label>Email</Label>
-      <Input
-       type="email"
-       placeholder="user@gmail.com"
-       required
-       value={email}
-       onChange={(e) => setEmail(e.target.value)}
-      />
-     </div>
-     <div className="space-y-1">
-      <Label>Amount</Label>
-      <div className="flex gap-2">
-       <Input
-        type="number"
-        step="1"
-        min={5}
-        required
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-       />
+
+      <div className="relative min-h-screen p-10 bg-gray-100">
+        {/* Background Banner */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/gallery/1721738128651.jpg"
+            alt="Inframe School Campus"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 container mx-auto px-4 py-16 min-h-screen flex flex-col md:flex-row">
+          {/* Header Text */}
+          <div className="w-full text-white mb-12">
+            <h2 className="text-3xl font-bold mt-8 mb-4">ADMISSIONS OPEN 2025</h2>
+
+            {/* Two Column Layout */}
+            <div className="flex flex-col md:flex-row mt-6 gap-8">
+              {/* Left Column - Programs */}
+              <div className="w-full md:w-1/2">
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-yellow-400 mb-4">
+                    UNDERGRADUATE
+                  </h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Interior Design</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Graphics Design</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>UIUX Design</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Animation &vfx</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Digital Marketing</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Fashion Design</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Jewellery Design</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Entrepreneurship Skill</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Media-Entertainment</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Fine Arts</span>
+                    </li>
+                    <li className="flex items-baseline">
+                      <span className="text-yellow-400 mr-2">▶</span>
+                      <span>Advertising-Marketing</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Right Column - Form */}
+              <div className="w-full md:w-1/2">
+                <div className="bg-white bg-opacity-90 rounded-lg p-6 shadow-lg">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                    Application Form
+                  </h3>
+                  <form className="space-y-4" onSubmit={processPayment}>
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-gray-700 mb-1 font-medium"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        placeholder="Enter your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="father"
+                        className="block text-gray-700 mb-1 font-medium"
+                      >
+                        Father`s Name
+                      </label>
+                      <input
+                        type="text"
+                        id="father"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        placeholder="Enter father's name"
+                        value={fathername}
+                        onChange={(e) => setFathername(e.target.value)}
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="course"
+                        className="block text-gray-700 mb-1 font-medium"
+                      >
+                        Course Name
+                      </label>
+                      <select
+                        id="course"
+                        className="w-full px-4 py-2 border border-gray-300 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        required
+                      >
+                        <option value="">Select course category</option>
+                        {courseCategories.map((cat) => (
+                          <option key={cat.id} value={cat.name}>
+                            {cat.name
+                              .replace(/-/g, " ")
+                              .replace(/\b\w/g, (l) => l.toUpperCase())}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="amount"
+                        className="block text-gray-700 mb-1 font-medium"
+                      >
+                        Amount
+                      </label>
+                      <input
+                        type="number"
+                        id="amount"
+                        className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        placeholder="Enter amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        min={5}
+                        required
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-3 px-4 rounded-md transition duration-300"
+                    >
+                      Pay Amount
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-     </div>
-
-     <Button type="submit">Pay</Button>
-    </form>
-   </section>
-  </>
- );
+    </>
+  );
 }
 
 export default Payment;

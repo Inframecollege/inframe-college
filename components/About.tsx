@@ -7,7 +7,7 @@ import Image from "next/image";
 import "aos/dist/aos.css"; // Import the CSS for animations
 import CampusLife from "./CampusLife";
 import Aos from "aos";
-import ApplyNowForm from "./ApplyNowForm";
+// import ApplyNowForm from "./ApplyNowForm";
 // import { Button } from "./ui/button";
 // Using the Poppins font
 const poppins = Poppins({
