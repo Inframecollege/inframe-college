@@ -156,11 +156,27 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
         course.value.includes("bvoc") ||
         course.value.includes("bba") ||
         course.value.includes("bsc") ||
-        course.value.includes("bfa"),
+        course.value.includes("bfa")
     ),
-    diploma: courses.filter((course) => course.value.includes("diploma") || course.value.includes("cad")),
-    certificate: courses.filter((course) => course.value.includes("cert") || course.value.includes("certificate")),
-  }
+    diploma: courses.filter(
+      (course) =>
+        course.value.includes("diploma") ||
+        course.value.includes("diploma1") ||
+        course.value.includes("diploma2") ||
+        course.value.includes("diploma3") ||
+        course.value.includes("cad")
+    ),
+    diploma1: courses.filter(
+      (course) =>
+        course.value.includes("diploma1") 
+    ),
+    certificate: courses.filter(
+      (course) =>
+        course.value.includes("cert") ||
+        course.value.includes("certificate")
+    ),
+  };
+  
 
   return (
     <div className="bg-white">
@@ -210,11 +226,23 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
         )}
 
         {/* Diplomas */}
-        {degreeGroups.diploma.length > 0 && (
+        {/* {degreeGroups.diploma.length > 0 && (
           <div className="mb-16">
             <h3 className={`text-2xl font-bold mb-8 ${poppins.className}`}>Diploma Programs</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {degreeGroups.diploma.map((course) => (
+                <DegreeCard key={course.value} course={course} category={category} />
+              ))}
+            </div>
+          </div>
+        )} */}
+
+        {/* Diplomas1*/}
+        {degreeGroups.diploma1.length > 0 && (
+          <div className="mb-16">
+            <h3 className={`text-2xl font-bold mb-8 ${poppins.className}`}>Diploma Programs</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {degreeGroups.diploma1.map((course) => (
                 <DegreeCard key={course.value} course={course} category={category} />
               ))}
             </div>
@@ -442,6 +470,9 @@ const getCardImage = (courseValue: string, category: string) => {
       } 
       else if (courseValue.includes("bvoc")) {
         return "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6" 
+      }
+      else if (courseValue.includes("diploma1")) {
+        return "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80"
       }
       else if (courseValue.includes("diploma")) {
         return "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" 

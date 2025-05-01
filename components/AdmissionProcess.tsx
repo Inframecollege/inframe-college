@@ -35,7 +35,7 @@ export default function Application() {
   const handleNextPage = (currentPage: string) => {
     const currentIndex = pages.findIndex((page) => page.id === currentPage);
     if (currentIndex < pages.length - 1) {
-      setActivePage(pages[currentIndex + 1]);
+      setActivePage(pages[currentIndex + 1].id);
     }
   };
 
