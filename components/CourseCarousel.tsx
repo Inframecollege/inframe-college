@@ -158,7 +158,7 @@ const poppins = Poppins({
 
 
 
-  // Find which degree type this course belongs to
+// Find which degree type this course belongs to
 //   for (const [key, value] of Object.entries(degreeMap)) {
 //     if (text.includes(key)) {
 //       return value;
@@ -179,32 +179,34 @@ interface CourseSectionProps {
 }
 
 const CourseSection: React.FC<CourseSectionProps> = ({ courses }) => (
+  
   <div
     className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 ${poppins.className}`}
   >
     {courses.map((course, idx) => (
+
       <Card
         key={idx}
         className="overflow-hidden group hover:shadow-2xl transition-all duration-300 border-yellow-100 hover:border-yellow-300"
       >
         <div className="relative">
-          <Image
+          {/* <Image
             src={course.image}
             alt={course.title}
             width={600}
             height={300}
             className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          /> */}
           <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/20 to-transparent" />
         </div>
-        <CardContent className="p-6 bg-white">
+        {/* <CardContent className="p-6 bg-white">
           <h3 className="text-xl font-bold mb-4 text-gray-800 group-hover:text-yellow-600 transition-colors">
             {course.title}
           </h3>
           <ul className="space-y-2">
             {course.programs.map((program, idx) => (
-            
-              
+
+
               <li
                 key={idx}
                 className="text-sm text-gray-600 hover:text-yellow-600 transition-colors flex items-start"
@@ -214,7 +216,7 @@ const CourseSection: React.FC<CourseSectionProps> = ({ courses }) => (
                   href={`/${course.title
                     .replace(/\s+/g, "-")
                     .toLowerCase()}/${program.replace(/\s+/g, "-")
-                    .toLowerCase()}`}
+                      .toLowerCase()}`}
                 >
                   <span className="text-yellow-400 mr-2 text-lg leading-none">
                     •
@@ -235,7 +237,7 @@ const CourseSection: React.FC<CourseSectionProps> = ({ courses }) => (
               <FaArrowRight className="text-black" />
             </Button>
           </Link>
-        </CardContent>
+        </CardContent> */}
       </Card>
     ))}
   </div>
@@ -262,7 +264,7 @@ const CourseCatalog = () => {
         <Tabs defaultValue="all" className="w-full">
           <div className="p-2 mb-12">
             <TabsList className="flex flex-wrap justify-center sm:justify-start my-3 rounded-lg gap-2 font-bold text-black font-sans">
-              {["all", "art","design" , "business" ].map((tab) => (
+              {["all", "art", "design", "business"].map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}

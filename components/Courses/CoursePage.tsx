@@ -13,9 +13,11 @@ interface CoursePageProps {
   category: string
 }
 
+//Ayaad
+
 const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
   const pathname = usePathname()
-  
+
 
   if (!courseType?.length) {
     return (
@@ -34,8 +36,8 @@ const CoursePage: React.FC<CoursePageProps> = ({ courseType, category }) => {
         .map((course, index) => (
           <CourseContent key={course.value} {...course} category={category} index={index} />
         ))}
-      </div>
-    
+    </div>
+
 
 
     //   Category-wise full course section
