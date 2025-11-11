@@ -13,7 +13,7 @@ const poppins = Poppins({
 //     // "Inframe School: Best Art, Design & Business School in Jodhpur | Top College for Creative Education",
 // };
 // Remove this, or leave empty:
-export const metadata: Metadata = {};
+export const metadata: Metadata = {};// fixed code by ayaad
 
 export default function MainLayout({
   children,
