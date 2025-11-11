@@ -74,7 +74,7 @@ export default function BlogPost() {
           priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
-        <Badge className="bg-blue-500 hover:bg-blue-600 my-20 text-white px-4 py-1 rounded-full mb-4 text-sm font-medium">
+          <Badge className="bg-blue-500 hover:bg-blue-600 my-20 text-white px-4 py-1 rounded-full mb-4 text-sm font-medium">
             Career
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 max-w-4xl">
