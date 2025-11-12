@@ -11,75 +11,52 @@ const poppins = Poppins({
 
 const InfiniteSlider: React.FC = () => {
   return (
-    <div className="w-full relative xl:left-[10rem] lg:text-left text-center mx-auto">
-      {/* Heading */}
-      <h2
-        className={`text-center xl:text-left font-sans text-3xl font-bold text-gray-800 mb-4 ${poppins.className}`}
-      >
-        INDUSTRY & PLACEMENT PARTNER
-      </h2>
+ <div className="relative overflow-hidden py-10 bg-white">
+  <h2
+    className={`text-center text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800 mb-4 ${poppins.className}`}
+  >
+    INDUSTRY & PLACEMENT PARTNER
+  </h2>
 
-      {/* Short Description Paragraph */}
-      <p
-        className={`text-center w-3/4 xl:text-left text-lg text-gray-600 mb-8 ${poppins.className}`}
-      >
-        Inframe’s strong industry partnerships provide students with
-        unparalleled career opportunities and real-world experience to excel in
-        design and business.
-      </p>
+  <p
+    className={`text-center text-sm sm:text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 ${poppins.className}`}
+  >
+    Inframe’s strong industry partnerships provide students with unparalleled
+    career opportunities and real-world experience to excel in design and business.
+  </p>
 
-      {/* Slider container */}
-      <div className="relative bg-white overflow-hidden py-12">
-        {/* Mask effects for fading edges */}
-        <div className="absolute inset-y-0 left-0 w-[100px] bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
-        <div className="absolute inset-y-0 right-0 w-[100px] bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
-
-        {/* Animated slider */}
-        <div className="flex animate-[scroll_20s_linear_infinite] space-x-12">
-          {/* First set of logos */}
-          {LOGOS.map((logo, index) => (
-            <div
-              key={`logo-1-${index}`}
-              className="flex flex-col items-center justify-center text-slate-800"
-            >
-              <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 shadow-md border border-gray-200 rounded-xl flex items-center justify-center overflow-hidden">
-                <Image
-                  src={logo.src}
-                  alt="not loaded"
-                  width={192} // Set width dynamically based on container size (adjust as needed)
-                  height={192}
-                  className="object-contain w-full h-full"
-                />
-              </div>
-              <p className="mt-2 text-sm font-medium text-gray-600">
-                {logo.name}
-              </p>
-            </div>
-          ))}
-
-          {/* Second set of logos to create infinite scroll effect */}
-          {LOGOS.map((logo, index) => (
-            <div
-              key={`logo-2-${index}`}
-              className="flex flex-col items-center justify-center text-slate-800"
-            >
-              <div className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 shadow-md border border-gray-200 rounded-xl flex items-center justify-center overflow-hidden">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={120}
-                  height={120}
-                  className="object-contain"
-                />
-              </div>
-              <p className="mt-2 text-sm font-medium text-gray-600">
-                {logo.name}
-              </p>
-            </div>
-          ))}
+  {/* Scrolling Logo Section */}
+  <div className="relative w-full overflow-hidden">
+    <div className="flex animate-[scroll_20s_linear_infinite] space-x-8 sm:space-x-12 px-4 sm:px-6 md:px-10">
+      {LOGOS.map((logo, index) => (
+        <div
+          key={`logo-${index}`}
+          className="flex flex-col items-center justify-center text-slate-800 flex-shrink-0"
+        >
+          <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 shadow-md border bg-white border-gray-200 rounded-md flex items-center justify-center">
+            <Image
+              src={logo.src}
+              alt={logo.name || "Company Logo"}
+              width={192}
+              height={192}
+              className="object-contain w-full h-full p-4"
+            />
+          </div>
+          <span
+            className={`mt-2 text-center text-xs sm:text-sm md:text-base text-gray-700 ${poppins.className}`}
+          >
+            {logo.name}
+          </span>
         </div>
-      </div>
+      ))}
     </div>
+  </div>
+
+  {/* Optional: Add gradient fade on edges for nicer visual */}
+  <div className="pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-white to-transparent"></div>
+  <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent"></div>
+</div>
+
   );
 };
 
