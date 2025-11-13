@@ -323,6 +323,7 @@ export const categories = [
           { text: "B.SC in Interior Design", href: "#" },
           { text: "One Year Diploma in Interior Design", href: "#" },
           { text: "Three Year Diploma in Interior Design", href: "#" },
+          { text: "AutoCad", href: "#" },
         ],
         category: "Design",
         image:
@@ -336,6 +337,8 @@ export const categories = [
           { text: "B.SC in Fashion Design", href: "#" },
           { text: "One Year Diploma in Fashion Design", href: "#" },
           { text: "Three Year Diploma in Fashion Design", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Design",
         image:
@@ -349,6 +352,8 @@ export const categories = [
           { text: "B.SC in Graphic Design", href: "#" },
           { text: "One Year Diploma in Graphic Design", href: "#" },
           { text: "Three Year Diploma in Graphic Design", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Design",
         image:
@@ -359,6 +364,8 @@ export const categories = [
         links: [
           { text: "B.Des In UI UX Design", href: "#" },
           { text: "One Year Diploma in UI UX Design", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Design",
         image:
@@ -373,6 +380,7 @@ export const categories = [
           { text: "One Year Diploma in Animation and VFX", href: "#" },
           { text: "Two Year Diploma in Animation and VFX", href: "#" },
           { text: "Three Year Diploma in Animation and VFX", href: "#" },
+          { text: "AutoCad", href: "#" },
         ],
         category: "Design",
         image:
@@ -386,6 +394,8 @@ export const categories = [
           { text: "One Year Diploma in CAD Jewellery", href: "#" },
           { text: "Six Month Certificate Course in Jewellery Design", href: "#" },
           { text: "Six Month Certificate Course in CAD Jewellery", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Design",
         image:
@@ -405,6 +415,8 @@ export const categories = [
             text: "Six Month Certificate Course in Digital Marketing",
             href: "#",
           },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Business",
         image:
@@ -415,6 +427,8 @@ export const categories = [
         links: [
           { text: "B.VOC in Entrepreneurship Skill", href: "#" },
           { text: "One Year Diploma in Entrepreneurship Skill", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Business",
         image:
@@ -425,6 +439,8 @@ export const categories = [
         links: [
           { text: "B.VOC in Media and Entertainment", href: "#" },
           { text: "One Year Diploma in Media and Entertainment", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Business",
         image:
@@ -437,6 +453,8 @@ export const categories = [
             text: "Learn advanced advertising and marketing strategies",
             href: "#",
           },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Business",
         image:
@@ -455,6 +473,8 @@ export const categories = [
           { text: "B.SC in Fine Arts", href: "#" },
           { text: "One Year Diploma in Fine Arts", href: "#" },
           { text: "Three Year Diploma in Fine Arts", href: "#" },
+          { text: "AutoCad", href: "#" },
+
         ],
         category: "Art",
         image:
@@ -1354,7 +1374,7 @@ export const allLevels = [
 export const courses = [
   {
     category: "Interior Design",
-    description:"Explore the art and science of enhancing interior spaces. This course equips students with creative and technical skills to design aesthetically pleasing, functional, and sustainable living and commercial spaces",
+    description: "Explore the art and science of enhancing interior spaces. This course equips students with creative and technical skills to design aesthetically pleasing, functional, and sustainable living and commercial spaces",
     programs: [
       {
         name: "B.Des in Interior Design",
@@ -1391,7 +1411,7 @@ export const courses = [
   },
   {
     category: "Fashion Design",
-    description:"Unleash your creativity and sense of style. This program covers fashion illustration, garment construction, textiles, and trend forecasting, preparing students for dynamic careers in the fashion industry.",
+    description: "Unleash your creativity and sense of style. This program covers fashion illustration, garment construction, textiles, and trend forecasting, preparing students for dynamic careers in the fashion industry.",
     name: "Fashion Design",
     programs: [
       {
@@ -1428,7 +1448,7 @@ export const courses = [
   },
   {
     category: "Graphic Design",
-    description:"Learn to communicate visually using typography, color, and imagery. This course trains students in branding, digital illustration, and layout design using industry-standard tools and software.",
+    description: "Learn to communicate visually using typography, color, and imagery. This course trains students in branding, digital illustration, and layout design using industry-standard tools and software.",
     programs: [
       {
         name: "B.Des in Graphic Design",
@@ -1464,7 +1484,7 @@ export const courses = [
   },
   {
     category: "UI & UX Design",
-    description :"",
+    description: "",
     programs: [
       {
         name: "B.Des in UI & UX Design",
@@ -1482,7 +1502,7 @@ export const courses = [
   },
   {
     category: "Animation and VFX",
-    description :"Learn the art of storytelling through motion. Students gain hands-on experience in 2D/3D animation, visual effects, and post-production techniques used in films, games, and digital media.",
+    description: "Learn the art of storytelling through motion. Students gain hands-on experience in 2D/3D animation, visual effects, and post-production techniques used in films, games, and digital media.",
     programs: [
       {
         name: "B.Des in Animation and VFX",
@@ -1524,7 +1544,7 @@ export const courses = [
   },
   {
     category: "Jewellery Design",
-    description :"",
+    description: "",
     programs: [
       {
         name: "B.Voc in Jewellery Design",
@@ -1560,7 +1580,7 @@ export const courses = [
   },
   {
     category: "Fine Arts",
-    description :"Dive into traditional and modern art techniques. This course fosters individual expression through painting, sculpture, and mixed media, nurturing both creativity and technical excellence.",
+    description: "Dive into traditional and modern art techniques. This course fosters individual expression through painting, sculpture, and mixed media, nurturing both creativity and technical excellence.",
     programs: [
       {
         name: "BFA in Painting",
@@ -1608,7 +1628,7 @@ export const courses = [
   },
   {
     category: "Digital Marketing",
-    description :"Master the tools and strategies of online promotion. From SEO and content marketing to social media and analytics, this course prepares students to build strong digital brand presence and engagement.",
+    description: "Master the tools and strategies of online promotion. From SEO and content marketing to social media and analytics, this course prepares students to build strong digital brand presence and engagement.",
     programs: [
       {
         name: "B.Voc in Digital Marketing",
@@ -1632,7 +1652,7 @@ export const courses = [
   },
   {
     category: "Entrepreneurship Skills",
-    description :"Turn your ideas into impactful ventures. This course focuses on business planning, innovation, startup strategy, and leadership skills, preparing students to launch and manage successful businesses.",
+    description: "Turn your ideas into impactful ventures. This course focuses on business planning, innovation, startup strategy, and leadership skills, preparing students to launch and manage successful businesses.",
     programs: [
       {
         name: "B.Voc in Entrepreneurship Skills",
@@ -1650,7 +1670,7 @@ export const courses = [
   },
   {
     category: "Media and Entertainment",
-    description :"Discover the world behind the screen. This course provides knowledge of media production, journalism, and content creation, equipping students for careers in film, TV, and online platforms.",
+    description: "Discover the world behind the screen. This course provides knowledge of media production, journalism, and content creation, equipping students for careers in film, TV, and online platforms.",
     programs: [
       {
         name: "B.Voc in Media and Entertainment",
@@ -1668,7 +1688,7 @@ export const courses = [
   },
   {
     category: "Advertising and Marketing",
-    description :"Create compelling campaigns that captivate audiences. This program blends creativity with strategic thinking, covering branding, consumer behavior, and marketing communication techniques.",
+    description: "Create compelling campaigns that captivate audiences. This program blends creativity with strategic thinking, covering branding, consumer behavior, and marketing communication techniques.",
     programs: [
       {
         name: "BBA in Advertising and Marketing",

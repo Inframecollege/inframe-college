@@ -17,13 +17,24 @@ const Footer = () => {
                 About Us
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="/admission-process"
                 className="hover:text-blue-500 transition duration-300"
               >
                 Admission Process
               </Link>
+            </li> */}
+
+            <li>
+              <a
+                href="https://admission.inframeschool.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-500 transition duration-300"
+              >
+                Admission Process
+              </a>
             </li>
             <li>
               <Link
@@ -99,12 +110,12 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="font-bold">Interior Design</li>
               <li>
-              <Link
-                href="/interior-design/bdes-in-interior-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B. Des in Interior Design
-              </Link></li>
+                <Link
+                  href="/interior-design/bdes-in-interior-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B. Des in Interior Design
+                </Link></li>
               <li><Link
                 href="/interior-design/bvoc-in-interior-design"
                 className="hover:text-blue-500 transition duration-300"
@@ -112,127 +123,127 @@ const Footer = () => {
                 B.VOC in Interior Design
               </Link></li>
               <li>
-              <Link
-                href="/interior-design/bsc-in-interior-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B.Sc in Interior Design
-              </Link></li>
+                <Link
+                  href="/interior-design/bsc-in-interior-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B.Sc in Interior Design
+                </Link></li>
               <li>
-              <Link
-                href="/interior-design/one-year-diploma-in-interior-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                1-Year Diploma in Interior Design
-              </Link></li>
+                <Link
+                  href="/interior-design/one-year-diploma-in-interior-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  1-Year Diploma in Interior Design
+                </Link></li>
               <li>
-              <Link
-                href="/interior-design/three-year-diploma-in-interior-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                3-Year Diploma in Interior Design
-              </Link></li>
+                <Link
+                  href="/interior-design/three-year-diploma-in-interior-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  3-Year Diploma in Interior Design
+                </Link></li>
             </ul>
             <ul className="space-y-3">
               <li className="font-bold">Fashion Design</li>
               <li>
-              <Link
-                href="/fashion-design/bdes-in-fashion-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B. Des in Fashion Design
-              </Link></li>
+                <Link
+                  href="/fashion-design/bdes-in-fashion-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B. Des in Fashion Design
+                </Link></li>
               <li>
-              <Link
-                href="/fashion-design/bvoc-in-fashion-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B.VOC in Fashion Design
-              </Link></li>
+                <Link
+                  href="/fashion-design/bvoc-in-fashion-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B.VOC in Fashion Design
+                </Link></li>
               <li>
-              <Link
-                href="/fashion-design/bsc-in-fashion-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B.Sc in Fashion Design
-              </Link></li>
+                <Link
+                  href="/fashion-design/bsc-in-fashion-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B.Sc in Fashion Design
+                </Link></li>
               <li>
-              <Link
-                href="/fashion-design/one-year-diploma-in-fashion-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                1-Year Diploma in Fashion Design
-              </Link></li>
+                <Link
+                  href="/fashion-design/one-year-diploma-in-fashion-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  1-Year Diploma in Fashion Design
+                </Link></li>
               <li>
-              <Link
-                href="/fashion-design/three-year-diploma-in-fashion-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                3-Year Diploma in Fashion Design
-              </Link></li>
+                <Link
+                  href="/fashion-design/three-year-diploma-in-fashion-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  3-Year Diploma in Fashion Design
+                </Link></li>
             </ul>
             <ul className="space-y-3">
               <li className="font-bold">Graphic Design</li>
               <li>
-              <Link
-                href="/graphic-design/bdes-in-graphic-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B. Des in Graphic Design
-              </Link>
-                </li>
+                <Link
+                  href="/graphic-design/bdes-in-graphic-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B. Des in Graphic Design
+                </Link>
+              </li>
               <li>
-              <Link
-                href="/graphic-design/bvoc-in-graphic-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B.VOC in Graphic Design
-              </Link></li>
+                <Link
+                  href="/graphic-design/bvoc-in-graphic-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B.VOC in Graphic Design
+                </Link></li>
               <li>
-              <Link
-                href="/graphic-design/bsc-in-graphic-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B.Sc in Graphic Design
-              </Link></li>
+                <Link
+                  href="/graphic-design/bsc-in-graphic-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B.Sc in Graphic Design
+                </Link></li>
               <li>
-              <Link
-                href="/graphic-design/one-year-diploma-in-graphic-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                1-Year Diploma in Graphic Design
-              </Link></li>
+                <Link
+                  href="/graphic-design/one-year-diploma-in-graphic-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  1-Year Diploma in Graphic Design
+                </Link></li>
               <li>
-              <Link
-                href="/graphic-design/three-year-diploma-in-graphic-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                3-Year Diploma in Graphic Design
-              </Link></li>
+                <Link
+                  href="/graphic-design/three-year-diploma-in-graphic-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  3-Year Diploma in Graphic Design
+                </Link></li>
             </ul>
             <ul className="space-y-3">
               <li className="font-bold">UI & UX Design</li>
               <li>
-              <Link
-                href="/uiux-design/bdes-in-ui-ux-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                B. Des in UI & UX Design
-              </Link></li>
+                <Link
+                  href="/uiux-design/bdes-in-ui-ux-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  B. Des in UI & UX Design
+                </Link></li>
               <li>
-              <Link
-                href="/uiux-design/one-year-diploma-in-ui-ux-design"
-                className="hover:text-blue-500 transition duration-300"
-              >
-                1-Year Diploma in UI & UX Design
-              </Link></li>
+                <Link
+                  href="/uiux-design/one-year-diploma-in-ui-ux-design"
+                  className="hover:text-blue-500 transition duration-300"
+                >
+                  1-Year Diploma in UI & UX Design
+                </Link></li>
             </ul>
           </div>
         </div>
 
         {/* Locate Us Section */}
 
-       
+
         <div>
           <h3 className="font-bold text-2xl mb-6">Locate Us</h3>
           <div>

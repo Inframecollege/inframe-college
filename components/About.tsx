@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect,} from "react";
+import React, { useEffect, } from "react";
 import { Card, CardContent } from "../components/ui/card";
 import { experienceCamputLife, highlights, LOGOS, studentImages, values } from "../utils/constant";
 import { Poppins } from "next/font/google"; // Importing Google Fonts via next/font
@@ -289,47 +289,47 @@ const AboutPage = () => {
       </section>
 
       {/* Campus Life Grid */}
-      <CampusLife  experienceCamputLife={experienceCamputLife}/>
+      <CampusLife experienceCamputLife={experienceCamputLife} />
+
+      {/* Core Values Section */}
       <section className="bg-white text-black py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-36 items-center">
-            {/* Left side: Heading and Image */}
-            <div data-aos="fade-right">
-              <div className="flex gap-10">
-                <Image
-                  src={"/images/gallery/1719575193328.jpg"}
-                  alt={"Cultural Event"}
-                  height={480}
-                  width={364}
-                  className="rounded-lg shadow-lg"
-                />
-                <Image
-                  src={"/images/gallery/1719748180116.jpg"}
-                  alt={"Cultural Event"}
-                  height={480}
-                  width={364}
-                  className="rounded-lg  shadow-lg"
-                />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 lg:gap-32 items-center">
+
+            {/* Left side: Images */}
+            <div data-aos="fade-right" className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Image
+                src={"/images/gallery/1719575193328.jpg"}
+                alt="Cultural Event"
+                height={480}
+                width={364}
+                className="rounded-lg shadow-lg w-full sm:w-1/2 object-cover"
+              />
+              <Image
+                src={"/images/gallery/1719748180116.jpg"}
+                alt="Cultural Event"
+                height={480}
+                width={364}
+                className="rounded-lg shadow-lg w-full sm:w-1/2 object-cover"
+              />
             </div>
 
             {/* Right side: Text */}
-            <div data-aos="fade-left">
-              <h2 className={`text-4xl font-bold mb-6 ${poppins.className}`}>
+            <div data-aos="fade-left" className="text-center md:text-left">
+              <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${poppins.className}`}>
                 CORE VALUES
               </h2>
-              <p className="text-lg font-sans leading-relaxed">
-                Inframe school of art, design and business inculcates design
-                thinking in students which enables them to think from a
-                different perspective and understand the needs and wants of the
-                user. Our institute has developed a curriculum which not only
-                focuses on the theoretical knowledge but also focuses on the
-                practical learning and innovation. The school organises various
-                workshops and internship opportunities for the students with the
-                help of industry experts and glorified designers. With the main
-                aim of “developing sustainable design for the people of
-                tomorrow” our institute leads the students in the direction to
-                the future of design and business. ICADB helps the students in
+              <p className="text-base sm:text-lg font-sans leading-relaxed text-justify">
+                Inframe school of art, design and business inculcates design thinking
+                in students which enables them to think from a different perspective
+                and understand the needs and wants of the user. Our institute has
+                developed a curriculum which not only focuses on the theoretical
+                knowledge but also focuses on the practical learning and innovation.
+                The school organises various workshops and internship opportunities
+                for the students with the help of industry experts and glorified
+                designers. With the main aim of “developing sustainable design for the
+                people of tomorrow” our institute leads the students in the direction
+                to the future of design and business. ICADB helps the students in
                 learning design and business with the help of various practical
                 projects so that students can actually understand how are such
                 projects done in the real world and how to work in a team.
@@ -339,72 +339,49 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className=" bg-yellow-400">
-      <div className="relative overflow-hidden py-10 bg-white">
-  <h2
-    className={`text-center text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800 mb-4 ${poppins.className}`}
-  >
-    INDUSTRY & PLACEMENT PARTNER
-  </h2>
-
-  <p
-    className={`text-center text-sm sm:text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto px-4 ${poppins.className}`}
-  >
-    Inframe’s strong industry partnerships provide students with unparalleled
-    career opportunities and real-world experience to excel in design and business.
-  </p>
-
-  {/* Scrolling Logo Section */}
-  <div className="relative w-full overflow-hidden">
-    <div className="flex animate-[scroll_20s_linear_infinite] space-x-8 sm:space-x-12 px-4 sm:px-6 md:px-10">
-      {LOGOS.map((logo, index) => (
-        <div
-          key={`logo-${index}`}
-          className="flex flex-col items-center justify-center text-slate-800 flex-shrink-0"
-        >
-          <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 shadow-md border bg-white border-gray-200 rounded-md flex items-center justify-center">
-            <Image
-              src={logo.src}
-              alt={logo.name || "Company Logo"}
-              width={192}
-              height={192}
-              className="object-contain w-full h-full p-4"
-            />
-          </div>
-          <span
-            className={`mt-2 text-center text-xs sm:text-sm md:text-base text-gray-700 ${poppins.className}`}
+      {/* Industry & Placement Partner Section */}
+      <section className="bg-yellow-400 py-12 sm:py-16">
+        <div className="relative overflow-hidden">
+          <h2
+            className={`text-center text-2xl sm:text-3xl md:text-5xl font-bold text-gray-800 mb-4 ${poppins.className}`}
           >
-            {logo.name}
-          </span>
+            INDUSTRY & PLACEMENT PARTNER
+          </h2>
+          <p
+            className={`text-center text-base sm:text-lg text-gray-700 mb-8 px-4 ${poppins.className}`}
+          >
+            Inframe’s strong industry partnerships provide students with unparalleled
+            career opportunities and real-world experience to excel in design and
+            business.
+          </p>
+
+          {/* Scrolling Logos */}
+          <div className="flex animate-[scroll_20s_linear_infinite] space-x-6 sm:space-x-10 md:space-x-12 px-4">
+            {LOGOS.map((logo, index) => (
+              <div
+                key={`logo-${index}`}
+                className="flex flex-col items-center justify-center text-slate-800"
+              >
+                <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 shadow-md border bg-white border-gray-200 rounded-md flex items-center justify-center">
+                  <Image
+                    src={logo.src}
+                    alt={logo.name}
+                    width={192}
+                    height={192}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+                <span
+                  className={`mt-2 text-center text-xs sm:text-sm md:text-base text-gray-700 ${poppins.className}`}
+                >
+                  {logo.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-
-  {/* Optional: Add gradient fade on edges for nicer visual */}
-  <div className="pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-white to-transparent"></div>
-  <div className="pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent"></div>
-</div>
-
-{/* 
-        <div className="flex justify-center">
-  <Button
-    onClick={handleApplyClick}
-    className="bg-black text-white hover:bg-gray-700 mb-10 hover:text-white px-6 py-3 rounded-md transition duration-300"
-  >
-    Apply Now
-  </Button>
-</div> */}
-
-
-              {/* <ApplyNowForm
-                  isFormOpen={isFormOpen}
-                  setIsFormOpen={setIsFormOpen}
-                  isScrolled={false}
-              /> */}
-
       </section>
+
     </div>
   );
 };

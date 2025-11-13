@@ -97,9 +97,12 @@ const nextConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
+  // "rules": {
+  //   "react/no-unescaped-entities": "off"
+  // }
 };
 
 module.exports = nextConfig;

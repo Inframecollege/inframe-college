@@ -25,15 +25,13 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, children }) => {
           {title}
         </span>
         <ChevronDown
-          className={`w-5 h-5 transition-transform duration-200 ${
-            isOpen ? "transform rotate-180" : ""
-          }`}
+          className={`w-5 h-5 transition-transform duration-200 ${isOpen ? "transform rotate-180" : ""
+            }`}
         />
       </button>
       <div
-        className={`overflow-hidden transition-all duration-200 ${
-          isOpen ? "max-h-96 mb-4" : "max-h-0"
-        }`}
+        className={`overflow-hidden transition-all duration-200 ${isOpen ? "max-h-96 mb-4" : "max-h-0"
+          }`}
       >
         <div className="text-black pt-2 pb-4">{children}</div>
       </div>

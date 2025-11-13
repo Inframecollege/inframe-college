@@ -96,12 +96,9 @@ const CourseContent = ({
           </div>
         </div>
       </div>
-      <CourseHero />
-      <ComboPack />
-      <CourseFeatures />
-      <Customizecourse />
-      <WhyChooseUs />
-      {/* <div className="max-w-7xl mx-auto px-4 py-16">
+
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
             <h2 className={`text-3xl font-bold mb-6 ${poppins.className}`}>
@@ -138,8 +135,8 @@ const CourseContent = ({
             </div>
           </div>
         </div>
-      </div> */}
-      {/* 
+      </div>
+
       <div className="max-w-7xl mx-auto px-4">
         <div id="admission">
           <AdmissionProcess />
@@ -179,7 +176,7 @@ const CourseContent = ({
         <div id="faq">
 
         </div>
-      </div> */}
+      </div>
 
 
       <div className="max-w-5xl mx-auto py-10 px-4">
