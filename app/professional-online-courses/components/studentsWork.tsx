@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -6,7 +7,12 @@ interface StudentsWorkProps {
     title?: string;
 }
 
-function StudentsWork({ images, title = "Students' Work Showcase" }: StudentsWorkProps) {
+function StudentsWork({
+    images,
+    title = "Students' Work Showcase",
+    description = "Explore the creativity and excellence of our students. Each project reflects hard work, skill, and passion."
+}: StudentsWorkProps & { description?: string }) {
+
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     const openImage = (src: string) => setSelectedImage(src);
@@ -16,17 +22,27 @@ function StudentsWork({ images, title = "Students' Work Showcase" }: StudentsWor
         <>
             <div className="p-10 w-full">
                 {/* Title */}
-                <h2 className="text-center text-3xl sm:text-6xl font-bold text-gray-900 mb-6">
+                <h2 className="text-center text-3xl sm:text-6xl font-bold text-gray-900 mb-4">
                     {title}
                 </h2>
 
-                {/* Grid Gallery */}
-                <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 px-4">
+                {/* ⭐ Description */}
+                <p className="text-center text-gray-600 max-w-3xl mx-auto text-lg sm:text-xl mb-8 leading-relaxed">
+                    {description}
+                </p>
+
+                {/* ⭐ Horizontal Scroll Gallery */}
+                <div
+                    className="max-w-6xl mx-auto flex gap-4 px-4 overflow-x-auto scrollbar-hide py-4"
+                    style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                >
                     {images.map((src, idx) => (
                         <div
                             key={idx}
-                            className="relative w-full h-40 sm:h-48 md:h-56 overflow-hidden rounded-lg shadow-lg
-                         transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                            className="relative min-w-[200px] sm:min-w-[260px] h-40 sm:h-56 
+                            overflow-hidden rounded-xl shadow-lg flex-shrink-0 
+                            cursor-pointer hover:scale-105 transition-transform duration-300"
+                            style={{ scrollSnapAlign: "start" }}
                             onClick={() => openImage(src)}
                         >
                             <Image
@@ -34,35 +50,30 @@ function StudentsWork({ images, title = "Students' Work Showcase" }: StudentsWor
                                 alt={`Student Work ${idx + 1}`}
                                 fill
                                 className="object-cover"
-                                sizes="(max-width: 768px) 50vw,
-                       (max-width: 1200px) 33vw,
-                       25vw"
                             />
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Modal */}
+            {/* ⭐ Modal */}
             {selectedImage && (
                 <div
                     className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
                     onClick={closeImage}
                 >
-                    {/* Close button */}
                     <button
                         className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-yellow-400"
                         onClick={(e) => {
-                            e.stopPropagation(); // prevent modal from closing immediately
+                            e.stopPropagation();
                             closeImage();
                         }}
                     >
                         &times;
                     </button>
 
-                    {/* Image container */}
                     <div
-                        className="relative max-w-4xl max-h-[80vh] w-full h-full flex items-center justify-center"
+                        className="relative max-w-4xl max-h-[80vh] w-full flex items-center justify-center"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <Image

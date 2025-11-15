@@ -4,15 +4,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 200%;
+            }
+        }
+        .animate-shine {
+            animation: shine 2s linear infinite;
+        }
+/* Hide scrollbar */
+/* .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
+
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
-:root{
+:root {
   overflow-x: hidden;
 }
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -41,6 +63,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -79,6 +102,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -89,6 +113,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-70%);
   }
@@ -150,22 +175,27 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f4f4f4; /* Light track color */
+  background: #f4f4f4;
+  /* Light track color */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Darker thumb color */
+  background: #888;
+  /* Darker thumb color */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Thumb color on hover */
+  background: #555;
+  /* Thumb color on hover */
 }
 
 .scrollbar-custom {
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #888 #f4f4f4; /* Thumb and track color */
+  scrollbar-width: thin;
+  /* For Firefox */
+  scrollbar-color: #888 #f4f4f4;
+  /* Thumb and track color */
 }
 
 @keyframes draw {
@@ -173,9 +203,11 @@ body {
     stroke-dashoffset: 1000;
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   100% {
     stroke-dashoffset: 0;
     opacity: 1;
@@ -192,21 +224,27 @@ body {
 .animate-draw:nth-child(2) {
   animation-delay: 0.2s;
 }
+
 .animate-draw:nth-child(3) {
   animation-delay: 0.4s;
 }
+
 .animate-draw:nth-child(4) {
   animation-delay: 0.6s;
 }
+
 .animate-draw:nth-child(5) {
   animation-delay: 0.8s;
 }
+
 .animate-draw:nth-child(6) {
   animation-delay: 1s;
 }
+
 .animate-draw:nth-child(7) {
   animation-delay: 1.2s;
 }
+
 .animate-draw:nth-child(8) {
   animation-delay: 1.4s;
 }
@@ -215,14 +253,8 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
-
-
-
-
-
-
-

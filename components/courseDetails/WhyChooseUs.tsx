@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
         <div className="w-[100%] py-[10px]">
             <div className='max-w-7xl grid lg:grid-cols-[30%_auto] grid-cols-1 items-center lg:gap-[50px] mx-auto lg:my-[80px] my-[30px] lg:p-0 p-3 '>
                 <div className='p-7 rounded-[15px]  w-[100%] h-[85%] shadow-xl'>
-                    <img className='w-[100%] h-[100%] object-cover' src="https://www.inframeschool.com/_next/image?url=%2Fimages%2Fgallery%2F1721366034581.jpg&w=1080&q=75" alt="" />
+                    {/* <img className='w-[100%] h-[100%] object-cover' src="https://www.inframeschool.com/_next/image?url=%2Fimages%2Fgallery%2F1721366034581.jpg&w=1080&q=75" alt="" /> */}
                 </div>
                 <div>
                     <h3 className='text-center lg:text-[40px] text-[30px] text-gray-800 mb-5 font-semibold'>Why People Choose <span className='text-amber-400'> US</span></h3>

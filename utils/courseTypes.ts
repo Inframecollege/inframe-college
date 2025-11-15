@@ -717,7 +717,87 @@ export const courseTypes: CourseCategory = {
         },
       },
     },
+    // TITLE OF CITY PAGE 
+    {
+      redirectUrl: "/city/graphic-design-in-jodhpur",
+      content:
+        "The Bachelor of Science (B.SC) in Fashion Design is a three-year program that combines design creativity with technical and scientific aspects of fashion. Students study textile science, color theory, fashion technology, and sustainable practices. The curriculum includes advanced computer-aided design, production management, and quality control, providing a strong foundation in the technical aspects of fashion production.",
+      value: "bsc-in-fashion-design",
+      label: "B.SC in Fashion Design",
+      title: "B.SC in Fashion Design",
+      duration: "3 Years Full-Time",
+      description:
+        "Combine scientific knowledge with fashion design expertise.",
+      software: [
+        { name: "Adobe Illustrator", src: "/software logos/pngegg (25).png" },
+        { name: "Corel Draw", src: "/software logos/pngegg (26).png" },
+        { name: "Photoshop", src: "/software logos/pngegg (24).png" },
+      ],
 
+      videos: [],
+      whatYouWillLearn: [],
+      curriculum: {
+        "1st Year": {
+          image: "https://images.unsplash.com/photo-1575240023813-210ca26abf1c",
+          imageAlt:
+            "Introduction to textile science and basic design techniques",
+          "Semester 1": [
+            "Introduction to Fashion Design",
+            "Textile Science Fundamentals",
+            "Fashion Illustration Basics",
+            "Color Theory and Application",
+            "Design Communication",
+            "Basic Garment Construction",
+          ],
+          "Semester 2": [
+            "Fashion History and Evolution",
+            "Pattern Making Fundamentals",
+            "Introduction to Fashion Technology",
+            "Materials and Fabrics",
+            "Design Thinking and Innovation",
+            "Fashion Photography",
+          ],
+        },
+        "2nd Year": {
+          image: "https://images.unsplash.com/photo-1592904012202-2c54212261e6",
+          imageAlt: "Intermediate design concepts and fashion technology",
+          "Semester 3": [
+            "Advanced Pattern Making",
+            "Fashion Design Software",
+            "Textile Design and Innovation",
+            "Computer-Aided Design (CAD)",
+            "Sustainable Fashion Practices",
+            "Fashion Merchandising",
+          ],
+          "Semester 4": [
+            "Production Management",
+            "Quality Control in Fashion Production",
+            "Fashion Marketing and Retail",
+            "3D Design Technology",
+            "Brand Development",
+            "Advanced Garment Construction",
+          ],
+        },
+        "3rd Year": {
+          image: "https://images.unsplash.com/photo-1555094546-9cf3b18d7e84",
+          imageAlt: "Final year projects and professional development",
+          "Semester 5": [
+            "Fashion Trend Forecasting",
+            "Fashion Entrepreneurship",
+            "Fashion Show Production",
+            "Advanced Textile Science",
+            "Global Fashion Trends",
+          ],
+          "Semester 6": [
+            "Capstone Project",
+            "Fashion Business Management",
+            "Professional Portfolio Development",
+            "Fashion Retail and E-commerce",
+            "Internship in Fashion Industry",
+          ],
+        },
+      },
+    },
     {
       redirectUrl: "/fashion-design/one-year-diploma-in-fashion-design",
       content:

@@ -1,33 +1,19 @@
 "use client"
-
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
 import HeroSection from '../components/heroSection';
 import Footer from '../components/footer';
 import QuickPayment from '../components/quickPayment';
-import RelevantToolsAndFeatures from '../components/relevantToolsAndFeatures';
-import Testimonials from '../components/testimonials';
+// import RelevantToolsAndFeatures from '../components/relevantToolsAndFeatures';
 import Carrousal from '../components/carrousal';
 import CourseInfo from '../components/courseDetails';
 import FAQSection from '../components/faq';
 import StudentsWork from '../components/studentsWork';
 import TestimonialCarousel from '../../../components/TestimonialSection ';
-import { SiAutodesk, SiSketchup, SiAdobephotoshop } from "react-icons/si";
-import { FaCube } from "react-icons/fa"; // fallback for 3ds Max
 import FeaturesSection from '../components/featureSection';
 
 
-function InteriorDesign() {
-    const router = useRouter();
-
-
-    const tools = [
-        { name: "AutoCAD", icon: SiAutodesk, color: "text-red-600" },
-        { name: "SketchUp", icon: SiSketchup, color: "text-orange-500" },
-        { name: "3ds Max", icon: FaCube, color: "text-blue-600" }, // use FaCube
-        { name: "Photoshop", icon: SiAdobephotoshop, color: "text-blue-700" },
-    ];
+function CivilArch() {
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -36,19 +22,13 @@ function InteriorDesign() {
     }, []);
 
     const works = [
-        "/landingImages/interior-design/2 daining render copy.jpg",
-        "/landingImages/interior-design/Celebrity-Homes-Mollywood-Malayalam-Actor-Anoop-Menons-Guest-House-Done-by-Dlife-interiors-.jpg",
-        "/landingImages/interior-design/fainal nighat ji render 1.jpg",
-        "/landingImages/interior-design/FINAL-LIV-2-360x300.webp",
-        "/landingImages/interior-design/hq720.jpg",
-        "/landingImages/interior-design/images.jpg",
-        "/landingImages/interior-design/istockphoto-1365110240-612x612.jpg",
-        "/landingImages/interior-design/istockphoto-1490571644-612x612.jpg",
-        "/landingImages/interior-design/nighat ji dining 1 render .jpg",
-        "/landingImages/interior-design/nighat ji second render copy.jpg",
-        "/landingImages/interior-design/open restaurant jalore 3d.jpg",
-        "/landingImages/interior-design/pexels-fotoaibe-1571458.jpg",
-        // "/landingImages/interior-design/premium_photo-1663126298656-33616be83c   32.jpg",
+        "/landingImages/civil/SURESH JI  3D 2.jpg",
+        "/landingImages/civil/resort 3d render 1 ..jpg",
+        "/landingImages/civil/pawan ji   3d render.jpg",
+        "/landingImages/civil/open restaurant 2 3d.jpg",
+        "/landingImages/civil/3d render 3.jpg",
+        "/landingImages/civil/3d render 2.jpg",
+        "/landingImages/civil/3d House 3 render.jpg",
     ];
 
     const targetAudience = [
@@ -65,7 +45,7 @@ function InteriorDesign() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <HeroSection backgroundImage="/landingImages/course landscape-01-01.jpg" />
+            <HeroSection backgroundImage="/landingImages/CIVIL 8-01.jpg" />
 
             {/* Course Details Section */}
             <div className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -84,7 +64,7 @@ function InteriorDesign() {
                                 🤖 Learn Tools Faster with AI Assistant
                             </h3>
 
-                            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto text-center relative z-10">
+                            {/* <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto text-center relative z-10">
                                 Master industry-leading tools like
                                 <span className="text-yellow-400 font-semibold"> AutoCAD</span>,
                                 <span className="text-yellow-400 font-semibold"> SketchUp</span>,
@@ -92,7 +72,7 @@ function InteriorDesign() {
                                 <span className="text-yellow-400 font-semibold"> Photoshop</span> and more —
                                 with the help of our intelligent
                                 <span className="text-yellow-400 font-bold"> AI-powered learning assistant.</span>
-                            </p>
+                            </p> */}
 
                             <ul className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg font-semibold relative z-10 max-w-4xl mx-auto">
                                 <li className="flex items-center gap-3">
@@ -127,12 +107,12 @@ function InteriorDesign() {
                             </p>
                         </div>
 
-                        {/* pricing banner Section */}
+                        {/* civil pricing banner Section */}
                         <div className="relative w-full  bg-black overflow-hidden">
                             {/* Blurred Background */}
                             <div className="absolute inset-0">
                                 <Image
-                                    src={"/landingImages/course landscape-01-01.jpg"}
+                                    src={"/landingImages/CIVIL 8-01.jpg"}
                                     alt="Blur Background"
                                     fill
                                     className="object-cover blur-xl opacity-40"
@@ -143,46 +123,13 @@ function InteriorDesign() {
                             {/* Center Foreground Banner */}
                             <div className="relative z-10 w-full flex items-center justify-center py-6">
                                 <Image
-                                    src={"/landingImages/course landscape-01-01.jpg"}
+                                    src={"/landingImages/CIVIL 8-01.jpg"}
                                     alt="Hero Banner"
                                     width={900}
                                     height={600}
                                     className="w-full max-w-[900px] h-auto object-contain"
                                     priority
                                 />
-                            </div>
-                        </div>
-
-                        {/* tools */}
-                        {/* <RelevantToolsAndFeatures
-                            tools={[
-                                "AutoCAD",
-                                "SketchUp",
-                                "3ds Max",
-                                "Photoshop",
-                            ]}
-                        /> */}
-
-                        <div className="my-16 px-4">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-12">
-                                🛠️ Master Industry-Relevant Tools
-                            </h2>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                                {tools.map((tool) => {
-                                    const Icon = tool.icon;
-                                    return (
-                                        <div
-                                            key={tool.name}
-                                            className="flex flex-col items-center bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition-shadow duration-300"
-                                        >
-                                            <div className={`mb-3 ${tool.color}`}>
-                                                <Icon className="w-12 h-12" />
-                                            </div>
-                                            <h3 className="font-semibold text-lg text-center">{tool.name}</h3>
-                                        </div>
-                                    );
-                                })}
                             </div>
                         </div>
 
@@ -218,13 +165,15 @@ function InteriorDesign() {
                             </p>
                         </div>
 
+                        {/* Testimonials Section */}
+                        {/* <Testimonials /> */}
 
                         {/* success student Section */}
                         <div className="relative w-full mb-10 bg-black overflow-hidden">
                             {/* Blurred Background */}
                             <div className="absolute inset-0">
                                 <Image
-                                    src={"/landingImages/12-01-2.jpg"}
+                                    src={"/landingImages/12-03-1.jpg"}
                                     alt="Blur Background"
                                     fill
                                     className="object-cover blur-xl opacity-40"
@@ -235,7 +184,7 @@ function InteriorDesign() {
                             {/* Center Foreground Banner */}
                             <div className="relative z-10 w-full flex items-center justify-center py-6">
                                 <Image
-                                    src={"/landingImages/12-02-1.jpg"}
+                                    src={"/landingImages/12-03-1.jpg"}
                                     alt="Hero Banner"
                                     width={900}
                                     height={600}
@@ -243,20 +192,18 @@ function InteriorDesign() {
                                     priority
                                 />
                             </div>
-
                         </div>
-
                         {/* Testimonials Section */}
                         {/* <Testimonials /> */}
                         <TestimonialCarousel />
-
-                        {/* <StudentsWork images={works} title={'Our Student Works'} /> */}
+                        {/* <StudentsWork images={works} title={'Our Student Works'} />
+                         */}
                         <StudentsWork
                             images={works}
                             title="Our Students’ Creative Gallery"
-                            description="Our Interior Design showcase presents a blend of aesthetics, functionality, and spatial harmony envisioned by our students. Each project demonstrates their understanding of how people interact with spaces and how thoughtful design can elevate comfort, mood, and lifestyle. Students explore color palettes, lighting styles, materials, ergonomics, and spatial planning to craft environments that feel balanced and purposeful. These works highlight their talent for creating interiors that are both beautiful and practical—spaces that tell a story, serve a purpose, and inspire a sense of belonging. Their creativity reflects a strong foundation for professional interior design practice."
+                            description="This showcase highlights the practical thinking and structural creativity of our Civil Engineering students. Each project reflects their ability to transform concepts into functional, safe, and efficient designs. From site planning and surveying to load-bearing structures and environmental considerations, students demonstrate a deep understanding of how real-world infrastructure is imagined and refined. Their work shows problem-solving, analytical skills, and an engineer’s mindset—balancing innovation with practicality. These projects represent the future builders of our communities, presenting designs that are thoughtful, sustainable, and ready for real-world application.
+"
                         />
-
 
                         {/* placement partners */}
                         <Carrousal />
@@ -290,17 +237,16 @@ function InteriorDesign() {
                         <div className="fixed bottom-4 right-4 z-50">
                             <QuickPayment />
                         </div>
-                        <FeaturesSection />
-
+                        
+                        <FeaturesSection/>
                         <FAQSection />
                     </div>
                 </div>
             </div>
-
             {/* Footer */}
             <Footer />
         </div>
     );
 }
 
-export default InteriorDesign
+export default CivilArch
