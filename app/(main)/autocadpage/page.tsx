@@ -1,80 +1,63 @@
-"use client";
-
-import { Poppins } from "next/font/google";
-import HighlightsSection from "./HighlightsSection";
-import CareerProspects from "./CareerProspects";
-import CurriculumSection from "./CurriculumSection";
-import SoftwareLogos from "./SoftwareLogos";
-import TestimonialSlider from "./TestimonialSlider";
-import FAQSection from "./FAQSection";
-import {
-  categoryHeroImages,
-  type CurriculumType,
-  type SoftwareType,
-  type VideosType,
-  type WhatLearn,
-} from "../../utils/courseTypes";
-import IndustryPartners from "./Partners";
-import AdmissionProcess from "./AdmissionProcess";
-import WhatYouWillLearn from "./WhatYouWillLearn";
-import DreamsSection from "../DreamSection";
-import Image from "next/image";
-import { Button } from "../ui/button";
-import ApplyNowForm from "../ApplyNowForm";
+"use client"
 import { useState } from "react";
+import { Poppins } from "next/font/google";
+import { CurriculumType, SoftwareType, WhatLearn, VideosType, categoryHeroImages } from "../../../utils/courseTypes";
+import CourseHero from "../../../components/courseDetails/courseDetails";
+import ComboPack from "../../../components/courseDetails/ComboPack";
+import CourseFeatures from "../../../components/courseDetails/courseFeature";
+import Customizecourse from "../../../components/courseDetails/CustomizePack";
+import WhyChooseUs from "../../../components/courseDetails/WhyChooseUs";
 
-
-import CourseHero from "../courseDetails/courseDetails";
-import ComboPack from "../courseDetails/ComboPack";
-import CourseFeatures from "../courseDetails/courseFeature";
-import Customizecourse from "../courseDetails/CustomizePack";
-import WhyChooseUs from "../courseDetails/WhyChooseUs";
 
 const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+    subsets: ["latin"],
+    weight: ["400", "500", "700"],
 });
 
 interface CourseContentProps {
-  title: string;
-  duration: string;
-  description: string;
-  content: string;
-  index: number;
-  category: string;
-  curriculum?: CurriculumType;
-  software?: SoftwareType[];
-  whatYouWillLearn?: WhatLearn[];
-  videos?: VideosType[];
+    title: string;
+    duration: string;
+    description: string;
+    content: string;
+    index: number;
+    category: string;
+    curriculum?: CurriculumType;
+    software?: SoftwareType[];
+    whatYouWillLearn?: WhatLearn[];
+    videos?: VideosType[];
 }
 
 const CourseContent = ({
-  title,
-  duration,
-  description,
-  content,
-  index = 0,
-  category,
-  curriculum,
-  software,
-  whatYouWillLearn,
-  videos = [],
+    title,
+    duration,
+    description,
+    content,
+    index = 0,
+    category,
+    curriculum,
+    software,
+    whatYouWillLearn,
+    videos = [],
 }: CourseContentProps) => {
-  const heroImagesForCategory = categoryHeroImages[category] || [];
-  const heroImage = heroImagesForCategory[index] || heroImagesForCategory[0];
-  const fallbackHeroImage =
-    "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=1600&q=80";
+    const heroImagesForCategory = categoryHeroImages[category] || [];
+    const heroImage = heroImagesForCategory[index] || heroImagesForCategory[0];
+    const fallbackHeroImage =
+        "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=1600&q=80";
 
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
-    setIsFormOpen(true);
-  };
+    const [isFormOpen, setIsFormOpen] = useState(false);
+    const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+        e.preventDefault();
+        setIsFormOpen(true);
+    };
 
-  return (
-    <div className="bg-white text-black">
-
-      <div className="relative h-[95vh] overflow-hidden" id="overview">
+    return (
+        <div className="bg-white text-black  mt-20">
+            <CourseHero />
+            <ComboPack />
+            <CourseFeatures />
+            <Customizecourse />
+            <WhyChooseUs />
+            {/* <div className="relative h-[95vh] overflow-hidden" id="overview">
         <Image
           src={heroImage || fallbackHeroImage}
           alt={`${title} Hero Image`}
@@ -179,16 +162,16 @@ const CourseContent = ({
 
         </div>
       </div>
-
+        
 
       <div className="max-w-5xl mx-auto py-10 px-4">
         <h1 className="text-2xl font-bold mb-6 text-gray-900">
           Course Content
         </h1>
         <FAQSection />
-      </div>
-    </div>
-  );
+      </div> */}
+        </div>
+    );
 };
 
 export default CourseContent;

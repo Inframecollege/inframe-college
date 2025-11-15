@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
+import { SiAdobephotoshop, SiAdobeillustrator, SiCoreldraw } from "react-icons/si";
 
-function RelevantToolsAndFeatures() {
+interface RelevantToolsAndFeaturesProps {
+  tools: string[];
+}
 
-    const features = [
-        "Become a Interior Designer in 12 months",
-        "4+ Tools & 4+ Hands on projects",
-        "Programme expert from industry",
-        "100% Placement guarantee",
-        "4.5 Lacs + CTC"
-    ];
+export default function RelevantToolsAndFeatures({ tools }: RelevantToolsAndFeaturesProps) {
 
-    const tools = ["Autocad", "Sketchup", "3ds Max", "Photoshop"];
+
+
+    // const tools = ["Autocad", "Sketchup", "3ds Max", "Photoshop"];
 
     const additionalFeatures = [
         "Library Access",
@@ -23,82 +22,91 @@ function RelevantToolsAndFeatures() {
     ];
 
     return (
-        <>     {/* Tools Section */}
-            <div className="m-12 sm:mb-16">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-10 text-center">
-                    🛠️ Master Industry Relevant Tools:
+        <>
+            {/* ⭐ Tools Section */}
+            <div className="mt-16 mb-20">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-12">
+                    🛠️ Master Industry-Relevant Tools
                 </h3>
-                <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-10 px-4 sm:px-6">
+
+                <div className="flex flex-wrap justify-center gap-8 px-4">
                     {tools.map((tool, index) => (
                         <div
                             key={index}
                             className="
-                group 
-                bg-gradient-to-br from-black to-gray-900
-                text-yellow-400 
-                px-8 py-6 sm:px-10 sm:py-8 lg:px-12 lg:py-10
-                rounded-3xl 
-                font-bold 
-                text-xl sm:text-2xl lg:text-3xl
-                border-2 border-yellow-500 
-                shadow-[0_0_20px_rgba(255,200,0,0.4)] 
-                hover:shadow-[0_0_35px_rgba(255,200,0,0.6)] 
-                hover:scale-105
-                transform
-                transition-all 
-                duration-500 
-                ease-out
-                flex 
-                items-center 
-                gap-4 sm:gap-6 lg:gap-8
-                min-w-[280px] sm:min-w-[320px] lg:min-w-[360px]
-                hover:border-yellow-300
-                hover:bg-gradient-to-br hover:from-gray-900 hover:to-black
-                cursor-pointer
-            "
+                        group relative
+                        bg-white 
+                        px-8 py-7
+                        sm:px-10 sm:py-9 
+                        rounded-2xl 
+                        shadow-[0px_4px_20px_rgba(0,0,0,0.08)]
+                        hover:shadow-[0px_8px_30px_rgba(0,0,0,0.12)]
+                        transition-all duration-500 
+                        cursor-pointer 
+                        flex items-center gap-6
+                        border border-gray-200
+                        hover:border-yellow-400
+                        hover:scale-[1.04]
+                    "
                         >
-                            {/* Icon Circle - Larger */}
-                            <div className="
-                w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24
-                bg-gradient-to-br from-yellow-500/30 to-yellow-600/20
-                rounded-full 
-                flex items-center justify-center 
-                border-2 border-yellow-500/60
-                shadow-lg
-                group-hover:bg-gradient-to-br group-hover:from-yellow-500/40 group-hover:to-yellow-600/30
-                group-hover:border-yellow-300
-                group-hover:scale-110
-                group-hover:shadow-xl
-                group-hover:shadow-yellow-500/20
-                transition-all duration-500 ease-out
-            ">
-                                <span className="text-3xl sm:text-4xl lg:text-5xl">💻</span>
-                            </div>
+                            {/* Icon */}
+                            {/* <div
+                                className="
+                            w-16 h-16 sm:w-20 sm:h-20
+                            rounded-2xl 
+                            bg-gradient-to-br from-yellow-400 to-yellow-500
+                            flex items-center justify-center
+                            shadow-[0_4px_15px_rgba(255,193,7,0.4)]
+                            text-white text-4xl sm:text-5xl
+                            transition-transform duration-500
+                            group-hover:scale-110
+                        "
+                            >
+                                ⭐
+                            </div> */}
 
-                            {/* Tool Name */}
-                            <span className="tracking-wide drop-shadow-lg group-hover:text-yellow-300 transition-colors duration-300">
+                            {/* Text */}
+                            <span className="text-xl sm:text-2xl font-semibold text-gray-800 tracking-wide">
                                 {tool}
                             </span>
+
+                            {/* Glow */}
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 bg-yellow-300 transition duration-300"></div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Additional Features */}
-            <div className="mb-12 sm:mb-16">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-10 text-center">🌟 Additional Features:</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {/* ⭐ Additional Features */}
+            <div className="mb-20">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-12">
+                    🌟 Additional Benefits
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
                     {additionalFeatures.map((feature, index) => (
-                        <div key={index} className="bg-gradient-to-br from-yellow-50 to-white border-2 border-yellow-200 p-4 sm:p-5 rounded-xl text-center hover:shadow-lg hover:border-yellow-300 transition-all duration-300 group">
-                            <div className="text-yellow-500 text-2xl sm:text-3xl mb-2 group-hover:scale-110 transition-transform">⭐</div>
-                            <span className="text-black font-bold text-base sm:text-lg">{feature}</span>
+                        <div
+                            key={index}
+                            className="
+                        bg-white 
+                        p-6 
+                        rounded-2xl 
+                        shadow-[0_4px_15px_rgba(0,0,0,0.08)]
+                        hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)]
+                        border border-gray-200
+                        hover:border-yellow-400
+                        transition-all duration-300
+                        text-center
+                    "
+                        >
+                            <div className="text-yellow-500 text-4xl mb-3">✨</div>
+                            <p className="text-gray-900 font-semibold text-lg">{feature}</p>
                         </div>
                     ))}
                 </div>
             </div>
-
         </>
+
     )
 }
 
-export default RelevantToolsAndFeatures

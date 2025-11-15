@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <div>
-        <CareersPage/>
+      <CareersPage />
     </div>
   )
 }
