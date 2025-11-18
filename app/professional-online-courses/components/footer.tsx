@@ -43,15 +43,7 @@ function Footer() {
     return (
         <footer className="bg-gradient-to-b from-black to-gray-900 text-white py-8 sm:py-12 border-t-4 border-yellow-500">
             <div className="container mx-auto px-4 sm:px-6 text-center">
-                <div className="mb-4 sm:mb-6 flex justify-center">
-                    <Image
-                        src="/pixelcut-export4.png"
-                        alt="Inframe College Banner"
-                        width={120}
-                        height={50}
-                        className="object-contain rounded-xl sm:w-40 sm:h-16"
-                    />
-                </div>
+               
                 <p className="text-lg sm:text-xl mb-3">© 2025 Inframe College. All rights reserved.</p>
                 <p className="text-yellow-400 text-base sm:text-lg">🎨 Transform your career with expert-led interior design education</p>
                 <div className="mt-6 flex justify-center space-x-6">

@@ -57,8 +57,7 @@ export default function LandingPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-12">
                     <div className="max-w-6xl mx-auto">
                         {/* Main Course Info */}
-                        <CourseInfo />
-
+                        <CourseInfo title="Graphic Design Course" />
                         {/* AI Description Section */}
                         <div className="my-14 sm:my-20 bg-gradient-to-r from-black via-gray-900 to-black text-white rounded-2xl shadow-2xl p-8 sm:p-12 border border-yellow-500/40 relative overflow-hidden">
 

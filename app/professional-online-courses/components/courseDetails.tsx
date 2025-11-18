@@ -1,7 +1,12 @@
 import React from 'react'
 
-function CourseInfo() {
+function CourseInfo({ title }: { title: string }) {
     const features = [
+        "Become an Interior Designer",
+        "4+ Tools & 4+ Hands-on Projects",
+        "Program Experts from the Industry",
+        "Live Doubts Support on App",
+        "Weekly Faculty Interaction via App",
         "Become an Interior Designer",
         "4+ Tools & 4+ Hands-on Projects",
         "Program Experts from the Industry",
@@ -9,57 +14,87 @@ function CourseInfo() {
         "Weekly Faculty Interaction via App",
     ];
     return (
-        <div>
-            <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-black mb-4 sm:mb-6">
-                    Interior Design Course
-                </h2>
-                <p className="text-xl sm:text-2xl lg:text-3xl text-gray-800 mb-6 sm:mb-8 font-semibold">
-                    🎓 Learn from Masters
-                </p>
+        <div className="w-full flex justify-center">
+            <div className="bg-white shadow-2xl border border-gray-200 rounded-3xl 
+                    p-3 sm:p-3 max-w-6xl w-full">
 
-                {/* Price Section */}
-                <div className="mb-6 sm:mb-8">
-                    <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black">
+                {/* Header */}
+                <div className="text-center mb-6">
 
-                        {/* Original Price (Cut) */}
-                        <span className="text-red-500 line-through mr-3 text-xl sm:text-2xl lg:text-3xl">
-                            ₹5000/-
-                        </span>
+                    {/* Title Section */}
+                    <div className="mb-4">
+                        <h2 className="text-4xl sm:text-5xl font-black text-gray-900 leading-tight">
+                            {title}
+                        </h2>
+                        <p className="text-xl sm:text-2xl text-yellow-600 font-bold mt-2 flex items-center justify-center gap-2">
+                            <span className="text-2xl">🎓</span>
+                            Learn from Industry Masters
+                            <span className="text-2xl">⚡</span>
+                        </p>
+                    </div>
 
-                        {/* Discounted Price */}
-                        <span className="text-yellow-600 text-3xl sm:text-4xl lg:text-5xl">
-                            ₹1499/-
-                        </span>
+                    {/* Compact Price Card */}
+                    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-4 shadow-xl border-2 border-yellow-300 max-w-sm mx-auto">
+                        <div className="flex items-center justify-between text-white">
+                            <div className="text-left">
+                                <div className="text-xs opacity-90">WAS</div>
+                                <div className="text-lg line-through opacity-80">₹5000</div>
+                            </div>
 
-                        <span className="text-black ml-2">Lifetime Access</span>
-                    </p>
+                            <div className="text-center">
+                                <div className="text-xs opacity-90">NOW ONLY</div>
+                                <div className="text-3xl font-black">₹1499</div>
+                                <div className="text-xs opacity-90 mt-1">Lifetime Access</div>
+                            </div>
 
+                            <div className="text-right">
+                                <div className="text-xs opacity-90">YOU SAVE</div>
+                                <div className="text-lg font-bold text-green-100">70%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Urgency Indicator */}
+                    <div className="mt-3 text-sm text-red-600 font-semibold animate-pulse">
+                        ⏳ Offer ends soon! Limited seats available
+                    </div>
 
                 </div>
 
-                {/* Description */}
-                <p className="text-lg sm:text-xl text-gray-800 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto">
-                    {/* Get growth in your career with UGC entitled diploma/UG/PG degree programme. */}
-                    Get growth in your career with Certificate
-                    <span className="block font-semibold text-yellow-600 mt-3 sm:mt-4 text-xl sm:text-2xl">🎯 Jobs ready.</span>
-                </p>
-            </div>
 
-            {/* Features List */}
-            <div className="mb-12 sm:mb-16">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-8 sm:mb-10 text-center">✨ Course Features:</h3>
-                <ul className="space-y-4 sm:space-y-6 max-w-2xl mx-auto">
-                    {features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-lg sm:text-xl text-gray-800 bg-gradient-to-r from-yellow-50 to-white p-4 sm:p-5 rounded-lg border-2 border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
-                            <span className="text-yellow-500 mr-3 sm:mr-4 text-xl sm:text-2xl">✅</span>
-                            <span className="font-semibold">{feature}</span>
-                        </li>
-                    ))}
-                </ul>
+                {/* Features List - 2 Columns */}
+                <div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-black text-center mb-8">
+                        ✨ Course Features
+                    </h3>
+
+                    <div className="w-full flex justify-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-3xl w-full">
+                            {features.map((feature, index) => (
+                                <div
+                                    key={index}
+                                    className="flex items-center bg-gradient-to-r from-yellow-50 to-white
+                p-2 rounded-xl border border-yellow-200
+                shadow-md hover:shadow-xl transition-all duration-200"
+                                >
+                                    <span className="text-yellow-500 mr-3 text-2xl">✅</span>
+                                    <span className="font-semibold text-gray-900 text-base sm:text-lg">
+                                        {feature}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
-    )
+    );
+
+
+
+
 }
 
 export default CourseInfo

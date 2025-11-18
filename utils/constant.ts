@@ -337,7 +337,7 @@ export const categories = [
           { text: "B.SC in Fashion Design", href: "#" },
           { text: "One Year Diploma in Fashion Design", href: "#" },
           { text: "Three Year Diploma in Fashion Design", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Design",
@@ -352,7 +352,7 @@ export const categories = [
           { text: "B.SC in Graphic Design", href: "#" },
           { text: "One Year Diploma in Graphic Design", href: "#" },
           { text: "Three Year Diploma in Graphic Design", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Design",
@@ -364,7 +364,7 @@ export const categories = [
         links: [
           { text: "B.Des In UI UX Design", href: "#" },
           { text: "One Year Diploma in UI UX Design", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Design",
@@ -380,7 +380,7 @@ export const categories = [
           { text: "One Year Diploma in Animation and VFX", href: "#" },
           { text: "Two Year Diploma in Animation and VFX", href: "#" },
           { text: "Three Year Diploma in Animation and VFX", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
         ],
         category: "Design",
         image:
@@ -394,7 +394,7 @@ export const categories = [
           { text: "One Year Diploma in CAD Jewellery", href: "#" },
           { text: "Six Month Certificate Course in Jewellery Design", href: "#" },
           { text: "Six Month Certificate Course in CAD Jewellery", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Design",
@@ -415,7 +415,7 @@ export const categories = [
             text: "Six Month Certificate Course in Digital Marketing",
             href: "#",
           },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Business",
@@ -427,7 +427,7 @@ export const categories = [
         links: [
           { text: "B.VOC in Entrepreneurship Skill", href: "#" },
           { text: "One Year Diploma in Entrepreneurship Skill", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Business",
@@ -439,7 +439,7 @@ export const categories = [
         links: [
           { text: "B.VOC in Media and Entertainment", href: "#" },
           { text: "One Year Diploma in Media and Entertainment", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Business",
@@ -453,7 +453,7 @@ export const categories = [
             text: "Learn advanced advertising and marketing strategies",
             href: "#",
           },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Business",
@@ -473,7 +473,7 @@ export const categories = [
           { text: "B.SC in Fine Arts", href: "#" },
           { text: "One Year Diploma in Fine Arts", href: "#" },
           { text: "Three Year Diploma in Fine Arts", href: "#" },
-          { text: "AutoCad", href: "#" },
+          // { text: "AutoCad", href: "#" },
 
         ],
         category: "Art",
