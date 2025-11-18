@@ -386,6 +386,8 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
         {finalVideos?.length > 0 && <TestimonialSlider videos={finalVideos} />}
 
       </div>
+
+
       {/* Enhanced Newsletter Section with SEO */}
       <section className="py-16 my-10 bg-black text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">

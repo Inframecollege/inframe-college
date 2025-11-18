@@ -20,29 +20,28 @@ function StudentsWork({
 
     return (
         <>
-            <div className="p-10 w-full">
+            <div className="p-4 w-full">
                 {/* Title */}
-                <h2 className="text-center text-3xl sm:text-6xl font-bold text-gray-900 mb-4">
+                <h2 className="text-center text-2xl sm:text-4xl font-bold text-gray-900 mb-3">
                     {title}
                 </h2>
 
-                {/* ⭐ Description */}
-                <p className="text-center text-gray-600 max-w-3xl mx-auto text-lg sm:text-xl mb-8 leading-relaxed">
+                {/* Description */}
+                <p className="text-center text-gray-600 max-w-full mx-auto text-base sm:text-lg mb-6 leading-relaxed">
                     {description}
                 </p>
 
-                {/* ⭐ Horizontal Scroll Gallery */}
+                {/* GRID GALLERY */}
                 <div
-                    className="max-w-6xl mx-auto flex gap-4 px-4 overflow-x-auto scrollbar-hide py-4"
-                    style={{ scrollSnapType: "x mandatory", scrollBehavior: "smooth" }}
+                    className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
                 >
                     {images.map((src, idx) => (
                         <div
                             key={idx}
-                            className="relative min-w-[200px] sm:min-w-[260px] h-40 sm:h-56 
-                            overflow-hidden rounded-xl shadow-lg flex-shrink-0 
-                            cursor-pointer hover:scale-105 transition-transform duration-300"
-                            style={{ scrollSnapAlign: "start" }}
+                            className="relative h-36 sm:h-40 md:h-48 
+                       overflow-hidden rounded-xl shadow-md 
+                       cursor-pointer hover:scale-105 hover:shadow-xl
+                       border border-gray-200 transition-all duration-300"
                             onClick={() => openImage(src)}
                         >
                             <Image
@@ -56,24 +55,26 @@ function StudentsWork({
                 </div>
             </div>
 
-            {/* ⭐ Modal */}
+            {/* MODAL */}
             {selectedImage && (
                 <div
-                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-3 backdrop-blur-sm"
                     onClick={closeImage}
                 >
                     <button
-                        className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-yellow-400"
+                        className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-yellow-400 
+                     bg-black/50 rounded-full w-10 h-10 flex items-center justify-center 
+                     hover:bg-black/70 transition-all duration-200 z-10"
                         onClick={(e) => {
                             e.stopPropagation();
                             closeImage();
                         }}
                     >
-                        &times;
+                        ×
                     </button>
 
                     <div
-                        className="relative max-w-4xl max-h-[80vh] w-full flex items-center justify-center"
+                        className="relative max-w-4xl max-h-[85vh] w-full flex items-center justify-center"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <Image
@@ -81,13 +82,14 @@ function StudentsWork({
                             alt="Enlarged view"
                             width={1200}
                             height={800}
-                            className="object-contain rounded-lg shadow-2xl"
+                            className="object-contain rounded-lg shadow-2xl border border-white/10"
                         />
                     </div>
                 </div>
             )}
         </>
     );
+
 }
 
 export default StudentsWork;

@@ -32,7 +32,7 @@ export default function HeroSection({ backgroundImage = "/images/gallery/1721738
             {/* ===========================================================
                🔥 HEADER BAR (OFFER + SEATS + TIMER)
             ============================================================ */}
-          <div className="w-full bg-white/10 backdrop-blur-2xl border-b border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.3)] py-2 z-20 relative overflow-hidden">
+            <div className="w-full bg-white/10 backdrop-blur-2xl border-b border-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.3)] py-2 z-20 relative overflow-hidden">
 
 
                 <div className="max-w-6xl mx-auto">
@@ -44,7 +44,7 @@ export default function HeroSection({ backgroundImage = "/images/gallery/1721738
                                 <div className="marquee-group" key={copy}>
                                     {/* You can create a small function to render the repeated block */}
                                     <div className="marquee-item">
-                                        <span className="text-yellow-400 text-sm sm:text-lg font-bold animate-pulse">🎉 NEW YEAR 20% OFF 🎉</span>
+                                        <span className="text-yellow-400 text-sm sm:text-lg font-bold animate-pulse">🎉 NEW YEAR 70% OFF 🎉</span>
                                     </div>
 
                                     <div className="marquee-item">
@@ -77,79 +77,24 @@ export default function HeroSection({ backgroundImage = "/images/gallery/1721738
                         </div>
                     </div>
                 </div>
-
-                {/* styled-jsx for keyframes and exact behavior */}
-                <style jsx>{`
-    .marquee-track {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-      /* track must be as wide as content; we animate translateX by 50% so duplication works */
-      width: max-content;
-      animation: marquee 18s linear infinite;
-    }
-
-    /* Each "group" is the one logical chunk that is duplicated */
-    .marquee-group {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      white-space: nowrap;
-    }
-
-    .marquee-item { display: flex; align-items: center; }
-
-    /* Pause on hover to allow users to read */
-    .marquee-track:hover {
-      animation-play-state: paused;
-    }
-
-    /* Keyframes: translate left by 50% (one full first copy width) */
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 640px) {
-      .marquee-track { gap: 1rem; }
-      .marquee-group { gap: 0.75rem; }
-    }
-  `}</style>
+    
             </div>
-
-
-
-
             {/* ===========================================================
                📸 RESPONSIVE BACKGROUND IMAGE SECTION
             ============================================================ */}
-            <div className="relative w-full  bg-black overflow-hidden">
-
-                {/* Blurred Background */}
-                <div className="absolute inset-0">
-                    <Image
-                        src={backgroundImage}
-                        alt="Blur Background"
-                        fill
-                        className="object-cover blur-xl opacity-40"
-                        priority
-                    />
-                </div>
-
-                {/* Center Foreground Banner */}
-                <div className="relative z-10 w-full flex items-center justify-center py-6">
+            {/* <div className="relative w-full overflow-hidden">
+                <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh]">
                     <Image
                         src={backgroundImage}
                         alt="Hero Banner"
-                        width={900}
-                        height={600}
-                        className="w-full max-w-[900px] h-auto object-contain"
+                        fill
                         priority
+                        className="object-cover object-center"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                     />
-                </div>
 
-            </div>
+                </div>
+            </div> */}
 
 
 
