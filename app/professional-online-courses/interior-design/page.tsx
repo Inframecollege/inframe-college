@@ -18,7 +18,6 @@ import StudentReviewCarrousal from '../components/studentsReview';
 function InteriorDesign() {
     const router = useRouter();
 
-
     const tools = [
         { name: "AutoCAD", icon: SiAutodesk, color: "text-red-600" },
         { name: "SketchUp", icon: SiSketchup, color: "text-orange-500" },
@@ -63,7 +62,7 @@ function InteriorDesign() {
         <div className="min-h-screen min-w-full bg-white">
             {/* Hero Section */}
             <HeroSection backgroundImage="/landingImages/course landscape-01-01.jpg" />
-            <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+            <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[70vh] lg:h-[93vh] overflow-hidden">
                 <Image
                     src="/landingImages/course landscape-01-01.jpg"
                     alt="Hero Banner"
@@ -248,59 +247,59 @@ function InteriorDesign() {
                         </div>
 
                         {/* Final CTA Section */}
-                   <div className="relative mt-10 p-6 sm:p-10 rounded-3xl bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
+                        <div className="relative mt-10 p-6 sm:p-10 rounded-3xl bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
     shadow-[0_10px_25px_rgba(0,0,0,0.25)] border border-yellow-300
     overflow-hidden group hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)]
     transition-all duration-500">
 
-    {/* Soft Glow Behind */}
-    <div className="absolute inset-0 bg-white/20 blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700"></div>
+                            {/* Soft Glow Behind */}
+                            <div className="absolute inset-0 bg-white/20 blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700"></div>
 
-    {/* Floating Offer Badge */}
-    {/* <div className="absolute -top-4 right-4 bg-red-600 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-bold 
+                            {/* Floating Offer Badge */}
+                            {/* <div className="absolute -top-4 right-4 bg-red-600 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-bold 
         shadow-md animate-bounce">
         🔥 Limited Time
     </div> */}
 
-    {/* Title */}
-    <h3 className="text-3xl sm:text-4xl font-extrabold text-black text-center mb-4 tracking-wide 
+                            {/* Title */}
+                            <h3 className="text-3xl sm:text-4xl font-extrabold text-black text-center mb-4 tracking-wide 
         drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
-        🎁 Special New Year Offer!
-    </h3>
+                                🎁 Special New Year Offer!
+                            </h3>
 
-    {/* Description */}
-    <p className="text-lg sm:text-xl text-black font-semibold text-center mb-6 opacity-90">
-        Enroll now and unlock exclusive premium benefits:
-    </p>
+                            {/* Description */}
+                            <p className="text-lg sm:text-xl text-black font-semibold text-center mb-6 opacity-90">
+                                Enroll now and unlock exclusive premium benefits:
+                            </p>
 
-    {/* Benefits List */}
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-        {[
-            "Free Portfolio Building",
-            "1-on-1 Career Guidance",
-            "Industry Certifications",
-            "Lifetime Access to Resources"
-        ].map((benefit, i) => (
-            <li
-                key={i}
-                className="flex items-center justify-center gap-2 bg-white/60 
+                            {/* Benefits List */}
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                                {[
+                                    "Free Portfolio Building",
+                                    "1-on-1 Career Guidance",
+                                    "Industry Certifications",
+                                    "Lifetime Access to Resources"
+                                ].map((benefit, i) => (
+                                    <li
+                                        key={i}
+                                        className="flex items-center justify-center gap-2 bg-white/60 
                 text-black font-semibold text-base sm:text-lg px-4 py-3 rounded-xl
                 shadow-md backdrop-blur-sm hover:bg-white transition-all duration-300
                 hover:shadow-lg hover:scale-105 animate-slide-up"
-                style={{ animationDelay: `${200 + i * 120}ms` }}
-            >
-                <span className="text-green-700 text-xl font-bold">✓</span>
-                {benefit}
-            </li>
-        ))}
-    </ul>
+                                        style={{ animationDelay: `${200 + i * 120}ms` }}
+                                    >
+                                        <span className="text-green-700 text-xl font-bold">✓</span>
+                                        {benefit}
+                                    </li>
+                                ))}
+                            </ul>
 
-    {/* Bottom Highlight */}
-    <p className="text-center text-black font-bold mt-6 text-lg sm:text-xl tracking-wide 
+                            {/* Bottom Highlight */}
+                            <p className="text-center text-black font-bold mt-6 text-lg sm:text-xl tracking-wide 
         animate-pulse">
-        🎉 New Year Mega Discount Activated — Limited Seats!
-    </p>
-</div>
+                                🎉 New Year Mega Discount Activated — Limited Seats!
+                            </p>
+                        </div>
 
 
                         {/* Features Section */}

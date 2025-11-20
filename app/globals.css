@@ -16,6 +16,34 @@
             animation: shine 2s linear infinite;
         }
 /* Smooth Fade */
+
+
+ @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+          0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.4); }
+          100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 30px rgba(236, 72, 153, 0.6); }
+        }
+        
+        .bg-size-200 {
+          background-size: 200% 200%;
+        }
+        
+        .bg-pos-0 {
+          background-position: 0% 0%;
+        }
+        
+        .bg-pos-100 {
+          background-position: 100% 100%;
+        }
+
+        
 @keyframes soft-fade {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
