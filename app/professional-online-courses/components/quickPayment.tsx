@@ -7,7 +7,7 @@ function QuickPayment() {
     const handleBuyNow = async () => {
         const options = {
             key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Razorpay test key
-            amount: 149900, 
+            amount: 149900,
             currency: "INR",
             name: "Inframe College",
             description: "Interior Design Course Enrollment",
@@ -45,7 +45,7 @@ function QuickPayment() {
                 onClick={handleBuyNow}
                 className="relative bg-gradient-to-r from-black via-gray-900 to-black text-white
                             px-6 py-3 sm:px-8 sm:py-4 rounded-lg
-                            text-lg sm:text-xl font-semibold border border-yellow-400 shadow-xl mb-4
+                            text-lg sm:text-3xl font-semibold border border-yellow-400 shadow-xl mb-4
                             hover:scale-[1.03] active:scale-95 transition-all duration-300
                             hover:shadow-yellow-400/40 overflow-hidden group"
             >

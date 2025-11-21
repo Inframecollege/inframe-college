@@ -18,6 +18,18 @@
 /* Smooth Fade */
 
 
+@keyframes floatBtn {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-btn {
+  animation: floatBtn 1s ease-in-out infinite;
+}
+
+
+
  @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }

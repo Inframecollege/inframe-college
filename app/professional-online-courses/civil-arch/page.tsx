@@ -45,14 +45,22 @@ function CivilArch() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <HeroSection backgroundImage="/landingImages/CIVIL 8-01.jpg" />
-
+            <HeroSection backgroundImage="/landingImages/GrapLandscape-01.jpg" />
+            <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[70vh] lg:h-[94vh] overflow-hidden">
+                <Image
+                    src="/landingImages/we banner.png"
+                    alt="Hero Banner"
+                    fill
+                    priority
+                    className="object-contain sm:object-cover object-top animate-fade-in"
+                />
+            </div>
             {/* Course Details Section */}
             <div className="py-12 sm:py-16 lg:py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-12">
                     <div className="max-w-6xl mx-auto">
                         {/* Main Course Info */}
-                            <CourseInfo title="Civil Architect Course" />
+                        <CourseInfo title="Civil Architect Course" />
 
                         {/* AI Description Section */}
                         <div className="my-14 sm:my-20 bg-gradient-to-r from-black via-gray-900 to-black text-white rounded-2xl shadow-2xl p-8 sm:p-12 border border-yellow-500/40 relative overflow-hidden">
@@ -237,8 +245,8 @@ function CivilArch() {
                         <div className="fixed bottom-4 right-4 z-50">
                             <QuickPayment />
                         </div>
-                        
-                        <FeaturesSection/>
+
+                        <FeaturesSection />
                         <FAQSection />
                     </div>
                 </div>

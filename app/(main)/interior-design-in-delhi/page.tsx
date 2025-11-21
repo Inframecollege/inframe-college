@@ -8,28 +8,17 @@ export const metadata = {
 
 
 function Page() {
-    const softwareList = [
-        "Photoshop",
-        "Illustrator",
-        "Corel Draw",
-        "Maya",
-        "After Effects",
-        "Blender",
-        "Adobe",
-    ];
 
     return (
         <div className="bg-white text-black mt-20">
             <InteriorDesignComponent
-                title="Interior Design"
+                title="Interior Design Course"
                 duration="4 Years Full-Time"
                 description="Transform spaces and shape experiences through our comprehensive design program. Learn from industry experts and build a successful career in interior design."
                 content="The Bachelor of Design (B.Des) in Interior Design is a four-year full-time program designed to provide students with an in-depth understanding of interior spaces, aesthetics, and functionality. This course focuses on developing creativity, technical knowledge, and problem-solving abilities in design. Students explore design principles, material studies, lighting techniques, sustainable design, and digital rendering. The curriculum integrates theoretical knowledge with hands-on studio projects, emphasizing modern software like AutoCAD, SketchUp, and Revit. Graduates can pursue careers as interior designers, space planners, furniture designers, and exhibition designers."
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}
-
-            // software={softwareList} // ✅ Pass array of strings
             />
         </div>
     );

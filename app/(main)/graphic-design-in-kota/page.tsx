@@ -21,7 +21,6 @@ function Page() {
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}
 
-            // software={softwareList} // ✅ Pass array of strings
             />
         </div>
     );

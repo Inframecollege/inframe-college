@@ -29,18 +29,26 @@ import TestimonialSlider from "../Courses/TestimonialSlider";
 import FAQSection from "../Courses/FAQSection";
 
 import { FaCubes, FaDraftingCompass } from "react-icons/fa";
-import {
-    SiAdobephotoshop,
-    SiAdobeillustrator,
-    SiFigma,
-    SiAdobexd,
-} from "react-icons/si";
+
 import { Card, CardContent } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "500", "700"],
 });
+import {
+    SiFigma,
+    SiAdobexd,
+    SiAdobephotoshop,
+    SiAdobeillustrator,
+    SiCoreldraw,
+    SiBlender
+} from "react-icons/si";
+
+import { GiDiamondRing } from "react-icons/gi";  // Matrix (closest)
+import { PiCubeFill } from "react-icons/pi";    // Rhino (closest)
+import { GiStoneCrafting } from "react-icons/gi"; // ZBrush (closest)
+
 const tools = [
     {
         name: "Figma",
@@ -69,8 +77,46 @@ const tools = [
         icon: <SiAdobeillustrator className="text-4xl text-orange-600" />,
         color: "from-orange-100 to-yellow-100",
         textColor: "text-orange-600"
+    },
+
+    // ⭐ Added Tools
+    {
+        name: "Rhino",
+        category: "3D CAD Modeling",
+        icon: <PiCubeFill className="text-4xl text-gray-700" />,
+        color: "from-gray-100 to-gray-200",
+        textColor: "text-gray-700"
+    },
+    {
+        name: "CorelDRAW",
+        category: "Vector Design",
+        icon: <SiCoreldraw className="text-4xl text-green-600" />,
+        color: "from-green-100 to-lime-100",
+        textColor: "text-green-600"
+    },
+    {
+        name: "Blender",
+        category: "3D Modeling & Rendering",
+        icon: <SiBlender className="text-4xl text-orange-500" />,
+        color: "from-orange-100 to-yellow-100",
+        textColor: "text-orange-500"
+    },
+    {
+        name: "Matrix",
+        category: "Jewellery CAD",
+        icon: <GiDiamondRing className="text-4xl text-blue-600" />,
+        color: "from-blue-100 to-cyan-100",
+        textColor: "text-blue-600"
+    },
+    {
+        name: "ZBrush",
+        category: "Digital Sculpting",
+        icon: <GiStoneCrafting className="text-4xl text-red-600" />,
+        color: "from-red-100 to-orange-100",
+        textColor: "text-red-600"
     }
 ];
+
 
 export const jewelleryDesignCurriculum = {
     "1st Year": {
@@ -276,17 +322,6 @@ const JewelleryDesignComponent = ({
                                 Curriculum
                             </Button>
 
-                            {/* <Button
-                                onClick={
-                                    () =>
-                                        document
-                                            .getElementById("curriculum")
-                                            ?.scrollIntoView({ behavior: "smooth" })
-                                }
-                                className="hover:bg-white hover:text-black transition-all duration-200 font-bold"
-                            >
-                                Curriculum
-                            </Button> */}
                         </div>
                     </div>
                 </div>
@@ -322,48 +357,50 @@ const JewelleryDesignComponent = ({
                     </div>
 
                     {/* Enhanced Grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
                         {tools.map((tool, index) => (
                             <div
                                 key={index}
                                 className={`
-                    flex flex-col items-center p-6 rounded-2xl 
-                    bg-gradient-to-br from-white to-gray-50 
-                    shadow-lg border border-gray-100 
-                    transition-all duration-400 ease-out
-                    hover:scale-105 hover:shadow-xl
-                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-                    `}
+                flex flex-col items-center p-6 rounded-2xl 
+                bg-gradient-to-br from-white to-gray-50 
+                shadow-lg border border-gray-100 
+                transition-all duration-300 ease-out
+                hover:scale-105 hover:shadow-xl
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+            `}
                                 style={{
-                                    transitionDelay: isVisible ? `${index * 100}ms` : '0ms',
-                                    animationDelay: `${index * 0.2}s`
+                                    transitionDelay: isVisible ? `${index * 120}ms` : '0ms'
                                 }}
                             >
-                                {/* Icon Container */}
+                                {/* ICON WRAPPER */}
                                 <div
                                     className={`
-                mb-4 p-3 rounded-full bg-gradient-to-r 
-                ${tool.color} 
-                animate-float
-              `}
+                    mb-4 p-6 rounded-full bg-gradient-to-r 
+                    ${tool.color}
+                    flex items-center justify-center 
+                    shadow-md animate-float
+                `}
                                 >
-                                    <div className="filter drop-shadow-md">
+                                    <div className="text-7xl filter drop-shadow-lg">
                                         {tool.icon}
                                     </div>
                                 </div>
 
-                                {/* Tool Name */}
-                                <p className="font-semibold text-gray-800 text-center mb-1">
+                                {/* NAME */}
+                                <p className="font-semibold text-gray-900 text-center text-lg">
                                     {tool.name}
                                 </p>
 
-                                {/* Category */}
-                                <span className={`text-xs ${tool.textColor} mt-1 font-medium`}>
+                                {/* CATEGORY */}
+                                <span className={`text-sm ${tool.textColor} font-medium mt-1`}>
                                     {tool.category}
                                 </span>
                             </div>
                         ))}
                     </div>
+
+
                 </section>
 
 
@@ -415,7 +452,7 @@ const JewelleryDesignComponent = ({
                 </section>
 
                 {/* curriculam section */}
-                <div id="curriculum" className="max-w-7xl mx-auto px-4 py-16 bg-white">
+                <div id="curriculum" className="max-w-7xl mx-auto px-1 py-2 bg-white">
                     <h2 className="text-3xl font-bold mb-8 text-yellow-400">
                         Course Curriculum
                     </h2>
@@ -455,7 +492,7 @@ const JewelleryDesignComponent = ({
 
                                     {/* Semester Tabs */}
                                     <Tabs defaultValue={Object.keys(data.semesters)[0]} className="w-full">
-                                        <TabsList className="md:w-full flex flex-wrap mb-16 rounded-lg bg-zinc-200 p-1 gap-2">
+                                        <TabsList className="md:w-full flex flex-wrap mb-6 rounded-lg bg-zinc-200 p-1 gap-2">
                                             {Object.keys(data.semesters).map((semester) => (
                                                 <TabsTrigger
                                                     key={semester}
@@ -516,6 +553,25 @@ const JewelleryDesignComponent = ({
                 </h1>
                 < FAQSection />
             </div>
+
+            <div className="fixed bottom-14 right-2 z-50 floating-btn">
+                <Button
+                    onClick={handleApplyClick}
+                    className="
+            bg-gradient-to-r from-yellow-600 to-yellow-400
+            text-black font-extrabold
+            px-10 py-6 text-xl
+            rounded-xl
+            shadow-[0_0_25px_6px_rgba(255,200,0,0.55)]
+            hover:shadow-[0_0_35px_12px_rgba(255,200,0,0.75)]
+            hover:scale-110
+            transition-all duration-300
+        "
+                >
+                    🚀 Apply Now
+                </Button>
+            </div>
+
         </div>
     );
 };

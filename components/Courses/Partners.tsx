@@ -11,7 +11,7 @@ const poppins = Poppins({
 
 const IndustryPartners: React.FC = () => {
   return (
-    <div className="w-full container mx-auto px-4 lg:px-8 mt-20">
+    <div className="w-full container mx-auto px-4 lg:px-8 mt-2">
       {/* Heading */}
       <h2
         className={`text-center xl:text-left font-sans text-3xl font-bold text-gray-800 mb-4 ${poppins.className}`}

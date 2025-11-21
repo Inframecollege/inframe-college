@@ -62,6 +62,8 @@ function InteriorDesign() {
         <div className="min-h-screen min-w-full bg-white">
             {/* Hero Section */}
             <HeroSection backgroundImage="/landingImages/course landscape-01-01.jpg" />
+
+            {/* Hero Banner Image */}
             <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[70vh] lg:h-[94vh] overflow-hidden">
                 <Image
                     src="/landingImages/we banner.png"
@@ -79,6 +81,17 @@ function InteriorDesign() {
                         {/* Main Course Info */}
                         <div className="animate-slide-up">
                             <CourseInfo title="Interior Design Course" />
+                        </div>
+
+                        {/* Pricing Banner Section */}
+                        <div className="relative mt-10 w-full h-[35vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
+                            <Image
+                                src={"/landingImages/course landscape-01-01.jpg"}
+                                alt="Hero Banner"
+                                fill
+                                priority
+                                className="object-contain object-top  transition-transform duration-700"
+                            />
                         </div>
 
                         {/* AI Description Section */}
@@ -172,45 +185,6 @@ function InteriorDesign() {
                             </div>
                         </div>
 
-
-                        {/* Pricing Banner Section */}
-                        {/* <div className="relative w-full h-[35vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
-                            <Image
-                                src={"/landingImages/course landscape-01-01.jpg"}
-                                alt="Hero Banner"
-                                fill
-                                priority
-                                className="object-contain object-top  transition-transform duration-700"
-                            />
-                        </div> */}
-
-                        <div className="relative w-full  bg-black overflow-hidden">
-                            {/* Blurred Background */}
-                            <div className="absolute inset-0">
-                                <Image
-                                    src={"/landingImages/course landscape-01-01.jpg"}
-                                    alt="Blur Background"
-                                    fill
-                                    className="object-cover blur-xl opacity-40"
-                                    priority
-                                />
-                            </div>
-
-                            {/* Center Foreground Banner */}
-                            <div className="relative z-10 w-full flex items-center justify-center py-6">
-                                <Image
-                                    src={"/landingImages/course landscape-01-01.jpg"}
-                                    alt="Hero Banner"
-                                    width={900}
-                                    height={600}
-                                    className="w-full max-w-[900px] h-auto object-contain"
-                                    priority
-                                />
-                            </div>
-
-                        </div>
-
-
                         {/* Tools Section */}
                         <div className="my-16 px-4 animate-fade-in-up">
                             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-10">
@@ -246,29 +220,46 @@ function InteriorDesign() {
 
 
                         {/* Who Should Join */}
-                        <div className="my-8 sm:my-12 animate-fade-in-up">
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-black mb-6 text-center animate-bounce-in">
-                                👥 Who Should Join This Course?
+                        <div className="my-16">
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-10 tracking-tight">
+                                <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                                    👥 Who Should Join This Course?
+                                </span>
                             </h3>
 
-                            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 max-w-4xl mx-auto">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
                                 {targetAudience.map((audience, index) => (
                                     <div
                                         key={index}
-                                        className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
-                                        text-black px-5 py-3 sm:px-6 sm:py-4 rounded-2xl 
-                                        font-semibold text-base sm:text-lg 
-                                        border border-yellow-700/40
-                                        shadow-[0_4px_12px_rgba(0,0,0,0.15)]
-                                        hover:shadow-[0_6px_20px_rgba(0,0,0,0.25)]
-                                        hover:scale-[1.04] transition-all duration-300 
-                                        flex items-center gap-2 animate-slide-in-left hover:animate-pulse"
-                                        style={{ animationDelay: `${index * 150}ms` }}
+                                        className="
+                bg-white
+                border border-gray-300
+                shadow-sm
+                hover:shadow-xl
+                transition-all duration-300
+                rounded-2xl p-6
+                flex items-center gap-4
+                hover:border-gray-400
+                hover:-translate-y-1
+                relative
+            "
                                     >
-                                        {audience}
+                                        {/* Highlight Glow */}
+                                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-200/40 via-yellow-200/40 to-orange-200/40 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                                        {/* Icon */}
+                                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-gray-800 text-xl shadow-inner">
+                                            ⭐
+                                        </div>
+
+                                        {/* Text */}
+                                        <p className="text-gray-900 font-semibold text-lg relative z-10">
+                                            {audience}
+                                        </p>
                                     </div>
                                 ))}
                             </div>
+
                         </div>
 
                         {/* Projects Highlight */}
@@ -315,40 +306,39 @@ function InteriorDesign() {
                             />
                         </div>
 
-                        {/* Placement Partners */}
-                        <div className="animate-fade-in-up">
-                            <Carrousal />
-                        </div>
-
-                        {/* Pricing Banner Section */}
-                        <div className="relative w-full mt-10 h-[35vh] sm:h-[45vh] md:h-[65vh] overflow-hidden">
+                        {/* CEO Banner Section */}
+                        <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[50vh] lg:h-[84vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/website.png"}
                                 alt="Hero Banner"
                                 fill
                                 priority
-                                className="object-contain object-top  transition-transform duration-700"
+                                className="object-contain sm:object-cover object-top animate-fade-in"
                             />
+                        </div>
+                        {/* Placement Partners */}
+                        <div className="animate-fade-in-up">
+                            <Carrousal />
                         </div>
 
                         {/* Final CTA Section */}
                         <div className="relative mt-10 p-6 sm:p-10  bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
-    shadow-[0_10px_25px_rgba(0,0,0,0.25)] border border-yellow-300
-    overflow-hidden group hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)]
-    transition-all duration-500">
+                            shadow-[0_10px_25px_rgba(0,0,0,0.25)] border border-yellow-300
+                            overflow-hidden group hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)]
+                            transition-all duration-500">
 
                             {/* Soft Glow Behind */}
                             <div className="absolute inset-0 bg-white/20 blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700"></div>
 
                             {/* Floating Offer Badge */}
                             {/* <div className="absolute -top-4 right-4 bg-red-600 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-bold 
-        shadow-md animate-bounce">
-        🔥 Limited Time
-    </div> */}
+                                shadow-md animate-bounce">
+                                🔥 Limited Time
+                            </div> */}
 
                             {/* Title */}
                             <h3 className="text-3xl sm:text-4xl font-extrabold text-black text-center mb-4 tracking-wide 
-        drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                                drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
                                 🎁 Special New Year Offer!
                             </h3>
 
@@ -368,9 +358,9 @@ function InteriorDesign() {
                                     <li
                                         key={i}
                                         className="flex items-center justify-center gap-2 bg-white/60 
-                text-black font-semibold text-base sm:text-lg px-4 py-3 rounded-xl
-                shadow-md backdrop-blur-sm hover:bg-white transition-all duration-300
-                hover:shadow-lg hover:scale-105 animate-slide-up"
+                                            text-black font-semibold text-base sm:text-lg px-4 py-3 rounded-xl
+                                            shadow-md backdrop-blur-sm hover:bg-white transition-all duration-300
+                                            hover:shadow-lg hover:scale-105 animate-slide-up"
                                         style={{ animationDelay: `${200 + i * 120}ms` }}
                                     >
                                         <span className="text-green-700 text-xl font-bold">✓</span>
