@@ -148,7 +148,7 @@ export default function LandingPage() {
                         <CourseInfo title="Graphic Design Course" />
 
                         {/* pricing banner Section */}
-                        <div className="relative mt-5 w-full h-[35vh] sm:h-[45vh] md:h-[86vh] overflow-hidden">
+                        <div className="relative mt-5 w-full h-[25vh] sm:h-[45vh] md:h-[86vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/GrapLandscape-01.jpg"}
                                 alt="Hero Banner"
@@ -258,7 +258,7 @@ export default function LandingPage() {
                                         🛠️ Master Industry-Relevant Tools
                                     </span>
                                     {/* underline bar */}
-                                    <span className="absolute left-0 right-0 -bottom-1 h-1 rounded-md bg-gradient-to-r from-gray-900 to-gray-800"></span>
+                                    {/* <span className="absolute left-0 right-0 -bottom-1 h-1 rounded-md bg-gradient-to-r from-gray-900 to-gray-800"></span> */}
 
                                 </h2>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
