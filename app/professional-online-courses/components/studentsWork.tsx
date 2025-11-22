@@ -29,8 +29,10 @@ function StudentsWork({
                 {/* Description */}
                 <p className="text-center text-gray-600 max-w-full mx-auto text-base sm:text-lg mb-6 leading-relaxed">
                     {description}
+                    <div className="mt-4 mx-auto w-20 h-1 rounded-full bg-gradient-to-r from-gray-900 to-gray-700"></div>
                 </p>
 
+                {/* Optional little underline accent */}
                 {/* GRID GALLERY */}
                 <div
                     className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
@@ -84,7 +86,11 @@ function StudentsWork({
                             height={800}
                             className="object-contain rounded-lg shadow-2xl border border-white/10"
                         />
+
+                        
                     </div>
+
+                    
                 </div>
             )}
         </>

@@ -12,9 +12,10 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <GraphicDesignComponent
-                title="Graphic Design Course"
+                title="Graphic Design Course in Ajmer"
                 duration="4 Years Full-Time"
-                description="Master the art of visual communication with our graphic design programs. Create compelling designs that captivate and communicate." content="The Bachelor of Design (B.Des) in Graphic Design is a comprehensive four-year program that develops creative problem-solving skills through visual communication. Students learn typography, layout design, branding, digital illustration, and motion graphics. The program emphasizes both traditional design principles and modern digital tools, preparing students for diverse creative industry roles."
+                description="You will learn graphic designing, visual communication, typography, logo and branding design, digital illustrations, and modern design trends. The course also includes training on digital tools like Adobe Suite, Photoshop, Illustrator, and Corel Draw to create professional designs, mockups, and portfolios." 
+                content="At Inframe, you can choose from multiple graphic design programs like B.Des in Graphic Design, B.VOC in Graphic Design, B.Sc in Graphic Design, One-Year Diploma in Graphic Design, and Three-Year Diploma in Graphic Design. If you are searching for a Graphic Design Course in Ajmer, these programs help you build strong creative and technical skills. By the end of the course, you will have a professional portfolio and the confidence to work in the graphic design industry."
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}

@@ -14,6 +14,7 @@ import { SiAutodesk, SiSketchup, SiAdobephotoshop } from "react-icons/si";
 import { FaCube } from "react-icons/fa";
 import FeaturesSection from '../components/featureSection';
 import StudentReviewCarrousal from '../components/studentsReview';
+import TestimonialCarousel from '../../../components/TestimonialSection ';
 
 function InteriorDesign() {
     const router = useRouter();
@@ -95,7 +96,7 @@ function InteriorDesign() {
                         </div>
 
                         {/* AI Description Section */}
-                        <div className="my-10 px-4 sm:px-8 lg:px-20">
+                        <div className="my-2 px-1 sm:px-8 lg:px-20">
                             <div className="bg-gradient-to-r from-black via-gray-900 to-black 
                     text-white rounded-2xl shadow-2xl p-6 sm:p-10 
                     border border-yellow-500/30 relative overflow-hidden animate-fade-in-up">
@@ -148,31 +149,27 @@ function InteriorDesign() {
                         {/* Course Level & Online Mode Notice */}
                         <div className="px-4 sm:px-8 lg:px-20 my-10">
                             <div className="
-        bg-gradient-to-r from-yellow-300 to-yellow-400 
-        p-6 sm:p-8 lg:p-12 
-        rounded-xl border border-yellow-300 
-        shadow-md 
-        animate-scale-in
-        text-center
-    ">
+                                bg-gradient-to-r from-yellow-300 to-yellow-400 
+                                    p-6 sm:p-8 lg:p-12 
+                                    rounded-xl border border-yellow-300 
+                                    shadow-md 
+                                    animate-scale-in
+                                    text-center
+                                ">
 
                                 {/* Heading */}
-                                <h3 className="
-            text-lg sm:text-2xl lg:text-3xl 
-            font-extrabold text-black 
-            mb-3
-        ">
+                                <h3 className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-black mb-3">
                                     🎓 Designed for Class 10+ Students & Above
                                 </h3>
 
                                 {/* Description */}
                                 <p className="
-            text-sm sm:text-lg lg:text-xl 
-            text-black 
-            font-medium 
-            max-w-3xl mx-auto 
-            leading-relaxed
-        ">
+                                                text-sm sm:text-lg lg:text-xl 
+                                                text-black 
+                                                font-medium 
+                                                max-w-3xl mx-auto 
+                                                leading-relaxed
+                                            ">
                                     This is a
                                     <span className="text-red-600 font-bold animate-pulse"> 100% Online Course</span>
                                     that includes
@@ -220,8 +217,8 @@ function InteriorDesign() {
 
 
                         {/* Who Should Join */}
-                        <div className="my-16">
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-10 tracking-tight">
+                        <div className="my-6 pb-5">
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-5 tracking-tight">
                                 <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                                     👥 Who Should Join This Course?
                                 </span>
@@ -263,11 +260,12 @@ function InteriorDesign() {
                         </div>
 
                         {/* Projects Highlight */}
-                        <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 sm:p-6 rounded-xl border-l-4 border-yellow-500 border-2 border-yellow-200 mb-8 sm:mb-12 text-center animate-pulse-slow">
-                            <p className="text-lg sm:text-xl text-black font-bold animate-bounce-in">
+                        <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-6 sm:p-8  border-l-4 border-yellow-500 border-2 0 mb-12 sm:mb-16 text-center shadow-lg">
+                            <p className="text-xl sm:text-4xl text-black font-bold">
                                 🚀 Yes 4+ hands on projects that make your CV look great.
                             </p>
                         </div>
+
 
                         {/* Success Student Section */}
                         <div className="relative w-full mb-8 bg-black overflow-hidden animate-zoom-in">
@@ -293,21 +291,17 @@ function InteriorDesign() {
                         </div>
 
                         {/* Testimonials Section */}
-                        <div className="animate-fade-in-up">
-                            <StudentReviewCarrousal />
-                        </div>
+                        {/* <Testimonials /> */}
+                        <TestimonialCarousel />
 
-                        {/* Students Work */}
-                        <div className="animate-slide-up">
-                            <StudentsWork
-                                images={works}
-                                title="Our Students' Creative Gallery"
-                                description="Our Interior Design showcase presents a blend of aesthetics, functionality, and spatial harmony envisioned by our students. Each project demonstrates their understanding of how people interact with spaces and how thoughtful design can elevate comfort, mood, and lifestyle."
-                            />
-                        </div>
+                        <StudentsWork
+                            images={works}
+                            title="Our Students’ Creative Gallery"
+                            description="This gallery celebrates the visual imagination and storytelling power of our Graphic Design students. Every piece reflects a strong sense of creativity, brand awareness, and communication strategy. Students explore color psychology, layout balance, visual hierarchy, and creative composition to produce designs that speak clearly and emotionally. From bold advertising concepts to refined brand identities and artistic digital visuals, this work showcases their ability to transform ideas into eye-catching and meaningful designs. Their projects reflect both artistic expression and professional design thinking, ready for industry-level presentation."
+                        />
 
                         {/* CEO Banner Section */}
-                        <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[50vh] lg:h-[84vh] overflow-hidden">
+                        <div className="relative w-full h-[28vh] sm:h-[60vh] md:h-[50vh] lg:h-[84vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/website.png"}
                                 alt="Hero Banner"
@@ -316,71 +310,40 @@ function InteriorDesign() {
                                 className="object-contain sm:object-cover object-top animate-fade-in"
                             />
                         </div>
+
                         {/* Placement Partners */}
-                        <div className="animate-fade-in-up">
-                            <Carrousal />
-                        </div>
+                        <Carrousal />
+
 
                         {/* Final CTA Section */}
-                        <div className="relative mt-10 p-6 sm:p-10  bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
-                            shadow-[0_10px_25px_rgba(0,0,0,0.25)] border border-yellow-300
-                            overflow-hidden group hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)]
-                            transition-all duration-500">
-
-                            {/* Soft Glow Behind */}
-                            <div className="absolute inset-0 bg-white/20 blur-3xl opacity-40 group-hover:opacity-60 transition-all duration-700"></div>
-
-                            {/* Floating Offer Badge */}
-                            {/* <div className="absolute -top-4 right-4 bg-red-600 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-bold 
-                                shadow-md animate-bounce">
-                                🔥 Limited Time
-                            </div> */}
-
-                            {/* Title */}
-                            <h3 className="text-3xl sm:text-4xl font-extrabold text-black text-center mb-4 tracking-wide 
-                                drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+                        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 mt-10 p-6 sm:p-8 text-center shadow-xl border-2 border-yellow-300 rounded-xl">
+                            <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-black mb-2">
                                 🎁 Special New Year Offer!
                             </h3>
 
-                            {/* Description */}
-                            <p className="text-lg sm:text-xl text-black font-semibold text-center mb-6 opacity-90">
-                                Enroll now and unlock exclusive premium benefits:
+                            <p className="text-black font-semibold text-base sm:text-lg mb-4">
+                                Enroll now and get exclusive benefits:
                             </p>
 
-                            {/* Benefits List */}
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                                {[
-                                    "Free Portfolio Building",
-                                    "1-on-1 Career Guidance",
-                                    "Industry Certifications",
-                                    "Lifetime Access to Resources"
-                                ].map((benefit, i) => (
-                                    <li
-                                        key={i}
-                                        className="flex items-center justify-center gap-2 bg-white/60 
-                                            text-black font-semibold text-base sm:text-lg px-4 py-3 rounded-xl
-                                            shadow-md backdrop-blur-sm hover:bg-white transition-all duration-300
-                                            hover:shadow-lg hover:scale-105 animate-slide-up"
-                                        style={{ animationDelay: `${200 + i * 120}ms` }}
-                                    >
-                                        <span className="text-green-700 text-xl font-bold">✓</span>
-                                        {benefit}
-                                    </li>
-                                ))}
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 max-w-xl mx-auto">
+                                <li className="flex items-center justify-center text-black font-medium">
+                                    <span className="text-green-600 mr-2">✓</span> Free Portfolio Building
+                                </li>
+                                <li className="flex items-center justify-center text-black font-medium">
+                                    <span className="text-green-600 mr-2">✓</span> 1-on-1 Career Guidance
+                                </li>
+                                <li className="flex items-center justify-center text-black font-medium">
+                                    <span className="text-green-600 mr-2">✓</span> Industry Certifications
+                                </li>
+                                <li className="flex items-center justify-center text-black font-medium">
+                                    <span className="text-green-600 mr-2">✓</span> Lifetime Access to Resources
+                                </li>
                             </ul>
-
-                            {/* Bottom Highlight */}
-                            <p className="text-center text-black font-bold mt-6 text-lg sm:text-xl tracking-wide 
-        animate-pulse">
-                                🎉 New Year Mega Discount Activated — Limited Seats!
-                            </p>
                         </div>
-
 
                         {/* Features Section */}
-                        <div className="animate-fade-in-up">
-                            <FeaturesSection />
-                        </div>
+                
+                        <FeaturesSection />
 
                         {/* FAQ Section */}
                         <div className="w-full flex justify-center">

@@ -12,10 +12,10 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <InteriorDesignComponent
-                title="Interior Design Course"
+                title="Interior Design Course in Delhi"
                 duration="4 Years Full-Time"
-                description="Transform spaces and shape experiences through our comprehensive design program. Learn from industry experts and build a successful career in interior design."
-                content="The Bachelor of Design (B.Des) in Interior Design is a four-year full-time program designed to provide students with an in-depth understanding of interior spaces, aesthetics, and functionality. This course focuses on developing creativity, technical knowledge, and problem-solving abilities in design. Students explore design principles, material studies, lighting techniques, sustainable design, and digital rendering. The curriculum integrates theoretical knowledge with hands-on studio projects, emphasizing modern software like AutoCAD, SketchUp, and Revit. Graduates can pursue careers as interior designers, space planners, furniture designers, and exhibition designers."
+                description="You will learn interior designing, space planning, color schemes, furniture selection, lighting design, and modern design trends. The course also includes training on digital tools like AutoCAD, SketchUp, 3ds Max, and Adobe Suite to create realistic 3D models, layouts, and design presentations."
+                content="At Inframe, you can choose from multiple interior design programs like B.Des in Interior Design, B.VOC in Interior Design, B.Sc in Interior Design, One-Year Diploma in Interior Design, and Three-Year Diploma in Interior Design. If you are searching for an Interior Design Course in Delhi, these programs help you build strong creative and technical skills. By the end of the course, you will have a professional portfolio and the confidence to work in the interior design industry."
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}

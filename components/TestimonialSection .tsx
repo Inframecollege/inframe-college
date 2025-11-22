@@ -22,17 +22,24 @@ export default function TestimonialCarousel() {
   return (
     <div className="w-full min-w-full mx-auto py-10 px-4 lg:px-8">
       {/* Header Section */}
-      <div className="mb-16 max-w-2xl">
-        <h2
-          className={`text-4xl lg:text-5xl font-bold mb-4 ${poppins.className}`}
-        >
-          Student Success Stories
-        </h2>
-        <p className="text-gray-600 text-lg">
-          Discover how our platform has transformed the learning journey of our
-          students
-        </p>
-      </div>
+    <div className="mb-10 max-w-3xl text-center mx-auto px-4">
+  <h2
+    className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight ${poppins.className}`}
+  >
+    <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+      Student Success Stories
+    </span>
+  </h2>
+
+  <p className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed">
+    Discover how our platform has transformed the learning journey of our
+    students
+  </p>
+
+  {/* Optional little underline accent */}
+  <div className="mt-4 mx-auto w-20 h-1 rounded-full bg-gradient-to-r from-gray-900 to-gray-700"></div>
+</div>
+      
 
       <Carousel
         className="w-full"

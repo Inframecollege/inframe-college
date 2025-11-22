@@ -44,7 +44,7 @@ export const LOGOS = [
 ];
 function Carrousal() {
     return (
-        <section className="relative bg-gray-900   text-white py-12 sm:py-16 overflow-hidden animate-slide-up-smooth">
+        <section className="relative bg-gray-900   text-white py-6 sm:py-16 overflow-hidden animate-slide-up-smooth">
 
             {/* FADE GRADIENT LEFT */}
             <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-black text-white to-transparent z-20"></div>

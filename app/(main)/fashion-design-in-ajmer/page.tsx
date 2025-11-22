@@ -7,14 +7,13 @@ export const metadata = {
 
 function Page() {
 
-
     return (
         <div className="bg-white text-black mt-20">
             <FashionDesignComponent
-                title="Fashion Design Course"
+                title="Fashion Design Course in Ajmer"
                 duration="4 Years Full-Time"
-                content="The Bachelor of Design (B.Des) in Fashion Design is a four-year program that combines creativity with technical expertise. Students learn fashion illustration, pattern making, garment construction, textile design, and trend forecasting. The program emphasizes both traditional craftsmanship and modern technology, preparing students for the dynamic fashion industry. Through hands-on projects and industry collaborations, students develop their unique design aesthetic while gaining practical skills in fashion merchandising, sustainable fashion, and digital design tools."
-                description="Unleash your creativity in the world of fashion. Our programs prepare you for a dynamic career in fashion design, from concept to runway."
+                content="At Inframe, you can choose from multiple fashion design programs like B.Des in Fashion Design, BVOC, B.Sc, One-Year Diploma, and Three-Year Diploma. If you are searching for a Fashion Design Course in Ajmer, these programs help you build strong creative and technical skills. By the end of the course, you will have a professional portfolio and the confidence to work in the fashion industry."
+                description="You will learn fashion sketching, pattern making, garment construction, fabric study, modern fashion trends, and eco-friendly design ideas. The course also includes training on digital tools like Adobe Suite, Photoshop, Illustrator, and Corel Draw to create digital designs, mood boards, and patterns."
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}
@@ -24,3 +23,9 @@ function Page() {
 }
 
 export default Page;
+
+// 1. Fashion Design Course in Ajmer
+
+// At Inframe, you can choose from multiple fashion design programs like B.Des in Fashion Design, BVOC, B.Sc, One - Year Diploma, and Three - Year Diploma.If you are searching for a Fashion Design Course in Ajmer, these programs help you build strong creative and technical skills.By the end of the course, you will have a professional portfolio and the confidence to work in the fashion industry.
+
+// You will learn fashion sketching, pattern making, garment construction, fabric study, modern fashion trends, and eco - friendly design ideas.The course also includes training on digital tools like Adobe Suite, Photoshop, Illustrator, and Corel Draw to create digital designs, mood boards, and patterns.
