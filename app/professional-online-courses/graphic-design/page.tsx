@@ -20,30 +20,9 @@ import { useRef } from "react";
 import { SiAdobe, SiAdobephotoshop, SiBlender, SiAutodesk, SiAdobepremierepro, SiCoreldraw, SiAdobeillustrator } from "react-icons/si";
 import { FaTools, FaPaintBrush, FaFilm, FaMagic, FaCube, FaCubes, FaPenNib } from "react-icons/fa";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
-// import { Card, CardContent } from "../ui/card";
-
-
 
 export default function LandingPage() {
     const router = useRouter();
-    // const tools = [
-    //     {
-    //         name: "Adobe Photoshop",
-    //         icon: SiAdobephotoshop,
-    //         color: "text-blue-600"
-    //     },
-    //     {
-    //         name: "Adobe Illustrator",
-    //         icon: SiAdobeillustrator,
-    //         color: "text-orange-500"
-    //     },
-    //     {
-    //         name: "CorelDRAW",
-    //         icon: SiCoreldraw,
-    //         color: "text-green-600"
-    //     }
-    // ];
-
     const tools = [
         {
             name: "Adobe Suite",
@@ -125,7 +104,6 @@ export default function LandingPage() {
         "Artists & Creative Enthusiasts"
     ];
 
-
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -170,7 +148,7 @@ export default function LandingPage() {
                         <CourseInfo title="Graphic Design Course" />
 
                         {/* pricing banner Section */}
-                        <div className="relative mt-10 w-full h-[30vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
+                        <div className="relative mt-5 w-full h-[35vh] sm:h-[45vh] md:h-[86vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/GrapLandscape-01.jpg"}
                                 alt="Hero Banner"
@@ -181,7 +159,7 @@ export default function LandingPage() {
                         </div>
 
                         {/* AI Description Section */}
-                        <div className="my-10 px-4 sm:px-8 lg:px-20">
+                        <div className="my-2 px-1 sm:px-8 lg:px-20">
                             <div className="bg-gradient-to-r from-black via-gray-900 to-black 
                     text-white rounded-2xl shadow-2xl p-6 sm:p-10 
                     border border-yellow-500/30 relative overflow-hidden animate-fade-in-up">
@@ -234,30 +212,26 @@ export default function LandingPage() {
                         <div className="px-4 sm:px-8 lg:px-20 my-10">
                             <div className="
                                 bg-gradient-to-r from-yellow-300 to-yellow-400 
-        p-6 sm:p-8 lg:p-12 
-        rounded-xl border border-yellow-300 
-        shadow-md 
-        animate-scale-in
-        text-center
-    ">
+                                    p-6 sm:p-8 lg:p-12 
+                                    rounded-xl border border-yellow-300 
+                                    shadow-md 
+                                    animate-scale-in
+                                    text-center
+                                ">
 
                                 {/* Heading */}
-                                <h3 className="
-            text-lg sm:text-2xl lg:text-3xl 
-            font-extrabold text-black 
-            mb-3
-        ">
+                                <h3 className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-black mb-3">
                                     🎓 Designed for Class 10+ Students & Above
                                 </h3>
 
                                 {/* Description */}
                                 <p className="
-            text-sm sm:text-lg lg:text-xl 
-            text-black 
-            font-medium 
-            max-w-3xl mx-auto 
-            leading-relaxed
-        ">
+                                                text-sm sm:text-lg lg:text-xl 
+                                                text-black 
+                                                font-medium 
+                                                max-w-3xl mx-auto 
+                                                leading-relaxed
+                                            ">
                                     This is a
                                     <span className="text-red-600 font-bold animate-pulse"> 100% Online Course</span>
                                     that includes
@@ -272,18 +246,21 @@ export default function LandingPage() {
 
 
                         {/* ======== */}
-                        <div className="my-10 sm:my-10 px-4 animate-fade-in-up">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-5">
-                                <span className="bg-gradient-to-r from-gray-900 to-gray-800 bg-clip-text text-transparent">
-                                    🛠️ Master Industry-Relevant Tools
-                                </span>
-                            </h2>
+                        {/* Icons Section */}
+                        <div className="my-5 sm:my-10 px-4 animate-fade-in-up">
 
-                            {/* Icons Section */}
                             <section
                                 ref={sectionRef}
-                                className="py-12 sm:py-16 bg-gradient-to-b from-gray-50 to-white"
+                                className="py-12 sm:py-16 bg-gradient-to-b from-gray-100 to-gray-50 rounded-2xl shadow-sm"
                             >
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-5">
+                                    <span className="bg-gradient-to-r from-gray-900 to-gray-800 bg-clip-text text-transparent">
+                                        🛠️ Master Industry-Relevant Tools
+                                    </span>
+                                    {/* underline bar */}
+                                    <span className="absolute left-0 right-0 -bottom-1 h-1 rounded-md bg-gradient-to-r from-gray-900 to-gray-800"></span>
+
+                                </h2>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
 
                                     {tools.map((tool, index) => (
@@ -331,9 +308,10 @@ export default function LandingPage() {
                         </div>
 
 
+
                         {/* Who Should Join */}
-                        <div className="my-16">
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-10 tracking-tight">
+                        <div className="my-6 pb-5">
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-5 tracking-tight">
                                 <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                                     👥 Who Should Join This Course?
                                 </span>
@@ -381,9 +359,8 @@ export default function LandingPage() {
                             </p>
                         </div>
 
-                        {/* Testimonials Section */}
                         {/* success student Section */}
-                        <div className="relative w-full mb-10 bg-black overflow-hidden">
+                        <div className="relative w-full mb-2 bg-black overflow-hidden">
                             {/* Blurred Background */}
                             <div className="absolute inset-0">
                                 <Image
@@ -412,7 +389,7 @@ export default function LandingPage() {
                         {/* Testimonials Section */}
                         {/* <Testimonials /> */}
                         <TestimonialCarousel />
-                        {/* <StudentsWork images={works} title={'Our Student Works'} /> */}
+
                         <StudentsWork
                             images={works}
                             title="Our Students’ Creative Gallery"
@@ -421,7 +398,7 @@ export default function LandingPage() {
 
 
                         {/* CEO Banner Section */}
-                        <div className="relative w-full h-[30vh] sm:h-[60vh] md:h-[50vh] lg:h-[84vh] overflow-hidden">
+                        <div className="relative w-full h-[28vh] sm:h-[60vh] md:h-[50vh] lg:h-[84vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/website.png"}
                                 alt="Hero Banner"
@@ -434,34 +411,31 @@ export default function LandingPage() {
                         <Carrousal />
 
                         {/* Final CTA Section */}
-                        <div className="bg-gradient-to-r mt-10 from-yellow-400 to-yellow-500  p-8 sm:p-12 text-center shadow-2xl border-4 border-yellow-300 mb-12 sm:mb-16">
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4">
+                        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 mt-10 p-6 sm:p-8 text-center shadow-xl border-2 border-yellow-300 rounded-xl">
+                            <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-black mb-2">
                                 🎁 Special New Year Offer!
                             </h3>
-                            <p className="text-lg sm:text-xl text-black mb-6 font-semibold">
+
+                            <p className="text-black font-semibold text-base sm:text-lg mb-4">
                                 Enroll now and get exclusive benefits:
                             </p>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 max-w-2xl mx-auto">
-                                <li className="flex items-center justify-center text-black font-semibold">
+
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 max-w-xl mx-auto">
+                                <li className="flex items-center justify-center text-black font-medium">
                                     <span className="text-green-600 mr-2">✓</span> Free Portfolio Building
                                 </li>
-                                <li className="flex items-center justify-center text-black font-semibold">
+                                <li className="flex items-center justify-center text-black font-medium">
                                     <span className="text-green-600 mr-2">✓</span> 1-on-1 Career Guidance
                                 </li>
-                                <li className="flex items-center justify-center text-black font-semibold">
+                                <li className="flex items-center justify-center text-black font-medium">
                                     <span className="text-green-600 mr-2">✓</span> Industry Certifications
                                 </li>
-                                <li className="flex items-center justify-center text-black font-semibold">
+                                <li className="flex items-center justify-center text-black font-medium">
                                     <span className="text-green-600 mr-2">✓</span> Lifetime Access to Resources
                                 </li>
                             </ul>
                         </div>
 
-                        {/* CTA Button */}
-                        {/* Floating Buy Now Button */}
-                        <div className="fixed bottom-14 right-4 z-50">
-                            <QuickPayment />
-                        </div>
                         <FeaturesSection />
 
                         <div className="w-full flex justify-center">
@@ -472,9 +446,16 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
+            {/* CTA Button */}
+            {/* Floating Buy Now Button */}
+            <div className="fixed bottom-4 right-4 z-50 animate-bounce hover:animate-pulse">
+                <QuickPayment />
+            </div>
 
             {/* Footer */}
-            <Footer />
+            <div className="animate-fade-in-up">
+                <Footer />
+            </div>
         </div>
     );
 }
