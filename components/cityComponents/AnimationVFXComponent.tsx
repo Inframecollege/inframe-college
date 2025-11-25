@@ -4,7 +4,6 @@ import { Poppins } from "next/font/google";
 import {
     categoryHeroImages,
     type CurriculumType,
-    type SoftwareType,
     type VideosType,
     type WhatLearn,
 } from "../../utils/courseTypes";
@@ -13,149 +12,213 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import ApplyNowForm from "../ApplyNowForm";
 import { useEffect, useRef, useState } from "react";
-
-
-import CourseHero from "../courseDetails/courseDetails";
-import ComboPack from "../courseDetails/ComboPack";
-import CourseFeatures from "../courseDetails/courseFeature";
-import Customizecourse from "../courseDetails/CustomizePack";
-import WhyChooseUs from "../courseDetails/WhyChooseUs";
 import AdmissionProcess from "../Courses/AdmissionProcess";
 import HighlightsSection from "../Courses/HighlightsSection";
-import CareerProspects from "../Courses/CareerProspects";
-import CurriculumSection from "../Courses/CurriculumSection";
 import IndustryPartners from "../Courses/Partners";
 import TestimonialSlider from "../Courses/TestimonialSlider";
 import FAQSection from "../Courses/FAQSection";
-
-import { FaCubes, FaDraftingCompass } from "react-icons/fa";
-import {
-    SiAdobephotoshop,
-    SiAdobeillustrator,
-    SiFigma,
-    SiAdobexd,
-} from "react-icons/si";
-import { Card, CardContent } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
+import { Card, CardContent } from "../ui/card";
+
+import {
+    SiMeta,
+    SiGoogle,
+    SiSemrush,
+    SiWhatsapp,
+    SiMaildotru,
+    SiGooglemessages
+} from "react-icons/si";
+import {
+    FaEnvelope,
+    FaChartLine,
+    FaSearch,
+    FaChartBar,
+    FaMagic,
+    FaImage,
+    FaBlender,
+    FaCube,
+    FaEye,
+    FaFilm,
+    FaRobot
+} from "react-icons/fa";
+
+
+import { BsBook } from "react-icons/bs";
+
+const learnItems = [
+    {
+        title: "Search Engine Optimization (SEO)",
+        desc: "Master technical and on-page SEO techniques",
+    },
+    {
+        title: "Social Media Marketing",
+        desc: "Create and manage campaigns across platforms",
+    },
+    {
+        title: "Content Marketing",
+        desc: "Develop strategic content plans and marketing materials",
+    },
+    {
+        title: "Google Analytics",
+        desc: "Track and analyze website performance metrics",
+    },
+    {
+        title: "Digital Advertising",
+        desc: "Run paid campaigns on Google and social media",
+    },
+];
+
+
+const tools = [
+    {
+        name: "Maya",
+        category: "3D Animation",
+        icon: <FaRobot className="text-4xl text-teal-600" />,
+        color: "from-teal-100 to-blue-100",
+        textColor: "text-teal-600"
+    },
+    {
+        name: "3DS Max",
+        category: "3D Modeling",
+        icon: <FaCube className="text-4xl text-blue-600" />,
+        color: "from-blue-100 to-indigo-100",
+        textColor: "text-blue-600"
+    },
+    {
+        name: "Blender",
+        category: "3D Modeling",
+        icon: <FaBlender className="text-4xl text-orange-500" />,
+        color: "from-orange-100 to-yellow-100",
+        textColor: "text-orange-500"
+    },
+    {
+        name: "Nuke",
+        category: "Compositing",
+        icon: <FaEye className="text-4xl text-purple-600" />,
+        color: "from-purple-100 to-pink-100",
+        textColor: "text-purple-600"
+    },
+    {
+        name: "After Effects",
+        category: "Motion Graphics",
+        icon: <FaFilm className="text-4xl text-purple-500" />,
+        color: "from-purple-100 to-indigo-100",
+        textColor: "text-purple-500"
+    },
+    {
+        name: "Photoshop",
+        category: "Image Editing",
+        icon: <FaImage className="text-4xl text-blue-700" />,
+        color: "from-blue-100 to-cyan-100",
+        textColor: "text-blue-700"
+    },
+    {
+        name: "Houdini",
+        category: "VFX & Simulation",
+        icon: <FaMagic className="text-4xl text-orange-600" />,
+        color: "from-orange-100 to-red-100",
+        textColor: "text-orange-600"
+    }
+];
+
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "500", "700"],
 });
-// const tools = [
-//     {
-//         name: "Figma",
-//         category: "UI/UX Design",
-//         icon: <SiFigma className="text-4xl text-pink-600" />,
-//         color: "from-pink-100 to-rose-100",
-//         textColor: "text-pink-600"
-//     },
-//     {
-//         name: "Adobe XD",
-//         category: "UI/UX Prototyping",
-//         icon: <SiAdobexd className="text-4xl text-purple-600" />,
-//         color: "from-purple-100 to-pink-100",
-//         textColor: "text-purple-600"
-//     },
-//     {
-//         name: "Photoshop",
-//         category: "Image Editing",
-//         icon: <SiAdobephotoshop className="text-4xl text-blue-700" />,
-//         color: "from-blue-100 to-indigo-100",
-//         textColor: "text-blue-700"
-//     },
-//     {
-//         name: "Illustrator",
-//         category: "Vector Graphics",
-//         icon: <SiAdobeillustrator className="text-4xl text-orange-600" />,
-//         color: "from-orange-100 to-yellow-100",
-//         textColor: "text-orange-600"
-//     }
-// ];
 
-const tools = [
-    { name: "Figma", image: "/software logos/pngegg (31).png", color: "from-pink-100 to-rose-100", textColor: "text-pink-600" },
-    { name: "Adobe XD", image: "/software logos/pngegg (27).png", color: "from-purple-100 to-pink-100", textColor: "text-purple-600" },
-    { name: "Photoshop", image: "/software logos/pngegg (24).png", color: "from-blue-100 to-indigo-100", textColor: "text-blue-700" },
-    { name: "Illustrator", image: "/software logos/pngegg (25).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
-];
-
-export const uiUxDesignCurriculum = {
+export const digitalMarketingCurriculum = {
     "1st Year": {
         title: "1st Year",
-        image: "https://images.unsplash.com/photo-1551650975-87deedd944c3",
-        imageAlt: "UI/UX design fundamentals and research",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+        imageAlt: "Digital marketing fundamentals and strategy",
         semesters: {
             "Semester 1": [
-                "Design Fundamentals & Principles",
-                "User Research Methods",
-                "Wireframing & Prototyping",
-                "Design Thinking Process"
+                "Digital Marketing Fundamentals",
+                "Consumer Behavior & Psychology",
+                "Content Marketing Basics",
+                "Social Media Marketing Introduction",
+                "Marketing Principles & Strategy",
+                "Digital Analytics Overview"
             ],
             "Semester 2": [
-                "Visual Design & Typography",
-                "Color Theory & Psychology",
-                "Information Architecture",
-                "Usability Testing Basics"
+                "Search Engine Optimization (SEO)",
+                "Search Engine Marketing (SEM)",
+                "Email Marketing Strategies",
+                "Social Media Advertising",
+                "Web Analytics & Google Analytics",
+                "Content Creation & Copywriting"
             ]
         }
     },
 
     "2nd Year": {
         title: "2nd Year",
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5",
-        imageAlt: "Advanced UI/UX tools and interaction design",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+        imageAlt: "Advanced digital marketing channels and tools",
         semesters: {
             "Semester 3": [
-                "Advanced Prototyping",
-                "Interaction Design Patterns",
-                "Design Systems Creation",
-                "Accessibility & Inclusive Design"
+                "Advanced SEO & Technical SEO",
+                "PPC Campaign Management",
+                "Social Media Strategy & Management",
+                "Marketing Automation Tools",
+                "Conversion Rate Optimization",
+                "Mobile Marketing Strategies"
             ],
             "Semester 4": [
-                "Mobile App Design",
-                "Web Design Principles",
-                "UX Writing & Microcopy",
-                "Design Collaboration Tools"
+                "Content Strategy & Planning",
+                "Video Marketing & YouTube SEO",
+                "E-commerce Marketing",
+                "Affiliate Marketing",
+                "Marketing Analytics & Reporting",
+                "CRM & Marketing Technology"
             ]
         }
     },
 
     "3rd Year": {
         title: "3rd Year",
-        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd",
-        imageAlt: "Specialized UI/UX and career preparation",
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978",
+        imageAlt: "Digital marketing specialization and career preparation",
         semesters: {
             "Semester 5": [
-                "Advanced UX Research",
-                "Data-Driven Design Decisions",
-                "Product Management Basics",
-                "Portfolio Development"
+                "Digital Marketing Strategy Development",
+                "Data-Driven Marketing Decisions",
+                "Advanced Social Media Advertising",
+                "Marketing Funnel Optimization",
+                "Professional Portfolio Creation",
+                "Client Management & Pitching"
             ],
             "Semester 6": [
-                "UX Leadership & Strategy",
-                "Design Sprint Facilitation",
-                "Industry Internship",
-                "Capstone Project Part 1"
+                "Entrepreneurship in Digital Marketing",
+                "Marketing Agency Management",
+                "Industry Internship Program",
+                "Capstone Marketing Campaign",
+                "Career Preparation & Networking",
+                "Graduate Portfolio Project"
             ]
         }
     },
 
     "4th Year": {
         title: "4th Year",
-        image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0",
-        imageAlt: "Advanced specialization and professional mastery",
+        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984",
+        imageAlt: "Advanced digital marketing mastery and leadership",
         semesters: {
             "Semester 7": [
-                "AI & Machine Learning in UX",
-                "Advanced Design Systems",
-                "Service Design & CX Strategy",
-                "Design Ops & Team Management"
+                "AI & Machine Learning in Marketing",
+                "Advanced Marketing Analytics",
+                "Marketing Leadership & Team Management",
+                "Global Digital Marketing Strategies",
+                "Marketing Technology Stack Management",
+                "Brand Strategy & Management"
             ],
             "Semester 8": [
-                "Entrepreneurship & Design Startups",
-                "Advanced Portfolio & Personal Branding",
+                "Digital Marketing Entrepreneurship",
+                "Advanced Personal Branding",
                 "Industry Specialization Project",
-                "Capstone Project Part 2 & Thesis Defense"
+                "Marketing Consultancy Project",
+                "Thesis & Research Project",
+                "Career Launch & Industry Placement"
             ]
         }
     }
@@ -174,7 +237,7 @@ interface CourseContentProps {
     videos?: VideosType[];
 }
 
-const UIUXDesignComponent = ({
+const AnimationVFXComponent = ({
     title,
     duration,
     description,
@@ -188,34 +251,26 @@ const UIUXDesignComponent = ({
 }: CourseContentProps) => {
     const heroImagesForCategory = categoryHeroImages[category] || [];
     const heroImage = heroImagesForCategory[index] || heroImagesForCategory[0];
+    const [active, setActive] = useState(0);
+
     const careers = [
         {
-            title: "UI/UX Designer",
-            items: [
-                "Mobile App Designer",
-                "Web UI Designer",
-                "Interaction Designer"
-            ],
+            title: "Jewellery Designer",
+            items: ["Residential", "Commercial", "Hospitality"],
         },
         {
-            title: "UX Research & Strategy",
-            items: [
-                "UX Researcher",
-                "User Testing Specialist",
-                "Product Strategist"
-            ],
+            title: "Design Consultant",
+            items: ["Freelance Designer", "Design Firm Partner", "Project Manager"],
         },
         {
-            title: "Product & Visual Design",
+            title: "Specialized Roles",
             items: [
-                "Product Designer",
-                "Visual/Graphic UI Designer",
-                "Design System Specialist"
+                "3D Visualization Expert",
+                "Sustainable Design Specialist",
+                "Lighting Designer",
             ],
         },
-
     ];
-
     const fallbackHeroImage =
         "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=1600&q=80";
 
@@ -334,21 +389,62 @@ const UIUXDesignComponent = ({
 
                 {/* icons */}
                 <section ref={sectionRef} className="py-16 bg-gradient-to-b from-gray-50 to-white">
-                    {/* heading omitted for brevity */}
+                    {/* Enhanced Heading */}
+                    <div className="text-center mb-10 px-4">
+                        <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+                            <span className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-600 bg-clip-text text-transparent bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-1000">
+                                Software You Will Master
+                            </span>
+                        </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                            Master industry-leading tools and software that will elevate your creative and technical skills to professional levels.
+                        </p>
+                    </div>
+
+                    {/* Enhanced Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
                         {tools.map((tool, index) => (
-                            <div key={index} className={`flex flex-col items-center p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}>
-                                <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
-                                    <img src={tool.image} alt={tool.name} className="w-20 h-20 object-contain drop-shadow-lg" />
+                            <div
+                                key={index}
+                                className={`
+                flex flex-col items-center p-6 rounded-2xl 
+                bg-gradient-to-br from-white to-gray-50 
+                shadow-lg border border-gray-100 
+                transition-all duration-300 ease-out
+                hover:scale-105 hover:shadow-xl
+                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+            `}
+                                style={{
+                                    transitionDelay: isVisible ? `${index * 120}ms` : '0ms'
+                                }}
+                            >
+                                {/* ICON WRAPPER */}
+                                <div
+                                    className={`
+                    mb-4 p-6 rounded-full bg-gradient-to-r 
+                    ${tool.color}
+                    flex items-center justify-center 
+                    shadow-md animate-float
+                `}
+                                >
+                                    <div className="text-7xl filter drop-shadow-lg">
+                                        {tool.icon}
+                                    </div>
                                 </div>
 
-                                <p className="font-semibold text-gray-900 text-center text-lg">{tool.name}</p>
-                                {/* <span className={`text-sm ${tool.textColor} font-medium mt-1`}>{tool.category}</span> */}
+                                {/* NAME */}
+                                <p className="font-semibold text-gray-900 text-center text-lg">
+                                    {tool.name}
+                                </p>
+
+                                {/* CATEGORY */}
+                                <span className={`text-sm ${tool.textColor} font-medium mt-1`}>
+                                    {tool.category}
+                                </span>
                             </div>
                         ))}
                     </div>
                 </section>
-
 
 
                 {/* career prospects section */}
@@ -372,7 +468,6 @@ const UIUXDesignComponent = ({
                                         transition-all duration-300
                                         hover:-translate-y-3
                                         "
-
                             >
                                 {/* Card Heading */}
                                 <h3 className="text-2xl font-bold mb-6 text-white tracking-wide">
@@ -395,10 +490,8 @@ const UIUXDesignComponent = ({
                             </div>
                         ))}
                     </div>
-
                 </section>
 
-                {/* curriculam section */}
                 {/* curriculam section */}
                 <div id="curriculum" className="max-w-7xl mx-auto px-1 py-2 bg-white">
                     <h2 className="text-3xl font-bold mb-8 text-yellow-400">
@@ -408,7 +501,7 @@ const UIUXDesignComponent = ({
                     {/* Year Tabs */}
                     <Tabs defaultValue="1st Year" className="w-full">
                         <TabsList className="md:w-full flex flex-wrap h-10 mb-6 bg-zinc-200 rounded-lg p-1 gap-2">
-                            {Object.keys(uiUxDesignCurriculum).map((year) => (
+                            {Object.keys(digitalMarketingCurriculum).map((year) => (
                                 <TabsTrigger
                                     key={year}
                                     value={year}
@@ -420,7 +513,7 @@ const UIUXDesignComponent = ({
                         </TabsList>
 
                         {/* Year Content */}
-                        {Object.entries(uiUxDesignCurriculum).map(([year, data]) => (
+                        {Object.entries(digitalMarketingCurriculum).map(([year, data]) => (
                             <TabsContent key={year} value={year}>
                                 <div className="mb-8">
 
@@ -480,10 +573,50 @@ const UIUXDesignComponent = ({
                     </Tabs>
                 </div>
 
+                {/* what you will learn section */}
+                <section className="w-full py-6 px-4 max-w-7xl mx-auto">
+                    {/* Heading */}
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+                        WHAT YOU WILL LEARN
+                    </h2>
+
+                    {/* Yellow underline */}
+                    <div className="w-32 h-[3px] bg-yellow-500 mb-10"></div>
+
+                    {/* Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {learnItems.map((item, i) => (
+                            <div
+                                key={i}
+                                onClick={() => setActive(i)}
+                                className={`
+              border rounded-xl p-6 cursor-pointer transition-all
+              hover:shadow-md bg-white
+              flex flex-col gap-2
+              ${active === i
+                                        ? "border-yellow-500 shadow-md"
+                                        : "border-gray-300"
+                                    }
+            `}
+                            >
+                                <div className="flex items-center gap-3">
+                                    <BsBook
+                                        className={`text-2xl ${active === i ? "text-yellow-500" : "text-yellow-600"
+                                            }`}
+                                    />
+                                    <h3 className="font-bold text-lg">{item.title}</h3>
+                                </div>
+
+                                <p className="text-gray-600 text-sm">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
                 <div id="partners" >
                     <IndustryPartners />
                 </div>
+
 
                 {
                     videos.length > 0 && (
@@ -501,6 +634,7 @@ const UIUXDesignComponent = ({
                 </h1>
                 < FAQSection />
             </div>
+
 
             <div className="fixed bottom-14 right-2 z-50 floating-btn">
                 <Button
@@ -524,4 +658,4 @@ const UIUXDesignComponent = ({
     );
 };
 
-export default UIUXDesignComponent;
+export default AnimationVFXComponent;
