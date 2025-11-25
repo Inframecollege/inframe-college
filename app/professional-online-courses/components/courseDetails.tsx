@@ -1,18 +1,18 @@
 import React from 'react'
 
-function CourseInfo({ title }: { title: string }) {
+function CourseInfo({ title, priceWithDiscount, originalPrice }: { title: string, priceWithDiscount: string, originalPrice: string, }) {
     const features = [
-    "Become an Interior Designer",
-    "Master 4+ Industry Tools",
-    "Work on 4+ Hands-on Real Projects",
-    "Live Doubt Support on App",
-    "Weekly Faculty Interaction via App",
-    "Portfolio & Resume Building Support",
-    "Learn from Industry Experts",
-    "Job Assistance & Career Guidance",
-    "Access to Downloadable Study Material",
-    "Lifetime Access to Recorded Sessions"
-];
+        "Become an Interior Designer",
+        "Master 4+ Industry Tools",
+        "Work on 4+ Hands-on Real Projects",
+        "Live Doubt Support on App",
+        "Weekly Faculty Interaction via App",
+        "Portfolio & Resume Building Support",
+        "Learn from Industry Experts",
+        "Job Assistance & Career Guidance",
+        "Access to Downloadable Study Material",
+        "Lifetime Access to Recorded Sessions"
+    ];
 
     return (
         <div className="w-full flex justify-center">
@@ -39,12 +39,12 @@ function CourseInfo({ title }: { title: string }) {
                         <div className="flex items-center justify-between text-white">
                             <div className="text-left">
                                 <div className="text-xs opacity-90">WAS</div>
-                                <div className="text-lg line-through opacity-80">₹5000</div>
+                                <div className="text-lg line-through opacity-80">₹{originalPrice}</div>
                             </div>
 
                             <div className="text-center">
                                 <div className="text-xs opacity-90">NOW ONLY</div>
-                                <div className="text-3xl font-black">₹1499</div>
+                                <div className="text-3xl font-black">₹{priceWithDiscount}</div>
                                 <div className="text-xs opacity-90 mt-1">Lifetime Access</div>
                             </div>
 

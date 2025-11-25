@@ -145,7 +145,7 @@ export default function LandingPage() {
                 <div className="container mx-auto min-w-full px-4 sm:px-0">
                     <div className="min-w-full mx-auto">
                         {/* Main Course Info */}
-                        <CourseInfo title="Graphic Design Course" />
+                        <CourseInfo title="Graphic Design Course" priceWithDiscount="5496" originalPrice='18,320' />
 
                         {/* pricing banner Section */}
                         <div className="relative mt-5 w-full h-[25vh] sm:h-[45vh] md:h-[86vh] overflow-hidden">

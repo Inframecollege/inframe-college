@@ -53,14 +53,14 @@ function CivilArch() {
                     fill
                     priority
                     className="object-contain sm:object-cover object-top animate-fade-in"
-                />
+                />  
             </div>
             {/* Course Details Section */}
             <div className="py-12 sm:py-16 lg:py-20 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-12">
                     <div className="max-w-6xl mx-auto">
                         {/* Main Course Info */}
-                        <CourseInfo title="Civil Architect Course" />
+                        <CourseInfo title="Civil Architect Course" priceWithDiscount="14999 " originalPrice='49,997' />
 
                         {/* AI Description Section */}
                         <div className="my-14 sm:my-20 bg-gradient-to-r from-black via-gray-900 to-black text-white rounded-2xl shadow-2xl p-8 sm:p-12 border border-yellow-500/40 relative overflow-hidden">

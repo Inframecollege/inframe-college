@@ -1,8 +1,8 @@
 import DigitalMarketingComponent from "../../../components/cityComponents/digitalMarketingComponent";
 
 export const metadata = {
-    title: "Digital Marketing Course in Sikar – Professional Training | Inframe School",
-    description: "Join Inframe School’s Digital Marketing Course in Sikar and master tools, branding, and digital creativity. Learn from industry experts and build a professional portfolio for a successful career."
+    title: "Digital Marketing Course in Sikar | Inframe School",
+    description: "Build digital skills with Inframe School’s Digital Marketing Course in Sikar covering SEO, ads, and analytics."
 };
 
 function Page() {
@@ -12,7 +12,8 @@ function Page() {
                 title="Digital Marketing Course"
                 duration="4 Years Full-Time"
                 content="The Bachelor of Vocation (B.VOC) in Digital Marketing is a comprehensive three-year program focused on modern marketing strategies. Students learn social media marketing, SEO, content marketing, and data analytics. The curriculum includes hands-on projects, industry certifications, and real-world campaign management experience."
-                description="Master the strategies that drive online success. Our digital marketing programs prepare you for a career in this fast-paced digital world."
+                description="Build expertise in ads, funnels, and automation via a Digital Marketing Course.
+"
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}

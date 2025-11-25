@@ -1,8 +1,8 @@
 import GraphicDesignComponent from "../../../components/cityComponents/GraphicDesignComponent";
 
 export const metadata = {
-    title: "Graphic Design Course in Kota – Learn Digital Design | Inframe School",
-    description: "Start your creative journey with Inframe School’s Graphic Design Course in Kota. Get hands-on training in visual design, editing tools, and branding to prepare for top design jobs in India."
+    title: "Graphic Design Course in Kota | Inframe School",
+    description: "Build professional design skills with Inframe School’s Graphic Design Course in Kota. Ideal for creative learners."
 };
 
 
@@ -15,8 +15,10 @@ function Page() {
             <GraphicDesignComponent
                 title="Graphic Design Course in Kota"
                 duration="4 Years Full-Time"
-                description="You will learn graphic designing, visual communication, typography, logo and branding design, digital illustrations, and modern design trends. The course also includes training on digital tools like Adobe Suite, Photoshop, Illustrator, and Corel Draw to create professional designs, mockups, and portfolios."
-                content="At Inframe, you can choose from multiple graphic design programs like B.Des in Graphic Design, B.VOC in Graphic Design, B.Sc in Graphic Design, One-Year Diploma in Graphic Design, and Three-Year Diploma in Graphic Design. If you are searching for a Graphic Design Course in Kota, these programs help you build strong creative and technical skills. By the end of the course, you will have a professional portfolio and the confidence to work in the graphic design industry."
+                description="Build a strong portfolio with our Graphic Design Course.
+"
+                content1="At Inframe, you can choose from multiple graphic design programs like B.Des in Graphic Design, B.VOC in Graphic Design, B.Sc in Graphic Design, One-Year Diploma in Graphic Design, and Three-Year Diploma in Graphic Design. If you are searching for a Graphic Design Course in Kota, these programs help you build strong creative and technical skills. By the end of the course, you will have a professional portfolio and the confidence to work in the graphic design industry."
+                content2="You will learn graphic designing, visual communication, typography, logo and branding design, digital illustrations, and modern design trends. The course also includes training on digital tools like Adobe Suite, Photoshop, Illustrator, and Corel Draw to create professional designs, mockups, and portfolios."
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}
