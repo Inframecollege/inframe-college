@@ -14,7 +14,7 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <InteriorDesignComponent
-                title="Interior Design Course in Jaipur"
+                title="Interior Design Course"
                 duration="4 Years Full-Time"
                 description="Build a design career that stands out with our Interior Design Course.
 "

@@ -12,7 +12,7 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <InteriorDesignComponent
-                title="Interior Design Course in Delhi"
+                title="Interior Design Course"
                 duration="4 Years Full-Time"
                 description="Unlock your creative potential through an immersive Interior Design Course.
 "

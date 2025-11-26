@@ -165,23 +165,24 @@ const FashionDesignComponent = ({
     const heroImage = heroImagesForCategory[index] || heroImagesForCategory[0];
 
     const careers = [
-        {
-            title: "Jewellery Designer",
-            items: ["Residential", "Commercial", "Hospitality"],
-        },
-        {
-            title: "Design Consultant",
-            items: ["Freelance Designer", "Design Firm Partner", "Project Manager"],
-        },
-        {
-            title: "Specialized Roles",
-            items: [
-                "3D Visualization Expert",
-                "Sustainable Design Specialist",
-                "Lighting Designer",
-            ],
-        },
-    ];
+    {
+        title: "Fashion Designer",
+        items: ["Apparel Design", "Ethnic Wear Designer", "Contemporary Wear Designer"],
+    },
+    {
+        title: "Fashion Consultant",
+        items: ["Stylist", "Personal Shopper", "Brand Consultant"],
+    },
+    {
+        title: "Specialized Roles",
+        items: [
+            "Textile Designer",
+            "Fashion Illustrator",
+            "Pattern Maker",
+        ],
+    },
+];
+
     const fallbackHeroImage =
         "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=1600&q=80";
 

@@ -12,7 +12,7 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <GraphicDesignComponent
-                title="Graphic Design Course in Ajmer"
+                title="Graphic Design Course"
                 duration="4 Years Full-Time"
                 description="Shape creative stories with a professional Graphic Design Course.
 " 

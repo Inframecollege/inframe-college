@@ -10,7 +10,7 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <InteriorDesignComponent
-                title=" Interior Design Course in Surat"
+                title=" Interior Design Course"
                 duration="4 Years Full-Time"
                 description="Achieve excellence in design with a comprehensive Interior Design Course."
                 content1="At Inframe, you can choose from multiple interior design programs like B.Des in Interior Design, B.VOC in Interior Design, B.Sc in Interior Design, One-Year Diploma in Interior Design, and Three-Year Diploma in Interior Design. If you are searching for an Interior Design Course in Surat, these programs help you build strong creative and technical skills. By the end of the course, you will have a professional portfolio and the confidence to work in the interior design industry."

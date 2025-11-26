@@ -10,10 +10,10 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <AnimationVFXComponent
-                title="UI/UX Design Course"
+                title="Animation VFX Course"
                 duration="4 Years Full-Time"
                 content="The Bachelor of Design (B.Des) in UI & UX Design is a four-year program focusing on creating exceptional digital experiences. Students learn user research, information architecture, interaction design, and prototyping. The curriculum covers both theoretical principles and practical applications of user-centered design, preparing graduates for roles in digital product design."
-                description="Build confidence through a guided UI UX Course.
+                description="Learn how professionals design effects for films, ads, and games.
 "
                 index={0}
                 category=""

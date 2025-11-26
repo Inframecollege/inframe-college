@@ -55,13 +55,13 @@ export default async function RootLayout({
       },
       ...(currentPage
         ? [
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: currentPage.name,
-              item: currentPage.url,
-            },
-          ]
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: currentPage.name,
+            item: currentPage.url,
+          },
+        ]
         : []),
     ],
   };
@@ -71,20 +71,20 @@ export default async function RootLayout({
     <html lang="en" className={poppins.className}>
       <Head>
         {/* Title & Description */}
-       
+
 
         {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" sizes="any"/>
-      <link rel="icon" type="image/png" href="/favicon.png"/>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
 
         {/* Open Graph Metadata (for social sharing) */}
-        
+
         <meta property="og:url" content="https://yourwebsite.com" />
         <meta property="og:image" content="https://yt3.googleusercontent.com/I3nimXEi9IpFwfTOoYovMl9RLJWHxZOewDCKXRYkrb4veYqEtu2vENdA3hLYemdtbBdta54kaQ=s160-c-k-c0x00ffffff-no-rj" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
-
+        <meta name="google-site-verification" content="PzWm-bI1brW-fEjiuWJJVN7DghT2yBxjG9BtcIijTnM" />
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="dGWC26ZkV6A4Ue6fhZdXFh5gMfWQDF3Q-3qpLE71h5M" />
       </Head>
@@ -104,7 +104,7 @@ export default async function RootLayout({
             gtag('config', 'AW-16950108871');
           `}
         </Script>
-        
+
 
         {/* Inject Breadcrumb Schema */}
         <Script
@@ -112,7 +112,7 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
-        
+
 
         {children}
       </body>

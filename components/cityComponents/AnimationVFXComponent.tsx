@@ -20,209 +20,121 @@ import FAQSection from "../Courses/FAQSection";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@radix-ui/react-tabs";
 import { Card, CardContent } from "../ui/card";
 
-import {
-    SiMeta,
-    SiGoogle,
-    SiSemrush,
-    SiWhatsapp,
-    SiMaildotru,
-    SiGooglemessages
-} from "react-icons/si";
-import {
-    FaEnvelope,
-    FaChartLine,
-    FaSearch,
-    FaChartBar,
-    FaMagic,
-    FaImage,
-    FaBlender,
-    FaCube,
-    FaEye,
-    FaFilm,
-    FaRobot
-} from "react-icons/fa";
-
-
-import { BsBook } from "react-icons/bs";
-
-const learnItems = [
-    {
-        title: "Search Engine Optimization (SEO)",
-        desc: "Master technical and on-page SEO techniques",
-    },
-    {
-        title: "Social Media Marketing",
-        desc: "Create and manage campaigns across platforms",
-    },
-    {
-        title: "Content Marketing",
-        desc: "Develop strategic content plans and marketing materials",
-    },
-    {
-        title: "Google Analytics",
-        desc: "Track and analyze website performance metrics",
-    },
-    {
-        title: "Digital Advertising",
-        desc: "Run paid campaigns on Google and social media",
-    },
-];
-
-
 const tools = [
-    {
-        name: "Maya",
-        category: "3D Animation",
-        icon: <FaRobot className="text-4xl text-teal-600" />,
-        color: "from-teal-100 to-blue-100",
-        textColor: "text-teal-600"
-    },
-    {
-        name: "3DS Max",
-        category: "3D Modeling",
-        icon: <FaCube className="text-4xl text-blue-600" />,
-        color: "from-blue-100 to-indigo-100",
-        textColor: "text-blue-600"
-    },
-    {
-        name: "Blender",
-        category: "3D Modeling",
-        icon: <FaBlender className="text-4xl text-orange-500" />,
-        color: "from-orange-100 to-yellow-100",
-        textColor: "text-orange-500"
-    },
-    {
-        name: "Nuke",
-        category: "Compositing",
-        icon: <FaEye className="text-4xl text-purple-600" />,
-        color: "from-purple-100 to-pink-100",
-        textColor: "text-purple-600"
-    },
-    {
-        name: "After Effects",
-        category: "Motion Graphics",
-        icon: <FaFilm className="text-4xl text-purple-500" />,
-        color: "from-purple-100 to-indigo-100",
-        textColor: "text-purple-500"
-    },
-    {
-        name: "Photoshop",
-        category: "Image Editing",
-        icon: <FaImage className="text-4xl text-blue-700" />,
-        color: "from-blue-100 to-cyan-100",
-        textColor: "text-blue-700"
-    },
-    {
-        name: "Houdini",
-        category: "VFX & Simulation",
-        icon: <FaMagic className="text-4xl text-orange-600" />,
-        color: "from-orange-100 to-red-100",
-        textColor: "text-orange-600"
-    }
+    { name: "Maya", image: "/software logos/pngegg (28).png", color: "from-pink-100 to-rose-100", textColor: "text-pink-600" },
+    { name: "3DS XD", image: "/software logos/pngegg (19).png", color: "from-purple-100 to-pink-100", textColor: "text-purple-600" },
+    { name: "Blender", image: "/software logos/pngegg (30).png", color: "from-blue-100 to-indigo-100", textColor: "text-blue-700" },
+    { name: "Nuke", image: "/software logos/pngegg (33).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
+    { name: "After Effect", image: "/software logos/pngegg (29).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
+    { name: "Photoshop", image: "/software logos/pngegg (24).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
+    { name: "Houdini", image: "/software logos/pngegg (34).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
+    { name: "Unreal Engine", image: "/software logos/pngegg (35).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
 ];
+
 
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "500", "700"],
 });
 
-export const digitalMarketingCurriculum = {
+export const animationVfxCurriculum = {
     "1st Year": {
         title: "1st Year",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-        imageAlt: "Digital marketing fundamentals and strategy",
+        image: "https://images.unsplash.com/photo-1699484174858-1fd6c24944c8?q=80&w=1166&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        imageAlt: "Animation and VFX fundamentals",
         semesters: {
             "Semester 1": [
-                "Digital Marketing Fundamentals",
-                "Consumer Behavior & Psychology",
-                "Content Marketing Basics",
-                "Social Media Marketing Introduction",
-                "Marketing Principles & Strategy",
-                "Digital Analytics Overview"
+                "Introduction to Animation & VFX",
+                "Drawing Fundamentals & Sketching",
+                "Principles of Animation (12 Principles)",
+                "Character Design Basics",
+                "Storyboarding & Concept Art",
+                "Introduction to Digital Tools"
             ],
             "Semester 2": [
-                "Search Engine Optimization (SEO)",
-                "Search Engine Marketing (SEM)",
-                "Email Marketing Strategies",
-                "Social Media Advertising",
-                "Web Analytics & Google Analytics",
-                "Content Creation & Copywriting"
+                "2D Animation Techniques",
+                "Motion Graphics Fundamentals",
+                "Digital Painting & Background Design",
+                "Typography & Visual Communication",
+                "Basic Video Editing",
+                "Introduction to Sound Design"
             ]
         }
     },
 
     "2nd Year": {
         title: "2nd Year",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-        imageAlt: "Advanced digital marketing channels and tools",
+        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+        imageAlt: "Advanced animation and 3D foundations",
         semesters: {
             "Semester 3": [
-                "Advanced SEO & Technical SEO",
-                "PPC Campaign Management",
-                "Social Media Strategy & Management",
-                "Marketing Automation Tools",
-                "Conversion Rate Optimization",
-                "Mobile Marketing Strategies"
+                "3D Modeling Basics",
+                "Texturing & Shading Fundamentals",
+                "Lighting & Rendering Essentials",
+                "3D Animation Workflow",
+                "Rigging Fundamentals",
+                "Digital Sculpting Basics"
             ],
             "Semester 4": [
-                "Content Strategy & Planning",
-                "Video Marketing & YouTube SEO",
-                "E-commerce Marketing",
-                "Affiliate Marketing",
-                "Marketing Analytics & Reporting",
-                "CRM & Marketing Technology"
+                "Advanced 3D Animation",
+                "Character Rigging & Skinning",
+                "Advanced Lighting for Animation",
+                "3D Environment Design",
+                "Dynamics & Particles Basics",
+                "CG Integration in Live Action"
             ]
         }
     },
 
     "3rd Year": {
         title: "3rd Year",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978",
-        imageAlt: "Digital marketing specialization and career preparation",
+        image: "https://images.unsplash.com/photo-1563297552-b1cfbe330e2a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        imageAlt: "Advanced VFX pipelines and professional workflows",
         semesters: {
             "Semester 5": [
-                "Digital Marketing Strategy Development",
-                "Data-Driven Marketing Decisions",
-                "Advanced Social Media Advertising",
-                "Marketing Funnel Optimization",
-                "Professional Portfolio Creation",
-                "Client Management & Pitching"
+                "Compositing & Rotoscoping",
+                "Matchmoving & Tracking",
+                "Video Editing for VFX",
+                "Green Screen Techniques",
+                "Advanced Motion Graphics",
+                "FX Simulation (Smoke, Fire, Fluids)"
             ],
             "Semester 6": [
-                "Entrepreneurship in Digital Marketing",
-                "Marketing Agency Management",
+                "3D VFX Production Pipeline",
+                "Creature & Character FX",
+                "Advanced Compositing Techniques",
+                "Matte Painting & Set Extension",
                 "Industry Internship Program",
-                "Capstone Marketing Campaign",
-                "Career Preparation & Networking",
-                "Graduate Portfolio Project"
+                "VFX Production Project"
             ]
         }
     },
 
     "4th Year": {
         title: "4th Year",
-        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984",
-        imageAlt: "Advanced digital marketing mastery and leadership",
+        image: "https://images.unsplash.com/photo-1497032205916-ac775f0649ae",
+        imageAlt: "Specialization and professional portfolio development",
         semesters: {
             "Semester 7": [
-                "AI & Machine Learning in Marketing",
-                "Advanced Marketing Analytics",
-                "Marketing Leadership & Team Management",
-                "Global Digital Marketing Strategies",
-                "Marketing Technology Stack Management",
-                "Brand Strategy & Management"
+                "Specialization: Animation / VFX / Modeling / Compositing",
+                "Advanced Simulation & FX",
+                "Pipeline & Project Management",
+                "Team-Based Studio Production",
+                "Cinematic Storytelling",
+                "Portfolio & Showreel Development"
             ],
             "Semester 8": [
-                "Digital Marketing Entrepreneurship",
-                "Advanced Personal Branding",
-                "Industry Specialization Project",
-                "Marketing Consultancy Project",
+                "Industry Collaboration Project",
+                "Studio Internship / Apprenticeship",
+                "Production-Level Film Project",
                 "Thesis & Research Project",
-                "Career Launch & Industry Placement"
+                "Career Launch Program",
+                "Professional Showreel Presentation"
             ]
         }
     }
 };
+
 
 interface CourseContentProps {
     title: string;
@@ -244,9 +156,6 @@ const AnimationVFXComponent = ({
     content,
     index = 0,
     category,
-    curriculum,
-    software,
-    whatYouWillLearn,
     videos = [],
 }: CourseContentProps) => {
     const heroImagesForCategory = categoryHeroImages[category] || [];
@@ -255,24 +164,24 @@ const AnimationVFXComponent = ({
 
     const careers = [
         {
-            title: "Jewellery Designer",
-            items: ["Residential", "Commercial", "Hospitality"],
+            title: "Animator",
+            items: ["2D Animator", "3D Animator", "Character Animator"],
         },
         {
-            title: "Design Consultant",
-            items: ["Freelance Designer", "Design Firm Partner", "Project Manager"],
+            title: "VFX Artist",
+            items: ["Compositor", "Roto Artist", "Motion Graphics Artist"],
         },
         {
             title: "Specialized Roles",
             items: [
-                "3D Visualization Expert",
-                "Sustainable Design Specialist",
-                "Lighting Designer",
+                "3D Modeling Artist",
+                "Texturing & Lighting Artist",
+                "FX Simulation Artist",
             ],
         },
     ];
-    const fallbackHeroImage =
-        "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=1600&q=80";
+
+    const fallbackHeroImage = "https://images.unsplash.com/photo-1603220840764-b54c733cfa77?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
     const [isFormOpen, setIsFormOpen] = useState(false);
     const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -302,6 +211,7 @@ const AnimationVFXComponent = ({
             }
         };
     }, []);
+
     return (
         <div className="bg-white text-black" >
 
@@ -331,8 +241,7 @@ const AnimationVFXComponent = ({
                 </div>
             </div>
 
-
-            < div className="max-w-7xl mx-auto px-4 py-16" >
+            <div className="max-w-7xl mx-auto px-4 py-16" >
                 <div className="grid md:grid-cols-3 gap-8" >
                     <div className="md:col-span-2" >
                         <h2 className={`text-3xl font-bold mb-6 ${poppins.className}`}>
@@ -345,7 +254,6 @@ const AnimationVFXComponent = ({
                             className={`text-2xl ${poppins.className} text-center py-5 font-bold text-black`}
                         >
                             Step into the World of Jewellery Design
-                            {/* {title.split(" in ")[1] || "Design"} */}
                         </h3>
                         < div className="flex items-center gap-6" >
                             <Button onClick={handleApplyClick} className="bg-white text-black hover:bg-yellow-500 px-4 py-2" >
@@ -389,7 +297,6 @@ const AnimationVFXComponent = ({
 
                 {/* icons */}
                 <section ref={sectionRef} className="py-16 bg-gradient-to-b from-gray-50 to-white">
-                    {/* Enhanced Heading */}
                     <div className="text-center mb-10 px-4">
                         <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                             <span className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-600 bg-clip-text text-transparent bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-1000">
@@ -400,47 +307,15 @@ const AnimationVFXComponent = ({
                             Master industry-leading tools and software that will elevate your creative and technical skills to professional levels.
                         </p>
                     </div>
-
-                    {/* Enhanced Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
                         {tools.map((tool, index) => (
-                            <div
-                                key={index}
-                                className={`
-                flex flex-col items-center p-6 rounded-2xl 
-                bg-gradient-to-br from-white to-gray-50 
-                shadow-lg border border-gray-100 
-                transition-all duration-300 ease-out
-                hover:scale-105 hover:shadow-xl
-                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-            `}
-                                style={{
-                                    transitionDelay: isVisible ? `${index * 120}ms` : '0ms'
-                                }}
-                            >
-                                {/* ICON WRAPPER */}
-                                <div
-                                    className={`
-                    mb-4 p-6 rounded-full bg-gradient-to-r 
-                    ${tool.color}
-                    flex items-center justify-center 
-                    shadow-md animate-float
-                `}
-                                >
-                                    <div className="text-7xl filter drop-shadow-lg">
-                                        {tool.icon}
-                                    </div>
+                            <div key={index} className={`flex flex-col items-center p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}>
+                                <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
+                                    <img src={tool.image} alt={tool.name} className="w-20 h-20 object-contain drop-shadow-lg" />
                                 </div>
 
-                                {/* NAME */}
-                                <p className="font-semibold text-gray-900 text-center text-lg">
-                                    {tool.name}
-                                </p>
-
-                                {/* CATEGORY */}
-                                <span className={`text-sm ${tool.textColor} font-medium mt-1`}>
-                                    {tool.category}
-                                </span>
+                                <p className="font-semibold text-gray-900 text-center text-lg">{tool.name}</p>
+                                {/* <span className={`text-sm ${tool.textColor} font-medium mt-1`}>{tool.category}</span> */}
                             </div>
                         ))}
                     </div>
@@ -501,7 +376,7 @@ const AnimationVFXComponent = ({
                     {/* Year Tabs */}
                     <Tabs defaultValue="1st Year" className="w-full">
                         <TabsList className="md:w-full flex flex-wrap h-10 mb-6 bg-zinc-200 rounded-lg p-1 gap-2">
-                            {Object.keys(digitalMarketingCurriculum).map((year) => (
+                            {Object.keys(animationVfxCurriculum).map((year) => (
                                 <TabsTrigger
                                     key={year}
                                     value={year}
@@ -513,7 +388,7 @@ const AnimationVFXComponent = ({
                         </TabsList>
 
                         {/* Year Content */}
-                        {Object.entries(digitalMarketingCurriculum).map(([year, data]) => (
+                        {Object.entries(animationVfxCurriculum).map(([year, data]) => (
                             <TabsContent key={year} value={year}>
                                 <div className="mb-8">
 
@@ -573,45 +448,7 @@ const AnimationVFXComponent = ({
                     </Tabs>
                 </div>
 
-                {/* what you will learn section */}
-                <section className="w-full py-6 px-4 max-w-7xl mx-auto">
-                    {/* Heading */}
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-                        WHAT YOU WILL LEARN
-                    </h2>
 
-                    {/* Yellow underline */}
-                    <div className="w-32 h-[3px] bg-yellow-500 mb-10"></div>
-
-                    {/* Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {learnItems.map((item, i) => (
-                            <div
-                                key={i}
-                                onClick={() => setActive(i)}
-                                className={`
-              border rounded-xl p-6 cursor-pointer transition-all
-              hover:shadow-md bg-white
-              flex flex-col gap-2
-              ${active === i
-                                        ? "border-yellow-500 shadow-md"
-                                        : "border-gray-300"
-                                    }
-            `}
-                            >
-                                <div className="flex items-center gap-3">
-                                    <BsBook
-                                        className={`text-2xl ${active === i ? "text-yellow-500" : "text-yellow-600"
-                                            }`}
-                                    />
-                                    <h3 className="font-bold text-lg">{item.title}</h3>
-                                </div>
-
-                                <p className="text-gray-600 text-sm">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
 
                 <div id="partners" >
                     <IndustryPartners />

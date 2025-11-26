@@ -21,43 +21,14 @@ import { FaCubes } from "react-icons/fa";
 // import RevitIcon from "./RevitIcon"; // custom SVG component
 function InteriorDesign() {
     const router = useRouter();
+ 
     const tools = [
-        {
-            name: "AutoCAD",
-            category: "Drafting",
-            icon: <FaAutoprefixer className="text-4xl text-red-600" />,
-            color: "from-red-100 to-orange-100",
-            textColor: "text-red-600",
-        },
-        {
-            name: "SketchUp",
-            category: "3D Modeling",
-            icon: <SiSketchup className="text-4xl text-red-500" />,
-            color: "from-red-100 to-pink-100",
-            textColor: "text-red-500",
-        },
-        {
-            name: "3ds Max",
-            category: "3D Animation",
-            icon: <FaCubes className="text-4xl text-blue-500" />,
-            color: "from-blue-100 to-cyan-100",
-            textColor: "text-blue-500",
-        },
-        {
-            name: "Adobe Photoshop",
-            category: "Image Editing",
-            icon: <SiAdobephotoshop className="text-4xl text-blue-700" />,
-            color: "from-blue-100 to-indigo-100",
-            textColor: "text-blue-700",
-        },
-        {
-            name: "Revit Autodesk",
-            category: "BIM",
-            icon: <SiAutodesk className="w-10 h-10" />,
-            color: "from-blue-100 to-sky-100",
-            textColor: "text-blue-700",
-        },
-    ];
+    { name: "AutoCAD", image: "/software logos/pngegg (17).png", color: "from-pink-100 to-rose-100", textColor: "text-pink-600" },
+    { name: "SketchUp", image: "/software logos/pngegg (18).png", color: "from-purple-100 to-pink-100", textColor: "text-purple-600" },
+    { name: "3dsMax", image: "/software logos/pngegg (19).png", color: "from-blue-100 to-indigo-100", textColor: "text-blue-700" },
+    { name: "Photoshop", image: "/software logos/pngegg (24).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
+   ];
+
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -137,7 +108,7 @@ function InteriorDesign() {
                     <div className="min-w-full mx-auto">
                         {/* Main Course Info */}
                         <div className="animate-slide-up">
-                            <CourseInfo title="Interior Design Course" priceWithDiscount="7496" originalPrice='24,986'/>
+                            <CourseInfo title="Interior Design Course" priceWithDiscount="7496" originalPrice='24,986' />
                         </div>
 
                         {/* Pricing Banner Section */}
@@ -240,65 +211,30 @@ function InteriorDesign() {
 
                         {/* ======== */}
                         {/* Icons Section */}
-                        <div className="my-5 sm:my-10 px-4 animate-fade-in-up">
-
-                            <section
-                                ref={sectionRef}
-                                className="py-12 sm:py-16 bg-gradient-to-b from-gray-100 to-gray-50 rounded-2xl shadow-sm"
-                            >
-                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-5">
-                                    <span className="bg-gradient-to-r from-gray-900 to-gray-800 bg-clip-text text-transparent">
-                                        🛠️ Master Industry-Relevant Tools
+                        <section ref={sectionRef} className="py-16 bg-gradient-to-b from-gray-50 to-white">
+                            <div className="text-center mb-10 px-4">
+                                <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+                                    <span className="bg-gradient-to-r from-gray-700 via-gray-800 to-gray-600 bg-clip-text text-transparent bg-size-200 bg-pos-0 hover:bg-pos-100 transition-all duration-1000">
+                                        Software You Will Master
                                     </span>
-                                    {/* underline bar */}
-                                    {/* <span className="absolute left-0 right-0 -bottom-1 h-1 rounded-md bg-gradient-to-r from-gray-900 to-gray-800"></span> */}
-
                                 </h2>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-
-                                    {tools.map((tool, index) => (
-                                        <div
-                                            key={index}
-                                            className={`
-                                                            flex flex-col items-center p-4 sm:p-6 rounded-2xl 
-                                                            bg-gradient-to-br from-white to-gray-50 
-                                                            shadow-md sm:shadow-lg border border-gray-100 
-                                                            transition-all duration-300 ease-out
-                                                            hover:scale-105 hover:shadow-xl
-                                                            ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-                                                        `}
-                                            style={{
-                                                transitionDelay: isVisible ? `${index * 100}ms` : '0ms'
-                                            }}
-                                        >
-                                            {/* Icon Container */}
-                                            <div
-                                                className={`
-                                                    mb-3 sm:mb-4 p-3 sm:p-4 rounded-full 
-                                                    bg-gradient-to-r ${tool.color} 
-                                                    animate-float
-                                                `}
-                                            >
-                                                <div className="filter drop-shadow-md h-8 sm:h-10 lg:h-12 flex items-center justify-center">
-                                                    {tool.icon}
-                                                </div>
-                                            </div>
-
-                                            {/* Name */}
-                                            <p className="text-sm sm:text-base lg:text-lg font-semibold text-gray-800 text-center">
-                                                {tool.name}
-                                            </p>
-
-                                            {/* Category */}
-                                            <span className={`text-[10px] sm:text-xs ${tool.textColor} mt-1 font-medium`}>
-                                                {tool.category}
-                                            </span>
+                                <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                                    Master industry-leading tools and software that will elevate your creative and technical skills to professional levels.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
+                                {tools.map((tool, index) => (
+                                    <div key={index} className={`flex flex-col items-center p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}>
+                                        <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
+                                            <img src={tool.image} alt={tool.name} className="w-20 h-20 object-contain drop-shadow-lg" />
                                         </div>
-                                    ))}
 
-                                </div>
-                            </section>
-                        </div>
+                                        <p className="font-semibold text-gray-900 text-center text-lg">{tool.name}</p>
+                                        {/* <span className={`text-sm ${tool.textColor} font-medium mt-1`}>{tool.category}</span> */}
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
 
 
                         {/* Who Should Join */}
@@ -384,6 +320,12 @@ function InteriorDesign() {
                             title="Our Students’ Creative Gallery"
                             description="This gallery celebrates the visual imagination and storytelling power of our Graphic Design students. Every piece reflects a strong sense of creativity, brand awareness, and communication strategy. Students explore color psychology, layout balance, visual hierarchy, and creative composition to produce designs that speak clearly and emotionally. From bold advertising concepts to refined brand identities and artistic digital visuals, this work showcases their ability to transform ideas into eye-catching and meaningful designs. Their projects reflect both artistic expression and professional design thinking, ready for industry-level presentation."
                         />
+                    
+
+                                                        <div className="w-44 mb-10 h-1 bg-yellow-500 mx-auto rounded-full"></div>
+
+                        {/* Placement Partners */}
+                        <Carrousal />
 
                         {/* CEO Banner Section */}
                         <div className="relative w-full h-[28vh] sm:h-[60vh] md:h-[50vh] lg:h-[84vh] overflow-hidden">
@@ -396,12 +338,8 @@ function InteriorDesign() {
                             />
                         </div>
 
-                        {/* Placement Partners */}
-                        <Carrousal />
-
-
                         {/* Final CTA Section */}
-                        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 mt-10 p-6 sm:p-8 text-center shadow-xl border-2 border-yellow-300 rounded-xl">
+                        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 mt-10 p-6 sm:p-8 text-center shadow-xl border-2 border-yellow-300">
                             <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-black mb-2">
                                 🎁 Special New Year Offer!
                             </h3>

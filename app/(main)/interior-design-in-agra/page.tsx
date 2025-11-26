@@ -14,7 +14,7 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <InteriorDesignComponent
-                title="Interior Design Course in Agra"
+                title="Interior Design Course"
                 duration="4 Years Full-Time"
                 // description="You will learn interior designing, space planning, color schemes, furniture selection, lighting design, and modern design trends. The course also includes training on digital tools like AutoCAD, SketchUp, 3ds Max, and Adobe Suite to create realistic 3D models, layouts, and design presentations."
                 description="Elevate your creative future with a world-class Interior Design Course.
