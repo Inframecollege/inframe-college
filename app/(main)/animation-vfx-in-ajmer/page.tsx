@@ -1,8 +1,8 @@
-import AnimationVFXComponent from "../../../../components/cityComponents/AnimationVFXComponent";
+import AnimationVFXComponent from "../../../components/cityComponents/AnimationVFXComponent";
 
 export const metadata = {
-    title: "Animation & VFX Course in Udaipur | Inframe School",
-    description: "Learn Animation & VFX in Udaipur with Inframe School and get hands-on training in animation, motion graphics, and visual effects."
+    title: "Animation & VFX Course in Ajmer | Inframe School",
+    description: "Upgrade your creative skills with Inframe School’s Animation & VFX Course in Ajmer designed for modern production and studio careers."
 };
 
 function Page() {
@@ -10,10 +10,11 @@ function Page() {
     return (
         <div className="bg-white text-black mt-20">
             <AnimationVFXComponent
-                title="Animatino VFX Course"
+                title="Animation VFX Course"
                 duration="4 Years Full-Time"
                 content="The Bachelor of Design (B.Des) in UI & UX Design is a four-year program focusing on creating exceptional digital experiences. Students learn user research, information architecture, interaction design, and prototyping. The curriculum covers both theoretical principles and practical applications of user-centered design, preparing graduates for roles in digital product design."
-                description="Turn your passion for animation into a professional career."
+                description="Create cinematic effects that transform ordinary scenes into magic.
+"
                 index={0}
                 category=""
                 software={["Photoshop", "Illustrator", "Corel Draw", "Maya", "After Effects", "Blender"]}

@@ -1,4 +1,4 @@
-import AnimationVFXComponent from "../../../../components/cityComponents/AnimationVFXComponent";
+import AnimationVFXComponent from "../../../components/cityComponents/AnimationVFXComponent";
 
 export const metadata = {
     title: "Animation & VFX Course in Jaisalmer | Inframe School",

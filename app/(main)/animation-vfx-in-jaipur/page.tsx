@@ -1,8 +1,8 @@
-import AnimationVFXComponent from "../../../../components/cityComponents/AnimationVFXComponent";
+import AnimationVFXComponent from "../../../components/cityComponents/AnimationVFXComponent";
 
 export const metadata = {
-    title: "Animation & VFX Course in Bikaner | Inframe School",
-    description: "Build a strong creative career with the Animation & VFX Course in Bikaner offered by Inframe School. Learn industry-ready skills."
+    title: "Animation & VFX Course in Jaipur | Inframe School",
+    description: "Kickstart your creative career with Inframe School’s Animation & VFX Course in Jaipur and gain industry-standard training."
 };
 
 function Page() {
@@ -13,7 +13,7 @@ function Page() {
                 title="Animation VFX Course"
                 duration="4 Years Full-Time"
                 content="The Bachelor of Design (B.Des) in UI & UX Design is a four-year program focusing on creating exceptional digital experiences. Students learn user research, information architecture, interaction design, and prototyping. The curriculum covers both theoretical principles and practical applications of user-centered design, preparing graduates for roles in digital product design."
-                description="Learn how to animate emotions, actions, and expressions.
+                description="Learn how professionals design effects for films, ads, and games.
 "
                 index={0}
                 category=""

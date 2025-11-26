@@ -85,9 +85,77 @@ function CivilArch() {
             <div className="py-1 sm:py-12 min-w-full bg-white">
                 <div className="container mx-auto min-w-full px-4 sm:px-0">
                     <div className="max-w-full mx-auto">
+                        {/* ============================================================================ */}
+                        <div className="bg-gray-50 py-2 px-1 sm:px-4 md:px-6">
+                            <div className="max-w-7xl mx-auto bg-white shadow-lg sm:shadow-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200">
 
+                                {/* Header */}
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center leading-tight">
+                                    Civil & Architecture Drawing Course{" "}
+                                    <span className="text-yellow-500 block sm:inline mt-1 sm:mt-0">(2D)</span>
+                                </h2>
 
-                        
+                                {/* Pre-skill Highlight */}
+                                <div className="mt-4 sm:mt-5">
+                                    <p className="text-lg sm:text-xl md:text-2xl text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                                        <span className="font-semibold text-gray-800 text-base sm:text-lg md:text-xl">
+                                            Pre-skill Required:
+                                        </span>
+
+                                        <span
+                                            className="
+                        text-base sm:text-lg md:text-2xl font-extrabold text-white
+                        bg-gradient-to-r from-yellow-500 to-orange-500
+                        px-4 sm:px-6 py-2 sm:py-2 rounded-xl sm:rounded-2xl
+                        shadow-[0_0_10px_rgba(255,165,0,0.4)] sm:shadow-[0_0_15px_rgba(255,165,0,0.5)]
+                        animate-pulse
+                        transition-all duration-300
+                        hover:scale-105 sm:hover:scale-110 
+                        hover:shadow-[0_0_20px_rgba(255,165,0,0.6)] sm:hover:shadow-[0_0_25px_rgba(255,165,0,0.8)]
+                        w-full sm:w-auto text-center
+                    "
+                                        >
+                                            AutoCAD
+                                        </span>
+                                    </p>
+                                </div>
+
+                                {/* Divider */}
+                                <div className="my-4 sm:my-6 w-16 sm:w-20 md:w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+
+                                {/* Course Content */}
+                                <div className="mt-4 sm:mt-6">
+                                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4 text-center sm:text-left">
+                                        Course Content
+                                    </h3>
+
+                                    <ul className="grid grid-cols-1 gap-3 sm:gap-4">
+                                        {[
+                                            "Presentation Plan, Working Plan, Center Line, Excavation Plan",
+                                            "Water Tank Detail, 2D Elevation, RCC Slab Detail",
+                                            "Door/Window Schedule, Beam & Staircase Detail",
+                                            "Electrical, Plumbing, Sanitary, AC & Flooring Plan",
+                                        ].map((item, index) => (
+                                            <li
+                                                key={index}
+                                                className="
+                            bg-gray-100 rounded-lg sm:rounded-xl p-3 sm:p-4 
+                            font-bold border-l-4 border-yellow-400 
+                            text-gray-800 text-base sm:text-lg md:text-xl 
+                            shadow-sm hover:shadow-md transition-all
+                            hover:translate-x-1
+                        "
+                                            >
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ============================================================================ */}
+                        {/* ============================================================================ */}
                         {/* Main Course Info */}
                         <div className="animate-slide-up">
                             <CourseInfo title="Interior Design Course" priceWithDiscount="7496" originalPrice='24,986' />
@@ -325,8 +393,30 @@ function CivilArch() {
                         {/* CTA Button */}
                         {/* Floating Buy Now Button */}
                         {/* Floating Buy Now Button */}
-                        <div className="fixed bottom-4 right-4 z-50 animate-bounce hover:animate-pulse">
+                        {/* <div className="fixed bottom-4 right-4 z-50 animate-bounce hover:animate-pulse">
                             <QuickPayment />
+                        </div> */}
+                        <div className="fixed bottom-4 right-4 z-50 ">
+                            <QuickPayment />
+                            {/* <p className="mt-5 text-xl sm:text-2xl text-center flex items-center justify-center gap-3">
+                                <span className="font-semibold text-gray-800">
+                                    Pre-skill Required:
+                                </span>
+
+                                <span
+                                    className="
+      text-lg sm:text-2xl font-extrabold text-white
+      bg-gradient-to-r from-yellow-500 to-orange-500
+      px-6 py-2 rounded-2xl
+      shadow-[0_0_15px_rgba(255,165,0,0.5)]
+      animate-pulse
+      transition-all duration-300
+      hover:scale-110 hover:shadow-[0_0_25px_rgba(255,165,0,0.8)]
+    "
+                                >
+                                    AutoCAD
+                                </span>
+                            </p> */}
                         </div>
 
 
