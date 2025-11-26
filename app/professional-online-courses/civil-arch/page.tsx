@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import HeroSection from '../components/heroSection';
 import Footer from '../components/footer';
@@ -14,6 +14,19 @@ import FeaturesSection from '../components/featureSection';
 
 
 function CivilArch() {
+    const [expanded, setExpanded] = useState(true);
+
+
+    const course = {
+        title: "Civil & Architecture Drawing Course (2D)",
+        preSkill: "AutoCAD",
+        content: [
+            "Presentation Plan, Working Plan, Center Line, Excavation Plan",
+            "Water Tank Detail, 2D Elevation, RCC Slab Detail",
+            "Door/Window Schedule, Beam & Staircase Detail",
+            "Electrical, Plumbing, Sanitary, AC & Flooring Plan",
+        ],
+    };
     useEffect(() => {
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -36,12 +49,12 @@ function CivilArch() {
         "/landingImages/interior-design/FINAL-LIV-2-360x300.webp",
         "/landingImages/interior-design/hq720.jpg",
         "/landingImages/interior-design/images.jpg",
-        "/landingImages/interior-design/istockphoto-1365110240-612x612.jpg",
-        "/landingImages/interior-design/istockphoto-1490571644-612x612.jpg",
+        // "/landingImages/interior-design/istockphoto-1365110240-612x612.jpg",
+        // "/landingImages/interior-design/istockphoto-1490571644-612x612.jpg",
+        // "/landingImages/interior-design/pexels-fotoaibe-1571458.jpg",
         "/landingImages/interior-design/nighat ji dining 1 render .jpg",
         "/landingImages/interior-design/nighat ji second render copy.jpg",
         "/landingImages/interior-design/open restaurant jalore 3d.jpg",
-        "/landingImages/interior-design/pexels-fotoaibe-1571458.jpg",
     ];
 
     const targetAudience = [
@@ -72,6 +85,9 @@ function CivilArch() {
             <div className="py-1 sm:py-12 min-w-full bg-white">
                 <div className="container mx-auto min-w-full px-4 sm:px-0">
                     <div className="max-w-full mx-auto">
+
+
+                        
                         {/* Main Course Info */}
                         <div className="animate-slide-up">
                             <CourseInfo title="Interior Design Course" priceWithDiscount="7496" originalPrice='24,986' />
@@ -236,7 +252,7 @@ function CivilArch() {
                         <div className="relative w-full mb-8 bg-black overflow-hidden animate-zoom-in">
                             <div className="absolute inset-0">
                                 <Image
-                                    src={"/landingImages/12-01-2.jpg"}
+                                    src={"/landingImages/12-02-3.jpg"}
                                     alt="Blur Background"
                                     fill
                                     className="object-cover blur-xl opacity-40"
@@ -245,7 +261,7 @@ function CivilArch() {
                             </div>
                             <div className="relative z-10 w-full flex items-center justify-center py-4">
                                 <Image
-                                    src={"/landingImages/12-02-1.jpg"}
+                                    src={"/landingImages/12-02-3.jpg"}
                                     alt="Hero Banner"
                                     width={900}
                                     height={600}
@@ -308,12 +324,14 @@ function CivilArch() {
 
                         {/* CTA Button */}
                         {/* Floating Buy Now Button */}
-                        <div className="fixed bottom-4 right-4 z-50">
+                        {/* Floating Buy Now Button */}
+                        <div className="fixed bottom-4 right-4 z-50 animate-bounce hover:animate-pulse">
                             <QuickPayment />
                         </div>
 
+
                         <FeaturesSection />
-                        <div className="my-12 sm:my-20 px-4 sm:px-8 lg:px-20">
+                        <div className="my-12 sm:my-10 px-4 sm:px-8 lg:px-60">
                             <FAQSection />
                         </div>
                     </div>

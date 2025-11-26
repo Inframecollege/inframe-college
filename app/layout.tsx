@@ -73,6 +73,10 @@ export default async function RootLayout({
         {/* Title & Description */}
         <meta name="google-site-verification" content="PzWm-bI1brW-fEjiuWJJVN7DghT2yBxjG9BtcIijTnM" />
 
+        {/* <meta name="google-site-verification" content="PzWm-bI1brW-fEjiuWJJVN7DghT2yBxjG9BtcIijTnM" /> */}
+        {/* google-site-verification: google67b5b4b7e5b411cd.html */}
+        {/* <meta name="google-site-verification" content="PzWm-bI1brW-fEjiuWJJVN7DghT2yBxjG9BtcIijTnM" /> */}
+
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />

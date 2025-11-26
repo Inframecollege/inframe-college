@@ -216,9 +216,9 @@ export default function LandingPage() {
                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
                                 {tools.map((tool, index) => (
                                     <div key={index} className={`flex flex-col items-center p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}>
-                                        <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
-                                            <img src={tool.image} alt={tool.name} className="w-20 h-20 object-contain drop-shadow-lg" />
-                                        </div>
+                                        {/* <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
+                                        </div> */}
+                                            <img src={tool.image} alt={tool.name} className="w-26 h-20 object-contain drop-shadow-lg" />
 
                                         <p className="font-semibold text-gray-900 text-center text-lg">{tool.name}</p>
                                         {/* <span className={`text-sm ${tool.textColor} font-medium mt-1`}>{tool.category}</span> */}
@@ -282,7 +282,7 @@ export default function LandingPage() {
                             {/* Blurred Background */}
                             <div className="absolute inset-0">
                                 <Image
-                                    src={"/landingImages/12-01-2.jpg"}
+                                    src={"/landingImages/12-03-1.jpg"}
                                     alt="Blur Background"
                                     fill
                                     className="object-cover blur-xl opacity-40"
@@ -293,7 +293,7 @@ export default function LandingPage() {
                             {/* Center Foreground Banner */}
                             <div className="relative z-10 w-full flex items-center justify-center py-6">
                                 <Image
-                                    src={"/landingImages/12-01-2.jpg"}
+                                    src={"/landingImages/12-03-1.jpg"}
                                     alt="Hero Banner"
                                     width={900}
                                     height={600}

@@ -21,13 +21,13 @@ import { FaCubes } from "react-icons/fa";
 // import RevitIcon from "./RevitIcon"; // custom SVG component
 function InteriorDesign() {
     const router = useRouter();
- 
+
     const tools = [
-    { name: "AutoCAD", image: "/software logos/pngegg (17).png", color: "from-pink-100 to-rose-100", textColor: "text-pink-600" },
-    { name: "SketchUp", image: "/software logos/pngegg (18).png", color: "from-purple-100 to-pink-100", textColor: "text-purple-600" },
-    { name: "3dsMax", image: "/software logos/pngegg (19).png", color: "from-blue-100 to-indigo-100", textColor: "text-blue-700" },
-    { name: "Photoshop", image: "/software logos/pngegg (24).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
-   ];
+        { name: "AutoCAD", image: "/software logos/pngegg (17).png", color: "from-pink-100 to-rose-100", textColor: "text-pink-600" },
+        { name: "SketchUp", image: "/software logos/pngegg (18).png", color: "from-purple-100 to-pink-100", textColor: "text-purple-600" },
+        { name: "3dsMax", image: "/software logos/pngegg (19).png", color: "from-blue-100 to-indigo-100", textColor: "text-blue-700" },
+        { name: "Photoshop", image: "/software logos/pngegg (24).png", color: "from-orange-100 to-yellow-100", textColor: "text-orange-600" },
+    ];
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -225,10 +225,9 @@ function InteriorDesign() {
                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
                                 {tools.map((tool, index) => (
                                     <div key={index} className={`flex flex-col items-center p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}>
-                                        <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
-                                            <img src={tool.image} alt={tool.name} className="w-20 h-20 object-contain drop-shadow-lg" />
-                                        </div>
-
+                                        {/* <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
+                                        </div> */}
+                                        <img src={tool.image} alt={tool.name} className="w-26 h-20 object-contain drop-shadow-lg" />
                                         <p className="font-semibold text-gray-900 text-center text-lg">{tool.name}</p>
                                         {/* <span className={`text-sm ${tool.textColor} font-medium mt-1`}>{tool.category}</span> */}
                                     </div>
@@ -292,7 +291,7 @@ function InteriorDesign() {
                         <div className="relative w-full mb-8 bg-black overflow-hidden animate-zoom-in">
                             <div className="absolute inset-0">
                                 <Image
-                                    src={"/landingImages/12-01-2.jpg"}
+                                    src={"/landingImages/12-01-4.jpg"}
                                     alt="Blur Background"
                                     fill
                                     className="object-cover blur-xl opacity-40"
@@ -301,7 +300,7 @@ function InteriorDesign() {
                             </div>
                             <div className="relative z-10 w-full flex items-center justify-center py-4">
                                 <Image
-                                    src={"/landingImages/12-02-1.jpg"}
+                                    src={"/landingImages/12-01-4.jpg"}
                                     alt="Hero Banner"
                                     width={900}
                                     height={600}
@@ -320,10 +319,8 @@ function InteriorDesign() {
                             title="Our Students’ Creative Gallery"
                             description="This gallery celebrates the visual imagination and storytelling power of our Graphic Design students. Every piece reflects a strong sense of creativity, brand awareness, and communication strategy. Students explore color psychology, layout balance, visual hierarchy, and creative composition to produce designs that speak clearly and emotionally. From bold advertising concepts to refined brand identities and artistic digital visuals, this work showcases their ability to transform ideas into eye-catching and meaningful designs. Their projects reflect both artistic expression and professional design thinking, ready for industry-level presentation."
                         />
-                    
 
-                                                        <div className="w-44 mb-10 h-1 bg-yellow-500 mx-auto rounded-full"></div>
-
+                        <div className="w-44 mb-10 h-1 bg-yellow-500 mx-auto rounded-full"></div>
                         {/* Placement Partners */}
                         <Carrousal />
 
