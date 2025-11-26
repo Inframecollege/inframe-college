@@ -71,6 +71,7 @@ export default async function RootLayout({
     <html lang="en" className={poppins.className}>
       <Head>
         {/* Title & Description */}
+        <meta name="google-site-verification" content="PzWm-bI1brW-fEjiuWJJVN7DghT2yBxjG9BtcIijTnM" />
 
 
         {/* Favicon */}
@@ -86,7 +87,7 @@ export default async function RootLayout({
         <meta property="og:type" content="website" />
         <meta name="google-site-verification" content="PzWm-bI1brW-fEjiuWJJVN7DghT2yBxjG9BtcIijTnM" />
         {/* Google Site Verification */}
-        <meta name="google-site-verification" content="dGWC26ZkV6A4Ue6fhZdXFh5gMfWQDF3Q-3qpLE71h5M" />
+        {/* <meta name="google-site-verification" content="dGWC26ZkV6A4Ue6fhZdXFh5gMfWQDF3Q-3qpLE71h5M" /> */}
       </Head>
 
       <body>
