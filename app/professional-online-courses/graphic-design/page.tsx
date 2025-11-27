@@ -133,7 +133,8 @@ export default function LandingPage() {
                                     Master industry-leading tools like
                                     <span className="text-yellow-400 font-semibold"> Photoshop</span>,
                                     <span className="text-yellow-400 font-semibold"> Illustrator</span>,
-                                    <span className="text-yellow-400 font-semibold"> CorelDRAW</span>,
+                                    <span className="text-yellow-400 font-semibold"> Corel Draw</span>,
+                                    <span className="text-yellow-400 font-semibold"> InDesign</span>,
                                     and more — with the help of our intelligent
                                     <span className="text-yellow-400 font-bold"> AI-powered learning assistant.</span>
                                 </p>
@@ -218,7 +219,7 @@ export default function LandingPage() {
                                     <div key={index} className={`flex flex-col items-center p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}>
                                         {/* <div className={`mb-4 p-6 rounded-full bg-gradient-to-r ${tool.color} flex items-center justify-center shadow-md animate-float`}>
                                         </div> */}
-                                            <img src={tool.image} alt={tool.name} className="w-26 h-20 object-contain drop-shadow-lg" />
+                                        <img src={tool.image} alt={tool.name} className="w-26 h-20 object-contain drop-shadow-lg" />
 
                                         <p className="font-semibold text-gray-900 text-center text-lg">{tool.name}</p>
                                         {/* <span className={`text-sm ${tool.textColor} font-medium mt-1`}>{tool.category}</span> */}
@@ -250,8 +251,7 @@ export default function LandingPage() {
                 hover:border-gray-400
                 hover:-translate-y-1
                 relative
-            "
-                                    >
+            ">
                                         {/* Highlight Glow */}
                                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-200/40 via-yellow-200/40 to-orange-200/40 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
@@ -368,7 +368,7 @@ export default function LandingPage() {
             {/* CTA Button */}
             {/* Floating Buy Now Button */}
             <div className="fixed bottom-4 right-4 z-50 animate-bounce hover:animate-pulse">
-                <QuickPayment />
+                <QuickPayment price="5496" />
             </div>
 
             {/* Footer */}

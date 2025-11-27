@@ -153,7 +153,6 @@ function CivilArch() {
                                 </div>
                             </div>
                         </div>
-
                         {/* ============================================================================ */}
                         {/* ============================================================================ */}
                         {/* Main Course Info */}
@@ -162,7 +161,7 @@ function CivilArch() {
                         </div>
 
                         {/* Pricing Banner Section */}
-                        <div className="relative mt-10 w-full h-[35vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
+                        <div className="relative mt-5 w-full h-[26vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/CIVIL 8-01.jpg"}
                                 alt="Hero Banner"
@@ -258,8 +257,6 @@ function CivilArch() {
                             </div>
                         </div>
 
-
-
                         {/* Who Should Join */}
                         <div className="my-6 pb-5">
                             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-5 tracking-tight">
@@ -300,7 +297,6 @@ function CivilArch() {
                                     </div>
                                 ))}
                             </div>
-
                         </div>
 
 
@@ -310,8 +306,6 @@ function CivilArch() {
                                 🚀 Yes 4+ hands on projects that make your CV look great.
                             </p>
                         </div>
-
-
 
                         {/* Testimonials Section */}
                         {/* <Testimonials /> */}
@@ -397,7 +391,7 @@ function CivilArch() {
                             <QuickPayment />
                         </div> */}
                         <div className="fixed bottom-4 right-4 z-50 ">
-                            <QuickPayment />
+                            <QuickPayment price='14999'/>
                             {/* <p className="mt-5 text-xl sm:text-2xl text-center flex items-center justify-center gap-3">
                                 <span className="font-semibold text-gray-800">
                                     Pre-skill Required:

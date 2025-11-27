@@ -2,19 +2,19 @@ import { courseTypes } from "../../../../utils/courseTypes";
 import { notFound } from "next/navigation";
 import CoursePage from "../../../../components/Courses/CoursePage";
 
-type ParamsType = { 
-  category: string; 
-  degree: string; 
+type ParamsType = {
+  category: string;
+  degree: string;
 };
 
-export default async function  DegreePage({ params }: { params: Promise<ParamsType> }) {
+export default async function DegreePage({ params }: { params: Promise<ParamsType> }) {
   const { category, degree } = await params; // Corrected: params is directly an object, not a Promise.
   const categoryLower = category.toLowerCase();
 
   if (!courseTypes[categoryLower]) {
     return notFound();
   }
- 
+
   const categoryCourses = courseTypes[categoryLower];
   const selectedCourseIndex = categoryCourses.findIndex((course) => course.value === degree);
 
@@ -24,7 +24,7 @@ export default async function  DegreePage({ params }: { params: Promise<ParamsTy
 
   // const initialTabIndex = selectedCourseIndex;
 
-  return <CoursePage courseType={categoryCourses} category={categoryLower}/>;
+  return <CoursePage courseType={categoryCourses} category={categoryLower} />;
 }
 
 export async function generateStaticParams(): Promise<ParamsType[]> {
