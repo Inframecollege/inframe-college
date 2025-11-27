@@ -372,11 +372,11 @@ const CategoryLandingPage: React.FC<CategoryLandingPageProps> = ({
               Apply Now
             </Button>
 
-            <ApplyNowForm
+            {/* <ApplyNowForm
               isFormOpen={isFormOpen}
               setIsFormOpen={setIsFormOpen}
               isScrolled={false}
-            />
+            /> */}
           </div>
         </div>
       </div>

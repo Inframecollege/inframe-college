@@ -1,4 +1,8 @@
 // "use client"
+import ComboPack from "../../../components/courseDetails/ComboPack";
+import CourseFeatures from "../../../components/courseDetails/courseFeature";
+import Customizecourse from "../../../components/courseDetails/CustomizePack";
+import WhyChooseUs from "../../../components/courseDetails/WhyChooseUs";
 import PageClient from "../../../components/demometa";
 
 export const metadata = {
@@ -11,10 +15,10 @@ function CourseContent() {
   return (
     <div className="bg-white text-black mt-20">
       <PageClient />
-      {/* <ComboPack />
+      <ComboPack />
       <CourseFeatures />
       <Customizecourse />
-      <WhyChooseUs /> */}
+      <WhyChooseUs />
     </div>
   );
 }

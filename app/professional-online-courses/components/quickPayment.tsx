@@ -1,13 +1,13 @@
 import React from 'react'
 import { useRouter } from "next/navigation";
 
-function QuickPayment() {
+function QuickPayment({ price }: { price: string }) {
     const router = useRouter();
 
     const handleBuyNow = async () => {
         const options = {
             key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Razorpay test key
-            amount: 149900,
+            amount: price + "00",//149900,
             currency: "INR",
             name: "Inframe College",
             description: "Interior Design Course Enrollment",

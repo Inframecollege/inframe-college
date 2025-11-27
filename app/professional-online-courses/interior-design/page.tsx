@@ -112,7 +112,7 @@ function InteriorDesign() {
                         </div>
 
                         {/* Pricing Banner Section */}
-                        <div className="relative mt-10 w-full h-[35vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
+                        <div className="relative mt-5 w-full h-[27vh] sm:h-[45vh] md:h-[85vh] overflow-hidden">
                             <Image
                                 src={"/landingImages/course landscape-01-01.jpg"}
                                 alt="Hero Banner"
@@ -140,8 +140,9 @@ function InteriorDesign() {
                                 <p className="text-sm sm:text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto text-center relative z-10">
                                     Master industry-leading tools like
                                     <span className="text-yellow-400 font-semibold"> Photoshop</span>,
-                                    <span className="text-yellow-400 font-semibold"> Illustrator</span>,
-                                    <span className="text-yellow-400 font-semibold"> CorelDRAW</span>,
+                                    <span className="text-yellow-400 font-semibold"> AutoCad</span>,
+                                    <span className="text-yellow-400 font-semibold"> 3ds Max</span>,
+                                    <span className="text-yellow-400 font-semibold"> SketchUp</span>,
                                     and more — with the help of our intelligent
                                     <span className="text-yellow-400 font-bold"> AI-powered learning assistant.</span>
                                 </p>
@@ -296,7 +297,7 @@ function InteriorDesign() {
                                     fill
                                     className="object-cover blur-xl opacity-40"
                                     priority
-                                />
+                                />price
                             </div>
                             <div className="relative z-10 w-full flex items-center justify-center py-4">
                                 <Image
@@ -377,7 +378,7 @@ function InteriorDesign() {
 
             {/* Floating Buy Now Button */}
             <div className="fixed bottom-4 right-4 z-50 animate-bounce hover:animate-pulse">
-                <QuickPayment />
+                <QuickPayment price="7496" />
             </div>
 
             {/* Footer */}
