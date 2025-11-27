@@ -32,7 +32,7 @@ export default function CourseFeatures() {
         },
     ];
     return (
-        <div className="w-[100%]  py-[10px] lg:p-3">
+        <div className="w-[100%]  py-[10px] lg:p-0">
             <div className="max-w-7xl p-3 lg:p-0 mx-auto lg:my-[60px] my-[30px]">
                 <h3 className="text-center lg:text-[40px] text-[30px] text-gray-800 mb-5 font-semibold">
                     Designing Course <span className="text-amber-400">Features</span>

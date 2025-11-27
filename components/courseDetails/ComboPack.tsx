@@ -143,7 +143,7 @@ export default function ComboPack() {
     };
 
     return (
-        <div className="w-full lg:p-3">
+        <div className="w-full lg:p-0">
             <div className="max-w-7xl p-3 lg:p-0 mx-auto lg:my-[80px] my-[20px]">
                 <h3 className="lg:text-[40px] text-[30px] text-gray-800 mb-5 font-semibold">
                     Interested In Our <span className="text-amber-400">Combo Pack ?</span>

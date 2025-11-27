@@ -32,6 +32,11 @@ const breadcrumbPages: Record<string, { name: string; url: string }> = {
   "/mentors": { name: "Mentors", url: "https://www.inframeschool.com/mentors" },
 };
 
+export const metadata = {
+  verification: {
+    google: "dGWC26ZkV6A4Ue6fhZdXFh5gMfWQDF3Q-3qpLE71h5M",
+  },
+};
 
 export default async function RootLayout({
   children,

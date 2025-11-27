@@ -297,7 +297,7 @@ function InteriorDesign() {
                                     fill
                                     className="object-cover blur-xl opacity-40"
                                     priority
-                                />price
+                                />
                             </div>
                             <div className="relative z-10 w-full flex items-center justify-center py-4">
                                 <Image

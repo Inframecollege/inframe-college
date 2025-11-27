@@ -25,7 +25,7 @@ const CourseHero = () => {
     const courseData = {
         title: "Graphic Designing actively for free",
         description: "This course is presented to students to enhance more benefits of our available courses and you will also learn some new technologies to improve yourself.",
-        price: "Free",
+        price: "1200/-",
         originalPrice: "$99",
         discount: "100% OFF",
         features: [
@@ -58,33 +58,18 @@ const CourseHero = () => {
 
     return (
         <div className="min-h-screen bg-white">
-            {/* Header */}
-            <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-                <div className="container mx-auto px-4 py-4">
-
-
-                    {/* Mobile Navigation */}
-                    {isMenuOpen && (
-                        <div className="md:hidden mt-4 space-y-2">
-                            <div className="text-gray-600 font-medium py-2">ART</div>
-                            <div className="text-gray-600 font-medium py-2">DESIGN</div>
-                            <div className="text-gray-600 font-medium py-2">BUSINESS</div>
-                        </div>
-                    )}
-                </div>
-            </header>
 
             {/* Main Content */}
             <div className="container mx-auto px-4 py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
 
                     {/* Left Column - Video and Course Info */}
-                    <div className="space-y-8">
+                    <div className="space-y-1">
                         {/* Video Card */}
                         <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                            <div className="relative pt-[56.25%]"> {/* 16:9 Aspect Ratio */}
+                            {/* <div className="relative pt-[56.25%]"> 
                                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
-                                    {/* Video Thumbnail/Player */}
+                                    Video Thumbnail/Player
                                     <div className="text-center text-white">
                                         <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
                                             <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -95,10 +80,19 @@ const CourseHero = () => {
                                         <p className="text-sm opacity-80">Click to play introduction video</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
+
+                            {/* Video Player */}
+                                <div className="w-full h-64 sm:h-80 bg-black rounded-lg overflow-hidden ">
+                                    <video
+                                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                                        controls
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
 
                             {/* Video Info */}
-                            <div className="p-6">
+                            {/* <div className="p-6">
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center space-x-4 text-white">
                                         <div className="flex items-center">
@@ -121,7 +115,8 @@ const CourseHero = () => {
                                         <p className="text-gray-300">{courseData.instructor}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
+
                         </div>
 
                         {/* Course Description */}
@@ -146,7 +141,7 @@ const CourseHero = () => {
 
                             {/* Price Section */}
                             <div className="flex items-center justify-center lg:justify-start space-x-4 mb-4">
-                                <span className="text-3xl font-bold text-green-600">{courseData.price}</span>
+                                <span className="text-3xl font-bold text-yellow-500">{courseData.price}</span>
                                 <span className="text-xl text-gray-500 line-through">{courseData.originalPrice}</span>
                                 <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
                                     {courseData.discount}
@@ -155,7 +150,7 @@ const CourseHero = () => {
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-6">
+                        {/* <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-6">
                             <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
                                 Contact Us
                             </button>
@@ -165,12 +160,12 @@ const CourseHero = () => {
                             <button className="px-6 py-3 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors">
                                 Login/Register
                             </button>
-                        </div>
+                        </div> */}
 
                         {/* Course Features Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
                             {courseData.features.map((feature, index) => (
-                                <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg border border-gray-200">
+                                <div key={index} className="flex items-center space-x-3 bg-white p-2 rounded-lg border border-gray-200">
                                     <span className="text-2xl">{feature.icon}</span>
                                     <span className="text-gray-700 font-medium">{feature.title}</span>
                                 </div>
