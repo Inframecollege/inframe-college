@@ -179,7 +179,7 @@ export default function ComboPack() {
                                     You get a Refund Validity of 2 Years
                                 </p>
                                 <button className="bg-[#fde047] hover:bg-amber-400 duration-300 w-full font-semibold text-[18px] py-[10px] mt-4 rounded-[10px]">
-                                    Know More
+                                    buy now
                                 </button>
                             </div>
                         </div>

@@ -1,10 +1,17 @@
 'use client'
 
 import CourseContent from './courseContent';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation";
 const CourseHero = ({ price }: { price: string }) => {
     const router = useRouter();
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+        script.async = true;
+        document.body.appendChild(script);
+    }, []);
 
     const handleBuyNow = async () => {
         const options = {
@@ -17,7 +24,6 @@ const CourseHero = ({ price }: { price: string }) => {
             handler: function (response: { razorpay_payment_id: string; }) {
                 // alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
                 router.push("/order-confirmation");
-
             },
             method: {
                 upi: true,

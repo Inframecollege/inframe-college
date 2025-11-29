@@ -198,6 +198,209 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* About Inframe Section */}
+      <section className="w-full bg-gradient-to-br from-white to-gray-50 text-gray-800 py-20 px-4 sm:px-6 lg:px-8">
+        {/* Header with Decorative Elements */}
+        <div className="text-center mb-16 relative">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 w-24 h-1 bg-yellow-400 rounded-full"></div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 relative inline-block">
+            About <span className="text-yellow-600 relative">
+              Inframe
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-yellow-400 transform scale-x-75"></div>
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            Where Creativity Meets Innovation
+          </p>
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="max-w-7xl mx-auto">
+          {/* About Content */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-20">
+            {/* Text Content */}
+            <div className="space-y-8">
+              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-yellow-100 rounded-xl">
+                    <span className="text-2xl">🎓</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Our Foundation</h3>
+                    <p className="text-lg leading-relaxed text-gray-700">
+                      <strong className="text-yellow-700">Inframe School of Art, Design and Business</strong> was established under the Rajasthan Societies Act 1958 by the Inframe Educational Society. Founded by eight experienced professionals with over 35 years of expertise in education, administration, and community development.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-yellow-100 rounded-xl">
+                    <span className="text-2xl">🌟</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Our Vision</h3>
+                    <p className="text-lg leading-relaxed text-gray-700">
+                      Our vision is to nurture creativity, innovation, and critical thinking while upholding the values of discipline, integrity, and social responsibility.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Programs & Features */}
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-3xl p-8 shadow-lg border border-yellow-200">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="p-2 bg-yellow-400 rounded-lg">📚</span>
+                  Programs Offered
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-700 mb-4">
+                  We offer <strong className="text-yellow-700">Degree (B.Des, B.Voc, B.Sc), Diploma, and Short-Term Professional Courses</strong> across major creative fields:
+                </p>
+                <div className="grid grid-cols-2 gap-3 mt-4">
+                  {["Interior Design", "Graphic Design", "Fine Arts", "UI/UX Design", "Digital Marketing", "Jewellery Design", "Animation & VFX", "Fashion Design"].map((course, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                      <span className="text-sm font-medium text-gray-700">{course}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                  <span className="p-2 bg-yellow-400 rounded-lg">💼</span>
+                  Career Support
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-700">
+                  Inframe ensures <strong className="text-yellow-700">100% placement assistance</strong> across India, supported by modern campus facilities including Wi-Fi, digital classrooms, library, and creative labs.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider with Style */}
+          <div className="relative my-20">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center">
+              <span className="bg-white px-6 text-2xl">✨</span>
+            </div>
+          </div>
+
+          {/* Affiliation Section */}
+          <div className="mb-20">
+            <h3 className="text-4xl md:text-5xl font-bold text-center mb-16">
+              Affiliation & <span className="text-yellow-600">Accreditation</span>
+            </h3>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* University Partnerships */}
+              <div className="bg-gradient-to-br from-gray-900 to-black text-white rounded-3xl p-8 shadow-2xl">
+                <h4 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <span className="p-2 bg-yellow-400 rounded-lg text-black">🏛️</span>
+                  University Partnerships
+                </h4>
+                <div className="space-y-4">
+                  <p className="text-lg leading-relaxed">
+                    Inframe is a vocational training partner of <strong className="text-yellow-300">Glocal University</strong> and <strong className="text-yellow-300">Sikkim Skill University (UGC Recognized)</strong>, offering Diploma, Advanced Diploma, Bachelor's, and Master's Degree programs.
+                  </p>
+                </div>
+              </div>
+
+              {/* Industry Certifications */}
+              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+                <h4 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                  <span className="p-2 bg-yellow-400 rounded-lg">⭐</span>
+                  Industry Certifications
+                </h4>
+                <div className="space-y-4">
+                  <p className="text-lg leading-relaxed text-gray-700">
+                    Training partner of <strong className="text-yellow-700">Career Point Institute of Skill Development (CPSID)</strong> affiliated with <strong className="text-yellow-700">NSDC</strong> and <strong className="text-yellow-700">Skill India</strong>.
+                  </p>
+                  <p className="text-lg leading-relaxed text-gray-700">
+                    Officially certified by <strong className="text-yellow-700">Adobe, Autodesk, and Meta</strong> for globally recognized professional certification programs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: "🏢",
+                title: "Modern Campus",
+                description: "Smart campus with digital classrooms, labs, and creative spaces"
+              },
+              {
+                icon: "💼",
+                title: "100% Placement",
+                description: "Comprehensive placement assistance across India"
+              },
+              {
+                icon: "🌍",
+                title: "Global Certifications",
+                description: "Adobe, Autodesk, and Meta certified programs"
+              },
+              {
+                icon: "👨‍🏫",
+                title: "Industry Experts",
+                description: "Learn from professionals with real-world experience"
+              },
+              {
+                icon: "🚀",
+                title: "Live Projects",
+                description: "Hands-on learning with real client projects"
+              },
+              {
+                icon: "📱",
+                title: "Flexible Learning",
+                description: "Online, offline, and recorded class options"
+              }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-yellow-100 rounded-xl group-hover:bg-yellow-200 transition-colors duration-300">
+                    <span className="text-2xl">{item.icon}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-700 transition-colors duration-300">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center mt-16">
+            <div className="bg-gradient-to-r from-yellow-400 to-amber-500 rounded-2xl p-8 shadow-2xl">
+              <h3 className="text-3xl font-bold text-black mb-4">
+                Ready to Start Your Creative Journey?
+              </h3>
+              <p className="text-lg text-gray-800 mb-6 max-w-2xl mx-auto">
+                Join Inframe and transform your passion into a successful career with industry-leading education and global opportunities.
+              </p>
+              <button className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Explore Programs
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Our Values Section */}
       <section
         className="py-20 bg-white text-black font-sans"
