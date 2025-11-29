@@ -133,12 +133,54 @@ const poppins = Poppins({
 });
 
 // Helper function to format course titles for URLs based on your working examples
+// const formatCourseSlug = (title: string): string => {
+//   const slugMap: { [key: string]: string } = {
+//     "Interior Design": "interior-design",
+//     "Fashion Design": "fashion-design", 
+//     "Graphic Design": "graphic-design",
+//     "UIUX-Design": "uiux-design",
+//     "Animation-VFX": "animation-vfx",
+//     "Jewellery Design": "jewellery-design",
+//     "Fine Arts": "fine-arts",
+//     "Digital Marketing": "digital-marketing",
+//     "Entrepreneurship Skill": "entrepreneurship-skill",
+//     "Media-Entertainment": "media-entertainment"
+//   };
+
+//   return slugMap[title] || title.replace(/\s+/g, "-").toLowerCase();
+// };
+
+// // Fixed getDegreeType function that matches your working URLs
+// const getDegreeType = (programText: string, courseTitle: string): string => {
+//   const courseSlug = formatCourseSlug(courseTitle);
+
+//   // Extract the degree type from program text
+//   if (programText.includes("B. Des")) {
+//     return `bdes-in-${courseSlug}`;
+//   } else if (programText.includes("B.VOC")) {
+//     return `bvoc-in-${courseSlug}`;
+//   } else if (programText.includes("B.SC")) {
+//     return `bsc-in-${courseSlug}`;
+//   } else if (programText.includes("1 Year Diploma")) {
+//     return `one-year-diploma-in-${courseSlug}`;
+//   } else if (programText.includes("2 Year Diploma")) {
+//     return `two-year-diploma-in-${courseSlug}`;
+//   } else if (programText.includes("3 Year Diploma")) {
+//     return `three-year-diploma-in-${courseSlug}`;
+//   } else if (programText.includes("6 Month Certificate")) {
+//     return `six-month-certificate-course-in-${courseSlug}`;
+//   }
+
+//   // Fallback
+//   return `program-in-${courseSlug}`;
+// };
+
 const formatCourseSlug = (title: string): string => {
   const slugMap: { [key: string]: string } = {
     "Interior Design": "interior-design",
-    "Fashion Design": "fashion-design", 
+    "Fashion Design": "fashion-design",
     "Graphic Design": "graphic-design",
-    "UIUX-Design": "uiux-design",
+    "UIUX-Design": "uiux-design", // folder slug stays uiux-design
     "Animation-VFX": "animation-vfx",
     "Jewellery Design": "jewellery-design",
     "Fine Arts": "fine-arts",
@@ -146,34 +188,39 @@ const formatCourseSlug = (title: string): string => {
     "Entrepreneurship Skill": "entrepreneurship-skill",
     "Media-Entertainment": "media-entertainment"
   };
-  
+
   return slugMap[title] || title.replace(/\s+/g, "-").toLowerCase();
 };
 
-// Fixed getDegreeType function that matches your working URLs
 const getDegreeType = (programText: string, courseTitle: string): string => {
-  const courseSlug = formatCourseSlug(courseTitle);
-  
-  // Extract the degree type from program text
+  // SPECIAL CASE: Animation-VFX needs "animation-and-vfx"
+  let programCourseSlug =
+    courseTitle === "Animation-VFX"
+      ? "animation-and-vfx"
+      : courseTitle === "UIUX-Design" ? "ui-ux-design"
+        : courseTitle === 'Media-Entertainment' ? 'media-and-entertainment'
+          : formatCourseSlug(courseTitle)
+
+
   if (programText.includes("B. Des")) {
-    return `bdes-in-${courseSlug}`;
+    return `bdes-in-${programCourseSlug}`;
   } else if (programText.includes("B.VOC")) {
-    return `bvoc-in-${courseSlug}`;
+    return `bvoc-in-${programCourseSlug}`;
   } else if (programText.includes("B.SC")) {
-    return `bsc-in-${courseSlug}`;
+    return `bsc-in-${programCourseSlug}`;
   } else if (programText.includes("1 Year Diploma")) {
-    return `one-year-diploma-in-${courseSlug}`;
+    return `one-year-diploma-in-${programCourseSlug}`;
   } else if (programText.includes("2 Year Diploma")) {
-    return `two-year-diploma-in-${courseSlug}`;
+    return `two-year-diploma-in-${programCourseSlug}`;
   } else if (programText.includes("3 Year Diploma")) {
-    return `three-year-diploma-in-${courseSlug}`;
+    return `three-year-diploma-in-${programCourseSlug}`;
   } else if (programText.includes("6 Month Certificate")) {
-    return `six-month-certificate-in-${courseSlug}`;
+    return `six-month-certificate-course-in-${programCourseSlug}`;
   }
 
-  // Fallback
-  return `program-in-${courseSlug}`;
+  return `program-in-${programCourseSlug}`;
 };
+
 
 interface Course {
   title: string;

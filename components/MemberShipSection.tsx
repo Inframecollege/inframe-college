@@ -2,45 +2,53 @@ import Image from "next/image";
 
 const MembershipPartnership = () => {
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-white py-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-gray-800 text-center mb-12">
-          Membership & Partnership
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 items-center justify-center">
-          {/* NSDC Logo */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="/ugc.gif"
-              alt="NSDC Logo"
-              width={120} // Adjust as needed
-              height={112} // Adjust as needed
-              objectFit="contain"
-              className="transition-transform transform hover:scale-110 shadow-lg rounded-lg bg-white p-4"
-            />
-          </div>
-          {/* Glocal University Logo */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="/The_Glocal_University-_Logo.png"
-              alt="Glocal University Logo"
-              width={300}
-              height={300}
-              objectFit="contain"
-              className="transition-transform transform hover:scale-110 shadow-lg rounded-lg bg-white p-4"
-            />
-          </div>
-          {/* Skill India Logo */}
-          <div className="flex justify-center items-center">
-            <Image
-              src="/skill india.jpeg"
-              alt="Skill India Logo"
-              width={230}
-              height={220}
-              objectFit="contain"
-              className="transition-transform transform hover:scale-110 shadow-lg rounded-lg bg-white p-4"
-            />
-          </div>
+        {/* Clean Header */}
+        <div className="text-left mb-16">
+          <h2 className="text-6xl font-bold text-gray-900 mb-4">
+            Our Affiliation & Accreditation
+          </h2>
+          <p className=" text-left text-lg text-gray-600 max-w-3xl">
+            Collaborating with industry leaders and educational institutions to deliver excellence
+          </p>
+        </div>
+
+        {/* Logo Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 items-center">
+          {[
+            // { src: "/ugc.gif", alt: "NSDC Logo" },
+            { src: "/The_Glocal_University-_Logo.png", alt: "Glocal University Logo" },
+            { src: "/homePage_logo/sikkim skill.jpg", alt: "Sikkim Skill Logo" },
+            { src: "/homePage_logo/cpsid 001.png", alt: "CPSID Logo" },
+
+            { src: "/homePage_logo/adobe logo.png", alt: "Adobe Logo" },
+            // { src: "/skill india.jpeg", alt: "Skill India Logo" },
+            { src: "/homePage_logo/autodesk logo.png", alt: "Autodesk Logo" },
+            { src: "/homePage_logo/meta logo.png", alt: "Meta Logo" },
+            // { src: "/homePage_logo/cpsid 001.png", alt: "CPSID Logo" },
+          ].map((logo, index) => (
+            <div
+              key={index}
+              className="flex justify-center items-center p-3 bg-gray-50 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 border border-gray-100"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={160}
+                height={120}
+                objectFit="contain"
+                className="transition-opacity duration-300 hover:opacity-80"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Simple Divider */}
+        <div className="mt-6 pt-4 border-t border-gray-200 text-center">
+          <p className="text-gray-600">
+            Trusted by leading organizations worldwide
+          </p>
         </div>
       </div>
     </section>

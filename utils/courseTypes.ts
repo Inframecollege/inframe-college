@@ -45,6 +45,122 @@ export type CourseType = {
 
 export const courseTypes: CourseCategory = {
   "interior-design": [
+
+    {
+      "redirectUrl": "/interior-design/bdes-in-interior-design",
+      "mainTitle": "interior-design",
+      "metaTitle": "Interior Design Course in Jodhpur | Inframe School of Art & Design",
+      "metaDescription": "Join Inframe's Interior Design Course in Jodhpur and turn your passion into a career. 15+ years of expertise in top-notch Interior Design education.",
+      "value": "bdes-in-interior-design",
+      "label": "B. Des in Interior Design",
+      "title": "Bachelor of Design in Interior Design",
+      "duration": "4 Years Full-Time",
+      "description": "Transform spaces and shape experiences through our comprehensive design program. Learn from industry experts and build a successful career in interior design.",
+      "content": "The Bachelor of Design (B.Des) in Interior Design is a four-year full-time program designed to provide students with an in-depth understanding of interior spaces, aesthetics, and functionality. This course focuses on developing creativity, technical knowledge, and problem-solving abilities in design. Students explore design principles, material studies, lighting techniques, sustainable design, and digital rendering. The curriculum integrates theoretical knowledge with hands-on studio projects, emphasizing modern software like AutoCAD, SketchUp, and Revit. Graduates can pursue careers as interior designers, space planners, furniture designers, and exhibition designers.",
+      "software": [
+        { "name": "AutoCAD", "src": "/software logos/pngegg (17).png" },
+        { "name": "SketchUp", "src": "/software logos/pngegg (18).png" },
+        { "name": "3dsMax", "src": "/software logos//pngegg (19).png" },
+        { "name": "Revit", "src": "/software logos/pngegg (21).png" },
+        { "name": "Photoshop", "src": "/software logos/pngegg (24).png" }
+      ],
+
+      videos: [
+        {
+          url: "https://youtube.com/embed/8Zz5zcOPHDw?si=Tjq18SsXDOYT-bGL",
+        },
+        {
+          url: "https://youtube.com/embed/Vl9aTeiM6RM?si=LFYlYsi_N60oYj9a",
+        },
+        {
+          url: "https://youtube.com/embed/AyRoxi85cHw?si=aWO6rYOrAJUNsx7s",
+        },
+      ],
+      whatYouWillLearn: [],
+      curriculum: {
+        "1st Year": {
+          image: "https://images.unsplash.com/photo-1617103996702-96ff29b1c467",
+          imageAlt: "Interior design fundamentals sketch and materials",
+          "Semester 1": [
+            "Contextual Art and Design",
+            "Material Studies",
+            "Creative Skills",
+            "Object as History",
+            "Visual Expression",
+            "Design Concepts",
+          ],
+          "Semester 2": [
+            "Design Communication Skills",
+            "Craft Experience",
+            "Basic Design I",
+            "Technical Representation",
+            "Design Process",
+            "Design Thinking",
+          ],
+        },
+        "2nd Year": {
+          image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f",
+          imageAlt: "Modern interior space planning",
+          "Semester 3": [
+            "Interior Design Studio I",
+            "Construction Methods",
+            "Digital Design I",
+            "History of Design",
+            "Building Services",
+            "Professional Practice",
+          ],
+          "Semester 4": [
+            "Interior Design Studio II",
+            "Advanced Construction",
+            "Digital Design II",
+            "Contemporary Design",
+            "Services Integration",
+            "Business Practice",
+          ],
+        },
+        "3rd Year": {
+          image: "https://images.unsplash.com/photo-1511920173225-7b9060208f02",
+          imageAlt: "Advanced interior design techniques",
+          "Semester 5": [
+            "Interior Design Studio III",
+            "Lighting Design",
+            "Sustainable Design",
+            "3D Visualization",
+            "Human-Centered Design",
+            "Furniture Design",
+          ],
+          "Semester 6": [
+            "Interior Design Studio IV",
+            "Advanced Digital Design",
+            "Space Planning & Management",
+            "Cultural and Social Design",
+            "Material Innovations",
+            "Business of Design",
+          ],
+        },
+        "4th Year": {
+          image: "https://images.unsplash.com/photo-1562967917-35e6a0329813",
+          imageAlt: "Final project and professional portfolio",
+          "Semester 7": [
+            "Capstone Design Project",
+            "Design Research Methods",
+            "Lighting and Acoustics",
+            "Urban Design",
+            "Client Management",
+            "Interior Project Management",
+          ],
+          "Semester 8": [
+            "Thesis Preparation",
+            "Professional Portfolio Development",
+            "Interior Design Ethics",
+            "Internship/Fieldwork",
+            "Exhibition Design",
+            "Entrepreneurship in Design",
+          ],
+        },
+      },
+    },
+    // =========================================interior fixed by ayaad
     {
       "redirectUrl": "/interior-design/bdes-in-interior-design",
       "mainTitle": "interior-design",
@@ -798,86 +914,86 @@ export const courseTypes: CourseCategory = {
       },
     },
     // TITLE OF CITY PAGE 
-    {
-      redirectUrl: "/city/graphic-design-in-jodhpur",
-      content:
-        "The Bachelor of Science (B.SC) in Fashion Design is a three-year program that combines design creativity with technical and scientific aspects of fashion. Students study textile science, color theory, fashion technology, and sustainable practices. The curriculum includes advanced computer-aided design, production management, and quality control, providing a strong foundation in the technical aspects of fashion production.",
-      value: "bsc-in-fashion-design",
-      label: "B.SC in Fashion Design",
-      title: "B.SC in Fashion Design",
-      duration: "3 Years Full-Time",
-      description:
-        "Combine scientific knowledge with fashion design expertise.",
-      software: [
-        { name: "Adobe Illustrator", src: "/software logos/pngegg (25).png" },
-        { name: "Corel Draw", src: "/software logos/pngegg (26).png" },
-        { name: "Photoshop", src: "/software logos/pngegg (24).png" },
-      ],
+    // {
+    //   redirectUrl: "/city/graphic-design-in-jodhpur",
+    //   content:
+    //     "The Bachelor of Science (B.SC) in Fashion Design is a three-year program that combines design creativity with technical and scientific aspects of fashion. Students study textile science, color theory, fashion technology, and sustainable practices. The curriculum includes advanced computer-aided design, production management, and quality control, providing a strong foundation in the technical aspects of fashion production.",
+    //   value: "bsc-in-fashion-design",
+    //   label: "B.SC in Fashion Design",
+    //   title: "B.SC in Fashion Design",
+    //   duration: "3 Years Full-Time",
+    //   description:
+    //     "Combine scientific knowledge with fashion design expertise.",
+    //   software: [
+    //     { name: "Adobe Illustrator", src: "/software logos/pngegg (25).png" },
+    //     { name: "Corel Draw", src: "/software logos/pngegg (26).png" },
+    //     { name: "Photoshop", src: "/software logos/pngegg (24).png" },
+    //   ],
 
-      videos: [],
-      whatYouWillLearn: [],
-      curriculum: {
-        "1st Year": {
-          image: "https://images.unsplash.com/photo-1575240023813-210ca26abf1c",
-          imageAlt:
-            "Introduction to textile science and basic design techniques",
-          "Semester 1": [
-            "Introduction to Fashion Design",
-            "Textile Science Fundamentals",
-            "Fashion Illustration Basics",
-            "Color Theory and Application",
-            "Design Communication",
-            "Basic Garment Construction",
-          ],
-          "Semester 2": [
-            "Fashion History and Evolution",
-            "Pattern Making Fundamentals",
-            "Introduction to Fashion Technology",
-            "Materials and Fabrics",
-            "Design Thinking and Innovation",
-            "Fashion Photography",
-          ],
-        },
-        "2nd Year": {
-          image: "https://images.unsplash.com/photo-1592904012202-2c54212261e6",
-          imageAlt: "Intermediate design concepts and fashion technology",
-          "Semester 3": [
-            "Advanced Pattern Making",
-            "Fashion Design Software",
-            "Textile Design and Innovation",
-            "Computer-Aided Design (CAD)",
-            "Sustainable Fashion Practices",
-            "Fashion Merchandising",
-          ],
-          "Semester 4": [
-            "Production Management",
-            "Quality Control in Fashion Production",
-            "Fashion Marketing and Retail",
-            "3D Design Technology",
-            "Brand Development",
-            "Advanced Garment Construction",
-          ],
-        },
-        "3rd Year": {
-          image: "https://images.unsplash.com/photo-1555094546-9cf3b18d7e84",
-          imageAlt: "Final year projects and professional development",
-          "Semester 5": [
-            "Fashion Trend Forecasting",
-            "Fashion Entrepreneurship",
-            "Fashion Show Production",
-            "Advanced Textile Science",
-            "Global Fashion Trends",
-          ],
-          "Semester 6": [
-            "Capstone Project",
-            "Fashion Business Management",
-            "Professional Portfolio Development",
-            "Fashion Retail and E-commerce",
-            "Internship in Fashion Industry",
-          ],
-        },
-      },
-    },
+    //   videos: [],
+    //   whatYouWillLearn: [],
+    //   curriculum: {
+    //     "1st Year": {
+    //       image: "https://images.unsplash.com/photo-1575240023813-210ca26abf1c",
+    //       imageAlt:
+    //         "Introduction to textile science and basic design techniques",
+    //       "Semester 1": [
+    //         "Introduction to Fashion Design",
+    //         "Textile Science Fundamentals",
+    //         "Fashion Illustration Basics",
+    //         "Color Theory and Application",
+    //         "Design Communication",
+    //         "Basic Garment Construction",
+    //       ],
+    //       "Semester 2": [
+    //         "Fashion History and Evolution",
+    //         "Pattern Making Fundamentals",
+    //         "Introduction to Fashion Technology",
+    //         "Materials and Fabrics",
+    //         "Design Thinking and Innovation",
+    //         "Fashion Photography",
+    //       ],
+    //     },
+    //     "2nd Year": {
+    //       image: "https://images.unsplash.com/photo-1592904012202-2c54212261e6",
+    //       imageAlt: "Intermediate design concepts and fashion technology",
+    //       "Semester 3": [
+    //         "Advanced Pattern Making",
+    //         "Fashion Design Software",
+    //         "Textile Design and Innovation",
+    //         "Computer-Aided Design (CAD)",
+    //         "Sustainable Fashion Practices",
+    //         "Fashion Merchandising",
+    //       ],
+    //       "Semester 4": [
+    //         "Production Management",
+    //         "Quality Control in Fashion Production",
+    //         "Fashion Marketing and Retail",
+    //         "3D Design Technology",
+    //         "Brand Development",
+    //         "Advanced Garment Construction",
+    //       ],
+    //     },
+    //     "3rd Year": {
+    //       image: "https://images.unsplash.com/photo-1555094546-9cf3b18d7e84",
+    //       imageAlt: "Final year projects and professional development",
+    //       "Semester 5": [
+    //         "Fashion Trend Forecasting",
+    //         "Fashion Entrepreneurship",
+    //         "Fashion Show Production",
+    //         "Advanced Textile Science",
+    //         "Global Fashion Trends",
+    //       ],
+    //       "Semester 6": [
+    //         "Capstone Project",
+    //         "Fashion Business Management",
+    //         "Professional Portfolio Development",
+    //         "Fashion Retail and E-commerce",
+    //         "Internship in Fashion Industry",
+    //       ],
+    //     },
+    //   },
+    // },
     {
       redirectUrl: "/fashion-design/one-year-diploma-in-fashion-design",
       content:
@@ -1350,7 +1466,7 @@ export const courseTypes: CourseCategory = {
     {
       redirectUrl: "/graphic-design/autocad", //new tags updated by ayaad
       "content": "The Three Year Diploma in Graphic Design offers comprehensive training in visual communication and design technology. Students develop expertise in design software, typography, branding, and multimedia design. The program includes extensive practical projects, portfolio development, and industry internships.",
-      "value": "three-year-diploma-in-graphic-design",
+      "value": "autocad course",
       "label": "3 Year Diploma in Graphic Design",
       "title": "3 Year Diploma in Graphic Design",
       "duration": "3 Years Full-Time",
